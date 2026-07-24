@@ -19,11 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const sendHtml = (file) => (req, res) => {
-  const filePath = path.join(__dirname, 'public', file);
-  res.sendFile(filePath, (err) => {
+  res.sendFile(file, { root: path.join(__dirname, 'public') }, (err) => {
     if (err) {
-      console.error(`Error sending ${file} at ${filePath}:`, err);
-      res.status(500).send(`Error loading page: ${file}`);
+      console.error(`Error sending ${file}:`, err);
+      res.status(err.status || 500).send(`Error loading page: ${file}`);
     }
   });
 };

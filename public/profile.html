@@ -102,14 +102,14 @@
 <script src="/js/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('dopamine_token');
+    const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/auth.html';
         return;
     }
     
     try {
-        const res = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
+        const res = await fetch('/api/auth/me', { headers: { 'Authorization': `Bearer ${token}` } });
         if (!res.ok) throw new Error('Failed to load profile');
         const user = await res.json();
         
@@ -121,11 +121,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         // Fetch orders
-        const ordersRes = await fetch('/api/orders/my-orders', { headers: { 'Authorization': `Bearer ${token}` } });
+        const ordersRes = await fetch('/api/orders/myorders', { headers: { 'Authorization': `Bearer ${token}` } });
         if (ordersRes.ok) {
             const orders = await ordersRes.json();
+            
+            // Calculate order totals dynamically
+            orders.forEach(o => {
+                o.computedTotal = o.items.reduce((sum, item) => sum + (item.priceAtPurchase * item.quantity), 0);
+            });
+
             document.getElementById('profile-order-count').textContent = orders.length;
-            const totalSpent = orders.reduce((acc, o) => acc + o.totalPrice, 0);
+            const totalSpent = orders.reduce((acc, o) => acc + o.computedTotal, 0);
             document.getElementById('profile-spent').textContent = `$${totalSpent.toFixed(2)}`;
             
             if (orders.length > 0) {
@@ -138,16 +144,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </div>
                             <div class="text-right">
                                 <span class="bg-primary-container text-on-primary-container px-sm py-[2px] rounded text-[10px] font-label-bold uppercase border border-black">${order.status}</span>
-                                <p class="font-headline-md text-primary-fixed mt-1">$${order.totalPrice.toFixed(2)}</p>
+                                <p class="font-headline-md text-primary-fixed mt-1">$${order.computedTotal.toFixed(2)}</p>
                             </div>
                         </div>
                         <div class="flex -space-x-4">
-                            ${order.orderItems.slice(0, 5).map(i => `
-                                <div class="w-10 h-10 rounded border-2 border-surface-container-highest overflow-hidden">
-                                    <img src="${i.images[0]}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'"/>
+                            ${order.items.slice(0, 5).map(i => `
+                                <div class="w-10 h-10 rounded border-2 border-surface-container-highest overflow-hidden bg-surface-container">
+                                    <span class="material-symbols-outlined text-surface-variant m-1">inventory_2</span>
                                 </div>
                             `).join('')}
-                            ${order.orderItems.length > 5 ? `<div class="w-10 h-10 rounded border-2 border-surface-container-highest bg-surface-container-highest flex items-center justify-center font-label-bold text-xs">+${order.orderItems.length - 5}</div>` : ''}
+                            ${order.items.length > 5 ? `<div class="w-10 h-10 rounded border-2 border-surface-container-highest bg-surface-container-highest flex items-center justify-center font-label-bold text-xs">+${order.items.length - 5}</div>` : ''}
                         </div>
                     </div>
                 `).join('');
@@ -156,13 +162,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
         console.error(err);
         if(typeof showToast === 'function') showToast('Session expired. Please log in.', 'error');
-        localStorage.removeItem('dopamine_token');
+        localStorage.removeItem('token');
         setTimeout(() => window.location.href = '/auth.html', 1500);
     }
 });
 
 function logout() {
-    localStorage.removeItem('dopamine_token');
+    localStorage.removeItem('token');
     window.location.href = '/auth.html';
 }
 </script>

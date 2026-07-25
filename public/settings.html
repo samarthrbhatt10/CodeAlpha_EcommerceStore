@@ -71,14 +71,14 @@
 <script src="/js/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-    const token = localStorage.getItem('dopamine_token');
+    const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/auth.html';
         return;
     }
     
     try {
-        const res = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
+        const res = await fetch('/api/auth/me', { headers: { 'Authorization': `Bearer ${token}` } });
         if (!res.ok) throw new Error('Failed to load profile');
         const user = await res.json();
         
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 document.getElementById('settings-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('dopamine_token');
+    const token = localStorage.getItem('token');
     
     const name = document.getElementById('settings-name').value;
     const currentPassword = document.getElementById('settings-current-password').value;
@@ -101,7 +101,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
     msgEl.classList.remove('hidden', 'text-[#c3f400]', 'text-error');
     
     try {
-        const res = await fetch('/api/users/me', {
+        const res = await fetch('/api/auth/me', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
             
             // Re-auth if password changed
             if (data.token) {
-                localStorage.setItem('dopamine_token', data.token);
+                localStorage.setItem('token', data.token);
             }
         } else {
             msgEl.textContent = data.message || 'UPDATE FAILED';

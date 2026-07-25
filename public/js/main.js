@@ -282,10 +282,51 @@ function bindNavigation() {
     }
 }
 
+// ─── MICRO-INTERACTIONS ─────────────────────────────────────
+function initMicroInteractions() {
+    // Micro-interactions for the dopamine effect
+    document.querySelectorAll('.neo-shadow').forEach(card => {
+        card.addEventListener('mousedown', () => {
+            card.style.transform = 'translate(6px, 6px)';
+            card.style.boxShadow = '0px 0px 0px #0D0B18';
+        });
+        card.addEventListener('mouseup', () => {
+            card.style.transform = 'translate(0px, 0px)';
+            card.style.boxShadow = '6px 6px 0px #0D0B18';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.boxShadow = '';
+        });
+    });
+
+    // Tilt effect for cards
+    document.querySelectorAll('.glass').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            card.style.transform = \`perspective(1000px) rotateX(\${rotateX}deg) rotateY(\${rotateY}deg) scale3d(1.02, 1.02, 1.02)\`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = \`perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)\`;
+        });
+    });
+}
+
 // ─── INIT ───────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     bindNavigation();
     updateAuthUI();
     renderCartDrawer();
     updateCartBadges();
+    initMicroInteractions();
 });

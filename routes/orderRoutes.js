@@ -42,7 +42,17 @@ router.post('/', protect, async (req, res) => {
 // Get user orders
 router.get('/myorders', protect, async (req, res) => {
   try {
-    const orders = await Order.find({ userId: req.user._id });
+    const orders = await Order.find({ userId: req.user._id }).sort({ createdAt: -1 });
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Admin: get all orders
+router.get('/all', protect, authorizeRoles('admin'), async (req, res) => {
+  try {
+    const orders = await Order.find({}).sort({ createdAt: -1 }).limit(100);
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });

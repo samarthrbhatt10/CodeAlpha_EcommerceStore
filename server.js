@@ -34,6 +34,8 @@ app.get('/catalog', sendHtml('catalog.html'));
 app.get('/cart', sendHtml('cart.html'));
 app.get('/admin', sendHtml('admin.html'));
 app.get('/pdp', sendHtml('pdp.html'));
+app.get('/profile', sendHtml('profile.html'));
+app.get('/settings', sendHtml('settings.html'));
 
 // Routes placeholders
 app.use('/api/auth', require('./routes/authRoutes'));

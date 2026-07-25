@@ -1,482 +1,156 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CYBER-TEK PARKA | DOPAMINE CLUB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Product Details | DOPAMINE CLUB</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>.material-symbols-outlined {
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
-    }
-.grainy-overlay {
-    position: relative
-    }
-.grainy-overlay::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.05;
-    pointer-events: none;
-    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBq2XetDPGgrNP1XyjqrcqeGTaKvCuTYRt7b6xEd82V9IXRjwusCh4rpEsnQ6y6Tp1QKBltzmkL2rtiMYlbwi7l5d-YCcFQdsHguq8h03x82mk0GCoz0QlefaPGlzPkfYeYsWnSAqv9cXCw7z0bHInGmJFDFiaO8NSuBEy6nKiIIprpYTXHHCOhiFKShBdM3UCjdy7LJwBQFv94G7QQBZXZ-FWbVId16poOJrEPs-YuF_wUX5z30txHtagbAq6_QEjgNCTixpRKc-5U);
-    z-index: 10
-    }
-.holographic-glow {
-    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4));
-    backdrop-blur: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3)
-    }
-.shadow-offset-shadow {
-    box-shadow: 6px 6px 0 #0D0B18
-    }
-.active-btn-press:active {
-    transform: translate(4px, 4px);
-    box-shadow: 0 0 0 transparent
-    }
-.health-bar-segment {
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-    }
-/* Color shift variables */
-:root {
-    --accent-primary: #c3f400;
-    --accent-glow: rgba(195, 244, 0, 0.3)
-    }
-.accent-bg {
-    background-color: var(--accent-primary)
-    }
-.accent-text {
-    color: var(--accent-primary)
-    }
-.accent-border {
-    border-color: var(--accent-primary)
-    }
-.accent-glow-box {
-    box-shadow: 0 0 20px var(--accent-glow)
-    }</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-container": "#201e2c",
-                        "secondary-fixed-dim": "#ffb1c3",
-                        "on-surface": "#e5e0f3",
-                        "inverse-primary": "#506600",
-                        "inverse-on-surface": "#312f3d",
-                        "inverse-surface": "#e5e0f3",
-                        "surface-bright": "#3a3746",
-                        "on-tertiary": "#00363a",
-                        "on-primary-fixed-variant": "#3c4d00",
-                        "primary-fixed-dim": "#abd600",
-                        "on-primary-fixed": "#161e00",
-                        "primary-container": "#c3f400",
-                        "on-error": "#690005",
-                        "background": "#14121f",
-                        "surface-container-highest": "#363342",
-                        "outline": "#8e9379",
-                        "surface-container-low": "#1c1a27",
-                        "primary": "#ffffff",
-                        "tertiary-fixed-dim": "#00dbe9",
-                        "on-error-container": "#ffdad6",
-                        "error": "#ffb4ab",
-                        "surface": "#14121f",
-                        "surface-container-high": "#2b2836",
-                        "primary-fixed": "#c3f400",
-                        "on-secondary": "#66002c",
-                        "on-tertiary-fixed": "#002022",
-                        "on-secondary-fixed-variant": "#8f0041",
-                        "on-secondary-container": "#590026",
-                        "tertiary-container": "#7df4ff",
-                        "secondary-container": "#ff4b89",
-                        "tertiary": "#ffffff",
-                        "outline-variant": "#444933",
-                        "on-tertiary-container": "#006f77",
-                        "on-background": "#e5e0f3",
-                        "surface-dim": "#14121f",
-                        "surface-container-lowest": "#0e0c1a",
-                        "secondary-fixed": "#ffd9e0",
-                        "surface-variant": "#363342",
-                        "tertiary-fixed": "#7df4ff",
-                        "surface-tint": "#abd600",
-                        "error-container": "#93000a",
-                        "secondary": "#ffb1c3",
-                        "on-primary-container": "#556d00",
-                        "on-secondary-fixed": "#3f0019",
-                        "on-tertiary-fixed-variant": "#004f54",
-                        "on-surface-variant": "#c4c9ac",
-                        "on-primary": "#283500"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "offset-shadow": "6px 6px 0px #0D0B18",
-                        "sm": "12px",
-                        "xl": "80px",
-                        "border-width": "3px",
-                        "base": "8px",
-                        "xs": "4px",
-                        "md": "24px",
-                        "lg": "48px"
-                    },
-                    "fontFamily": {
-                        "label-bold": ["Space Grotesk"],
-                        "headline-md": ["Syne"],
-                        "display-xl": ["Syne"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Syne"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Syne"]
-                    },
-                    "fontSize": {
-                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
-                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
-                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}]
-                    }
-                },
-            },
-        }
-    </script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "background":"#14121f","surface":"#14121f","surface-container-lowest":"#0e0c1a",
+      "surface-container-low":"#1c1a27","surface-container":"#201e2c","surface-container-high":"#2b2836",
+      "surface-container-highest":"#363342","primary":"#ffffff","primary-fixed":"#c3f400",
+      "primary-container":"#c3f400","on-primary-container":"#161e00","secondary-container":"#ff4b89",
+      "on-secondary-container":"#590026","on-surface":"#e5e0f3","on-surface-variant":"#c4c9ac",
+      "error":"#ffb4ab"
+    },
+    fontFamily:{"label-bold":["Space Grotesk"],"headline-md":["Syne"],"display-xl":["Syne"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Syne"],"body-md":["Plus Jakarta Sans"]},
+    fontSize:{"label-bold":["14px",{lineHeight:"1.0",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"700"}],"headline-lg":["48px",{lineHeight:"1.2",fontWeight:"800"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}]},
+    spacing:{"xs":"4px","sm":"12px","md":"24px","lg":"48px","xl":"80px","border-width":"2px","base":"8px"},
+    boxShadow:{"offset":"6px 6px 0px #0D0B18"}
+  }}
+};
+</script>
+<style>
+  body { background: #14121f; color: #e5e0f3; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .neo-shadow { box-shadow: 6px 6px 0px #0D0B18; }
+  .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-size:24px; font-style:normal; font-weight:normal; line-height:1; display:inline-block; white-space:nowrap; font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  #pdp-main-img { transition: opacity 0.15s ease; }
+</style>
 </head>
-<body class="bg-background text-on-background min-h-screen selection:bg-primary-container selection:text-on-primary-container font-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<nav class="sticky top-md z-50 flex justify-between items-center px-md py-sm rounded-full border-border-width border-surface-container-highest mt-md mx-auto w-[95%] max-w-7xl bg-surface-container-low/20 backdrop-blur-xl shadow-offset-shadow">
-<div class="font-headline-md text-headline-md font-extrabold tracking-tighter text-secondary-container">DOPAMINE CLUB</div>
-<div class="hidden md:flex items-center gap-md">
-<a class="text-primary-container border-b-border-width border-primary-container pb-xs hover:scale-105 transition-transform" href="/catalog" href="/catalog">Shop</a>
-<a class="text-on-surface-variant font-label-bold text-label-bold hover:bg-primary-container hover:text-on-primary-container hover:scale-105 transition-transform p-xs px-sm rounded-full" href="/catalog" href="/catalog">Drops</a>
-<a class="text-on-surface-variant font-label-bold text-label-bold hover:bg-primary-container hover:text-on-primary-container hover:scale-105 transition-transform p-xs px-sm rounded-full" href="/catalog">Quests</a>
-<a class="text-on-surface-variant font-label-bold text-label-bold hover:bg-primary-container hover:text-on-primary-container hover:scale-105 transition-transform p-xs px-sm rounded-full" href="/catalog">Vault</a>
-</div>
-<div class="flex items-center gap-base">
-<button class="material-symbols-outlined p-base text-on-surface hover:text-primary transition-colors">search</button>
-<button class="material-symbols-outlined p-base text-on-surface hover:text-primary transition-colors">person</button>
-<div class="relative active-btn-press transition-transform">
-<button class="bg-primary-container text-on-primary-container font-label-bold text-label-bold px-md py-xs rounded-full border-border-width border-surface-container-highest flex items-center gap-xs">
-                    Cart <span class="bg-on-primary-container text-primary-container rounded-full px-2">2</span>
-</button>
-</div>
-</div>
-</nav>
-<main class="max-w-7xl mx-auto px-md py-lg grid grid-cols-1 lg:grid-cols-12 gap-lg relative">
-<!-- Floating Holographic Price Tag -->
-<div class="absolute top-10 right-10 lg:right-40 z-20 rotate-12 holographic-glow p-md rounded-xl border-2 border-white/30 shadow-2xl animate-bounce">
-<p class="font-label-bold text-label-bold text-white tracking-widest uppercase mb-1">Price Drop</p>
-<p class="font-display-xl text-3xl font-extrabold text-white">$449.00</p>
-</div>
-<!-- Product Gallery Column -->
-<div class="lg:col-span-7 space-y-md">
-<div class="grainy-overlay relative group">
-<div class="w-full aspect-[4/5] bg-surface-container-low border-border-width border-surface-container-highest rounded-xl overflow-hidden shadow-offset-shadow">
-<img class="w-full h-full object-cover" data-alt="A cinematic product shot of a high-tech CYBER-TEK PARKA in a dark, neon-lit urban environment. The jacket features multiple utility pockets, reflective holographic panels, and a sleek waterproof texture. The lighting is moody with vibrant pink and cyan highlights hitting the fabric's metallic fibers. The overall aesthetic is Neo-Brutalist Y2K Pop with sharp edges and premium techwear vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmk0CQgONRe0ewtPtkPbtUJPM2BArDRPZHJKO56H_VfIDXSY3fsHAE2On8Eom68yzZ4SWL3DuKH606QXZmgrgcjWq4LsepI-GUOuz5aF-d3vDgLtRiW4deN0XkSLBFWqJl9gLLQ7FVVcAfW9NUyIv6fD4pD2nZ3Ex7TIFBLiuiLl1CSUZ57mZBzDD3I7Ju_a0sevex1xWDKMooM6uuL2ndvzsA26PnmtpGNzG20Z5OX9KMY1wwU-eI1ngrced9FHkrF3pEfep5eW8l"/>
-</div>
-<!-- Interactive Stickers -->
-<div class="absolute top-4 left-4 -rotate-3 bg-white text-black font-label-bold px-3 py-1 border-2 border-black rounded-sm shadow-[2px_2px_0px_#000] z-20">
-                    LIMITED DROP 001
-                </div>
-<div class="absolute bottom-10 right-4 rotate-6 bg-primary-container text-on-primary-container font-label-bold px-3 py-1 border-2 border-black rounded-sm shadow-[2px_2px_0px_#000] z-20">
-                    WATERPROOF IPX7
-                </div>
-</div>
-<!-- Thumbnail Grid -->
-<div class="grid grid-cols-3 gap-md">
-<div class="aspect-square bg-surface-container-high border-border-width border-surface-container-highest rounded-lg overflow-hidden cursor-pointer hover:border-primary-container transition-colors shadow-offset-shadow active-btn-press">
-<img class="w-full h-full object-cover opacity-80 hover:opacity-100" data-alt="A close-up detail shot of the CYBER-TEK PARKA showing the intricate stitching and high-contrast lime green zipper. The material has a subtle tech-hex pattern and reflecting properties. Shot in a macro style with high-octane neon lighting and grainy film texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAra-KHUs40qMWtfNMjGbXEmVrD490mD7oTWpBuxGa62nk6Wh282UvKZBP252GTyevktrn_2qazMxDJArmdIxgq3_L0_vnn1HWRul4RsASEgfAEIkpOxqxnJQN3G-QFWMMdVad7JYZWpKIvVN9esNMcAxsu6BmK_mviELSVFPVPIRw6t3BEIc83ao4Vg4Nu2zeH6mFilrQ91ZSJ73mkBgHOnlZLXgR8nbQ_dmgOxbuqptIOfBqcNkdNooufuRQVR7Cda4ESzbYfFFsy"/>
-</div>
-<div class="aspect-square bg-surface-container-high border-border-width border-surface-container-highest rounded-lg overflow-hidden cursor-pointer hover:border-primary-container transition-colors shadow-offset-shadow active-btn-press">
-<img class="w-full h-full object-cover opacity-80 hover:opacity-100" data-alt="A back view of the CYBER-TEK PARKA displayed on a translucent mannequin. The back features a large embroidered graphic in pink and cyan that glows under blacklight. The background is a raw industrial space with exposed wiring and concrete walls, keeping the Neo-Brutalist vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8BBZecFDPabBNeIFZ2t8Mit27tBZ15nHrmQBlSg2wRofouopxhs5y7hi6J6BdUMe0vNAsOxtfMI9_5ryGXRJwuCyvaBgy0QN7er1TYozQ9GnwUOLzuxXD2djEQOyUASXXRCxst8JlalxyyidoOWgEsldZKIh3Y0NaqEYjSF773XD3G1n8wcTGI3_8JxrLxXypdCBKUhf43Xirs2ACNp_cm1swYerBoG41_w7MG5JiOfuhK6LPCSxZNGF5j0o-JjtxNcjgKslzCQ11"/>
-</div>
-<div class="aspect-square bg-surface-container-high border-border-width border-surface-container-highest rounded-lg overflow-hidden cursor-pointer hover:border-primary-container transition-colors shadow-offset-shadow active-btn-press">
-<img class="w-full h-full object-cover opacity-80 hover:opacity-100" data-alt="An atmospheric lifestyle shot of a futuristic urban explorer wearing the CYBER-TEK PARKA standing in front of a glitching arcade cabinet. The scene is drenched in cyan and hot pink neon light with heavy digital noise and chromatic aberration effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKiPLHPbQBa3g239YcfCK4b_LTIHTw0vkC6rjNwW1Kn1Nibq8N1hZbOKDhnTqFtFCqtJqVto5r1ZpLWz8QnIu9rO01qmuISnQ3ZVsS4QgRZYb9fIVw-7jUCAT1-ztWsC81Wgpmpn4ptiC8FGJuTWA0UAW5MHE-W3yageupFIYMrk5CvsONcyZ8cO8qOBCT_GoWOelXJ1BfPtqOlhg8n2uGTcY8l7TLOAfz0m5Fe4lkR3LOjAv-aMzdWfY2DtP2o_B5Scfk8vmekmM8"/>
-</div>
-</div>
-</div>
-<!-- Details Column -->
-<div class="lg:col-span-5 flex flex-col gap-md">
-<div>
-<span class="text-secondary-container font-label-bold tracking-widest uppercase">Special Series / 042</span>
-<h1 class="font-headline-lg text-headline-lg text-primary mt-2 leading-none">CYBER-TEK PARKA</h1>
-<p class="font-headline-md text-headline-md text-on-surface-variant font-bold mt-4 font-headline-md">ULTRA-MODULAR SHELL SYSTEM</p>
-</div>
-<!-- Color Picker -->
-<div class="bg-surface-container-low p-md rounded-xl border-border-width border-surface-container-highest shadow-offset-shadow">
-<p class="font-label-bold text-on-surface mb-md uppercase">Select Frequency (Color)</p>
-<div class="flex gap-md">
-<button class="w-12 h-12 rounded-full bg-[#c3f400] border-4 border-white ring-2 ring-black hover:scale-110 transition-transform" onclick="updateAccent('#c3f400', 'rgba(195, 244, 0, 0.3)')"></button>
-<button class="w-12 h-12 rounded-full bg-[#ff4b89] border-4 border-transparent hover:border-white transition-all hover:scale-110" onclick="updateAccent('#ff4b89', 'rgba(255, 75, 137, 0.3)')"></button>
-<button class="w-12 h-12 rounded-full bg-[#00dbe9] border-4 border-transparent hover:border-white transition-all hover:scale-110" onclick="updateAccent('#00dbe9', 'rgba(0, 219, 233, 0.3)')"></button>
-</div>
-</div>
-<!-- Size Guide (Arcade Health Bar Style) -->
-<div class="bg-surface-container-low p-md rounded-xl border-border-width border-surface-container-highest shadow-offset-shadow">
-<div class="flex justify-between items-center mb-sm">
-<p class="font-label-bold text-on-surface uppercase">Size Energy Levels</p>
-<span class="text-primary-container font-bold" id="active-size">MEDIUM</span>
-</div>
-<div class="grid grid-cols-5 gap-xs h-8">
-<button class="health-bar-segment bg-surface-container-highest border-2 border-black hover:bg-primary-container/40 active:bg-primary-container" onclick="setSize('XS', 1)"></button>
-<button class="health-bar-segment bg-primary-container border-2 border-black" onclick="setSize('S', 2)"></button>
-<button class="health-bar-segment bg-primary-container border-2 border-black" onclick="setSize('M', 3)"></button>
-<button class="health-bar-segment bg-surface-container-highest border-2 border-black hover:bg-primary-container/40" onclick="setSize('L', 4)"></button>
-<button class="health-bar-segment bg-surface-container-highest border-2 border-black hover:bg-primary-container/40" onclick="setSize('XL', 5)"></button>
-</div>
-<div class="flex justify-between mt-2 text-[10px] font-label-bold opacity-50 uppercase tracking-tighter">
-<span>Low Stock</span>
-<span>Optimized</span>
-<span>High Volume</span>
-</div>
-</div>
-<!-- Buyer Pile -->
-<div class="flex items-center gap-sm">
-<div class="flex -space-x-4">
-<div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Gen-Z person with vibrant neon-dyed hair and futuristic tech-wear accessories. The background is a brightly lit, blurred cyber-cityscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpORCjOHoFjPSCQm5aBVucFXtjbrBiT15N0l_6mP7XLpyCU3eSlPKTa9RBrzVS_s-r3y6aVbXACZU_x6T87DFN-KFsX0peOBEMc_dDqj9HMJflnWdO6Yqb0NBuEIW6tI4OUU22OzYSmHzehhF94pYxzTCONlcHiQdOeRuBMNpWGhel6LYX5xvZRKDcO2f2qxtMTpS52wHW88wiExk_i_kt1XNH94Awz7L8iX4PnM7w6r8nqP-aaxzs2czt8oQtBb7bPObHsOBxyfed"/>
-</div>
-<div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A portrait of a Gen-Z digital artist with bold, geometric makeup and a oversized reflective earring. High-contrast lighting with pink and cyan glows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnGHuUpNyT0F_oUicf1Mc1k93x4vXRXYNwaufWR4ML1qHVSSb4R5nrgPRcC3BpjjnATFfQJUKjSQouz3LPcJFBqiRqKHzpw6s67_96Fz2BiWKkP5lIn6PXWf4Fw-cCXNZPd6eTOg4E1OLzO9aVSpQRdJFk7NO0_tL-tyroegayHcF21j1TvRvihiDo_wERSLTl79Fv9OX1R4_M12CxdBltc11VfZfOFBzMLAIrqKhUDqHhXN7ueWavH0TBRXQ9LWnJKqXTuzLFZKvY"/>
-</div>
-<div class="w-10 h-10 rounded-full border-2 border-black overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A portrait of a trend-seeking young adult with a sharp mullet hairstyle and clear-frame glasses reflecting digital code. Soft-glow light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmQmw5r1QGqFSm-DHrKnH9cmD8ks56lAAogGmeNWIAxFYPmDqQy2zGx09t9OXZWGAHFtbEH7o59DPwCuq9qq9cDKOPKGCJr0UJ15rDTMLCobZvvdQTEOnNcm3DNe94pXBem8nHMksIl4vBJoWM0bOAAQjwVzwSnHSXFw8gHVC9UhtnD0BqLsRQxiypoARcim9SddQW1FANiPtgjNqPKO5lQp8NfsdfBofl_f0RmP_lfx-312lRumvPs9I-XZSORJytBE0JU45d_tDN"/>
-</div>
-<div class="w-10 h-10 rounded-full border-2 border-black bg-surface-container-highest flex items-center justify-center font-label-bold text-[10px]">
-                        +11
-                    </div>
-</div>
-<p class="font-label-bold text-xs text-on-surface-variant"><span class="text-primary font-bold">14 Gen-Zers</span> copped this in the last hour</p>
-</div>
-<!-- Description -->
-<div class="space-y-sm">
-<p class="font-body-md text-on-surface leading-relaxed">
-                    Designed for the digital nomad. The CYBER-TEK PARKA features a <span class="text-primary-container font-bold">bio-mimetic outer shell</span> that reacts to UV exposure. 12 integrated neural-link pockets, modular cooling vents, and an oversized "Dopamine-Drop" hood.
-                </p>
-<div class="flex gap-base flex-wrap">
-<span class="bg-surface-container-high px-3 py-1 rounded-sm border-2 border-black font-label-bold text-[12px] uppercase">Gore-Tex Pro+</span>
-<span class="bg-surface-container-high px-3 py-1 rounded-sm border-2 border-black font-label-bold text-[12px] uppercase">YKK Storm Zips</span>
-<span class="bg-surface-container-high px-3 py-1 rounded-sm border-2 border-black font-label-bold text-[12px] uppercase">Reflective 3M</span>
-</div>
-</div>
-<!-- Instant Cop Button -->
-<div class="pt-md">
-<button class="w-full accent-bg text-on-primary-container font-display-xl text-2xl h-20 border-border-width border-black shadow-[8px_8px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-md group">
-                    INSTANT COP
-                    <span class="material-symbols-outlined text-4xl group-hover:rotate-12 transition-transform">shopping_cart_checkout</span>
-</button>
-<p class="text-center mt-sm font-label-bold text-on-surface-variant text-xs flex justify-center items-center gap-xs">
-<span class="material-symbols-outlined text-sm">bolt</span> FREE OVERNIGHT SHIPPING IN THE METAVERSE
-                </p>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full py-lg px-md flex flex-col md:flex-row justify-between items-center gap-md border-t-border-width border-surface-container-highest bg-surface-container-lowest mt-xl">
-<div class="font-headline-md text-headline-md text-primary font-extrabold tracking-tighter">DOPAMINE CLUB</div>
-<div class="flex gap-md">
-<a class="text-on-surface-variant hover:text-tertiary-fixed-dim underline underline-offset-4 hover:translate-y-[-2px] transition-transform font-label-bold" href="/catalog">Support</a>
-<a class="text-on-surface-variant hover:text-tertiary-fixed-dim underline underline-offset-4 hover:translate-y-[-2px] transition-transform font-label-bold" href="/catalog">Privacy</a>
-<a class="text-on-surface-variant hover:text-tertiary-fixed-dim underline underline-offset-4 hover:translate-y-[-2px] transition-transform font-label-bold" href="/catalog">TOS</a>
-<a class="text-on-surface-variant hover:text-tertiary-fixed-dim underline underline-offset-4 hover:translate-y-[-2px] transition-transform font-label-bold" href="/catalog">Arcade</a>
-</div>
-<div class="text-on-surface font-body-md">
-            © 2024 POP MART / DOPAMINE CLUB. EST 2004.
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden">
+
+<!-- Navigation -->
+<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-xl border-b-2 border-surface-container-highest">
+  <nav class="flex justify-between items-center px-md py-sm max-w-7xl mx-auto">
+    <a href="/" class="font-headline-md text-primary-container italic uppercase tracking-tighter">DOPAMINE CLUB</a>
+    <div class="hidden md:flex items-center gap-lg">
+      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors">DROPS</a>
+      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors">VAULT</a>
+    </div>
+    <div class="flex items-center gap-sm">
+      <button data-cart-toggle class="relative flex items-center gap-xs font-label-bold bg-surface-container px-md py-xs rounded-full border-2 border-surface-container-highest hover:border-primary-container transition-colors">
+        <span class="material-symbols-outlined text-lg">shopping_bag</span>
+        <span data-cart-label>Cart</span>
+        <span data-cart-count class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-container text-white text-[10px] font-bold rounded-full items-center justify-center hidden">0</span>
+      </button>
+      <button data-auth-login class="font-label-bold bg-primary-container text-on-primary-container px-md py-xs rounded-full border-2 border-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" style="box-shadow:3px 3px 0px #000">LOGIN</button>
+    </div>
+  </nav>
+</header>
+
+<main class="max-w-7xl mx-auto px-md py-lg">
+  <!-- Breadcrumb -->
+  <nav class="flex items-center gap-xs text-sm text-on-surface-variant mb-lg">
+    <a href="/" class="hover:text-primary-container transition-colors">Home</a>
+    <span class="material-symbols-outlined text-sm">chevron_right</span>
+    <a href="/catalog" class="hover:text-primary-container transition-colors">Catalog</a>
+    <span class="material-symbols-outlined text-sm">chevron_right</span>
+    <span id="pdp-title" class="text-primary">Loading...</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+    <!-- Gallery -->
+    <div class="space-y-md">
+      <div class="relative aspect-square bg-surface-container-low border-2 border-surface-container-highest rounded-2xl overflow-hidden">
+        <img id="pdp-main-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Product" class="w-full h-full object-cover"/>
+      </div>
+      <!-- Thumbnails -->
+      <div id="pdp-thumbs" class="grid grid-cols-4 gap-sm">
+        <!-- Populated by pdp.js -->
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="space-y-md">
+      <div>
+        <div class="flex items-center gap-sm flex-wrap">
+          <span id="pdp-rarity" class="font-label-bold text-xs px-sm py-xs rounded bg-primary-container text-on-primary-container border-2 border-black uppercase">STANDARD</span>
+          <span id="pdp-category" class="font-label-bold text-xs text-on-surface-variant uppercase"></span>
         </div>
-</footer>
-<script>
-        function updateAccent(color, glow) {
-            document.documentElement.style.setProperty('--accent-primary', color);
-            document.documentElement.style.setProperty('--accent-glow', glow);
-            
-            // Visual feedback on selected color
-            const buttons = document.querySelectorAll('.rounded-full.w-12');
-            buttons.forEach(btn => {
-                btn.style.borderColor = 'transparent';
-            });
-            event.target.style.borderColor = 'white';
+        <h1 id="pdp-title" class="font-headline-lg text-primary mt-sm leading-tight">Loading product...</h1>
+        <div class="flex items-center gap-sm mt-sm flex-wrap">
+          <span id="pdp-stars" class="text-primary-container text-lg">★★★★★</span>
+          <span id="pdp-rating-text" class="font-label-bold text-on-surface-variant">5.0</span>
+          <span id="pdp-reviews" class="text-on-surface-variant text-sm">(0 reviews)</span>
+        </div>
+      </div>
 
-            // Update UI components that use accent classes manually if needed
-            const accents = document.querySelectorAll('.accent-bg');
-            accents.forEach(el => el.style.backgroundColor = color);
-            
-            const accentTexts = document.querySelectorAll('.accent-text');
-            accentTexts.forEach(el => el.style.color = color);
+      <!-- Price -->
+      <div class="flex items-baseline gap-md">
+        <span id="pdp-price" class="font-headline-lg text-primary-container">$0.00</span>
+        <span id="pdp-original-price" class="text-on-surface-variant line-through hidden text-lg"></span>
+        <span id="pdp-discount" class="hidden font-label-bold text-sm bg-secondary-container text-white px-sm py-xs rounded"></span>
+      </div>
 
-            const activeSizeLabel = document.getElementById('active-size');
-            if(activeSizeLabel) activeSizeLabel.style.color = color;
-        }
+      <!-- Stock -->
+      <div id="pdp-stock" class="font-label-bold text-sm text-[#c3f400]">In Stock</div>
 
-        function setSize(size, index) {
-            document.getElementById('active-size').innerText = size;
-            const segments = document.querySelectorAll('.health-bar-segment');
-            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-primary').trim();
-            
-            segments.forEach((seg, i) => {
-                if (i < index) {
-                    seg.classList.remove('bg-surface-container-highest');
-                    seg.style.backgroundColor = accentColor;
-                    seg.classList.add('accent-bg');
-                } else {
-                    seg.classList.remove('accent-bg');
-                    seg.style.backgroundColor = '';
-                    seg.classList.add('bg-surface-container-highest');
-                }
-            });
-        }
-    </script>
+      <!-- Description -->
+      <p id="pdp-desc" class="font-body-md text-on-surface-variant leading-relaxed">Loading description...</p>
 
-<!-- Overlay Backdrop -->
-<div class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="cart-backdrop" onclick="toggleCart()"></div>
-<!-- Slide-over Drawer Cart -->
-<aside class="fixed top-0 right-0 h-full w-full max-w-md z-50 glass-panel border-l-border-width border-surface-container-highest translate-x-full transition-transform duration-500 ease-in-out flex flex-col" id="cart-drawer">
-<!-- Header -->
-<div class="p-md border-b-border-width border-surface-container-highest flex justify-between items-center">
-<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-sm">
-                YOUR STASH
-                <span class="bg-primary-container text-on-primary-container text-label-bold px-xs py-0 rounded text-xs">2</span>
-</h2>
-<button class="material-symbols-outlined text-primary hover:rotate-90 transition-transform p-xs" onclick="toggleCart()">close</button>
-</div>
-<!-- Gamified Perks Bar -->
-<div class="px-md py-sm bg-surface-container-highest/50 border-b-border-width border-surface-container-highest">
-<div class="flex justify-between items-center mb-xs">
-<span class="font-label-bold text-xs text-on-surface-variant">HOLOGRAPHIC PROGRESS</span>
-<span class="font-label-bold text-xs text-primary-container">$12 MORE FOR STICKERS!</span>
-</div>
-<div class="h-4 w-full bg-surface-container rounded-full border-2 border-surface-container-highest overflow-hidden">
-<div class="h-full holographic-glow w-[85%] rounded-full"></div>
-</div>
-<p class="mt-xs text-[10px] font-label-bold text-on-surface-variant italic">Add $12 more for Free Holographic Sticker Pack &amp; Free Shipping! 🎁</p>
-</div>
-<!-- Cart Items Scrollable -->
-<div class="flex-1 overflow-y-auto p-md space-y-md custom-scrollbar">
-<!-- Item 1 -->
-<div class="relative group" id="item-1">
-<div class="flex gap-md glass-panel p-sm rounded-lg border-border-width border-surface-container-highest neo-shadow transition-all group-hover:scale-[1.02]">
-<div class="w-20 h-20 bg-surface-container rounded-md border-2 border-surface-container-highest flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Close up of a neon-translucent vinyl toy head with intricate mechanical details and glowing lime green eyes. Soft digital grain texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIzKaK0qfpz7yxIwxXwfuKXPIaI9mkFdiQG59p1KwzkOmnMk760Na2CSkLu5qfMLTseb8BeukHzk-UrXIhXnFSM3CWqlGkQQN5S0fP3bzfbMV4cOCwWT_Kbpu1fAip5Pn9mgJFnf0dQ7GBky4rv_G0AVfQYXjRvmz_Xgbe1QOTUlD-86UjpQEZxG_UEtP-dEVSxOIIrkFLxqRZBZLwfbjnqf4-l29uogWYQqo-m4zaSohroFa8L0Eu7xou0AqWxOfymgfMUktb67Lo"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<h4 class="font-label-bold text-primary">Cyber-Mecha V1</h4>
-<button class="material-symbols-outlined text-error hover:scale-125 transition-transform text-lg" onclick="removeItem('item-1')">delete</button>
-</div>
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-xs bg-surface-container p-xs rounded border-border-width border-surface-container-highest">
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">-</button>
-<span class="font-label-bold px-xs">1</span>
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">+</button>
-</div>
-<span class="font-label-bold text-primary-container">$189</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="relative group" id="item-2">
-<div class="flex gap-md glass-panel p-sm rounded-lg border-border-width border-surface-container-highest neo-shadow transition-all group-hover:scale-[1.02]">
-<div class="w-20 h-20 bg-surface-container rounded-md border-2 border-surface-container-highest flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Macro detail of holographic fabric shimmering in cyan and magenta. The weave of the material is visible under bright studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBw6wgNGvQZ-QtTx7DbiMIPtelonmCSwrJystlwixB4pqgeTA0pdM2kWx4AgH37YcdgJAWKFSIlpjQgTQb_5CsqCJ-oLWSwkJRH1HpYtDxpY8thEjvPTeD7s_c_74uUtYTN_lngQkJ9VpMfJ6dXvQojWy8Z_krpMZjtrxYyqtj0xePCzWLfGCfjQZXe36gRb8BFPy5Ku9UWalA1VWCEjggw8xwflT9uHji-zW4a8r3WizAaUdNQbSvePMKZDJGoxPSFtO_P5OYaE0x"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<h4 class="font-label-bold text-primary">Prism Hoodie (XL)</h4>
-<button class="material-symbols-outlined text-error hover:scale-125 transition-transform text-lg" onclick="removeItem('item-2')">delete</button>
-</div>
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-xs bg-surface-container p-xs rounded border-border-width border-surface-container-highest">
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">-</button>
-<span class="font-label-bold px-xs">1</span>
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">+</button>
-</div>
-<span class="font-label-bold text-primary-container">$75</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer / Checkout Section -->
-<div class="p-md space-y-md border-t-border-width border-surface-container-highest bg-surface-container-low">
-<!-- Coupon Field -->
-<div class="relative">
-<label class="block text-[10px] font-label-bold text-on-surface-variant mb-xs ml-xs">Got a discount code or hot tea? ☕</label>
-<div class="flex gap-xs">
-<input class="flex-1 bg-surface-container border-border-width border-surface-container-highest rounded px-sm py-xs font-label-bold text-sm focus:ring-2 focus:ring-primary-container focus:outline-none placeholder:text-on-surface-variant/30" placeholder="DROPCODE_404" type="text"/>
-<button class="bg-primary text-background px-md py-xs rounded font-label-bold border-border-width border-surface-container-highest neo-shadow active-neo-interaction">APPLY</button>
-</div>
-</div>
-<!-- Summary -->
-<div class="space-y-xs">
-<div class="flex justify-between font-label-bold text-sm">
-<span class="text-on-surface-variant">SUBTOTAL</span>
-<span class="text-primary">$264.00</span>
-</div>
-<div class="flex justify-between font-label-bold text-sm">
-<span class="text-on-surface-variant">SHIPPING</span>
-<span class="text-secondary-container">$9.99</span>
-</div>
-<div class="flex justify-between font-headline-md text-headline-md pt-xs border-t-2 border-surface-container-highest">
-<span class="text-primary">TOTAL</span>
-<span class="text-primary-container">$273.99</span>
-</div>
-</div>
-<!-- Buttons -->
-<div class="grid grid-cols-2 gap-sm">
-<button class="flex items-center justify-center py-sm bg-[#000000] text-white rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction shimmer-effect">
-<img alt="Apple Pay" class="h-6 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Fiam8-clD9Ox1260mF6qDm_pAE_Fh0ot2I0Z8cOacdtw1yJfYhIIZM6fI30d-vwlLKACeKL8eoDxtoteziRoo6E84dDt61a2B5n08K3XRr6WE13cN8nKd6aafhIKUGABpprMPL3SeMZtkzQ6RMPRwi75sURZcPByuIw0HZNbP6Lut2UJBR46tPnOzB14cwvBgc04dfEABjAtdJ_buKzrpD_N9wjl7QvfKartYrHgT38b-zyOMVhtEsfrG70Y3Mv5DK_waOxvyPw1"/>
-</button>
-<button class="flex items-center justify-center py-sm bg-white text-black rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction shimmer-effect">
-<img alt="Google Pay" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuSfpNGEpyf7QOI4d0VrIpISWSFywQNa6Ah3w_azdo2yYZV1Vbdrwy1WlwXnAuJJZ5NfBqXD_Svn5b9bwuJMxAhaijYOpEq3aEFwujzf-n4MJijWewHTDhKWJVHK_KdHiqR9e03OhupjrCzNLEz_DOPzdFZ_d2yrHofHEZ6rxCW7hhrBBIQARiQY0M8g6Hb8PS0-SBaqGESokalGwxGmyDcMwmOZbMmD78qE1OcRoXhuZvLja1hPARJLrLUbPPt9uT-pQHIixssghs"/>
-</button>
-</div>
-<button class="w-full py-md bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction flex justify-center items-center gap-md group">
-                CHECKOUT NOW
-                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-</button>
-</div>
-</aside>
-<script>
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const backdrop = document.getElementById('cart-backdrop');
-            
-            if (drawer.classList.contains('translate-x-full')) {
-                drawer.classList.remove('translate-x-full');
-                backdrop.classList.remove('opacity-0', 'pointer-events-none');
-                backdrop.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                drawer.classList.add('translate-x-full');
-                backdrop.classList.add('opacity-0', 'pointer-events-none');
-                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-            }
-        }
+      <!-- Size Selector -->
+      <div id="size-section">
+        <div class="flex justify-between items-center mb-sm">
+          <span class="font-label-bold text-on-surface uppercase text-sm">Select Size</span>
+          <span class="font-label-bold text-primary-container text-sm" id="selected-size-label"></span>
+        </div>
+        <div id="pdp-sizes" class="flex flex-wrap gap-sm">
+          <!-- Populated by pdp.js -->
+        </div>
+      </div>
 
-        function removeItem(id) {
-            const el = document.getElementById(id);
-            el.style.transform = 'translateX(120%) rotate(10deg)';
-            el.style.opacity = '0';
-            el.style.transition = 'all 0.5s ease-in-out';
-            
-            setTimeout(() => {
-                el.remove();
-            }, 500);
-        }
+      <!-- Tags -->
+      <div id="pdp-tags" class="flex flex-wrap gap-xs">
+        <!-- Populated by pdp.js -->
+      </div>
 
-        // Add a "shimmer" sound effect mock if needed, or just visual focus
-        document.querySelectorAll('.active-neo-interaction').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Subtle visual feedback already handled by CSS active state
-            });
-        });
-    </script>
+      <!-- Actions -->
+      <div class="space-y-sm pt-md">
+        <button id="pdp-add-btn" class="w-full bg-primary-container text-on-primary-container font-headline-md py-md rounded-xl border-3 border-black hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all flex items-center justify-center gap-sm" style="box-shadow:6px 6px 0px #000">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">add_shopping_cart</span>
+          ADD TO STASH
+        </button>
+        <button onclick="window.location.href='/catalog'" class="w-full border-2 border-surface-container-highest text-on-surface-variant font-label-bold py-md rounded-xl hover:border-primary-container hover:text-primary-container transition-all text-center">
+          ← CONTINUE SHOPPING
+        </button>
+      </div>
+
+      <!-- Perks -->
+      <div class="grid grid-cols-3 gap-sm pt-md border-t-2 border-surface-container-highest">
+        <div class="text-center">
+          <span class="material-symbols-outlined text-primary-container block mb-xs">local_shipping</span>
+          <p class="text-xs text-on-surface-variant font-label-bold">Free over $200</p>
+        </div>
+        <div class="text-center">
+          <span class="material-symbols-outlined text-primary-container block mb-xs">loop</span>
+          <p class="text-xs text-on-surface-variant font-label-bold">30-day returns</p>
+        </div>
+        <div class="text-center">
+          <span class="material-symbols-outlined text-primary-container block mb-xs">verified</span>
+          <p class="text-xs text-on-surface-variant font-label-bold">Authentic drops</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/shared_layout.js"></script>
 <script src="/js/main.js"></script>
-</body></html>
+<script src="/js/pdp.js"></script>
+</body>
+</html>

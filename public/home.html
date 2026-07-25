@@ -1,515 +1,248 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Dopamine Club — high-octane streetwear and collectibles for the digital native. Limited drops, legendary gear."/>
 <title>DOPAMINE CLUB | WEAR THE CHAOS</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&family=Space+Grotesk:wght@100..900&family=Syne:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "secondary-fixed": "#ffd9e0",
-                    "surface-variant": "#363342",
-                    "primary": "#ffffff",
-                    "on-error-container": "#ffdad6",
-                    "surface-container-low": "#1c1a27",
-                    "surface": "#14121f",
-                    "primary-fixed-dim": "#abd600",
-                    "tertiary": "#ffffff",
-                    "on-background": "#e5e0f3",
-                    "primary-fixed": "#c3f400",
-                    "primary-container": "#c3f400",
-                    "on-primary": "#283500",
-                    "on-tertiary-container": "#006f77",
-                    "surface-dim": "#14121f",
-                    "tertiary-fixed-dim": "#00dbe9",
-                    "surface-container-lowest": "#0e0c1a",
-                    "background": "#14121f",
-                    "secondary-fixed-dim": "#ffb1c3",
-                    "inverse-primary": "#506600",
-                    "on-tertiary-fixed": "#002022",
-                    "on-tertiary": "#00363a",
-                    "on-secondary-fixed-variant": "#8f0041",
-                    "on-secondary-fixed": "#3f0019",
-                    "on-secondary-container": "#590026",
-                    "outline-variant": "#444933",
-                    "inverse-surface": "#e5e0f3",
-                    "on-surface-variant": "#c4c9ac",
-                    "error": "#ffb4ab",
-                    "on-surface": "#e5e0f3",
-                    "secondary-container": "#ff4b89",
-                    "on-primary-fixed": "#161e00",
-                    "on-secondary": "#66002c",
-                    "surface-container": "#201e2c",
-                    "surface-container-highest": "#363342",
-                    "inverse-on-surface": "#312f3d",
-                    "secondary": "#ffb1c3",
-                    "tertiary-container": "#7df4ff",
-                    "error-container": "#93000a",
-                    "surface-container-high": "#2b2836",
-                    "tertiary-fixed": "#7df4ff",
-                    "on-primary-fixed-variant": "#3c4d00",
-                    "surface-bright": "#3a3746",
-                    "on-primary-container": "#556d00",
-                    "surface-tint": "#abd600",
-                    "on-error": "#690005",
-                    "on-tertiary-fixed-variant": "#004f54",
-                    "outline": "#8e9379"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "offset-shadow": "6px 6px 0px #0D0B18",
-                    "lg": "48px",
-                    "md": "24px",
-                    "base": "8px",
-                    "border-width": "3px",
-                    "xs": "4px",
-                    "sm": "12px",
-                    "xl": "80px"
-            },
-            "fontFamily": {
-                    "headline-lg": ["Syne"],
-                    "headline-md": ["Syne"],
-                    "body-lg": ["Plus Jakarta Sans"],
-                    "body-md": ["Plus Jakarta Sans"],
-                    "display-xl": ["Syne"],
-                    "headline-lg-mobile": ["Syne"],
-                    "label-bold": ["Space Grotesk"]
-            },
-            "fontSize": {
-                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
-                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
-                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
-                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}]
-            }
-          },
-        },
-      }
-    </script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "background":"#14121f","surface":"#14121f","surface-container-lowest":"#0e0c1a",
+      "surface-container-low":"#1c1a27","surface-container":"#201e2c","surface-container-high":"#2b2836",
+      "surface-container-highest":"#363342","primary":"#ffffff","primary-fixed":"#c3f400",
+      "primary-container":"#c3f400","on-primary-container":"#161e00","secondary-container":"#ff4b89",
+      "on-secondary-container":"#590026","on-surface":"#e5e0f3","on-surface-variant":"#c4c9ac",
+      "on-primary":"#283500","error":"#ffb4ab","on-error-container":"#ffdad6"
+    },
+    fontFamily:{"label-bold":["Space Grotesk"],"headline-md":["Syne"],"display-xl":["Syne"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Syne"],"body-md":["Plus Jakarta Sans"]},
+    fontSize:{"label-bold":["14px",{lineHeight:"1.0",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"700"}],"display-xl":["80px",{lineHeight:"1.1",letterSpacing:"-0.04em",fontWeight:"800"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"500"}],"headline-lg":["48px",{lineHeight:"1.2",fontWeight:"800"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}]},
+    spacing:{"xs":"4px","sm":"12px","md":"24px","lg":"48px","xl":"80px","border-width":"2px","base":"8px","3":"3px"},
+    boxShadow:{"offset":"6px 6px 0px #0D0B18","pink":"6px 6px 0px #ff4b89"}
+  }}
+};
+</script>
 <style>
-        @keyframes rainbow-border {
-            0% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
-            33% { border-color: #c3f400; box-shadow: 0 0 10px #c3f400; }
-            66% { border-color: #00dbe9; box-shadow: 0 0 10px #00dbe9; }
-            100% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-
-        .animate-rainbow {
-            animation: rainbow-border 4s linear infinite;
-        }
-
-        .animate-marquee {
-            animation: marquee 20s linear infinite;
-        }
-
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .neo-shadow {
-            box-shadow: 6px 6px 0px #0D0B18;
-        }
-
-        .neo-shadow-hover:hover {
-            box-shadow: 0px 0px 0px #0D0B18;
-            transform: translate(6px, 6px);
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .holographic {
-            background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4));
-            background-size: 200% 200%;
-            animation: holo-sweep 5s ease infinite;
-        }
-
-        @keyframes holo-sweep {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .grainy-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
+  body { background: #14121f; color: #e5e0f3; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .neo-shadow { box-shadow: 6px 6px 0px #0D0B18; }
+  .neo-shadow:hover { box-shadow: 2px 2px 0px #0D0B18; transform: translate(4px,4px); }
+  .holographic { background: linear-gradient(135deg,#c3f400,#00dbe9,#ff4b89,#c3f400); background-size:300% 300%; animation: holo 4s ease infinite; }
+  @keyframes holo { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+  .animate-marquee { display:inline-block; animation: marquee 25s linear infinite; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .glass { background:rgba(255,255,255,0.04); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.08); }
+  @keyframes float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-12px)} }
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-size:24px; font-style:normal; font-weight:normal; line-height:1; letter-spacing:normal; text-transform:none; display:inline-block; white-space:nowrap; font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  #toast-container .opacity-100 { pointer-events:auto; }
+</style>
 </head>
-<body class="bg-background text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden font-body-md">
-<div class="grainy-overlay"></div>
-<!-- Ticker Bar Top -->
-<div class="fixed top-0 w-full z-[60] bg-primary-container text-on-primary-container font-label-bold text-[10px] py-1 uppercase tracking-widest overflow-hidden whitespace-nowrap">
-<div class="inline-block animate-marquee">
-            🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •  
-        </div>
-<div class="inline-block animate-marquee">
-            🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •   🔥 12 people eyeing this deck!   •  
-        </div>
+<body class="bg-background text-on-surface overflow-x-hidden">
+
+<!-- Ticker Bar -->
+<div class="fixed top-0 w-full z-[60] bg-primary-container text-on-primary-container font-label-bold text-[10px] py-1 uppercase tracking-widest overflow-hidden whitespace-nowrap select-none">
+  <div class="animate-marquee inline-block">
+    🔥 NEW DROP: Cyber Parka just landed&nbsp;&nbsp;•&nbsp;&nbsp;⚡ FREE SHIPPING on orders over $200&nbsp;&nbsp;•&nbsp;&nbsp;🎯 Limited stock on Neon Platforms&nbsp;&nbsp;•&nbsp;&nbsp;🌟 Use code CLUB10 for 10% off first order&nbsp;&nbsp;•&nbsp;&nbsp;🔥 NEW DROP: Cyber Parka just landed&nbsp;&nbsp;•&nbsp;&nbsp;⚡ FREE SHIPPING on orders over $200&nbsp;&nbsp;•&nbsp;&nbsp;
+  </div>
+  <div class="animate-marquee inline-block" aria-hidden="true">
+    🔥 NEW DROP: Cyber Parka just landed&nbsp;&nbsp;•&nbsp;&nbsp;⚡ FREE SHIPPING on orders over $200&nbsp;&nbsp;•&nbsp;&nbsp;🎯 Limited stock on Neon Platforms&nbsp;&nbsp;•&nbsp;&nbsp;🌟 Use code CLUB10 for 10% off first order&nbsp;&nbsp;•&nbsp;&nbsp;
+  </div>
 </div>
-<!-- TopNavBar -->
-<header class="fixed top-8 left-0 right-0 z-50 flex justify-between items-center px-md py-sm rounded-full mx-auto w-[95%] max-w-7xl border-3 border-surface-variant bg-surface/20 backdrop-blur-[20px] animate-rainbow neo-shadow transition-all group">
-<div class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed flex items-center gap-2">
-            DOPAMINE CLUB
-        </div>
-<nav class="hidden md:flex items-center gap-lg">
-<a class="font-label-bold text-label-bold text-primary-fixed-dim border-b-3 border-primary-fixed-dim hover:text-secondary-fixed-dim hover:scale-105 transition-all" href="/catalog">DROPS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-all" href="/catalog">VAULT</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-all" href="/catalog">GAMES</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-all" href="/catalog">CLUBS</a>
-</nav>
-<div class="flex items-center gap-sm">
-<div class="hidden sm:flex gap-sm mr-sm">
-<button class="p-2 text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span></button>
-<button class="p-2 text-primary hover:scale-110 transition-transform"><span class="material-symbols-outlined" data-icon="bolt">bolt</span></button>
-</div>
-<button class="font-label-bold text-label-bold bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-full border-3 border-surface-variant hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all neo-shadow active:scale-90 uppercase">
-                LOGIN
-            </button>
-</div>
+
+<!-- Navigation -->
+<header class="fixed top-8 left-0 right-0 z-50 px-md">
+  <nav class="flex justify-between items-center py-sm px-md rounded-full border-2 border-surface-container-highest bg-surface/80 backdrop-blur-xl neo-shadow mx-auto max-w-7xl transition-all hover:shadow-[2px_2px_0px_#0D0B18] hover:translate-x-[4px] hover:translate-y-[4px]" style="box-shadow:6px 6px 0px #0D0B18">
+    <a href="/" class="font-headline-md text-primary-container italic uppercase tracking-tighter">DOPAMINE CLUB</a>
+    <div class="hidden md:flex items-center gap-lg">
+      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors">DROPS</a>
+      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors">VAULT</a>
+      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors">COLLECTIBLES</a>
+    </div>
+    <div class="flex items-center gap-sm">
+      <button data-cart-toggle class="relative flex items-center gap-xs font-label-bold bg-surface-container px-md py-xs rounded-full border-2 border-surface-container-highest hover:border-primary-container transition-colors">
+        <span class="material-symbols-outlined text-lg">shopping_bag</span>
+        <span data-cart-label>Cart</span>
+        <span data-cart-count class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-container text-white text-[10px] font-bold rounded-full items-center justify-center hidden">0</span>
+      </button>
+      <button data-auth-login class="font-label-bold bg-primary-container text-on-primary-container px-md py-xs rounded-full border-2 border-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" style="box-shadow:3px 3px 0px #000">LOGIN</button>
+    </div>
+  </nav>
 </header>
+
 <main>
-<!-- Hero Section -->
-<section class="min-h-screen pt-40 pb-xl px-md max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center relative">
-<!-- Left Content -->
-<div class="relative z-10">
-<div class="inline-block bg-secondary-container text-on-secondary-container px-sm py-xs mb-md border-3 border-surface-variant neo-shadow rotate-[-2deg] font-label-bold">
-                    DROP #042 // SYSTEM OVERLOAD
-                </div>
-<h1 class="font-display-xl text-[60px] lg:text-[100px] leading-[0.9] uppercase mb-lg text-primary">
-                    WEAR THE <br/>
-<span class="text-primary-fixed italic outline-text" style="-webkit-text-stroke: 2px #c3f400; color: transparent;">CHAOS</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mb-xl">
-                    High-octane garments for the digital native. Limited quantities. Unapologetic aesthetics. Designed to trigger that dopamine hit with every stitch.
-                </p>
-<button class="group relative inline-flex items-center gap-md bg-primary-fixed text-on-primary-fixed px-xl py-lg rounded-xl border-3 border-surface-variant neo-shadow hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-none active:scale-95 transition-all" onclick="window.location.href='/catalog'">
-<span class="font-headline-md text-headline-md uppercase">COP THE DROP</span>
-<span class="material-symbols-outlined text-[32px]" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
-</button>
-</div>
-<!-- Right Content: 3D Product Showcase -->
-<div class="relative aspect-square flex items-center justify-center">
-<!-- Decorative Elements -->
-<div class="absolute inset-0 bg-primary-fixed/5 rounded-full blur-[100px]"></div>
-<!-- Main Product Card (Glassmorphic) -->
-<div class="relative w-full max-w-md aspect-square glass border-3 border-surface-variant rounded-3xl neo-shadow p-sm group transition-transform duration-500 hover:rotate-1">
-<img class="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A hyper-realistic, 3D digital render of a futuristic cyberpunk oversized streetwear hoodie floating in mid-air. The hoodie features iridescent neon panels and reflective tech fabrics in electric lime and hot pink. The setting is a minimalist midnight indigo studio with subtle holographic grain and soft volumetric lighting. The visual style is Y2K Neo-Brutalist with a tactile, premium quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDloCodPPX-KztBSNyry6bmWkLnpliipUl6o4WcSt3rnn8AUwvk6Do1V0Cw7RbOLH_40ok1-jg0qepAAIgh8yhhjmEackRKX5oVHGINRAybPHH69RM6fMJCAkND7G7vmaFFloQH7QvUCJTCP0zAfD_sm40yC_o3MD-Tl8weeKQ5txaxY7BacXUFjS2URtoVoBuTIyEYjNhJA3YwqHw5eDevN8MEVsVzW2YS6qSJz7eoIGRSVTzvD-w8ZjljLlSr_J8gTxxKA5ZX8jDO"/>
-<!-- Floating Stickers -->
-<div class="absolute -top-10 -right-5 animate-float delay-75">
-<div class="bg-surface-container-high border-3 border-white p-2 neo-shadow rotate-12 flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-bold text-white">4.9/5 RATING</span>
-</div>
-</div>
-<div class="absolute top-1/2 -left-12 animate-float delay-500">
-<div class="holographic border-3 border-surface-variant p-sm neo-shadow -rotate-6">
-<div class="font-headline-md text-headline-md text-white">$149.00</div>
-</div>
-</div>
-<div class="absolute -bottom-6 right-12 animate-float">
-<div class="bg-primary-container border-3 border-surface-variant p-xs px-md neo-shadow rotate-3 font-label-bold text-on-primary-container">
-                            ONLY 5 LEFT!
-                        </div>
-</div>
-</div>
-</div>
+<!-- Hero -->
+<section class="min-h-screen pt-40 pb-xl px-md max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+  <div class="relative z-10">
+    <div class="inline-block bg-secondary-container text-white px-sm py-xs mb-md border-2 border-black neo-shadow rotate-[-2deg] font-label-bold text-sm uppercase tracking-wider">
+      DROP #042 // SYSTEM OVERLOAD
+    </div>
+    <h1 class="font-headline-lg text-[clamp(60px,10vw,120px)] leading-[0.9] uppercase mb-lg text-primary">
+      WEAR THE<br/>
+      <span class="text-primary-container italic">CHAOS</span>
+    </h1>
+    <p class="font-body-lg text-on-surface-variant max-w-lg mb-xl">
+      High-octane garments for the digital native. Limited quantities. Unapologetic aesthetics. Trigger that dopamine hit with every drop.
+    </p>
+    <div class="flex flex-wrap gap-md">
+      <a href="/catalog" class="inline-flex items-center gap-sm bg-primary-container text-on-primary-container px-xl py-md rounded-xl border-3 border-black font-headline-md uppercase hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all" style="box-shadow:6px 6px 0px #000">
+        COP THE DROP
+        <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1">bolt</span>
+      </a>
+      <a href="/auth" class="inline-flex items-center gap-sm border-2 border-primary-container text-primary-container px-xl py-md rounded-xl font-headline-md uppercase hover:bg-primary-container hover:text-on-primary-container transition-all">
+        JOIN CLUB
+      </a>
+    </div>
+    <!-- Social proof -->
+    <div class="flex items-center gap-md mt-xl">
+      <div class="flex -space-x-3">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-surface object-cover"/>
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-surface object-cover"/>
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop&crop=face" class="w-10 h-10 rounded-full border-2 border-surface object-cover"/>
+        <div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center font-label-bold text-xs">+2k</div>
+      </div>
+      <p class="text-on-surface-variant text-sm"><span class="text-primary font-bold">2,341 members</span> joined this week</p>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="relative flex items-center justify-center">
+    <div class="absolute inset-0 bg-primary-container/10 rounded-full blur-[80px]"></div>
+    <div class="relative w-full max-w-md glass rounded-3xl border-2 border-surface-container-highest overflow-hidden" style="box-shadow:12px 12px 0px #0D0B18">
+      <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80" alt="Featured Drop" class="w-full aspect-square object-cover"/>
+      <div class="absolute bottom-0 left-0 right-0 p-md bg-gradient-to-t from-surface/95 to-transparent">
+        <span class="font-label-bold text-primary-container text-xs uppercase tracking-wider">Featured Drop</span>
+        <h3 class="font-headline-md text-primary mt-xs">Holographic Prism Hoodie</h3>
+        <div class="flex justify-between items-center mt-sm">
+          <span class="font-headline-md text-primary-container">$148.00 <span class="text-on-surface-variant line-through text-sm font-body-md">$195</span></span>
+          <button onclick="window.location.href='/catalog'" class="bg-primary-container text-on-primary-container font-label-bold text-sm px-md py-xs rounded-lg border-2 border-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" style="box-shadow:3px 3px 0px #000">COP IT</button>
+        </div>
+      </div>
+      <!-- Floating sticker -->
+      <div class="absolute -top-4 -right-4 bg-secondary-container text-white font-label-bold px-sm py-xs rounded border-2 border-black rotate-12 text-xs animate-float" style="box-shadow:3px 3px 0px #000">
+        ONLY 45 LEFT!
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Infinite Ticker Banner -->
-<div class="w-full bg-secondary text-on-secondary py-lg border-y-3 border-surface-variant overflow-hidden whitespace-nowrap mb-xl">
-<div class="flex animate-marquee">
-<span class="font-display-xl text-[48px] uppercase px-md">FREE SHIPPING WORLDWIDE ✦</span>
-<span class="font-display-xl text-[48px] uppercase px-md">LIMITED DROPS ONLY ✦</span>
-<span class="font-display-xl text-[48px] uppercase px-md">NO BORING FITZ ✦</span>
-<span class="font-display-xl text-[48px] uppercase px-md">FREE SHIPPING WORLDWIDE ✦</span>
-<span class="font-display-xl text-[48px] uppercase px-md">LIMITED DROPS ONLY ✦</span>
-<span class="font-display-xl text-[48px] uppercase px-md">NO BORING FITZ ✦</span>
-</div>
-</div>
-<!-- Curated Bento Grid -->
-<section class="max-w-[1440px] mx-auto px-md pb-xl">
-<h2 class="font-headline-lg text-headline-lg uppercase mb-xl flex items-center gap-md">
-<span class="bg-primary-fixed text-on-primary-fixed px-4 py-1">THE SELECTION</span>
-<span class="text-on-surface-variant">/ 01</span>
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-md h-auto lg:h-[800px]">
-<!-- Large Feature -->
-<div class="md:col-span-7 h-full group relative overflow-hidden glass border-3 border-surface-variant neo-shadow p-6 transition-all hover:translate-x-1 hover:translate-y-1">
-<div class="flex flex-col h-full justify-between relative z-10">
-<div>
-<span class="font-label-bold bg-secondary-container text-on-secondary-container px-sm py-1 border-3 border-surface-variant mb-4 inline-block">HOT RELEASE</span>
-<h3 class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg uppercase text-primary">TRENDING DROPS</h3>
-</div>
-<button class="w-fit font-label-bold bg-primary text-background px-md py-sm border-3 border-surface-variant neo-shadow group-hover:bg-primary-fixed transition-colors" onclick="window.location.href='/catalog'">EXPLORE ALL</button>
-</div>
-<div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity">
-<img class="w-full h-full object-cover" data-alt="An artistic fashion composition of diverse Gen-Z models wearing oversized, layered neo-brutalist techwear. The clothing is a mix of vibrant neon pink and matte black tactical gear. The setting is an urban rooftop at twilight with glowing neon billboards and soft grain textures. Highly detailed, fashion photography style with high contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsPmhIdVH6wb85X-YuGJi8DldTQWLQ32Dea7AgwpY4MgjosGi5EeMit8oieYsiuOma3vh70F3Rf3bUTesj0pzTsqeP_sw5uvncEh7L_5xq88avgmzadryS4KQxucoc5YwDiI1TXyWVnBBfKdjrbbwpqN4TmQjmBHcxYKq6WA9a0lepztPkTJqe76kQLXmrnHJUZx9KEHFfo1jlfgjiMbEUGGnN4eJx_mTGDo189Hg4L1fSwHt3SN82Kvz7JqJs1VQyRbpKwxG7Lk87"/>
-</div>
-</div>
-<!-- Right Column Stack -->
-<div class="md:col-span-5 flex flex-col gap-md h-full">
-<div class="flex-1 glass border-3 border-surface-variant neo-shadow p-6 relative overflow-hidden group hover:translate-x-1 hover:translate-y-1 transition-all">
-<div class="relative z-10">
-<h3 class="font-headline-md text-headline-md uppercase text-primary mb-2">MYSTERY BOXES</h3>
-<p class="text-on-surface-variant font-label-bold">RANDOM LOOT // RARE FINDS</p>
-</div>
-<div class="absolute bottom-4 right-4 animate-float">
-<span class="material-symbols-outlined text-[64px] text-primary-fixed-dim" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-</div>
-<div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-40">
-<img class="w-full h-full object-cover" data-alt="A collection of highly stylized, holographic mystery boxes with digital glitch effects and 'DOPAMINE CLUB' branding. The boxes are floating in a dark indigo void with glowing cyan and pink particle effects. Neo-brutalist Y2K aesthetic with heavy graphic design elements and stickers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkWm0RlrqWciOZeu34eE5TSYCGONk__W8SQquYyJp6wWHFBN5WjhJSq_T_xkPCLB3i-5-E21uBMeytdw4nPVfflcqjKxPeNkRRNLD4ilAr0zF_C5om5ydO1b6A3XG8p8vFvhoF7qcKMG3yu2pUDYkmh_Pf0wpQJ48ZRUEAmEZhRHX-5I_t0UabiYy7CuKC54_X_b-IFDPHv-H2jffaJaBT0V98Tl7nbIYISssPA6LnL6OxOoU-oULqecclswsdLwGhONT8YCy8AoLt"/>
-</div>
-</div>
-<div class="flex-1 bg-primary-container/10 border-3 border-surface-variant neo-shadow p-6 relative overflow-hidden group hover:translate-x-1 hover:translate-y-1 transition-all">
-<div class="relative z-10">
-<h3 class="font-headline-md text-headline-md uppercase text-primary mb-2">GEN-Z THRIFT PICKS</h3>
-<button class="bg-primary text-background px-4 py-2 mt-4 font-label-bold border-3 border-surface-variant">SHOP VINTAGE</button>
-</div>
-<div class="absolute top-0 right-0 w-1/2 h-full">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A flat lay of vintage 90s graphic t-shirts and oversized denim jackets with custom punk patches and hand-painted art. The items are arranged on a grainy metallic surface with neon stickers and vibrant lighting accents. Digital art style with a tactile and gritty streetwear feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLsaQBzqitgXqTuLa-Igr9qnCCmuAAbnCx38g-1KeU1qGZhRkzsJ8EpY6ElxoZVPW87efjNm3-DLj_16Go0n5ttWtvYD9RFgJSgI29icze3NgR6EdcqrWQYBZYpKfN3mg7-D7zDIH22heZcsAbcvnY2DK3Y1S7DxSrTgpfFCV0wE7Wsh0xHV2CE7Zac7CGDykZVZx-dM74COHUc3LFnxTzuFfttAyi9RxcE-3-jxCTZw3d0DMPTvxGPYCLxtv91_NDjaUv9cidMRIE"/>
-</div>
-</div>
-</div>
-</div>
+
+<!-- Featured Products Preview -->
+<section class="px-md max-w-7xl mx-auto pb-xl">
+  <div class="flex justify-between items-end mb-xl">
+    <div>
+      <span class="font-label-bold text-on-surface-variant uppercase tracking-widest text-sm">The Vault</span>
+      <h2 class="font-headline-lg text-primary mt-xs">LATEST DROPS</h2>
+    </div>
+    <a href="/catalog" class="font-label-bold text-primary-container hover:underline flex items-center gap-xs">
+      VIEW ALL <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+
+  <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+    <!-- Skeleton loaders -->
+    <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-xl overflow-hidden animate-pulse">
+      <div class="aspect-square bg-surface-container-high"></div>
+      <div class="p-md space-y-sm"><div class="h-4 bg-surface-container-high rounded w-3/4"></div><div class="h-5 bg-surface-container-high rounded w-1/3"></div></div>
+    </div>
+    <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-xl overflow-hidden animate-pulse">
+      <div class="aspect-square bg-surface-container-high"></div>
+      <div class="p-md space-y-sm"><div class="h-4 bg-surface-container-high rounded w-3/4"></div><div class="h-5 bg-surface-container-high rounded w-1/3"></div></div>
+    </div>
+    <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-xl overflow-hidden animate-pulse hidden sm:block">
+      <div class="aspect-square bg-surface-container-high"></div>
+      <div class="p-md space-y-sm"><div class="h-4 bg-surface-container-high rounded w-3/4"></div><div class="h-5 bg-surface-container-high rounded w-1/3"></div></div>
+    </div>
+    <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-xl overflow-hidden animate-pulse hidden lg:block">
+      <div class="aspect-square bg-surface-container-high"></div>
+      <div class="p-md space-y-sm"><div class="h-4 bg-surface-container-high rounded w-3/4"></div><div class="h-5 bg-surface-container-high rounded w-1/3"></div></div>
+    </div>
+  </div>
 </section>
-</main>
+
+<!-- Stats Bar -->
+<section class="px-md py-xl bg-surface-container-low border-y-2 border-surface-container-highest">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-lg text-center">
+    <div><div class="font-headline-lg text-primary-container">12+</div><div class="font-label-bold text-on-surface-variant text-sm">Exclusive Drops</div></div>
+    <div><div class="font-headline-lg text-primary-container">2.3k+</div><div class="font-label-bold text-on-surface-variant text-sm">Club Members</div></div>
+    <div><div class="font-headline-lg text-primary-container">4.8★</div><div class="font-label-bold text-on-surface-variant text-sm">Average Rating</div></div>
+    <div><div class="font-headline-lg text-primary-container">$200+</div><div class="font-label-bold text-on-surface-variant text-sm">Free Shipping Threshold</div></div>
+  </div>
+</section>
+
 <!-- Footer -->
-<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t-3 border-surface-variant bg-surface-dim">
-<div class="flex flex-col gap-sm items-center md:items-start">
-<div class="font-headline-md text-headline-md text-secondary-fixed italic uppercase">DOPAMINE CLUB</div>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xs text-center md:text-left">
-                ©2024 DOPAMINE CLUB / POP MART UNIVERSE
-            </p>
-</div>
-<div class="flex flex-wrap justify-center gap-lg">
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="/catalog">PRIVACY</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="/catalog">TERMS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="/catalog">RECALLS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="/catalog">SUPPORT</a>
-</div>
-<div class="flex gap-md">
-<div class="w-12 h-12 rounded-full border-3 border-surface-variant flex items-center justify-center bg-surface hover:bg-secondary-container transition-colors cursor-pointer">
-<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
-</div>
-<div class="w-12 h-12 rounded-full border-3 border-surface-variant flex items-center justify-center bg-surface hover:bg-primary-fixed transition-colors cursor-pointer">
-<span class="material-symbols-outlined text-primary" data-icon="favorite">favorite</span>
-</div>
-</div>
+<footer class="px-md py-xl border-t-2 border-surface-container-highest">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-xl">
+    <div>
+      <div class="font-headline-md text-primary-container italic uppercase">DOPAMINE CLUB</div>
+      <p class="font-body-md text-on-surface-variant mt-sm text-sm">High-octane garments for the digital native. No apologies. Just vibes.</p>
+    </div>
+    <div>
+      <h4 class="font-label-bold uppercase text-on-surface mb-sm">Shop</h4>
+      <div class="space-y-xs"><a href="/catalog" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">All Drops</a><a href="/catalog" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Apparel</a><a href="/catalog" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Collectibles</a><a href="/catalog" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Footwear</a></div>
+    </div>
+    <div>
+      <h4 class="font-label-bold uppercase text-on-surface mb-sm">Account</h4>
+      <div class="space-y-xs"><a href="/auth" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Login / Register</a><a href="/profile" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">My Profile</a><a href="/profile" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Order History</a></div>
+    </div>
+    <div>
+      <h4 class="font-label-bold uppercase text-on-surface mb-sm">Info</h4>
+      <div class="space-y-xs"><a href="#" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">FAQ</a><a href="#" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Shipping Policy</a><a href="#" class="block text-on-surface-variant hover:text-primary-container transition-colors text-sm">Returns</a></div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-xl pt-md border-t-2 border-surface-container-highest flex justify-between items-center text-on-surface-variant text-xs">
+    <span>© 2026 DOPAMINE CLUB. All rights reserved.</span>
+    <span>Built for the chaos ⚡</span>
+  </div>
 </footer>
-<script>
-        // Micro-interactions for the dopamine effect
-        document.querySelectorAll('.neo-shadow').forEach(card => {
-            card.addEventListener('mousedown', () => {
-                card.style.transform = 'translate(6px, 6px)';
-                card.style.boxShadow = '0px 0px 0px #0D0B18';
-            });
-            card.addEventListener('mouseup', () => {
-                card.style.transform = 'translate(0px, 0px)';
-                card.style.boxShadow = '6px 6px 0px #0D0B18';
-            });
-        });
+</main>
 
-        // Tilt effect for cards
-        const glassCards = document.querySelectorAll('.glass');
-        glassCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-    </script>
-
-<!-- Overlay Backdrop -->
-<div class="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="cart-backdrop" onclick="toggleCart()"></div>
-<!-- Slide-over Drawer Cart -->
-<aside class="fixed top-0 right-0 h-full w-full max-w-md z-50 glass-panel border-l-border-width border-surface-container-highest translate-x-full transition-transform duration-500 ease-in-out flex flex-col" id="cart-drawer">
-<!-- Header -->
-<div class="p-md border-b-border-width border-surface-container-highest flex justify-between items-center">
-<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-sm">
-                YOUR STASH
-                <span class="bg-primary-container text-on-primary-container text-label-bold px-xs py-0 rounded text-xs">2</span>
-</h2>
-<button class="material-symbols-outlined text-primary hover:rotate-90 transition-transform p-xs" onclick="toggleCart()">close</button>
-</div>
-<!-- Gamified Perks Bar -->
-<div class="px-md py-sm bg-surface-container-highest/50 border-b-border-width border-surface-container-highest">
-<div class="flex justify-between items-center mb-xs">
-<span class="font-label-bold text-xs text-on-surface-variant">HOLOGRAPHIC PROGRESS</span>
-<span class="font-label-bold text-xs text-primary-container">$12 MORE FOR STICKERS!</span>
-</div>
-<div class="h-4 w-full bg-surface-container rounded-full border-2 border-surface-container-highest overflow-hidden">
-<div class="h-full holographic-glow w-[85%] rounded-full"></div>
-</div>
-<p class="mt-xs text-[10px] font-label-bold text-on-surface-variant italic">Add $12 more for Free Holographic Sticker Pack &amp; Free Shipping! 🎁</p>
-</div>
-<!-- Cart Items Scrollable -->
-<div class="flex-1 overflow-y-auto p-md space-y-md custom-scrollbar">
-<!-- Item 1 -->
-<div class="relative group" id="item-1">
-<div class="flex gap-md glass-panel p-sm rounded-lg border-border-width border-surface-container-highest neo-shadow transition-all group-hover:scale-[1.02]">
-<div class="w-20 h-20 bg-surface-container rounded-md border-2 border-surface-container-highest flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Close up of a neon-translucent vinyl toy head with intricate mechanical details and glowing lime green eyes. Soft digital grain texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIzKaK0qfpz7yxIwxXwfuKXPIaI9mkFdiQG59p1KwzkOmnMk760Na2CSkLu5qfMLTseb8BeukHzk-UrXIhXnFSM3CWqlGkQQN5S0fP3bzfbMV4cOCwWT_Kbpu1fAip5Pn9mgJFnf0dQ7GBky4rv_G0AVfQYXjRvmz_Xgbe1QOTUlD-86UjpQEZxG_UEtP-dEVSxOIIrkFLxqRZBZLwfbjnqf4-l29uogWYQqo-m4zaSohroFa8L0Eu7xou0AqWxOfymgfMUktb67Lo"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<h4 class="font-label-bold text-primary">Cyber-Mecha V1</h4>
-<button class="material-symbols-outlined text-error hover:scale-125 transition-transform text-lg" onclick="removeItem('item-1')">delete</button>
-</div>
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-xs bg-surface-container p-xs rounded border-border-width border-surface-container-highest">
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">-</button>
-<span class="font-label-bold px-xs">1</span>
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">+</button>
-</div>
-<span class="font-label-bold text-primary-container">$189</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Item 2 -->
-<div class="relative group" id="item-2">
-<div class="flex gap-md glass-panel p-sm rounded-lg border-border-width border-surface-container-highest neo-shadow transition-all group-hover:scale-[1.02]">
-<div class="w-20 h-20 bg-surface-container rounded-md border-2 border-surface-container-highest flex-shrink-0 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="Macro detail of holographic fabric shimmering in cyan and magenta. The weave of the material is visible under bright studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBw6wgNGvQZ-QtTx7DbiMIPtelonmCSwrJystlwixB4pqgeTA0pdM2kWx4AgH37YcdgJAWKFSIlpjQgTQb_5CsqCJ-oLWSwkJRH1HpYtDxpY8thEjvPTeD7s_c_74uUtYTN_lngQkJ9VpMfJ6dXvQojWy8Z_krpMZjtrxYyqtj0xePCzWLfGCfjQZXe36gRb8BFPy5Ku9UWalA1VWCEjggw8xwflT9uHji-zW4a8r3WizAaUdNQbSvePMKZDJGoxPSFtO_P5OYaE0x"/>
-</div>
-<div class="flex-1 flex flex-col justify-between">
-<div class="flex justify-between items-start">
-<h4 class="font-label-bold text-primary">Prism Hoodie (XL)</h4>
-<button class="material-symbols-outlined text-error hover:scale-125 transition-transform text-lg" onclick="removeItem('item-2')">delete</button>
-</div>
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-xs bg-surface-container p-xs rounded border-border-width border-surface-container-highest">
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">-</button>
-<span class="font-label-bold px-xs">1</span>
-<button class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">+</button>
-</div>
-<span class="font-label-bold text-primary-container">$75</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer / Checkout Section -->
-<div class="p-md space-y-md border-t-border-width border-surface-container-highest bg-surface-container-low">
-<!-- Coupon Field -->
-<div class="relative">
-<label class="block text-[10px] font-label-bold text-on-surface-variant mb-xs ml-xs">Got a discount code or hot tea? ☕</label>
-<div class="flex gap-xs">
-<input class="flex-1 bg-surface-container border-border-width border-surface-container-highest rounded px-sm py-xs font-label-bold text-sm focus:ring-2 focus:ring-primary-container focus:outline-none placeholder:text-on-surface-variant/30" placeholder="DROPCODE_404" type="text"/>
-<button class="bg-primary text-background px-md py-xs rounded font-label-bold border-border-width border-surface-container-highest neo-shadow active-neo-interaction">APPLY</button>
-</div>
-</div>
-<!-- Summary -->
-<div class="space-y-xs">
-<div class="flex justify-between font-label-bold text-sm">
-<span class="text-on-surface-variant">SUBTOTAL</span>
-<span class="text-primary">$264.00</span>
-</div>
-<div class="flex justify-between font-label-bold text-sm">
-<span class="text-on-surface-variant">SHIPPING</span>
-<span class="text-secondary-container">$9.99</span>
-</div>
-<div class="flex justify-between font-headline-md text-headline-md pt-xs border-t-2 border-surface-container-highest">
-<span class="text-primary">TOTAL</span>
-<span class="text-primary-container">$273.99</span>
-</div>
-</div>
-<!-- Buttons -->
-<div class="grid grid-cols-2 gap-sm">
-<button class="flex items-center justify-center py-sm bg-[#000000] text-white rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction shimmer-effect">
-<img alt="Apple Pay" class="h-6 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Fiam8-clD9Ox1260mF6qDm_pAE_Fh0ot2I0Z8cOacdtw1yJfYhIIZM6fI30d-vwlLKACeKL8eoDxtoteziRoo6E84dDt61a2B5n08K3XRr6WE13cN8nKd6aafhIKUGABpprMPL3SeMZtkzQ6RMPRwi75sURZcPByuIw0HZNbP6Lut2UJBR46tPnOzB14cwvBgc04dfEABjAtdJ_buKzrpD_N9wjl7QvfKartYrHgT38b-zyOMVhtEsfrG70Y3Mv5DK_waOxvyPw1"/>
-</button>
-<button class="flex items-center justify-center py-sm bg-white text-black rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction shimmer-effect">
-<img alt="Google Pay" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuSfpNGEpyf7QOI4d0VrIpISWSFywQNa6Ah3w_azdo2yYZV1Vbdrwy1WlwXnAuJJZ5NfBqXD_Svn5b9bwuJMxAhaijYOpEq3aEFwujzf-n4MJijWewHTDhKWJVHK_KdHiqR9e03OhupjrCzNLEz_DOPzdFZ_d2yrHofHEZ6rxCW7hhrBBIQARiQY0M8g6Hb8PS0-SBaqGESokalGwxGmyDcMwmOZbMmD78qE1OcRoXhuZvLja1hPARJLrLUbPPt9uT-pQHIixssghs"/>
-</button>
-</div>
-<button class="w-full py-md bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction flex justify-center items-center gap-md group">
-                CHECKOUT NOW
-                <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-</button>
-</div>
-</aside>
-<script>
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const backdrop = document.getElementById('cart-backdrop');
-            
-            if (drawer.classList.contains('translate-x-full')) {
-                drawer.classList.remove('translate-x-full');
-                backdrop.classList.remove('opacity-0', 'pointer-events-none');
-                backdrop.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                drawer.classList.add('translate-x-full');
-                backdrop.classList.add('opacity-0', 'pointer-events-none');
-                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-            }
-        }
-
-        function removeItem(id) {
-            const el = document.getElementById(id);
-            el.style.transform = 'translateX(120%) rotate(10deg)';
-            el.style.opacity = '0';
-            el.style.transition = 'all 0.5s ease-in-out';
-            
-            setTimeout(() => {
-                el.remove();
-            }, 500);
-        }
-
-        // Add a "shimmer" sound effect mock if needed, or just visual focus
-        document.querySelectorAll('.active-neo-interaction').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Subtle visual feedback already handled by CSS active state
-            });
-        });
-    </script>
+<script src="/js/shared_layout.js"></script>
 <script src="/js/main.js"></script>
-</body></html>
+<script>
+// Load featured products
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/products');
+    const products = await res.json();
+    const featured = products.filter(p => p.isFeatured).slice(0, 4);
+    const grid = document.getElementById('featured-grid');
+    if (!grid || !featured.length) return;
+
+    const rarityColors = {
+      'LEGENDARY DROP': 'bg-[#ff4b89] text-white',
+      'LIMITED EDITION': 'bg-[#c3f400] text-[#161e00]',
+      'VAULT ITEM': 'bg-[#00dbe9] text-[#002022]',
+      'CORE COLLECTION': 'bg-surface-container-high text-on-surface-variant',
+      'STANDARD': 'bg-surface-container-high text-on-surface-variant'
+    };
+
+    grid.innerHTML = featured.map(p => `
+      <div class="group flex flex-col bg-surface-container-low border-2 border-surface-container-highest rounded-xl overflow-hidden hover:border-primary-container transition-all duration-300 hover:-translate-y-1 cursor-pointer" onclick="window.location.href='/pdp?id=${p._id}'">
+        <div class="relative aspect-square overflow-hidden bg-surface-container">
+          <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400'"/>
+          <span class="absolute top-sm left-sm font-label-bold text-[10px] px-xs py-[2px] rounded ${rarityColors[p.rarity] || 'bg-surface-container-high text-on-surface-variant'}">${p.rarity}</span>
+        </div>
+        <div class="p-md">
+          <h3 class="font-label-bold text-primary text-sm">${p.name}</h3>
+          <div class="flex justify-between items-center mt-xs">
+            <span class="font-label-bold text-primary-container">$${p.price.toFixed(2)}</span>
+            <button onclick="event.stopPropagation(); quickAddHome('${p._id}')" class="text-xs font-label-bold bg-surface-container-high border border-surface-container-highest rounded px-xs py-[2px] hover:bg-primary-container hover:text-on-primary-container hover:border-black transition-all">+ ADD</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Quick add from home
+    window._homeProducts = products;
+    window.quickAddHome = (id) => {
+      const product = window._homeProducts.find(p => p._id === id);
+      if (product) addToCart(product, product.sizes?.[0] || 'OS');
+    };
+  } catch(e) { console.error('Home products failed:', e); }
+});
+</script>
+</body>
+</html>

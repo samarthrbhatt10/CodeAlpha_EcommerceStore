@@ -174,7 +174,7 @@ const STITCH_STYLES = `
   #toast-container .opacity-100 { pointer-events:auto; }
 `;
 
-const SHARED_HTML = \`
+const SHARED_HTML = `
 <!-- TOAST CONTAINER -->
 <div id="toast-container" class="fixed bottom-lg right-lg z-[9999] flex flex-col gap-sm pointer-events-none max-w-xs w-full"></div>
 
@@ -231,7 +231,7 @@ const SHARED_HTML = \`
         <button onclick="window.location.href='/cart'" class="w-full text-on-surface-variant font-label-bold py-xs text-center hover:text-primary transition-colors text-sm">View Full Cart →</button>
     </div>
 </aside>
-\`;
+`;
 
 function injectSharedLayout() {
     // 1. Inject Tailwind script if not present

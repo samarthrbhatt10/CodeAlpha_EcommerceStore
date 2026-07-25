@@ -172,8 +172,7 @@ function instantCop(btn, productId) {
     const originalContent = btn.innerHTML;
     btn.classList.remove('bg-secondary-container');
     btn.classList.add('bg-primary-fixed-dim');
-    btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> COP\\'D!';
-    
+    btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> COP&apos;D!';
     btn.animate([
         { transform: 'scale(1)' },
         { transform: 'scale(1.1) rotate(2deg)' },

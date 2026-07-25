@@ -1,105 +1,169 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>PLAYER STATS | DOPAMINE CLUB</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode:"class",
-  theme:{extend:{
-    colors:{
-      "background":"#14121f","surface":"#14121f","surface-container-lowest":"#0e0c1a",
-      "surface-container-low":"#1c1a27","surface-container":"#201e2c","surface-container-high":"#2b2836",
-      "surface-container-highest":"#363342","primary":"#ffffff","primary-fixed":"#c3f400",
-      "primary-container":"#c3f400","on-primary-container":"#161e00","secondary-container":"#ff4b89",
-      "on-surface":"#e5e0f3","on-surface-variant":"#c4c9ac","error":"#ffb4ab"
-    },
-    fontFamily:{"label-bold":["Space Grotesk"],"headline-md":["Syne"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Syne"]},
-    fontSize:{"label-bold":["14px",{lineHeight:"1.0",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"700"}],"headline-lg":["48px",{lineHeight:"1.2",fontWeight:"800"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}]},
-    spacing:{"xs":"4px","sm":"12px","md":"24px","lg":"48px","xl":"80px","border-width":"2px","base":"8px","3":"3px"}
-  }}
-};
-</script>
-<style>
-  body { background: #14121f; color: #e5e0f3; font-family: 'Plus Jakarta Sans', sans-serif; }
-  .neo-shadow { box-shadow: 6px 6px 0px #0D0B18; }
-  .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-size:24px; font-style:normal; font-weight:normal; line-height:1; display:inline-block; white-space:nowrap; font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="/js/shared_layout.js"></script>
 </head>
-<body class="bg-background text-on-surface min-h-screen overflow-x-hidden">
+<body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 
-<!-- Navigation -->
-<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-xl border-b-2 border-surface-container-highest">
-  <nav class="flex justify-between items-center px-md py-sm max-w-7xl mx-auto">
-    <a href="/" class="font-headline-md text-primary-container italic uppercase tracking-tighter">DOPAMINE CLUB</a>
-    <div class="flex items-center gap-sm">
-      <a href="/catalog" class="font-label-bold text-on-surface-variant hover:text-primary-container transition-colors text-sm">DROPS</a>
-      <button data-cart-toggle class="relative flex items-center gap-xs font-label-bold bg-surface-container px-md py-xs rounded-full border-2 border-surface-container-highest hover:border-primary-container transition-colors">
-        <span class="material-symbols-outlined text-lg">shopping_bag</span>
-        <span data-cart-count class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-container text-white text-[10px] font-bold rounded-full items-center justify-center hidden">0</span>
-      </button>
-    </div>
-  </nav>
+<header class="sticky top-md z-50 flex justify-between items-center px-md py-sm rounded-full border-border-width border-surface-container-highest mt-md mx-auto w-[95%] max-w-7xl bg-surface-container-low/20 backdrop-blur-xl shadow-offset-shadow transition-all duration-300">
+<div class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed cursor-pointer" onclick="window.location.href='/'">
+    DOPAMINE CLUB
+</div>
+<nav class="hidden md:flex gap-md items-center">
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">DROPS</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">VAULT</a>
+</nav>
+<div class="flex items-center gap-sm">
+    <button class="p-2 text-primary hover:scale-110 transition-transform relative" data-cart-toggle>
+        <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+        <span id="nav-cart-count" class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold px-1 rounded-full">0</span>
+    </button>
+    <button onclick="logout()" id="nav-logout-btn" class="bg-surface-container text-on-surface font-label-bold text-label-bold px-md py-xs rounded-full border-border-width border-surface-container-highest hover:text-error transition-all active:scale-95">LOGOUT</button>
+</div>
 </header>
 
-<main class="max-w-4xl mx-auto px-md py-lg">
-  <h1 class="font-headline-lg text-primary mb-lg">PLAYER STATS</h1>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-    <!-- Profile Card -->
-    <div class="md:col-span-1">
-      <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-2xl p-lg text-center space-y-md">
-        <!-- Avatar -->
-        <div class="w-24 h-24 mx-auto rounded-full border-3 border-primary-container bg-surface-container-high flex items-center justify-center" style="box-shadow:4px 4px 0px #c3f400">
-          <span class="material-symbols-outlined text-4xl text-primary-container" style="font-variation-settings:'FILL' 1">person</span>
-        </div>
-        <div>
-          <h2 id="profile-username" class="font-headline-md text-primary">LOADING...</h2>
-          <p id="profile-email" class="text-on-surface-variant text-sm mt-xs">...</p>
-          <span id="profile-role" class="inline-block mt-sm font-label-bold text-xs px-sm py-xs bg-primary-container text-on-primary-container rounded border-2 border-black">MEMBER</span>
-        </div>
-
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-2 gap-sm">
-          <div class="bg-surface-container-high rounded-xl p-sm text-center border-2 border-surface-container-highest">
-            <div id="order-count" class="font-headline-md text-primary-container">0</div>
-            <div class="text-on-surface-variant text-xs font-label-bold">Orders</div>
-          </div>
-          <div class="bg-surface-container-high rounded-xl p-sm text-center border-2 border-surface-container-highest">
-            <div id="cart-count" class="font-headline-md text-primary-container">0</div>
-            <div class="text-on-surface-variant text-xs font-label-bold">In Cart</div>
-          </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="space-y-sm">
-          <a href="/catalog" class="block w-full bg-primary-container text-on-primary-container font-label-bold py-sm rounded-lg border-2 border-black text-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" style="box-shadow:3px 3px 0px #000">SHOP DROPS</a>
-          <button id="logout-btn" class="block w-full border-2 border-error text-error font-label-bold py-sm rounded-lg hover:bg-error hover:text-on-error transition-all">LOGOUT</button>
-        </div>
-      </div>
+<main class="pt-20 pb-xl px-md max-w-7xl mx-auto relative">
+<div class="mb-xl text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-lg border-b-border-width border-surface-container-highest pb-md">
+    <div>
+        <h1 class="font-display-xl text-[64px] md:text-display-xl uppercase tracking-tighter leading-none mb-sm text-primary">
+            PLAYER <span class="text-primary-fixed italic">STATS</span>
+        </h1>
+        <p class="text-on-surface-variant font-label-bold uppercase tracking-widest text-sm" id="profile-email">Loading...</p>
     </div>
+    <div class="flex gap-sm">
+        <button onclick="window.location.href='/settings.html'" class="bg-surface-container text-on-surface border-border-width border-surface-container-highest px-md py-sm font-label-bold text-label-bold rounded-full hover:border-primary-fixed hover:text-primary-fixed transition-all flex items-center gap-xs">
+            <span class="material-symbols-outlined text-sm">settings</span>
+            SYSTEM OVERRIDE
+        </button>
+    </div>
+</div>
 
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-start">
+    
+    <!-- User Info Card -->
+    <div class="md:col-span-4 space-y-md">
+        <div class="glass-panel p-lg rounded-xl border-border-width border-surface-container-highest neo-shadow">
+            <div class="w-24 h-24 bg-primary-container rounded-full border-4 border-black mb-md flex items-center justify-center neo-shadow">
+                <span class="material-symbols-outlined text-5xl text-black">person</span>
+            </div>
+            <h2 class="font-headline-md text-primary uppercase" id="profile-name">Loading...</h2>
+            <p class="font-label-bold text-on-surface-variant text-sm mt-xs">RANK: <span class="text-primary-container">NOVICE DROPPER</span></p>
+            
+            <div class="mt-lg pt-md border-t-border-width border-surface-container-highest space-y-sm">
+                <div class="flex justify-between font-label-bold text-sm">
+                    <span class="text-on-surface-variant">Drops Copped</span>
+                    <span class="text-primary" id="profile-order-count">0</span>
+                </div>
+                <div class="flex justify-between font-label-bold text-sm">
+                    <span class="text-on-surface-variant">Credits Spent</span>
+                    <span class="text-primary" id="profile-spent">$0.00</span>
+                </div>
+            </div>
+            
+            <!-- Admin button (hidden by default) -->
+            <button id="admin-panel-btn" onclick="window.location.href='/admin.html'" class="hidden w-full mt-lg bg-error text-on-error font-label-bold py-sm rounded-lg border-2 border-black neo-shadow active-neo-interaction flex justify-center items-center gap-xs">
+                <span class="material-symbols-outlined text-sm">admin_panel_settings</span>
+                THE WAR ROOM
+            </button>
+        </div>
+    </div>
+    
     <!-- Order History -->
-    <div class="md:col-span-2">
-      <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-2xl p-lg">
-        <h3 class="font-headline-md text-primary mb-md">ORDER HISTORY</h3>
-        <div id="order-history" class="space-y-sm">
-          <!-- Populated by profile.js -->
-          <div class="animate-pulse space-y-sm">
-            <div class="h-16 bg-surface-container-high rounded-xl"></div>
-            <div class="h-16 bg-surface-container-high rounded-xl"></div>
-          </div>
+    <div class="md:col-span-8 space-y-md">
+        <h3 class="font-headline-md text-primary uppercase flex items-center gap-sm">
+            <span class="material-symbols-outlined">receipt_long</span>
+            Loot History
+        </h3>
+        <div id="orders-list" class="space-y-md">
+            <!-- Populated by JS -->
+            <div class="glass-panel p-xl rounded-xl border-border-width border-surface-container-highest text-center">
+                <span class="material-symbols-outlined text-6xl text-surface-variant mb-md">inventory_2</span>
+                <p class="font-label-bold text-on-surface-variant uppercase">No loot acquired yet.</p>
+                <button onclick="window.location.href='/catalog.html'" class="mt-md bg-primary-container text-on-primary-container px-lg py-sm rounded border-2 border-black font-label-bold hover:-translate-y-1 transition-transform">BROWSE DROPS</button>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
+
 </main>
 
-<script src="/js/shared_layout.js"></script>
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t-3 border-surface-variant bg-surface-dim mt-xl">
+    <div class="flex flex-col gap-sm items-center md:items-start">
+        <div class="font-headline-md text-headline-md text-secondary-fixed italic uppercase">DOPAMINE CLUB</div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xs text-center md:text-left">
+            ©2024 DOPAMINE CLUB / POP MART UNIVERSE
+        </p>
+    </div>
+</footer>
+
 <script src="/js/main.js"></script>
-<script src="/js/profile.js"></script>
-</body>
-</html>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('dopamine_token');
+    if (!token) {
+        window.location.href = '/auth.html';
+        return;
+    }
+    
+    try {
+        const res = await fetch('/api/users/me', { headers: { 'Authorization': `Bearer ${token}` } });
+        if (!res.ok) throw new Error('Failed to load profile');
+        const user = await res.json();
+        
+        document.getElementById('profile-name').textContent = user.name;
+        document.getElementById('profile-email').textContent = user.email;
+        
+        if (user.isAdmin) {
+            document.getElementById('admin-panel-btn').classList.remove('hidden');
+        }
+        
+        // Fetch orders
+        const ordersRes = await fetch('/api/orders/my-orders', { headers: { 'Authorization': `Bearer ${token}` } });
+        if (ordersRes.ok) {
+            const orders = await ordersRes.json();
+            document.getElementById('profile-order-count').textContent = orders.length;
+            const totalSpent = orders.reduce((acc, o) => acc + o.totalPrice, 0);
+            document.getElementById('profile-spent').textContent = `$${totalSpent.toFixed(2)}`;
+            
+            if (orders.length > 0) {
+                document.getElementById('orders-list').innerHTML = orders.map(order => `
+                    <div class="glass-panel p-md rounded-xl border-border-width border-surface-container-highest neo-shadow hover:scale-[1.01] transition-transform">
+                        <div class="flex justify-between items-center border-b-border-width border-surface-container-highest pb-sm mb-sm">
+                            <div>
+                                <p class="font-label-bold text-on-surface-variant text-xs">ORDER #${order._id.substring(0,8).toUpperCase()}</p>
+                                <p class="font-label-bold text-primary mt-1">${new Date(order.createdAt).toLocaleDateString()}</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-primary-container text-on-primary-container px-sm py-[2px] rounded text-[10px] font-label-bold uppercase border border-black">${order.status}</span>
+                                <p class="font-headline-md text-primary-fixed mt-1">$${order.totalPrice.toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <div class="flex -space-x-4">
+                            ${order.orderItems.slice(0, 5).map(i => `
+                                <div class="w-10 h-10 rounded border-2 border-surface-container-highest overflow-hidden">
+                                    <img src="${i.images[0]}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'"/>
+                                </div>
+                            `).join('')}
+                            ${order.orderItems.length > 5 ? `<div class="w-10 h-10 rounded border-2 border-surface-container-highest bg-surface-container-highest flex items-center justify-center font-label-bold text-xs">+${order.orderItems.length - 5}</div>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+    } catch (err) {
+        console.error(err);
+        if(typeof showToast === 'function') showToast('Session expired. Please log in.', 'error');
+        localStorage.removeItem('dopamine_token');
+        setTimeout(() => window.location.href = '/auth.html', 1500);
+    }
+});
+
+function logout() {
+    localStorage.removeItem('dopamine_token');
+    window.location.href = '/auth.html';
+}
+</script>
+</body></html>

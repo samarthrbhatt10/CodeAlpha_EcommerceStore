@@ -1,91 +1,76 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Your cart — review your stash before checking out at Dopamine Club."/>
-<title>YOUR STASH | DOPAMINE CLUB</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode:"class",
-  theme:{extend:{
-    colors:{
-      "background":"#14121f","surface":"#14121f","surface-container-lowest":"#0e0c1a",
-      "surface-container-low":"#1c1a27","surface-container":"#201e2c","surface-container-high":"#2b2836",
-      "surface-container-highest":"#363342","primary":"#ffffff","primary-fixed":"#c3f400",
-      "primary-container":"#c3f400","on-primary-container":"#161e00","secondary-container":"#ff4b89",
-      "on-surface":"#e5e0f3","on-surface-variant":"#c4c9ac","error":"#ffb4ab"
-    },
-    fontFamily:{"label-bold":["Space Grotesk"],"headline-md":["Syne"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Syne"]},
-    fontSize:{"label-bold":["14px",{lineHeight:"1.0",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"700"}],"headline-lg":["48px",{lineHeight:"1.2",fontWeight:"800"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}]},
-    spacing:{"xs":"4px","sm":"12px","md":"24px","lg":"48px","xl":"80px","border-width":"2px","base":"8px","3":"3px"}
-  }}
-};
-</script>
-<style>
-  body { background: #14121f; color: #e5e0f3; font-family: 'Plus Jakarta Sans', sans-serif; }
-  .neo-shadow { box-shadow: 6px 6px 0px #0D0B18; }
-  .material-symbols-outlined { font-family:'Material Symbols Outlined'; font-size:24px; font-style:normal; font-weight:normal; line-height:1; display:inline-block; white-space:nowrap; font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
-</style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | CART</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="/js/shared_layout.js"></script>
 </head>
-<body class="bg-background text-on-surface min-h-screen overflow-x-hidden">
+<body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 
-<!-- Navigation -->
-<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-xl border-b-2 border-surface-container-highest">
-  <nav class="flex justify-between items-center px-md py-sm max-w-7xl mx-auto">
-    <a href="/" class="font-headline-md text-primary-container italic uppercase tracking-tighter">DOPAMINE CLUB</a>
-    <div class="flex items-center gap-sm">
-      <button data-cart-toggle class="relative flex items-center gap-xs font-label-bold bg-surface-container px-md py-xs rounded-full border-2 border-surface-container-highest hover:border-primary-container transition-colors">
-        <span class="material-symbols-outlined text-lg">shopping_bag</span>
-        <span data-cart-label>Cart</span>
-        <span data-cart-count class="absolute -top-1 -right-1 w-5 h-5 bg-secondary-container text-white text-[10px] font-bold rounded-full items-center justify-center hidden">0</span>
-      </button>
-      <button data-auth-login class="font-label-bold bg-primary-container text-on-primary-container px-md py-xs rounded-full border-2 border-black hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all" style="box-shadow:3px 3px 0px #000">LOGIN</button>
-    </div>
-  </nav>
+<header class="sticky top-md z-40 flex justify-between items-center px-md py-sm rounded-full border-border-width border-surface-container-highest mt-md mx-auto w-[95%] max-w-7xl bg-surface-container-low/20 backdrop-blur-xl shadow-offset-shadow transition-all duration-300">
+<div class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed cursor-pointer" onclick="window.location.href='/'">
+    DOPAMINE CLUB
+</div>
+<nav class="hidden md:flex gap-md items-center">
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">DROPS</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">VAULT</a>
+</nav>
+<div class="flex items-center gap-sm">
+    <!-- No cart toggle here to avoid confusion on cart page -->
+    <button onclick="window.location.href='/auth.html'" id="nav-auth-btn" class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-md py-xs rounded-full border-border-width border-surface-variant hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95">LOGIN</button>
+</div>
 </header>
 
-<main class="max-w-7xl mx-auto px-md py-lg">
-  <h1 class="font-headline-lg text-primary mb-xl">YOUR STASH</h1>
+<main class="pt-20 pb-xl px-md max-w-7xl mx-auto relative">
 
-  <!-- Empty State -->
-  <div id="cart-empty-state" class="hidden text-center py-xl">
-    <span class="material-symbols-outlined text-6xl text-on-surface-variant mb-md block">shopping_bag</span>
-    <h3 class="font-headline-md text-primary">Nothing in your stash</h3>
-    <p class="text-on-surface-variant mt-sm">Looks like you haven't copped anything yet. Time to change that.</p>
-    <a href="/catalog" class="mt-lg inline-flex items-center gap-sm bg-primary-container text-on-primary-container font-headline-md px-xl py-md rounded-xl border-3 border-black neo-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all" style="box-shadow:6px 6px 0px #000">
-      EXPLORE DROPS <span class="material-symbols-outlined">bolt</span>
-    </a>
-  </div>
+<div class="mb-xl text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-lg">
+    <div>
+        <h1 class="font-display-xl text-[64px] md:text-display-xl uppercase tracking-tighter leading-none mb-md text-primary">
+            THE LOOT <span class="text-primary-fixed italic">BAG</span>
+        </h1>
+        <p class="text-on-surface-variant font-label-bold">Secure your drip before it vanishes.</p>
+    </div>
+</div>
 
-  <!-- Filled Cart -->
-  <div id="cart-filled-state" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-xl">
-    <!-- Items -->
-    <div class="lg:col-span-2 space-y-md" id="cart-page-items">
-      <!-- Populated by cart.js -->
-    </div>
-    <!-- Summary -->
-    <div class="lg:col-span-1">
-      <div class="bg-surface-container-low border-2 border-surface-container-highest rounded-2xl p-md sticky top-24">
-        <h3 class="font-headline-md text-primary mb-md">ORDER SUMMARY</h3>
-        <div id="cart-page-summary">
-          <!-- Populated by cart.js -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start">
+    <!-- Cart Items -->
+    <div class="lg:col-span-8">
+        <!-- Empty state -->
+        <div id="cart-empty-state" class="hidden text-center py-xl glass-card rounded-xl border-border-width border-surface-container-highest">
+            <span class="material-symbols-outlined text-[80px] text-surface-variant mb-md">shopping_bag</span>
+            <h2 class="font-headline-md text-primary uppercase mb-sm">YOUR BAG IS EMPTY</h2>
+            <p class="text-on-surface-variant mb-md">Time to hunt for some legendary drops.</p>
+            <button onclick="window.location.href='/catalog.html'" class="bg-primary-container text-on-primary-container font-label-bold px-xl py-md rounded-lg border-border-width border-surface-container-highest neo-shadow active-neo-interaction">SHOP DROPS</button>
         </div>
-        <!-- Trust badges -->
-        <div class="mt-md pt-md border-t-2 border-surface-container-highest grid grid-cols-3 gap-sm">
-          <div class="text-center"><span class="material-symbols-outlined text-primary-container block mb-xs text-lg">lock</span><p class="text-[10px] text-on-surface-variant">Secure Checkout</p></div>
-          <div class="text-center"><span class="material-symbols-outlined text-primary-container block mb-xs text-lg">loop</span><p class="text-[10px] text-on-surface-variant">30-Day Returns</p></div>
-          <div class="text-center"><span class="material-symbols-outlined text-primary-container block mb-xs text-lg">local_shipping</span><p class="text-[10px] text-on-surface-variant">Fast Shipping</p></div>
+
+        <!-- Filled state -->
+        <div id="cart-filled-state" class="hidden space-y-lg">
+            <div id="cart-page-items" class="space-y-md">
+                <!-- Items populated by cart.js -->
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <!-- Summary Sidebar -->
+    <div class="lg:col-span-4 sticky top-32">
+        <div class="glass-panel p-lg rounded-xl border-border-width border-surface-container-highest neo-shadow" id="cart-page-summary">
+            <!-- Summary populated by cart.js -->
+        </div>
+    </div>
+</div>
+
 </main>
 
-<script src="/js/shared_layout.js"></script>
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t-3 border-surface-variant bg-surface-dim mt-xl">
+    <div class="flex flex-col gap-sm items-center md:items-start">
+        <div class="font-headline-md text-headline-md text-secondary-fixed italic uppercase">DOPAMINE CLUB</div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-xs text-center md:text-left">
+            ©2024 DOPAMINE CLUB / POP MART UNIVERSE
+        </p>
+    </div>
+</footer>
+
 <script src="/js/main.js"></script>
 <script src="/js/cart.js"></script>
-</body>
-</html>
+</body></html>

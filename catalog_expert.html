@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffd9e0",
+                    "surface-variant": "#363342",
+                    "primary": "#ffffff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#1c1a27",
+                    "surface": "#14121f",
+                    "primary-fixed-dim": "#abd600",
+                    "tertiary": "#ffffff",
+                    "on-background": "#e5e0f3",
+                    "primary-fixed": "#c3f400",
+                    "primary-container": "#c3f400",
+                    "on-primary": "#283500",
+                    "on-tertiary-container": "#006f77",
+                    "surface-dim": "#14121f",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container-lowest": "#0e0c1a",
+                    "background": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "inverse-primary": "#506600",
+                    "on-tertiary-fixed": "#002022",
+                    "on-tertiary": "#00363a",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-secondary-container": "#590026",
+                    "outline-variant": "#444933",
+                    "inverse-surface": "#e5e0f3",
+                    "on-surface-variant": "#c4c9ac",
+                    "error": "#ffb4ab",
+                    "on-surface": "#e5e0f3",
+                    "secondary-container": "#ff4b89",
+                    "on-primary-fixed": "#161e00",
+                    "on-secondary": "#66002c",
+                    "surface-container": "#201e2c",
+                    "surface-container-highest": "#363342",
+                    "inverse-on-surface": "#312f3d",
+                    "secondary": "#ffb1c3",
+                    "tertiary-container": "#7df4ff",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#2b2836",
+                    "tertiary-fixed": "#7df4ff",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "surface-bright": "#3a3746",
+                    "on-primary-container": "#556d00",
+                    "surface-tint": "#abd600",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline": "#8e9379"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "lg": "48px",
+                    "md": "24px",
+                    "base": "8px",
+                    "border-width": "4px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Syne"],
+                    "headline-md": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-xl": ["Syne"],
+                    "headline-lg-mobile": ["Syne"],
+                    "label-bold": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(20, 18, 31, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 4px solid #0D0B18;
+            box-shadow: 6px 6px 0 #0D0B18;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+        }
+        .rare-glow:hover {
+            box-shadow: 0 0 20px #abd600, 6px 6px 0 #0D0B18;
+            border-color: #abd600;
+        }
+        .ultra-rare-glow:hover {
+            box-shadow: 0 0 20px #ff4b89, 6px 6px 0 #0D0B18;
+            border-color: #ff4b89;
+        }
+        .holographic-sticker {
+            background: linear-gradient(45deg, #00dbe9, #ffb1c3, #abd600, #00dbe9);
+            background-size: 300% 300%;
+            animation: holoFlow 5s ease infinite;
+            border: 2px solid white;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes holoFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .grain-overlay {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA2zS4hzOMTanbupulUfCoCanlCda5EY-p_lZyNjXRlvL43rd4tWnTacTgnfNzFmBQ-dngpaAO0ropXj2HX5fGiamXotuIBvqjbNhnA2eyM3-VXdyg_nXCvyrMn1FJYbBJSq-Q2W7b8xlUEgRqXYRie2aPxhqZNl778oCwfp_shEGf128lLuTgxrWvDehipzbh6eZmaTLuIxlsFnoCUt1QqQv7rEzel_WBESnC3kjQIv1NzqnNa9_AA5rfPbCiETfqPzNXQnStnP-76);
+            opacity: 0.05;
+            pointer-events: none
+        }
+        .tactical-grid {
+            background-image: radial-gradient(circle, #363342 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .toggle-switch {
+            width: 48px;
+            height: 24px;
+            background: #1c1a27;
+            border: 2px solid #363342;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: #8e9379;
+            transition: all 0.2s;
+        }
+        .toggle-active .toggle-switch {
+            background: #abd600;
+            border-color: #0D0B18;
+        }
+        .toggle-active .toggle-switch::after {
+            left: 26px;
+            background: #0D0B18;
+        }
+        .progress-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 0, 0, 0.1) 10px,
+                rgba(0, 0, 0, 0.1) 20px
+            );
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen tactical-grid">
+<div class="fixed inset-0 grain-overlay z-[60]"></div>
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-md py-sm bg-surface/80 backdrop-blur-[20px] rounded-full mt-md mx-auto w-[95%] max-w-7xl border-surface-variant border-[4px] shadow-[6px_6px_0px_#0D0B18]">
+<div class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary">
+            DOPAMINE CLUB
+        </div>
+<nav class="hidden md:flex gap-md items-center">
+<a class="font-label-bold text-label-bold text-primary-fixed border-b-4 border-primary-fixed" href="#">DROPS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-transform" href="#">VAULT</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-transform" href="#">GAMES</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-transform" href="#">CLUBS</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary" data-icon="shopping_bag">shopping_bag</button>
+<button class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-md py-xs rounded-full border-4 border-surface-variant shadow-[4px_4px_0px_#0D0B18] active:translate-x-1 active:translate-y-1 active:shadow-none">LOGIN</button>
+</div>
+</header>
+<main class="pt-40 pb-xl px-md max-w-7xl mx-auto flex flex-col md:flex-row gap-lg">
+<!-- Command Filter Sidebar -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="glass-card p-md sticky top-40">
+<h2 class="font-label-bold text-label-bold uppercase tracking-widest text-primary-fixed-dim mb-md">COMMAND_FILTER</h2>
+<div class="space-y-sm">
+<div class="flex items-center justify-between group toggle-active" onclick="this.classList.toggle('toggle-active')">
+<span class="font-label-bold text-xs uppercase text-on-surface-variant">VIBE_CHECK</span>
+<div class="toggle-switch"></div>
+</div>
+<div class="flex items-center justify-between group" onclick="this.classList.toggle('toggle-active')">
+<span class="font-label-bold text-xs uppercase text-on-surface-variant">GOTH_LITE</span>
+<div class="toggle-switch"></div>
+</div>
+<div class="flex items-center justify-between group" onclick="this.classList.toggle('toggle-active')">
+<span class="font-label-bold text-xs uppercase text-on-surface-variant">Y2K_STREET</span>
+<div class="toggle-switch"></div>
+</div>
+<div class="flex items-center justify-between group" onclick="this.classList.toggle('toggle-active')">
+<span class="font-label-bold text-xs uppercase text-on-surface-variant">UNDER_$30</span>
+<div class="toggle-switch"></div>
+</div>
+</div>
+<div class="mt-lg pt-md border-t-4 border-surface-variant">
+<div class="text-[10px] font-label-bold text-on-surface-variant uppercase opacity-50 mb-xs">Active Sessions</div>
+<div class="text-xs font-mono text-primary-fixed">4,281 USERS_ONLINE</div>
+</div>
+</div>
+</aside>
+<!-- Tactical Grid Catalog -->
+<div class="flex-grow">
+<div class="mb-lg">
+<h1 class="font-display-xl text-[48px] md:text-headline-lg uppercase tracking-tighter leading-none">
+                    DROP <span class="text-primary-fixed italic">VAULT</span>
+</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-md">
+<!-- Item 1: Rare -->
+<div class="glass-card rare-glow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-[400px] overflow-hidden">
+<img alt="Cyber-Tek Parka" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtpqvW4no99WZ_GyHdhFSxTzBVeLPuY0tMsUy1haLK3CIaJwpOXg1dHuG6FY9D-Lz5eQpN0CcN4_T_eMWpaMM9OFIx4NFikefdi9x0zcMnSH-CHHlPrJLjm6UmzxdUIHlFyRSpTF6qzF28ekQvCJS777Nd1E5Y8Q6YfgGKqxyyERFcq_SjLhk_U5GXJMy7-Or5jAY-Gjg3mIhnVW_2aUaf7-22r5jyejn4PIl4iHs6auWzuZ5Xqct0ksOJH7bswc20ckpGJn7WqxpT"/>
+<!-- Hover Specs -->
+<div class="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col p-md justify-center items-center text-center">
+<div class="w-full space-y-sm">
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">MATERIAL</span>
+<span class="text-xs font-label-bold text-primary-fixed">NYLON_V3_COAT</span>
+</div>
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">WEATHER_RES</span>
+<span class="text-xs font-label-bold text-primary-fixed">LEVEL_9</span>
+</div>
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">DROP_ID</span>
+<span class="text-xs font-label-bold text-primary-fixed">#004-921</span>
+</div>
+</div>
+</div>
+<div class="absolute top-sm left-sm holographic-sticker px-sm py-[2px] text-[10px] font-label-bold uppercase text-on-surface rounded -rotate-3">RARE</div>
+</div>
+<div class="p-md space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-primary text-xl">CYBER-TEK PARKA</h3>
+<p class="text-xs font-label-bold text-on-surface-variant uppercase">Tokyo Edition</p>
+</div>
+<span class="text-primary-fixed font-headline-md">$149.00</span>
+</div>
+<!-- Hype Velocity Bar -->
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-label-bold uppercase text-primary-fixed-dim">
+<span>HYPE_VELOCITY</span>
+<span>12% REMAINING</span>
+</div>
+<div class="h-4 bg-surface-container-low border-2 border-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 w-[12%] bg-primary-fixed-dim progress-stripe"></div>
+</div>
+</div>
+<button class="w-full bg-primary-fixed text-on-primary-fixed font-label-bold py-md rounded-lg border-4 border-on-surface shadow-[4px_4px_0px_#0D0B18] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-sm">bolt</span> INSTANT COP
+                        </button>
+</div>
+</div>
+<!-- Item 2: Ultra Rare -->
+<div class="glass-card ultra-rare-glow rounded-xl overflow-hidden flex flex-col group">
+<div class="relative h-[400px] overflow-hidden">
+<img alt="Glo-Kicks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXKtC_9zQnmBQ-7NTlnPNDRn7fwel2x5t4jUFQR-MxUIkMKVln9K9tOhe9MffvE5t_rwmAjch0921er1B3YMaEvKJBBxdFp8sPntQWDFm-cC-xfq_m8ytsGiRLj91doDleWhvaibvYFhdUYlpgXWK8TMT-x_Z4LSrCIJLm07WSqNItICglNUVShQsADMbtjy2ZGLRcZQZCn7B64kmVTnAKl326i175eC5wJDAz32jl-UAvlSgtBDwQInXrK0vX9jAUpKXtopbHGEi8"/>
+<!-- Hover Specs -->
+<div class="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col p-md justify-center items-center text-center">
+<div class="w-full space-y-sm">
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">LUMENS</span>
+<span class="text-xs font-label-bold text-secondary-container">800_NITS</span>
+</div>
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">TRACTION</span>
+<span class="text-xs font-label-bold text-secondary-container">GRAVITY_LOCK</span>
+</div>
+<div class="flex justify-between border-b border-surface-variant pb-xs">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">SERIAL</span>
+<span class="text-xs font-label-bold text-secondary-container">#X-99-ALPHA</span>
+</div>
+</div>
+</div>
+<div class="absolute top-sm left-sm holographic-sticker px-sm py-[2px] text-[10px] font-label-bold uppercase text-on-surface rounded rotate-3">ULTRA_RARE</div>
+</div>
+<div class="p-md space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-primary text-xl">GLO-KICKS</h3>
+<p class="text-xs font-label-bold text-on-surface-variant uppercase">Neon Horizon</p>
+</div>
+<span class="text-secondary-container font-headline-md">$210.00</span>
+</div>
+<!-- Hype Velocity Bar -->
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-label-bold uppercase text-secondary-container">
+<span>HYPE_VELOCITY</span>
+<span>3% REMAINING</span>
+</div>
+<div class="h-4 bg-surface-container-low border-2 border-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 w-[3%] bg-secondary-container progress-stripe"></div>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-bold py-md rounded-lg border-4 border-on-surface shadow-[4px_4px_0px_#0D0B18] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-sm">emergency</span> LAST CALL
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim border-t-4 border-surface-variant mt-xl">
+<div class="font-headline-md text-headline-md text-secondary-fixed">
+            DOPAMINE CLUB
+        </div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">PRIVACY</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">TERMS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">RECALLS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">SUPPORT</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant opacity-60">
+            ©2024 DOPAMINE CLUB / POP MART UNIVERSE
+        </div>
+</footer>
+</body></html>

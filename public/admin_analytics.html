@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | MISSION DEBRIEF</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#363342",
+                    "secondary": "#ffb1c3",
+                    "surface": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "on-surface": "#e5e0f3",
+                    "on-primary-fixed": "#161e00",
+                    "on-secondary-container": "#590026",
+                    "on-primary-container": "#556d00",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "inverse-primary": "#506600",
+                    "secondary-container": "#ff4b89",
+                    "tertiary-fixed": "#7df4ff",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "surface-container-highest": "#363342",
+                    "surface-container": "#201e2c",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline": "#8e9379",
+                    "surface-container-low": "#1c1a27",
+                    "tertiary": "#ffffff",
+                    "surface-tint": "#abd600",
+                    "outline-variant": "#444933",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002022",
+                    "primary-container": "#c3f400",
+                    "on-surface-variant": "#c4c9ac",
+                    "on-primary": "#283500",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container-high": "#2b2836",
+                    "surface-bright": "#3a3746",
+                    "on-tertiary-container": "#006f77",
+                    "primary-fixed": "#c3f400",
+                    "background": "#14121f",
+                    "tertiary-container": "#7df4ff",
+                    "surface-dim": "#14121f",
+                    "surface-container-lowest": "#0e0c1a",
+                    "on-tertiary": "#00363a",
+                    "secondary-fixed": "#ffd9e0",
+                    "inverse-on-surface": "#312f3d",
+                    "inverse-surface": "#e5e0f3",
+                    "error-container": "#93000a",
+                    "on-background": "#e5e0f3",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-secondary": "#66002c",
+                    "primary": "#ffffff",
+                    "primary-fixed-dim": "#abd600"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "border-width": "3px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Syne"],
+                    "label-bold": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Syne"],
+                    "headline-lg": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.neo-shadow {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neo-shadow-active {
+    box-shadow: 0 0 0 #0D0B18;
+    transform: translate(6px, 6px)
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.grainy-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBFSi258HhAu_W0KhvMZ56ypm2sxMVf47hXS5PKwi4eXXKgnou_bbu1lCUyGK_zs5fLcQIDtWBNh6UEHQOxaxAQ_8RSvT07mu7dFqUOR2VKcGk2yEEIl0n0UVyZi10RM0dg99GtC4PN2tlxe6-9II-o8wlW6nmRPfKqeD-CpihRHGj0tyFNXlpnWw57gel0LcbJdmUXO1U9S1Gq54m8IiVBaQRcslg94KetcmhHgpv_KNKHU2ni6fQ2NPJyke6dgRzU2BN_Us_lIpjA);
+    filter: contrast(150%) brightness(100%)
+    }
+.holographic-glow {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(171, 214, 0, 0.4));
+    background-size: 200% 200%;
+    animation: holo-flow 5s ease infinite
+    }
+@keyframes holo-flow {
+    0% {
+        background-position: 0% 50%;
+        } 50% {
+        background-position: 100% 50%;
+        } 100% {
+        background-position: 0% 50%;
+        }
+    }
+.terminal-scroll::-webkit-scrollbar {
+    width: 4px
+    }
+.terminal-scroll::-webkit-scrollbar-track {
+    background: transparent
+    }
+.terminal-scroll::-webkit-scrollbar-thumb {
+    background: #abd600
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-[100] bg-surface-container border-b-border-width border-surface-variant flex justify-between items-center px-md py-sm shadow-offset-shadow">
+<div class="flex items-center gap-md">
+<h1 class="font-display-xl text-headline-lg-mobile uppercase italic text-primary">DOPAMINE CLUB</h1>
+<nav class="hidden lg:flex gap-md ml-lg">
+<a class="text-on-surface-variant font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-all px-sm py-xs rounded" href="#">COMMAND</a>
+<a class="text-on-surface-variant font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-all px-sm py-xs rounded" href="#">TRADE</a>
+<a class="text-primary-fixed-dim font-bold border-b-border-width border-primary-fixed-dim px-sm py-xs" href="#">HUB</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group hidden md:block">
+<span class="absolute inset-y-0 left-0 pl-sm flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</span>
+<input class="bg-surface-container-low border-border-width border-surface-variant pl-lg pr-md py-xs rounded-lg focus:border-primary-fixed-dim focus:ring-0 text-sm font-label-bold placeholder:text-surface-variant w-64 transition-all" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-bold px-md py-xs border-border-width border-surface-variant neo-shadow active:translate-x-xs active:translate-y-xs active:shadow-none transition-all uppercase">GO LIVE</button>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer hover:scale-110 transition-transform">account_balance_wallet</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:scale-110 transition-transform">notifications_active</span>
+</div>
+<div class="w-10 h-10 rounded-full border-border-width border-primary-fixed-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A futuristic tactical operator with a chrome visor and glowing lime green neon accents on their combat gear. The portrait is shot in a high-contrast dark studio with subtle pink backlighting and atmospheric digital particles. Professional 3D character design, ultra-detailed textures, cyberpunk aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhTHbm_9lHmjsq1hQh921N4RJC2vsX0y6bNH3m505CrVe6ZeCysNqB_hPr59djxm3h1asEVJxwu0XY_5d0zeRuks-Yg1Yq90THJxS6TwsCOHlVvgjCHZCNDTHi_pU8rThfjpVYwxwXwp4QYfFLZmO0T-baqyERGi3Va_PuoVqeE_-NrbASUxLnnN3FEzd4Qh-zlMA0E6Ncr7WDWX5rXkHuikWoNPzVcRcoLfl5FZSrAbVauuUDDd_Qd_yZAfX0axV9pGcqaRF_3sc2"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 py-lg w-64 bg-surface-container-low border-r-border-width border-surface-variant pt-32">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm mb-md p-sm bg-surface-container-high border-border-width border-surface-variant rounded-xl">
+<div class="w-12 h-12 rounded bg-primary-fixed-dim flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm leading-tight text-primary">OPERATOR_01</h3>
+<p class="text-xs font-label-bold text-secondary-fixed-dim uppercase">RANK: ELITE</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-sm">
+<div class="text-on-surface-variant flex items-center px-md py-sm mb-xs hover:bg-surface-bright hover:translate-x-xs transition-transform cursor-pointer">
+<span class="material-symbols-outlined mr-md">grid_view</span>
+<span class="font-body-md">Tactical View</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container border-border-width border-surface-variant flex items-center px-md py-sm mb-xs cursor-default">
+<span class="material-symbols-outlined mr-md">monitoring</span>
+<span class="font-body-md">Market Pulse</span>
+</div>
+<div class="text-on-surface-variant flex items-center px-md py-sm mb-xs hover:bg-surface-bright hover:translate-x-xs transition-transform cursor-pointer">
+<span class="material-symbols-outlined mr-md">assignment</span>
+<span class="font-body-md">Mission Log</span>
+</div>
+<div class="text-on-surface-variant flex items-center px-md py-sm mb-xs hover:bg-surface-bright hover:translate-x-xs transition-transform cursor-pointer">
+<span class="material-symbols-outlined mr-md">lock</span>
+<span class="font-body-md">Vault</span>
+</div>
+<div class="text-on-surface-variant flex items-center px-md py-sm mb-xs hover:bg-surface-bright hover:translate-x-xs transition-transform cursor-pointer">
+<span class="material-symbols-outlined mr-md">psychology</span>
+<span class="font-body-md">Intel</span>
+</div>
+</nav>
+<div class="px-md mt-auto">
+<button class="w-full bg-secondary text-on-secondary font-label-bold py-sm border-border-width border-surface-variant neo-shadow active:translate-x-xs active:translate-y-xs active:shadow-none transition-all uppercase italic">NEW MISSION</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-32 pb-24 px-md md:px-xl min-h-screen relative overflow-hidden grainy-bg">
+<!-- Background Animation -->
+
+<!-- Header Section -->
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+<div>
+<span class="text-primary-fixed-dim font-label-bold uppercase tracking-widest bg-surface-container-highest px-sm py-xs border-border-width border-surface-variant inline-block mb-sm">MISSION ID: NEON-PHANTOM-7</span>
+<h2 class="font-display-xl text-headline-lg uppercase italic leading-none">MISSION DEBRIEF</h2>
+<p class="font-body-lg text-on-surface-variant mt-sm max-w-xl">Comprehensive performance analytics for Operation Digital Abyss. Data confirmed at 0400 HRS. All extraction protocols successful.</p>
+</div>
+<div class="flex gap-sm">
+<div class="glass-card border-border-width border-surface-variant p-md neo-shadow text-center min-w-[140px]">
+<p class="text-xs font-label-bold text-on-surface-variant uppercase mb-xs">Status</p>
+<p class="text-primary-fixed-dim font-display-xl text-headline-md italic">VICTORY</p>
+</div>
+<div class="glass-card border-border-width border-surface-variant p-md neo-shadow text-center min-w-[140px]">
+<p class="text-xs font-label-bold text-on-surface-variant uppercase mb-xs">Time</p>
+<p class="text-secondary font-display-xl text-headline-md italic">14:52</p>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md relative z-10">
+<!-- Adrenaline Spikes (Line Chart Placeholder) -->
+<div class="md:col-span-8 glass-card border-border-width border-surface-variant p-lg neo-shadow group">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<h3 class="font-headline-md text-lg uppercase">Adrenaline Spikes</h3>
+</div>
+<div class="flex gap-xs">
+<span class="w-3 h-3 bg-primary-fixed-dim rounded-full"></span>
+<span class="w-3 h-3 bg-secondary rounded-full opacity-50"></span>
+</div>
+</div>
+<div class="h-64 relative border-l-border-width border-b-border-width border-surface-variant/50">
+<!-- Fake Line Chart via SVG -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none">
+<path d="M0,200 L100,180 L200,50 L300,120 L400,30 L500,100 L600,10 L700,180 L800,90" fill="none" stroke="#abd600" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,200 L100,180 L200,50 L300,120 L400,30 L500,100 L600,10 L700,180 L800,90 L800,256 L0,256 Z" fill="url(#gradient-green)" opacity="0.2"></path>
+<defs>
+<lineargradient id="gradient-green" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#abd600"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Floating Data Node -->
+<div class="absolute top-4 right-1/4 bg-primary-container text-on-primary-container p-xs font-label-bold text-[10px] rounded border-border-width border-surface-variant">MAX BPM: 182</div>
+</div>
+<div class="mt-md flex justify-between text-xs font-label-bold text-on-surface-variant uppercase">
+<span>Infiltration</span>
+<span>Engagement</span>
+<span>Hacking</span>
+<span>Boss Fight</span>
+<span>Extraction</span>
+</div>
+</div>
+<!-- Tactical Efficiency (Radar Chart) -->
+<div class="md:col-span-4 glass-card border-border-width border-surface-variant p-lg neo-shadow flex flex-col items-center justify-center">
+<h3 class="font-headline-md text-lg uppercase mb-md w-full text-left">Tactical Efficiency</h3>
+<div class="w-full aspect-square relative flex items-center justify-center">
+<div class="absolute inset-0 border-border-width border-surface-variant/30 rounded-full scale-100"></div>
+<div class="absolute inset-0 border-border-width border-surface-variant/30 rounded-full scale-75"></div>
+<div class="absolute inset-0 border-border-width border-surface-variant/30 rounded-full scale-50"></div>
+<svg class="w-full h-full transform -rotate-18" viewbox="0 0 100 100">
+<polygon fill="rgba(255,177,195,0.2)" points="50,10 85,35 78,80 22,80 15,35" stroke="#ffb1c3" stroke-width="2"></polygon>
+<circle cx="50" cy="10" fill="#ffb1c3" r="3"></circle>
+<circle cx="85" cy="35" fill="#ffb1c3" r="3"></circle>
+<circle cx="78" cy="80" fill="#ffb1c3" r="3"></circle>
+<circle cx="22" cy="80" fill="#ffb1c3" r="3"></circle>
+<circle cx="15" cy="35" fill="#ffb1c3" r="3"></circle>
+</svg>
+<!-- Radar Labels -->
+<span class="absolute top-0 text-[10px] font-label-bold text-secondary">STEALTH</span>
+<span class="absolute right-0 top-1/3 text-[10px] font-label-bold text-secondary">ACCURACY</span>
+<span class="absolute bottom-4 right-8 text-[10px] font-label-bold text-secondary">HACKING</span>
+<span class="absolute bottom-4 left-8 text-[10px] font-label-bold text-secondary">SPEED</span>
+<span class="absolute left-0 top-1/3 text-[10px] font-label-bold text-secondary">AGILITY</span>
+</div>
+<div class="mt-lg w-full flex flex-col gap-xs">
+<div class="flex justify-between text-xs">
+<span class="font-label-bold text-on-surface-variant uppercase">Overall Score</span>
+<span class="font-label-bold text-secondary italic">A+ TIER</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden border border-surface-variant">
+<div class="h-full bg-secondary w-[92%]"></div>
+</div>
+</div>
+</div>
+<!-- Squad MVP -->
+<div class="md:col-span-5 flex flex-col gap-md">
+<div class="glass-card border-border-width border-surface-variant p-lg neo-shadow flex-1">
+<h3 class="font-headline-md text-lg uppercase mb-md">SQUAD MVP</h3>
+<div class="flex items-center gap-lg">
+<div class="w-32 h-32 rounded-lg bg-surface-container-low border-border-width border-primary-fixed-dim relative group overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up portrait of a cyberpunk elite squad leader with glowing pink hair, a mechanical cyber-eye that emits a soft cyan light, and a black high-collared tactical vest with neon lime stitching. 3D render style with sharp focus, vibrant colors, and shallow depth of field. High-end character design for a tactical gaming dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsFa_WWQJfi4tQX9BmD-Lv5g_xFOeS1KfBsLMdnOPzNrytO3ma23Xb9q37sMPjOWvE484nz_diXjwR3nOlz1GJWcFLYQBQ6DpYTpmbL6VIiUeBglVxDfzXdmVVqgrcxBysqXJ9pVM2evnNIRBRo1kPzwBLk7otzRIXKDfKUpgnTY_skhjb9wfWbGBGUn8oTY9dFN8dAjSn12cKvOQnY-TKfV-BK1ECIhQpMDJziG5sf8Q7zEqO1BUJRPmimAiOQHH7QepYKaiCApw-"/>
+<div class="absolute bottom-0 w-full bg-primary-fixed-dim text-on-primary font-label-bold text-[10px] text-center py-xs">OPERATOR_01</div>
+</div>
+<div class="flex-1 space-y-md">
+<div>
+<p class="text-xs font-label-bold text-on-surface-variant uppercase">Primary Contribution</p>
+<p class="font-headline-md text-md text-primary">CYBER-ASSAULT</p>
+</div>
+<div class="flex gap-md">
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">Kills</p>
+<p class="font-display-xl text-headline-md text-secondary">42</p>
+</div>
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">Revives</p>
+<p class="font-display-xl text-headline-md text-primary-fixed-dim">03</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Squad -->
+<div class="flex gap-md">
+<div class="flex-1 glass-card border-border-width border-surface-variant p-md neo-shadow flex items-center gap-md">
+<div class="w-12 h-12 rounded-full border-border-width border-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A tactical recon agent wearing a high-tech hood and a reflective face mask. The mask displays a digital pixelated smiley face in neon pink. Cinematic lighting, soft purple and blue ambient atmosphere, futuristic gaming character design, detailed digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuF3o6O4e_K7wpMdTk9MAyhcJlP-GETPIAmTMAvKJpkzMbNZHBeJH2JOkr2F4Nh7jEosY25tYLS19xXFarX2E9ZsYlecSqyERVXJb7hEjLXvAIkwF0ycQElwwFbtCEBmK4UtB2yuE0ujGhoolFvSmg2nNZMDVCqib4NovIQW7KIK09GVniy_f3AzlySqDZ0-rY_I7xHQZYL2P4QMV-0tbv-cYJIwj1XJpuBrh4iQYrxtCuDolRtdDSPhAyZbVh8JdG14_n9u2BjLfP"/>
+</div>
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">SQUAD_MATE_B</p>
+<p class="font-label-bold text-secondary">SUPPORT</p>
+</div>
+</div>
+<div class="flex-1 glass-card border-border-width border-surface-variant p-md neo-shadow flex items-center gap-md">
+<div class="w-12 h-12 rounded-full border-border-width border-primary-fixed-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A heavy armored tank class character in a bulky exoskeleton with glowing lime green power cells. The character's helmet is a solid matte black with a glowing green horizontal slit. Hyper-realistic mechanical details, industrial cyberpunk aesthetic, dark lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9xOw0GLJj11jQXwaBCRYpDpGc_Ob0N773SdlR3hA9nDmnYJGgn0DwjwkjZNhXkiJAUAboRnwy96_inDcLGfZ6uItVHQl359gjnqvZ_kgdTnH5CVAtqyrqfkj1RAZGxq9WX1e5k2EIE7-09m7TZOx52EY5BBP9fsvolEHnuVHMbgTULpWoXRXlQCm8YWmm-kjhmdeuFggMVk0ZZvcgzvBgq1G09awoYOTW5few7j18sd5uNmiWo_Fof5E7Wkx3lLFi22dz1tIWx9gb"/>
+</div>
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">SQUAD_MATE_C</p>
+<p class="font-label-bold text-primary-fixed-dim">TANK</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Loot Yield Breakdown -->
+<div class="md:col-span-7 glass-card border-border-width border-surface-variant p-lg neo-shadow overflow-hidden relative">
+<h3 class="font-headline-md text-lg uppercase mb-md relative z-10">Loot Yield</h3>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-md relative z-10">
+<!-- Rarity: Mythic -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer">
+<div class="w-full aspect-square holographic-glow border-border-width border-white p-xs neo-shadow group-hover:-translate-y-sm transition-transform duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-label-bold text-tertiary-fixed-dim uppercase">MYTHIC</p>
+<p class="text-xs font-bold truncate">Void Core</p>
+</div>
+</div>
+<!-- Rarity: Rare -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer">
+<div class="w-full aspect-square bg-secondary-container border-border-width border-surface-variant p-xs neo-shadow group-hover:-translate-y-sm transition-transform duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-label-bold text-secondary uppercase">RARE</p>
+<p class="text-xs font-bold truncate">Pulse Engine</p>
+</div>
+</div>
+<!-- Rarity: Common -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-highest border-border-width border-surface-variant p-xs neo-shadow group-hover:-translate-y-sm transition-transform duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl" style="font-variation-settings: 'FILL' 1;">token</span>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">COMMON</p>
+<p class="text-xs font-bold truncate">Credit Chip</p>
+</div>
+</div>
+<!-- Rarity: Common -->
+<div class="flex flex-col items-center gap-sm group cursor-pointer">
+<div class="w-full aspect-square bg-surface-container-highest border-border-width border-surface-variant p-xs neo-shadow group-hover:-translate-y-sm transition-transform duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl" style="font-variation-settings: 'FILL' 1;">memory</span>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">COMMON</p>
+<p class="text-xs font-bold truncate">RAM Stick</p>
+</div>
+</div>
+</div>
+<div class="mt-lg flex items-center justify-between border-t-border-width border-surface-variant pt-md">
+<div class="flex gap-md">
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">TOTAL XP</p>
+<p class="text-xl font-headline-md text-primary-fixed-dim">+12,450</p>
+</div>
+<div>
+<p class="text-[10px] font-label-bold text-on-surface-variant uppercase">CURRENCY</p>
+<p class="text-xl font-headline-md text-secondary">$5,200</p>
+</div>
+</div>
+<button class="bg-surface-bright text-primary font-label-bold px-md py-xs border-border-width border-surface-variant hover:bg-secondary-container transition-colors uppercase">Open Vault</button>
+</div>
+</div>
+<!-- Mission Log Terminal -->
+<div class="md:col-span-12 glass-card border-border-width border-surface-variant p-lg neo-shadow flex flex-col max-h-96">
+<div class="flex items-center gap-sm mb-md border-b-border-width border-surface-variant pb-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim">terminal</span>
+<h3 class="font-headline-md text-lg uppercase">Mission Log Terminal</h3>
+<div class="ml-auto flex gap-xs">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+</div>
+</div>
+<div class="terminal-scroll overflow-y-auto flex-1 font-mono text-sm space-y-xs pr-md">
+<p class="text-primary-fixed-dim">[04:00:12] :: INITIALIZING DEBRIEF PROTOCOL...</p>
+<p class="text-on-surface-variant">[04:00:15] :: DECRYPTING SQUAD PERFORMANCE DATA...</p>
+<p class="text-on-surface-variant">[04:00:18] :: SYNCING WITH NEURAL LINK ALPHA...</p>
+<div class="bg-primary-container/10 border-l-border-width border-primary-fixed-dim p-sm my-sm">
+<p class="text-primary-fixed-dim font-bold uppercase italic">CRITICAL EVENT DETECTED</p>
+<p class="text-on-surface">Time: 08:42 | Event: High-Value Target 'Void-Walker' neutralized by OPERATOR_01. Damage output exceeded threshold by 24%.</p>
+</div>
+<p class="text-on-surface-variant">[04:01:05] :: CALCULATING LOOT PROBABILITY TABLES...</p>
+<p class="text-secondary">[04:01:10] :: WARNING: Adrenaline spike detected during extraction phase. Operator health critical.</p>
+<p class="text-on-surface-variant">[04:01:22] :: RECON_UNIT_B deployed smoke screen. Evasion successful.</p>
+<p class="text-on-surface-variant">[04:01:45] :: MISSION SUCCESS CONFIRMED. RETURNING TO HUB.</p>
+<p class="text-primary-fixed-dim animate-pulse">[04:01:50] :: WAITING FOR COMMAND INPUT_</p>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for Command Actions -->
+<button class="fixed bottom-lg right-lg w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center border-border-width border-surface-variant neo-shadow active:translate-x-xs active:translate-y-xs active:shadow-none transition-all z-[110] group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform">add</span>
+</button>
+<script>
+        // Micro-interactions for Neo-Brutalist Feel
+        document.querySelectorAll('.neo-shadow').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('neo-shadow-active');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('neo-shadow-active');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('neo-shadow-active');
+            });
+        });
+
+        // Simple terminal typing simulation for the bottom log
+        const terminal = document.querySelector('.terminal-scroll');
+        if(terminal) {
+            setInterval(() => {
+                const logs = [
+                    "[LOG] System status: OPTIMAL",
+                    "[LOG] Scanning for anomalies...",
+                    "[LOG] Syncing with command center...",
+                    "[LOG] Energy reserves at 98%",
+                    "[LOG] Database query complete."
+                ];
+                const newLog = document.createElement('p');
+                newLog.className = "text-on-surface-variant opacity-70";
+                const now = new Date();
+                const time = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+                newLog.innerText = `[${time}] :: ${logs[Math.floor(Math.random() * logs.length)]}`;
+                terminal.appendChild(newLog);
+                terminal.scrollTop = terminal.scrollHeight;
+                if(terminal.children.length > 20) terminal.removeChild(terminal.children[0]);
+            }, 5000);
+        }
+    </script>
+
+    <script>
+        // Enforce Admin Auth
+        async function checkAdminAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/auth.html';
+                return;
+            }
+            try {
+                const res = await fetch('/api/auth/me', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                const data = await res.json();
+                if (!res.ok || data.role !== 'admin') {
+                    window.location.href = '/auth.html';
+                }
+            } catch(e) {
+                window.location.href = '/auth.html';
+            }
+        }
+        checkAdminAuth();
+    </script>
+</body></html>

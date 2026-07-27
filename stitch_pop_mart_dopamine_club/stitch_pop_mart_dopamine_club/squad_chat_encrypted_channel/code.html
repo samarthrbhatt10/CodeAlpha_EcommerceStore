@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | SQUAD COMMAND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&family=Space+Grotesk:wght@100..900&family=Syne:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#363342",
+                    "secondary": "#ffb1c3",
+                    "surface": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "on-surface": "#e5e0f3",
+                    "on-primary-fixed": "#161e00",
+                    "on-secondary-container": "#590026",
+                    "on-primary-container": "#556d00",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "inverse-primary": "#506600",
+                    "secondary-container": "#ff4b89",
+                    "tertiary-fixed": "#7df4ff",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "surface-container-highest": "#363342",
+                    "surface-container": "#201e2c",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline": "#8e9379",
+                    "surface-container-low": "#1c1a27",
+                    "tertiary": "#ffffff",
+                    "surface-tint": "#abd600",
+                    "outline-variant": "#444933",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#002022",
+                    "primary-container": "#c3f400",
+                    "on-surface-variant": "#c4c9ac",
+                    "on-primary": "#283500",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container-high": "#2b2836",
+                    "surface-bright": "#3a3746",
+                    "on-tertiary-container": "#006f77",
+                    "primary-fixed": "#c3f400",
+                    "background": "#14121f",
+                    "tertiary-container": "#7df4ff",
+                    "surface-dim": "#14121f",
+                    "surface-container-lowest": "#0e0c1a",
+                    "on-tertiary": "#00363a",
+                    "secondary-fixed": "#ffd9e0",
+                    "inverse-on-surface": "#312f3d",
+                    "inverse-surface": "#e5e0f3",
+                    "error-container": "#93000a",
+                    "on-background": "#e5e0f3",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-secondary": "#66002c",
+                    "primary": "#ffffff",
+                    "primary-fixed-dim": "#abd600"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "border-width": "3px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "sm": "12px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-xl": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Syne"],
+                    "label-bold": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Syne"],
+                    "headline-lg": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.offset-shadow-sm {
+    box-shadow: 4px 4px 0 #0D0B18
+    }
+.offset-shadow-md {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.active-press:active {
+    transform: translate(4px, 4px);
+    box-shadow: none
+    }
+/* Grainy texture overlay */
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDYAJZseEatVOo3DSiGimsuBPQ8OoWytQ-oSY6MJCA8ib3015r4a3mj_Ro_3AXz8jlmsRMq5gfvEPJB6pOoznXOpq1H--t3swAsGTF6oQ5nEb1JlncYJ6jRiSPSvk3Q0kzDJ1hQo4ZADn172KIVo3912rA-HoY75AAa_hH5Mfb4Ea5BOfTkICbrnxCZVOFwsUzJROudDybkxxhyBpWdpMcTFnuu1FjUif0maGC4gbSsE-ZpoBbDy-oyxfwtnXyyClcjw-f811BatWof)
+    }
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.holographic-glow {
+    box-shadow: 0 0 20px rgba(171, 214, 0, 0.3)
+    }
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(171, 214, 0, 0.4);
+        } 50% {
+        box-shadow: 0 0 25px rgba(171, 214, 0, 0.7);
+        } 100% {
+        box-shadow: 0 0 10px rgba(171, 214, 0, 0.4);
+        }
+    }
+.animate-glow {
+    animation: pulse-glow 2s infinite ease-in-out
+    }
+.wireframe-bg {
+    background-image: linear-gradient(rgba(171, 214, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(171, 214, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden h-screen flex flex-col">
+<div class="grain"></div>
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-container border-b-border-width border-surface-variant flex justify-between items-center w-full px-md py-sm max-w-full z-50">
+<div class="flex items-center gap-md">
+<h1 class="font-display-xl text-headline-lg-mobile uppercase italic text-primary">DOPAMINE CLUB</h1>
+<nav class="hidden md:flex gap-md ml-lg">
+<a class="text-on-surface-variant font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-all px-xs" href="#">COMMAND</a>
+<a class="text-on-surface-variant font-medium hover:bg-secondary-container hover:text-on-secondary-container transition-all px-xs" href="#">TRADE</a>
+<a class="text-primary-fixed-dim font-bold border-b-border-width border-primary-fixed-dim px-xs" href="#">HUB</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary-container text-on-primary-container font-label-bold px-md py-xs border-border-width border-surface-variant offset-shadow-sm active-press uppercase">GO LIVE</button>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer">account_balance_wallet</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications_active</span>
+</div>
+<div class="w-10 h-10 border-border-width border-primary-fixed-dim rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a futuristic tactical operator wearing high-tech visors and a neon-lit collar. The character has a gritty, digital-native look with cyberpunk aesthetics, set against a dark indigo background with subtle grain textures and cyan lens flare highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA1QYStBR6u9vqkcti3m7xLetz95LkXTyQarW14Y2figB0FkknEUBhEsDpXRuEUfe-brVP-u8Ykfiu0csqS5AHpElIdLFe4QaCB_hJl0sFEU0eexZCaO5IrbCoQU8WqNqHY6DpORQxbC8Vgq6FhDzRDYBxb_AYVZ1gKjA7PjL68WY4Qhz9ng2t64RciSCDxMcTS1JQRhdYf60_EO13ld7Y8MErC-7YXDCJwCy2aMe7Gc36WASr3PIzuspBtvLNT5oGhvRByvMcyEq1"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Mission Critical Wireframe Background -->
+<div class="absolute inset-0 wireframe-bg pointer-events-none opacity-40"></div>
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden lg:flex flex-col h-full w-64 bg-surface-container-low border-r-border-width border-surface-variant py-lg px-sm z-40 relative">
+<div class="px-md mb-lg">
+<p class="font-headline-md text-primary">OPERATOR_01</p>
+<p class="text-on-surface-variant text-xs opacity-70">RANK: ELITE</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="text-on-surface-variant flex items-center px-md py-sm hover:bg-surface-bright hover:translate-x-xs transition-transform group" href="#">
+<span class="material-symbols-outlined mr-sm">grid_view</span>
+<span class="font-body-md">Tactical View</span>
+</a>
+<a class="text-on-surface-variant flex items-center px-md py-sm hover:bg-surface-bright hover:translate-x-xs transition-transform" href="#">
+<span class="material-symbols-outlined mr-sm">monitoring</span>
+<span class="font-body-md">Market Pulse</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-border-width border-surface-variant flex items-center px-md py-sm" href="#">
+<span class="material-symbols-outlined mr-sm">assignment</span>
+<span class="font-body-md">Mission Log</span>
+</a>
+<a class="text-on-surface-variant flex items-center px-md py-sm hover:bg-surface-bright hover:translate-x-xs transition-transform" href="#">
+<span class="material-symbols-outlined mr-sm">lock</span>
+<span class="font-body-md">Vault</span>
+</a>
+<a class="text-on-surface-variant flex items-center px-md py-sm hover:bg-surface-bright hover:translate-x-xs transition-transform" href="#">
+<span class="material-symbols-outlined mr-sm">psychology</span>
+<span class="font-body-md">Intel</span>
+</a>
+</nav>
+<button class="mt-auto w-full bg-primary-container text-on-primary-container border-border-width border-surface-variant py-md font-label-bold offset-shadow-sm active-press uppercase tracking-widest">
+                NEW MISSION
+            </button>
+</aside>
+<!-- Main Multi-Pane Command Center -->
+<main class="flex-1 flex flex-col md:flex-row p-md gap-md overflow-hidden relative z-10">
+<!-- Left Pane: Squad Vibe Status -->
+<section class="w-full md:w-1/3 flex flex-col gap-md">
+<div class="glass-panel border-border-width border-surface-variant p-md flex flex-col gap-md relative overflow-hidden h-full">
+<div class="flex justify-between items-center border-b-border-width border-surface-variant pb-sm mb-xs">
+<h2 class="font-headline-md text-primary uppercase">ACTIVE_SQUADS</h2>
+<span class="bg-secondary text-on-secondary px-xs font-label-bold text-xs rotate-3 border-border-width border-primary">HOT</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-md pr-xs">
+<!-- Squad Item 1 -->
+<div class="group border-border-width border-surface-variant p-sm hover:bg-primary-container transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-bold group-hover:text-on-primary-container">ALPHA_SQUAD_X</p>
+<span class="text-primary-fixed-dim text-[10px] border border-primary-fixed-dim px-1 font-bold group-hover:border-on-primary-container group-hover:text-on-primary-container">SYNCED</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-surface-variant bg-surface-container"></div>
+<div class="w-6 h-6 rounded-full border border-surface-variant bg-surface-container-high"></div>
+<div class="w-6 h-6 rounded-full border border-surface-variant bg-surface-container-highest"></div>
+</div>
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-[85%] h-full bg-primary-fixed-dim"></div>
+</div>
+<span class="font-label-bold text-[10px] group-hover:text-on-primary-container">VIBE: 85%</span>
+</div>
+</div>
+<!-- Squad Item 2 -->
+<div class="group border-border-width border-surface-variant p-sm hover:bg-secondary-container transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-bold group-hover:text-on-secondary-container">NEON_DRIFTERS</p>
+<span class="text-secondary text-[10px] border border-secondary px-1 font-bold group-hover:border-on-secondary-container group-hover:text-on-secondary-container">CAUTION</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-surface-variant bg-surface-container"></div>
+<div class="w-6 h-6 rounded-full border border-surface-variant bg-surface-container-high"></div>
+</div>
+<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-[42%] h-full bg-secondary"></div>
+</div>
+<span class="font-label-bold text-[10px] group-hover:text-on-secondary-container">VIBE: 42%</span>
+</div>
+</div>
+<!-- Squad Item 3 -->
+<div class="group border-border-width border-surface-variant p-sm hover:bg-primary-container transition-colors cursor-pointer border-dashed">
+<div class="flex justify-between items-center h-full py-md">
+<p class="font-label-bold group-hover:text-on-primary-container w-full text-center">INITIATE NEW SYNC</p>
+</div>
+</div>
+</div>
+<!-- Tactical Controls -->
+<div class="border-t-border-width border-surface-variant pt-md space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-xs uppercase">Encryption Status</span>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 bg-primary-fixed-dim rounded-full animate-glow"></div>
+<span class="text-primary-fixed-dim font-label-bold text-xs">ULTRA_SECURE</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-md">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest border-border-width border-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-primary after:border-surface-variant after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="flex-1 bg-secondary-container/20 border-border-width border-secondary-container p-xs flex items-center justify-center gap-sm cursor-pointer group hover:bg-secondary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-secondary group-hover:text-on-secondary-container">warning</span>
+<span class="font-label-bold text-secondary text-xs uppercase group-hover:text-on-secondary-container">System Override</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Middle Pane: Tactical Chat Feed -->
+<section class="flex-1 flex flex-col gap-md h-full">
+<div class="glass-panel border-border-width border-surface-variant flex flex-col h-full overflow-hidden">
+<!-- Chat Header -->
+<div class="p-md border-b-border-width border-surface-variant flex justify-between items-center bg-surface-container-low">
+<div>
+<div class="flex items-center gap-xs">
+<h3 class="font-headline-md text-primary uppercase">SQUAD_COMMS</h3>
+<span class="text-[10px] bg-primary-container text-on-primary-container px-xs font-bold">LIVE</span>
+</div>
+<p class="text-xs text-on-surface-variant opacity-60">CHANNEL: 0x88_TACTICAL_CHAT</p>
+</div>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">person_add</span>
+</div>
+</div>
+<!-- Chat Messages -->
+<div class="flex-1 overflow-y-auto p-md space-y-md" id="chat-feed">
+<!-- Message Received -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-bold text-primary-fixed-dim text-xs">OPERATOR_04</span>
+<span class="text-[9px] text-on-surface-variant/50">T: 14:32:01</span>
+</div>
+<div class="bg-surface-container border-border-width border-surface-variant p-sm rounded-tr-xl rounded-br-xl rounded-bl-xl offset-shadow-sm">
+<p class="font-body-md">Incoming data packet from the Loot Vault. Looks like the rare holographic drop is active in sector 7.</p>
+</div>
+</div>
+<!-- Message Sent (Self) -->
+<div class="flex flex-col items-end max-w-[85%] ml-auto">
+<div class="flex items-center gap-sm mb-xs">
+<span class="text-[9px] text-on-surface-variant/50">T: 14:32:45</span>
+<span class="font-label-bold text-secondary text-xs">OPERATOR_01 (YOU)</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container border-border-width border-on-secondary-container p-sm rounded-tl-xl rounded-bl-xl rounded-br-xl offset-shadow-sm">
+<p class="font-body-md">Copy that. Initiating squad mobilization. Everyone sync vibe states to 90%+ now.</p>
+</div>
+</div>
+<!-- System Alert -->
+<div class="w-full flex justify-center my-lg">
+<div class="bg-secondary p-sm border-border-width border-surface-variant -rotate-1 offset-shadow-sm flex items-center gap-md">
+<span class="material-symbols-outlined text-on-secondary" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="font-label-bold text-on-secondary uppercase italic">CRITICAL ALERT: ENEMY SQUAD DETECTED IN PERIMETER</span>
+</div>
+</div>
+<!-- Message Received -->
+<div class="flex flex-col items-start max-w-[85%]">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-bold text-tertiary-fixed-dim text-xs">COMMANDER_NOX</span>
+<span class="text-[9px] text-on-surface-variant/50">T: 14:35:12</span>
+</div>
+<div class="bg-surface-container border-border-width border-surface-variant p-sm rounded-tr-xl rounded-br-xl rounded-bl-xl offset-shadow-sm">
+<p class="font-body-md">Hold position. Wait for the Pulse signal. We strike at exactly 14:40:00.</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-md bg-surface-container-low border-t-border-width border-surface-variant">
+<div class="relative flex items-center">
+<input class="w-full bg-surface border-border-width border-surface-variant p-md font-label-bold focus:border-primary-fixed-dim focus:ring-0 outline-none pr-xl placeholder:opacity-30" placeholder="TYPE_ENCRYPTED_MESSAGE..." type="text"/>
+<button class="absolute right-xs bg-primary-container text-on-primary-container p-sm border-border-width border-surface-variant active-press">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Mission Visuals / Wireframe -->
+<section class="hidden xl:flex w-1/4 flex-col gap-md h-full">
+<div class="glass-panel border-border-width border-surface-variant p-md flex flex-col h-full">
+<h2 class="font-headline-md text-primary uppercase border-b-border-width border-surface-variant pb-sm mb-md">MISSION_VIEW</h2>
+<div class="flex-1 relative border-border-width border-surface-variant bg-surface-container-lowest overflow-hidden group">
+<!-- Holographic Image Simulation -->
+<img class="w-full h-full object-cover opacity-50 mix-blend-screen group-hover:scale-110 transition-transform duration-700" data-alt="A top-down architectural wireframe of a futuristic urban cyberpunk hub, rendered in high-contrast electric lime lines on a deep indigo digital grid. The scene features floating 3D markers, scrolling data readouts, and holographic interference patterns, giving the impression of a tactical mission briefing display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSA3tiETtC37SJYaB9LFsfr4WseBYFdXNlZ4DnLa7TJeKyiRFFgPEW0punQ_n9er1tXM7JYBZ3-UAtwPA6WZB1eiD65v3TgKGvQoxXr9D4ib9ZC8xu6z0b1r74Bt8NTg53XAiEfUIZyIxakz5ffYpGsODE6RidDlIvbkItg2xUWgCK9hgJij36WLU4V7WIxGBwnvUwyXNwMbgNnbkDPm2mInEF_ZkD5KbFTgGjUB3DCjt15QkXtfanp6OHvG7JycyXC8AvkEZraEBA"/>
+<div class="absolute inset-0 p-md flex flex-col justify-between pointer-events-none">
+<div class="flex justify-between items-start">
+<div class="bg-surface p-xs border border-primary-fixed-dim">
+<p class="font-label-bold text-[8px] text-primary-fixed-dim">SCANNING_AREA_07</p>
+</div>
+<div class="flex flex-col gap-xs items-end">
+<div class="w-8 h-1 bg-primary-fixed-dim"></div>
+<div class="w-12 h-1 bg-secondary"></div>
+<div class="w-6 h-1 bg-tertiary-fixed-dim"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="bg-surface/80 border border-secondary p-xs backdrop-blur-sm">
+<p class="font-label-bold text-[10px] text-secondary">TARGET: VAULT_SIGMA</p>
+</div>
+<div class="bg-surface/80 border border-primary-fixed-dim p-xs backdrop-blur-sm">
+<p class="font-label-bold text-[10px] text-primary-fixed-dim">DISTANCE: 400m</p>
+</div>
+</div>
+</div>
+<!-- Scanline Effect -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary-fixed-dim/30 animate-[bounce_4s_infinite] pointer-events-none"></div>
+</div>
+<div class="mt-md space-y-sm">
+<div class="flex justify-between items-center font-label-bold text-xs">
+<span class="text-on-surface-variant">LOOT_CHANCE</span>
+<span class="text-primary-fixed-dim">88%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full">
+<div class="w-[88%] h-full bg-primary-fixed-dim"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed uppercase">The vault contains high-density dopamine canisters and holographic skins. Expected resistance: Medium.</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-base pt-xs bg-surface-container-highest/80 backdrop-blur-xl border-t-border-width border-surface-variant shadow-[0_-6px_20px_rgba(171,214,0,0.2)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="target">target</span>
+<span class="font-label-bold text-label-bold uppercase mt-xs">MISSIONS</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg p-xs border-border-width border-surface-variant">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-bold text-label-bold uppercase mt-xs">SQUAD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-label-bold text-label-bold uppercase mt-xs">LOOT</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings_accessibility">settings_accessibility</span>
+<span class="font-label-bold text-label-bold uppercase mt-xs">PROFILE</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for the chat feed
+        const chatFeed = document.getElementById('chat-feed');
+        chatFeed.scrollTop = chatFeed.scrollHeight;
+
+        // Simple typing simulation for realism
+        const addMessage = (operator, text, color, isSelf = false) => {
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const messageHtml = `
+                <div class="flex flex-col ${isSelf ? 'items-end ml-auto' : 'items-start'} max-w-[85%] animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div class="flex items-center gap-sm mb-xs">
+                        ${!isSelf ? `<span class="font-label-bold ${color} text-xs">${operator}</span>` : ''}
+                        <span class="text-[9px] text-on-surface-variant/50">T: ${time}</span>
+                        ${isSelf ? `<span class="font-label-bold ${color} text-xs">${operator} (YOU)</span>` : ''}
+                    </div>
+                    <div class="${isSelf ? 'bg-secondary-container text-on-secondary-container border-on-secondary-container' : 'bg-surface-container border-surface-variant'} border-border-width p-sm rounded-xl offset-shadow-sm">
+                        <p class="font-body-md">${text}</p>
+                    </div>
+                </div>
+            `;
+            chatFeed.insertAdjacentHTML('beforeend', messageHtml);
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+        };
+
+        // Random chatter simulation every 15 seconds
+        setInterval(() => {
+            const ops = ['OPERATOR_02', 'OPERATOR_09', 'GHOST_PROTOCOL'];
+            const msgs = ['Grid position locked.', 'Waiting for override signal...', 'Signal strength fluctuating at 0x99.'];
+            const colors = ['text-tertiary-fixed-dim', 'text-primary-fixed-dim', 'text-on-surface'];
+            const randIdx = Math.floor(Math.random() * ops.length);
+            addMessage(ops[randIdx], msgs[randIdx], colors[randIdx]);
+        }, 15000);
+
+        // Interaction for "System Override"
+        document.querySelector('.group.cursor-pointer').addEventListener('click', () => {
+            document.body.classList.add('animate-pulse');
+            setTimeout(() => {
+                document.body.classList.remove('animate-pulse');
+                alert("SYSTEM_OVERRIDE_INITIATED: SAFETY PROTOCOLS BYPASSED.");
+            }, 500);
+        });
+    </script>
+</body></html>

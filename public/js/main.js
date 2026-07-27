@@ -84,33 +84,15 @@ function updateCartQuantity(id, size, delta) {
 }
 
 function openCart() {
-    const drawer = document.getElementById('cart-drawer');
-    const backdrop = document.getElementById('cart-backdrop');
-    if (drawer && backdrop) {
-        drawer.classList.remove('translate-x-full');
-        backdrop.classList.remove('opacity-0', 'pointer-events-none');
-        backdrop.classList.add('opacity-100', 'pointer-events-auto');
-    }
+    window.location.href = '/cart.html';
 }
 
 function closeCart() {
-    const drawer = document.getElementById('cart-drawer');
-    const backdrop = document.getElementById('cart-backdrop');
-    if (drawer && backdrop) {
-        drawer.classList.add('translate-x-full');
-        backdrop.classList.add('opacity-0', 'pointer-events-none');
-        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-    }
+    // No-op now since we use a dedicated page
 }
 
 window.toggleCart = function() {
-    const drawer = document.getElementById('cart-drawer');
-    if (!drawer) return;
-    if (drawer.classList.contains('translate-x-full')) {
-        openCart();
-    } else {
-        closeCart();
-    }
+    window.location.href = '/cart.html';
 };
 
 function updateCartBadges() {
@@ -125,57 +107,7 @@ function updateCartBadges() {
 }
 
 function renderCartDrawer() {
-    const container = document.getElementById('cart-items-container');
-    if (!container) return;
-
-    const subtotalEl = document.getElementById('cart-subtotal');
-    const totalEl = document.getElementById('cart-total');
-    const subtotal = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-    const shipping = subtotal > 200 ? 0 : 12.99;
-    const total = subtotal + shipping;
-
-    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
-
-    const shippingEl = document.getElementById('cart-shipping');
-    if (shippingEl) shippingEl.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-
-    if (cart.length === 0) {
-        container.innerHTML = `
-            <div class="flex flex-col items-center justify-center h-full gap-md text-on-surface-variant">
-                <span class="material-symbols-outlined text-5xl opacity-30">shopping_bag</span>
-                <p class="font-label-bold text-center">Your stash is empty.<br/>Go cop some drops!</p>
-                <button onclick="window.location.href='/catalog'" class="bg-primary-container text-on-primary-container font-label-bold px-md py-sm rounded-lg border-2 border-black shadow-[3px_3px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
-                    EXPLORE DROPS
-                </button>
-            </div>`;
-        return;
-    }
-
-    container.innerHTML = cart.map(item => `
-        <div class="flex gap-sm p-sm bg-surface-container-high rounded-lg border-2 border-surface-container-highest">
-            <div class="w-16 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 border-surface-container-highest bg-surface-container">
-                <img src="${item.images[0]}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'"/>
-            </div>
-            <div class="flex-1 min-w-0">
-                <div class="flex justify-between items-start gap-xs">
-                    <div>
-                        <p class="font-label-bold text-primary text-sm leading-tight truncate">${item.name}</p>
-                        <p class="text-on-surface-variant text-xs mt-1">Size: ${item.selectedSize}</p>
-                    </div>
-                    <button onclick="removeFromCart('${item._id}', '${item.selectedSize}')" class="material-symbols-outlined text-base text-error hover:scale-125 transition-transform flex-shrink-0">delete</button>
-                </div>
-                <div class="flex justify-between items-center mt-sm">
-                    <div class="flex items-center gap-xs bg-surface-container rounded border-2 border-surface-container-highest">
-                        <button onclick="updateCartQuantity('${item._id}', '${item.selectedSize}', -1)" class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container transition-colors">−</button>
-                        <span class="font-label-bold px-xs text-sm">${item.quantity}</span>
-                        <button onclick="updateCartQuantity('${item._id}', '${item.selectedSize}', 1)" class="w-6 h-6 flex items-center justify-center font-bold text-on-surface hover:text-primary-container transition-colors">+</button>
-                    </div>
-                    <span class="font-label-bold text-primary-container">$${(item.price * item.quantity).toFixed(2)}</span>
-                </div>
-            </div>
-        </div>
-    `).join('');
+    // No-op - replaced by cart.html
 }
 
 // ─── CHECKOUT ──────────────────────────────────────────────
@@ -284,15 +216,27 @@ function bindNavigation() {
 
 // ─── MICRO-INTERACTIONS ─────────────────────────────────────
 function initMicroInteractions() {
-    // Micro-interactions for the dopamine effect
+    // Helper: skip fixed-positioned or nav/header elements
+    const isSafeForTransform = (el) => {
+        const style = getComputedStyle(el);
+        if (style.position === 'fixed' || style.position === 'sticky') return false;
+        if (el.tagName === 'HEADER' || el.tagName === 'NAV' || el.tagName === 'ASIDE') return false;
+        if (el.closest('header') || el.closest('nav') || el.closest('aside')) return false;
+        if (el.closest('[class*="fixed"]') || el.id === 'mobile-menu') return false;
+        return true;
+    };
+
+    // Press-down micro-interaction — only on card-like elements
     document.querySelectorAll('.neo-shadow').forEach(card => {
+        if (!isSafeForTransform(card)) return;
+
         card.addEventListener('mousedown', () => {
             card.style.transform = 'translate(6px, 6px)';
-            card.style.boxShadow = '0px 0px 0px #0D0B18';
+            card.style.boxShadow = '0px 0px 0px #000';
         });
         card.addEventListener('mouseup', () => {
-            card.style.transform = 'translate(0px, 0px)';
-            card.style.boxShadow = '6px 6px 0px #0D0B18';
+            card.style.transform = '';
+            card.style.boxShadow = '';
         });
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
@@ -300,24 +244,23 @@ function initMicroInteractions() {
         });
     });
 
-    // Tilt effect for cards
-    document.querySelectorAll('.glass').forEach(card => {
+    // Tilt effect — only on product/content cards, never nav elements
+    document.querySelectorAll('.glass-card').forEach(card => {
+        if (!isSafeForTransform(card)) return;
+
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            card.style.transform = \`perspective(1000px) rotateX(\${rotateX}deg) rotateY(\${rotateY}deg) scale3d(1.02, 1.02, 1.02)\`;
+            const cx = rect.width / 2;
+            const cy = rect.height / 2;
+            const rotX = ((y - cy) / cy) * 4;
+            const rotY = ((cx - x) / cx) * 4;
+            card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.01, 1.01, 1.01)`;
         });
-        
+
         card.addEventListener('mouseleave', () => {
-            card.style.transform = \`perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)\`;
+            card.style.transform = '';
         });
     });
 }

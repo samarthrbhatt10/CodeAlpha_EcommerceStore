@@ -39,7 +39,10 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/me', require('../middleware/authMiddleware').protect, async (req, res) => {
-  res.json({ _id: req.user._id, name: req.user.name, email: req.user.email, role: req.user.role });
+  const Order = require('../models/Order');
+  const user = await User.findById(req.user._id);
+  const totalOrders = await Order.countDocuments({ user: req.user._id });
+  res.json({ _id: user._id, name: user.name, email: user.email, role: user.role, dpBalance: user.dpBalance, inventoryCount: user.inventory.length, totalOrders, createdAt: user.createdAt });
 });
 
 router.put('/me', require('../middleware/authMiddleware').protect, async (req, res) => {

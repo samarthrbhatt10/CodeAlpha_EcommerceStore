@@ -7,36 +7,62 @@ let searchQuery = '';
 // ─── RENDER ──────────────────────────────────────────────────
 function renderProductCard(product) {
     const rarity = product.rarity || 'CORE COLLECTION';
+    const isRare = rarity === 'RARE';
+    const isUltraRare = rarity === 'ULTRA_RARE';
+    const glowClass = isUltraRare ? 'ultra-rare-glow' : (isRare ? 'rare-glow' : 'hover:border-primary-fixed hover:shadow-[0_0_15px_#c3f400]');
+    const barColor = isUltraRare ? 'bg-secondary-container text-secondary-container' : 'bg-primary-fixed-dim text-primary-fixed-dim';
+    
+    // Simulate hype velocity between 5% and 80% based on string hash
+    let hash = 0;
+    for (let i = 0; i < product._id.length; i++) hash += product._id.charCodeAt(i);
+    const hypePercent = (hash % 75) + 5;
+
     return `
-    <div class="md:col-span-4 group h-[450px]">
-        <div class="glass-card rounded-xl overflow-hidden h-full flex flex-col cursor-pointer" onclick="window.location.href='/pdp.html?id=${product._id}'">
-            <div class="relative flex-1 overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" src="${product.images[0]}" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600'" />
-                ${product.images[1] ? `<div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background-image: url('${product.images[1]}')"></div>` : ''}
-                
-                <!-- Badge -->
-                <div class="absolute top-sm left-sm">
-                    <div class="holographic-sticker px-xs py-[2px] text-[10px] font-label-bold rounded border-2 uppercase text-black">${rarity}</div>
-                </div>
-                
-                <!-- Favorite -->
-                <div class="absolute top-md right-md z-20">
-                    <button class="bg-surface/80 p-sm rounded-full border-border-width border-on-surface flex items-center justify-center group/heart hover:bg-secondary-container transition-all" onclick="event.stopPropagation(); burst(this)">
-                        <span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
-                    </button>
+    <div class="glass-card ${glowClass} rounded-xl overflow-hidden flex flex-col group h-full cursor-pointer" onclick="window.location.href='/pdp.html?id=${product._id}'">
+        <div class="relative h-[400px] overflow-hidden bg-surface-container-high shrink-0">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="${product.images[0]}" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600'" />
+            <div class="absolute inset-0 bg-surface/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col p-md justify-center items-center text-center">
+                <div class="w-full space-y-sm">
+                    <div class="flex justify-between border-b border-surface-variant pb-xs">
+                        <span class="text-[10px] font-label-bold uppercase text-on-surface-variant">CATEGORY</span>
+                        <span class="text-xs font-label-bold text-primary-fixed">${product.category}</span>
+                    </div>
+                    <div class="flex justify-between border-b border-surface-variant pb-xs">
+                        <span class="text-[10px] font-label-bold uppercase text-on-surface-variant">ID</span>
+                        <span class="text-xs font-label-bold text-primary-fixed">#${product._id.substring(0, 6).toUpperCase()}</span>
+                    </div>
                 </div>
             </div>
             
-            <div class="p-md bg-surface-container-lowest/50 border-t-border-width border-surface-variant flex flex-col justify-between shrink-0">
-                <div class="flex justify-between items-start">
-                    <h3 class="font-label-bold text-headline-md text-primary uppercase leading-tight truncate mr-2">${product.name}</h3>
-                    <div class="text-primary-fixed font-label-bold text-headline-md">$${product.price.toFixed(2)}</div>
-                </div>
-                <button class="mt-md bg-secondary-container text-on-secondary-container font-label-bold text-label-bold px-md py-sm rounded-lg border-border-width border-on-surface shadow-offset-shadow transition-all active:translate-x-1 active:translate-y-1 active:shadow-none w-full flex items-center justify-center gap-xs" onclick="event.stopPropagation(); instantCop(this, '${product._id}')">
-                    <span class="material-symbols-outlined" data-icon="flash_on">flash_on</span>
-                    INSTANT COP
+            <div class="absolute top-sm left-sm holographic-sticker px-sm py-[2px] text-[10px] font-label-bold uppercase text-black rounded -rotate-3">${rarity}</div>
+            
+            <div class="absolute top-md right-md z-20">
+                <button class="bg-surface/80 p-sm rounded-full border-border-width border-on-surface flex items-center justify-center group/heart hover:bg-secondary-container transition-all" onclick="event.stopPropagation(); burst(this)">
+                    <span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
                 </button>
             </div>
+        </div>
+        <div class="p-md flex flex-col justify-between flex-grow">
+            <div>
+                <div class="flex justify-between items-start mb-sm">
+                    <div class="min-w-0 pr-2">
+                        <h3 class="font-headline-md text-primary text-xl uppercase truncate">${product.name}</h3>
+                    </div>
+                    <span class="text-primary-fixed font-headline-md shrink-0">$${product.price.toFixed(2)}</span>
+                </div>
+                <div class="space-y-1 mb-md">
+                    <div class="flex justify-between text-[10px] font-label-bold uppercase ${barColor.split(' ')[1]}">
+                        <span>HYPE_VELOCITY</span>
+                        <span>${hypePercent}% REMAINING</span>
+                    </div>
+                    <div class="h-4 bg-surface-container-low border-2 border-surface-variant relative overflow-hidden">
+                        <div class="absolute inset-0 w-[${hypePercent}%] ${barColor.split(' ')[0]} progress-stripe"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="mt-auto w-full bg-primary-fixed text-on-primary-fixed font-label-bold py-md rounded-lg border-4 border-on-surface shadow-[4px_4px_0px_#0D0B18] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center gap-xs" onclick="event.stopPropagation(); instantCop(this, '${product._id}')">
+                <span class="material-symbols-outlined text-sm">bolt</span> INSTANT COP
+            </button>
         </div>
     </div>`;
 }

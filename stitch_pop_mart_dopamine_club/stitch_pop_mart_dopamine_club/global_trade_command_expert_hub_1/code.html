@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Trade Hub | Dopamine Club</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffd9e0",
+                        "surface-container-highest": "#363342",
+                        "outline-variant": "#444933",
+                        "on-primary-fixed": "#161e00",
+                        "on-primary-container": "#556d00",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "inverse-primary": "#506600",
+                        "surface-container-lowest": "#0e0c1a",
+                        "on-secondary-container": "#590026",
+                        "background": "#14121f",
+                        "surface-container-high": "#2b2836",
+                        "on-tertiary-fixed": "#002022",
+                        "on-tertiary-container": "#006f77",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "inverse-surface": "#e5e0f3",
+                        "primary-fixed": "#c3f400",
+                        "secondary-container": "#ff4b89",
+                        "primary-fixed-dim": "#abd600",
+                        "secondary": "#ffb1c3",
+                        "on-error": "#690005",
+                        "surface-tint": "#abd600",
+                        "surface": "#14121f",
+                        "inverse-on-surface": "#312f3d",
+                        "tertiary": "#ffffff",
+                        "primary-container": "#c3f400",
+                        "surface-dim": "#14121f",
+                        "on-surface": "#e5e0f3",
+                        "surface-bright": "#3a3746",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "error-container": "#93000a",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#1c1a27",
+                        "tertiary-container": "#7df4ff",
+                        "on-tertiary": "#00363a",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-background": "#e5e0f3",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-secondary": "#66002c",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary": "#283500",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "surface-variant": "#363342",
+                        "outline": "#8e9379",
+                        "surface-container": "#201e2c",
+                        "on-secondary-fixed": "#3f0019"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "border-width": "3px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "offset-shadow": "6px 6px 0px #0D0B18"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Space Grotesk"],
+                        "headline-lg": ["Syne"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Syne"],
+                        "headline-lg-mobile": ["Syne"],
+                        "display-xl": ["Syne"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.neo-brutalist-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 3px solid #0D0B18;
+    box-shadow: 6px 6px 0 #0D0B18;
+    transition: all 0.1s ease-in-out
+    }
+.neo-brutalist-button-primary {
+    background-color: #c3f400;
+    /* Electric Lime */
+    border: 3px solid #0D0B18;
+    box-shadow: 4px 4px 0 #0D0B18;
+    transition: all 0.1s
+    }
+.neo-brutalist-button-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #0D0B18
+    }
+.neo-brutalist-button-secondary {
+    background-color: #ff4b89;
+    /* Pink */
+    border: 3px solid #0D0B18;
+    box-shadow: 4px 4px 0 #0D0B18;
+    transition: all 0.1s
+    }
+.neo-brutalist-button-secondary:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #0D0B18
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.04;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBAMfNeIyRtMU5JiueHIHytnLQRAlsjOpq9M0OXCACcJHuwCh4xKiCf0Fr_U6rjOqYhkeVGm3wfQ4dECAIQdqTkX0oU3qPSMLYRvyzQiWEDf43OwMdMexHOMmnk4VuFelflXGksT2X9MwQyRa5b_qLQclBgAz1vC8J6hWawY2WD-clFF3OKnTYXam_nohYl_oxJo9QhMQgSCkZZHpXdA0naed6VjBeecsJ1KAJ4iaGQWdaNnhWPC7mJ8jPXbntre-gZILdXpHaNCUnT)
+    }
+.holographic-badge {
+    background: linear-gradient(45deg, #00dbe9 0%, #ff4b89 50%, #c3f400 100%);
+    opacity: 0.9
+    }
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px
+    }
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05)
+    }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c3f400;
+    border: 2px solid #0D0B18
+    }</style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden font-body-md custom-scrollbar">
+<div class="grain-overlay"></div>
+<!-- Layout Container -->
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation (SideNavBar JSON Anchor) -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-surface-container border-r-border-width border-outline p-md z-50">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter italic uppercase">DOPAMINE ELITE</h1>
+<p class="font-label-bold text-label-bold text-on-surface-variant mt-xs">Verified Member</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-sm bg-primary-container text-on-primary-container border-border-width border-outline shadow-[4px_4px_0px_#0D0B18] p-sm active:scale-95 duration-100 font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95 duration-100 font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Inventory
+                </a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95 duration-100 font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+                    Orders
+                </a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95 duration-100 font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Analytics
+                </a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95 duration-100 font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="mt-auto pt-md border-t-border-width border-outline space-y-sm">
+<button class="w-full neo-brutalist-button-primary py-sm font-label-bold text-label-bold text-on-primary-container uppercase">
+                    UPGRADE TO PRO
+                </button>
+<div class="flex flex-col gap-xs mt-md">
+<a class="flex items-center gap-sm text-on-surface-variant p-sm hover:text-on-surface font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">help</span>
+                        Support
+                    </a>
+<a class="flex items-center gap-sm text-on-surface-variant p-sm hover:text-on-surface font-label-bold text-label-bold uppercase" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Dashboard Area -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-background">
+<!-- Header (TopNavBar JSON Anchor) -->
+<header class="sticky top-0 w-full z-40 bg-surface border-b-border-width border-outline px-md py-sm flex justify-between items-center shadow-[4px_4px_0px_#0D0B18]">
+<div class="flex items-center gap-lg">
+<span class="font-display-xl text-headline-md italic uppercase text-primary">GLOBAL TRADE HUB</span>
+<nav class="hidden lg:flex items-center gap-md">
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">DROPS</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-primary-container border-b-border-width border-primary-container" href="#">VAULT</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">GAMES</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">CLUBS</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border-border-width border-outline p-xs px-sm focus:border-primary-container focus:ring-0 text-on-surface font-label-bold text-label-bold uppercase" placeholder="SEARCH ASSETS..." type="text"/>
+</div>
+<button class="p-xs hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-xs hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content Grid -->
+<div class="p-md grid grid-cols-12 gap-md">
+<!-- Left Column: Tickers & Analytics -->
+<div class="col-span-12 lg:col-span-3 space-y-md">
+<!-- Live Tickers -->
+<div class="neo-brutalist-card p-md">
+<h3 class="font-headline-md text-headline-md uppercase text-primary border-b-border-width border-outline pb-sm mb-md flex items-center justify-between">
+                            LIVE TICKERS
+                            <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+</h3>
+<div class="space-y-md">
+<div class="flex justify-between items-center group cursor-pointer hover:bg-primary-container/10 p-xs transition-all">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">BTC/USD</p>
+<p class="font-headline-md text-headline-md text-primary-container">$72,100.50</p>
+</div>
+<span class="text-primary-container font-label-bold text-label-bold">+1.2%</span>
+</div>
+<div class="flex justify-between items-center group cursor-pointer hover:bg-secondary-container/10 p-xs transition-all">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">ETH/USD</p>
+<p class="font-headline-md text-headline-md text-secondary-container">$3,845.20</p>
+</div>
+<span class="text-secondary-container font-label-bold text-label-bold">-0.5%</span>
+</div>
+<div class="flex justify-between items-center group cursor-pointer hover:bg-primary-container/10 p-xs transition-all">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">SOL/USD</p>
+<p class="font-headline-md text-headline-md text-primary-container">$155.75</p>
+</div>
+<span class="text-primary-container font-label-bold text-label-bold">+3.1%</span>
+</div>
+</div>
+</div>
+<!-- Market Status -->
+<div class="neo-brutalist-card p-md bg-surface-container-high">
+<p class="font-label-bold text-label-bold text-tertiary-container uppercase mb-xs">Network Status</p>
+<div class="flex items-center gap-sm">
+<div class="h-2 flex-1 bg-surface border border-outline overflow-hidden">
+<div class="h-full bg-tertiary-container w-4/5 animate-[shimmer_2s_infinite]"></div>
+</div>
+<span class="font-label-bold text-label-bold">94ms</span>
+</div>
+</div>
+</div>
+<!-- Center Column: Main Swap Visualizer -->
+<div class="col-span-12 lg:col-span-6 space-y-md">
+<!-- Central Swap Viewport -->
+<div class="neo-brutalist-card h-[500px] relative overflow-hidden flex flex-col">
+<!-- Tactical Shader Background -->
+
+<div class="relative z-10 flex-1 flex flex-col p-md">
+<div class="flex justify-between">
+<div class="bg-surface/80 p-sm border-border-width border-outline">
+<p class="font-label-bold text-label-bold text-on-surface-variant">SECURE CHANNEL</p>
+<p class="font-headline-md text-headline-md text-primary tracking-widest">A-99-ALPHA</p>
+</div>
+<div class="bg-surface/80 p-sm border-border-width border-outline flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">encrypted</span>
+<span class="font-label-bold text-label-bold text-primary-container">ENCRYPTED</span>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- 3D Swap Visualization -->
+
+<!-- Holographic Overlays -->
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="p-sm bg-surface/60 border-border-width border-primary-container backdrop-blur-md">
+<p class="font-label-bold text-label-bold text-primary-container mb-xs">OFFERED ASSET</p>
+<h4 class="font-headline-md text-headline-md text-primary italic">EXCALIBUR-X</h4>
+<span class="holographic-badge px-sm py-xs text-[10px] font-bold text-on-background">LEGENDARY</span>
+</div>
+<div class="p-sm bg-surface/60 border-border-width border-secondary-container backdrop-blur-md text-right">
+<p class="font-label-bold text-label-bold text-secondary-container mb-xs">TARGET ASSET</p>
+<h4 class="font-headline-md text-headline-md text-primary italic">AEGIS-9</h4>
+<span class="holographic-badge px-sm py-xs text-[10px] font-bold text-on-background">MYTHIC</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-md">
+<button class="flex-1 neo-brutalist-button-primary py-lg flex flex-col items-center justify-center gap-xs">
+<span class="font-headline-md text-headline-md text-on-primary-container">APPROVE SWAP</span>
+<span class="font-label-bold text-[10px] opacity-70">EXECUTE SMART CONTRACT</span>
+</button>
+<button class="flex-1 neo-brutalist-button-secondary py-lg flex flex-col items-center justify-center gap-xs">
+<span class="font-headline-md text-headline-md text-on-secondary-container">REJECT INTEL</span>
+<span class="font-label-bold text-[10px] opacity-70">PURGE SESSION DATA</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Charts & Log -->
+<div class="col-span-12 lg:col-span-3 space-y-md">
+<!-- Candlestick Chart Placeholder -->
+<div class="neo-brutalist-card p-md h-[300px] flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-bold text-label-bold uppercase text-on-surface-variant">BTC/USD CHART</h3>
+<span class="material-symbols-outlined text-primary-container">trending_up</span>
+</div>
+<div class="flex-1 bg-surface-container-low border border-outline relative p-sm">
+<!-- Visual representation of a chart -->
+<div class="absolute inset-0 flex items-end gap-1 p-xs overflow-hidden opacity-30">
+<div class="w-2 bg-primary-container" style="height: 40%"></div>
+<div class="w-2 bg-primary-container" style="height: 60%"></div>
+<div class="w-2 bg-secondary-container" style="height: 45%"></div>
+<div class="w-2 bg-primary-container" style="height: 75%"></div>
+<div class="w-2 bg-secondary-container" style="height: 55%"></div>
+<div class="w-2 bg-primary-container" style="height: 90%"></div>
+<div class="w-2 bg-primary-container" style="height: 80%"></div>
+<div class="w-2 bg-secondary-container" style="height: 65%"></div>
+<div class="w-2 bg-primary-container" style="height: 40%"></div>
+<div class="w-2 bg-primary-container" style="height: 60%"></div>
+<div class="w-2 bg-secondary-container" style="height: 45%"></div>
+<div class="w-2 bg-primary-container" style="height: 75%"></div>
+<div class="w-2 bg-secondary-container" style="height: 55%"></div>
+</div>
+<img class="w-full h-full object-cover mix-blend-screen opacity-60" data-alt="A futuristic digital stock trading interface showing complex candlestick charts with glowing neon green and pink bars against a dark grid background. High contrast, neo-brutalist style with holographic UI overlays and technical data readouts in clean sans-serif typography. Cinematic lighting with subtle grain and digital noise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC71d9RdXkSpUk6uA-0cCPVVAOwHfPeyulSlzvH5tbQ-23_WMZWVL83wDJt34tZekZl9JCJm-Xm0xOSddNyfPawKKIqA1Auv7mR2iy-I6M3mqHPU33QaF6VSzpq_IyHhs8zZzKNW0VJiJrgcTaffNF9dycq1pXEPC63rI8naH--5UcyWG5PYMrz96mQ7EKIAM-2BvvPwUDrMHWGDvBpPHYyApx5TDfQ1lywNBdzFx4yEfh-e0ej5J2I96-ckH_9go3VN1FGdM88GPIY"/>
+</div>
+</div>
+<!-- Trade Execution Log -->
+<div class="neo-brutalist-card p-md flex-1 flex flex-col min-h-[300px]">
+<h3 class="font-label-bold text-label-bold uppercase text-on-surface-variant mb-md border-b border-outline pb-xs">TRADE LOG</h3>
+<div class="flex-1 overflow-y-auto space-y-sm custom-scrollbar pr-xs">
+<div class="flex justify-between items-start border-b border-outline/10 pb-xs">
+<div>
+<p class="font-label-bold text-[10px] text-primary-container">SECURED</p>
+<p class="font-body-md text-[12px] font-bold">SWAP: EX-X / AE-9</p>
+</div>
+<span class="font-label-bold text-[10px] opacity-40">10:45:32</span>
+</div>
+<div class="flex justify-between items-start border-b border-outline/10 pb-xs">
+<div>
+<p class="font-label-bold text-[10px] text-tertiary-container">SETTLED</p>
+<p class="font-body-md text-[12px] font-bold">BUY 0.5 BTC @ $72,101</p>
+</div>
+<span class="font-label-bold text-[10px] opacity-40">10:45:30</span>
+</div>
+<div class="flex justify-between items-start border-b border-outline/10 pb-xs">
+<div>
+<p class="font-label-bold text-[10px] text-secondary-container">FLAGGED</p>
+<p class="font-body-md text-[12px] font-bold">AUTH ATTEMPT: IP.92.1</p>
+</div>
+<span class="font-label-bold text-[10px] opacity-40">10:44:15</span>
+</div>
+<div class="flex justify-between items-start border-b border-outline/10 pb-xs">
+<div>
+<p class="font-label-bold text-[10px] text-tertiary-container">SETTLED</p>
+<p class="font-body-md text-[12px] font-bold">SELL 10 ETH @ $3,845</p>
+</div>
+<span class="font-label-bold text-[10px] opacity-40">10:43:59</span>
+</div>
+<div class="flex justify-between items-start border-b border-outline/10 pb-xs">
+<div>
+<p class="font-label-bold text-[10px] text-primary-container">SECURED</p>
+<p class="font-body-md text-[12px] font-bold">VAULT TRANSFER: 200 SOL</p>
+</div>
+<span class="font-label-bold text-[10px] opacity-40">10:42:01</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Footer JSON Anchor) -->
+<footer class="mt-auto border-t-border-width border-outline py-lg bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-md flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="text-center md:text-left">
+<span class="font-headline-md text-headline-md text-primary">DOPAMINE CLUB</span>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 DOPAMINE CLUB. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-md font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-secondary-container transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-opacity duration-200" href="#">Support</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-opacity duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple ticker update simulation
+        const tickers = document.querySelectorAll('.font-headline-md.text-primary-container, .font-headline-md.text-secondary-container');
+        setInterval(() => {
+            tickers.forEach(ticker => {
+                const currentVal = parseFloat(ticker.innerText.replace(/[$,]/g, ''));
+                const change = (Math.random() - 0.5) * 5;
+                const newVal = (currentVal + change).toFixed(2);
+                const formatted = '$' + newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                ticker.innerText = formatted;
+                
+                // Visual pop
+                ticker.style.transform = 'scale(1.05)';
+                setTimeout(() => ticker.style.transform = 'scale(1)', 100);
+            });
+        }, 3000);
+    </script>
+</body></html>

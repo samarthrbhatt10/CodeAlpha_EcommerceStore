@@ -1,0 +1,41 @@
+[
+  {
+    "name": "GlobalTradeHub",
+    "product_name": "DOPAMINE CLUB",
+    "search_bar": "on_right",
+    "navigation_links": ["MARKET", "VAULT", "SQUADS", "MISSIONS"],
+    "trailing_primary_action": "EXCHANGE",
+    "trailing_icon_actions": ["account_balance_wallet", "notifications"],
+    "style_bg_color": "bg-surface dark:bg-surface",
+    "style_primary_color": "text-primary dark:text-primary",
+    "style_typography": "font-headline-md text-headline-md uppercase tracking-tighter",
+    "style_brand_logo": "font-display-xl text-headline-md italic uppercase text-primary",
+    "style_component_shape": "sticky top-0 w-full z-50 border-b-3 border-outline",
+    "style_separation_logic": "border-b-3 border-outline",
+    "style_shadows_and_elevation": "shadow-offset-shadow",
+    "style_active_navigation": "text-primary border-b-3 border-primary pb-1",
+    "style_inactive_navigation": "text-on-surface-variant hover:text-primary transition-colors",
+    "style_universal_hover": "hover:bg-primary-container/20 transition-all",
+    "style_interactions": "active:translate-x-xs active:translate-y-xs active:shadow-none",
+    "style_shell_layout": "flex justify-between items-center px-md py-sm w-full"
+  },
+  {
+    "name": "TradeCard",
+    "title": "NEO-KITSUNE #88",
+    "price": "4.20 ETH",
+    "rarity": "LEGENDARY",
+    "stats": ["PWR: 9000", "VIBE: 100%"],
+    "style_bg_color": "bg-surface-container dark:bg-surface-container",
+    "style_primary_color": "text-primary",
+    "style_typography": "font-label-bold text-label-bold",
+    "style_brand_logo": "none",
+    "style_component_shape": "rounded-none border-3 border-outline p-md",
+    "style_separation_logic": "border-3 border-outline shadow-offset-shadow",
+    "style_shadows_and_elevation": "shadow-offset-shadow",
+    "style_active_navigation": "bg-primary text-on-primary",
+    "style_inactive_navigation": "bg-surface-container-low text-on-surface-variant",
+    "style_universal_hover": "hover:translate-x-1 hover:translate-y-1 transition-all",
+    "style_interactions": "active:shadow-none",
+    "style_shell_layout": "flex flex-col gap-sm"
+  }
+]

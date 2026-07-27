@@ -1,130 +1,322 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CLUB ACCESS | DOPAMINE CLUB</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="/js/shared_layout.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="DOPAMINE CLUB — Login or sign up to get access to exclusive drops."/>
+<title>DOPAMINE CLUB | CLUB ACCESS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary-fixed": "#ffd9e0",
+          "surface-variant": "#363342",
+          "primary": "#ffffff",
+          "on-error-container": "#ffdad6",
+          "surface-container-low": "#1c1a27",
+          "surface": "#14121f",
+          "primary-fixed-dim": "#abd600",
+          "tertiary": "#ffffff",
+          "on-background": "#e5e0f3",
+          "primary-fixed": "#c3f400",
+          "primary-container": "#c3f400",
+          "on-primary": "#283500",
+          "on-tertiary-container": "#006f77",
+          "surface-dim": "#14121f",
+          "tertiary-fixed-dim": "#00dbe9",
+          "surface-container-lowest": "#0e0c1a",
+          "background": "#14121f",
+          "secondary-fixed-dim": "#ffb1c3",
+          "inverse-primary": "#506600",
+          "on-tertiary-fixed": "#002022",
+          "on-tertiary": "#00363a",
+          "on-secondary-fixed-variant": "#8f0041",
+          "on-secondary-fixed": "#3f0019",
+          "on-secondary-container": "#590026",
+          "outline-variant": "#444933",
+          "inverse-surface": "#e5e0f3",
+          "on-surface-variant": "#c4c9ac",
+          "error": "#ffb4ab",
+          "on-surface": "#e5e0f3",
+          "secondary-container": "#ff4b89",
+          "on-primary-fixed": "#161e00",
+          "on-secondary": "#66002c",
+          "surface-container": "#201e2c",
+          "surface-container-highest": "#363342",
+          "inverse-on-surface": "#312f3d",
+          "secondary": "#ffb1c3",
+          "tertiary-container": "#7df4ff",
+          "error-container": "#93000a",
+          "surface-container-high": "#2b2836",
+          "tertiary-fixed": "#7df4ff",
+          "on-primary-fixed-variant": "#3c4d00",
+          "surface-bright": "#3a3746",
+          "on-primary-container": "#556d00",
+          "surface-tint": "#abd600",
+          "on-error": "#690005",
+          "on-tertiary-fixed-variant": "#004f54",
+          "outline": "#8e9379"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+        },
+        spacing: {
+          "offset-shadow": "8px 8px 0px #000000",
+          lg: "48px", md: "24px", base: "8px",
+          "border-width": "4px", xs: "4px", sm: "12px", xl: "80px"
+        },
+        fontFamily: {
+          "headline-lg": ["Syne"],
+          "headline-md": ["Syne"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "display-xl": ["Syne"],
+          "headline-lg-mobile": ["Syne"],
+          "label-bold": ["Space Grotesk"]
+        },
+        fontSize: {
+          "headline-lg": ["48px", {lineHeight:"1.2", fontWeight:"800"}],
+          "headline-md": ["24px", {lineHeight:"1.3", fontWeight:"700"}],
+          "body-lg": ["18px", {lineHeight:"1.6", fontWeight:"500"}],
+          "body-md": ["16px", {lineHeight:"1.6", fontWeight:"400"}],
+          "display-xl": ["80px", {lineHeight:"1.1", letterSpacing:"-0.04em", fontWeight:"800"}],
+          "headline-lg-mobile": ["32px", {lineHeight:"1.2", fontWeight:"800"}],
+          "label-bold": ["14px", {lineHeight:"1.0", fontWeight:"700"}]
+        }
+      }
+    }
+  };
+</script>
+<style>
+  @keyframes rainbow-border {
+    0% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
+    33% { border-color: #c3f400; box-shadow: 0 0 10px #c3f400; }
+    66% { border-color: #00dbe9; box-shadow: 0 0 10px #00dbe9; }
+    100% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
+  }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(-1deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+  }
+  @keyframes drift {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+  @keyframes glitch {
+    0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); } 100% { transform: translate(0); }
+  }
+  @keyframes holo-sweep {
+    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+  }
+  @keyframes holoFlow {
+    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+  }
+  .animate-rainbow { animation: rainbow-border 3s linear infinite; }
+  .animate-marquee { animation: marquee 15s linear infinite; }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+  .animate-drift { animation: drift 6s ease-in-out infinite; }
+  .delay-75 { animation-delay: 0.75s; }
+  .delay-500 { animation-delay: 2s; }
+  .delay-1000 { animation-delay: 4s; }
+  .neo-shadow { box-shadow: 8px 8px 0px #000000; }
+  .neo-shadow-sm { box-shadow: 4px 4px 0px #0D0B18; }
+  .neo-shadow-hover:hover { box-shadow: 0px 0px 0px #000000; transform: translate(8px, 8px); }
+  .neo-shadow-active { box-shadow: 0 0 0 #0D0B18; transform: translate(4px, 4px); }
+  .glass {
+    background: rgba(20, 18, 31, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  .glass-card {
+    background: rgba(20, 18, 31, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 4px solid #0D0B18;
+    box-shadow: 6px 6px 0 #0D0B18;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .glass-panel {
+    background: rgba(32, 30, 44, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  }
+  .holographic {
+    background: linear-gradient(135deg, #00dbe944 0%, #ff4b8944 50%, #c3f40044 100%);
+    background-size: 300% 300%;
+    animation: holo-sweep 8s ease infinite;
+  }
+  .holographic-sticker, .holographic-glow {
+    background: linear-gradient(45deg, rgba(0,219,233,0.8), rgba(255,75,137,0.8), rgba(195,244,0,0.8));
+    background-size: 300% 300%;
+    animation: holoFlow 5s ease infinite;
+  }
+  .holographic-gradient {
+    background: linear-gradient(45deg, rgba(0,219,233,0.4), rgba(255,75,137,0.4), rgba(195,244,0,0.4));
+  }
+  .outline-text { -webkit-text-stroke: 3px #c3f400; color: transparent; }
+  .dopamine-texture {
+    background-image: radial-gradient(#c3f400 0.5px, transparent 0.5px), radial-gradient(#ff4b89 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+  .tactical-grid {
+    background-image: radial-gradient(circle, #363342 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .grainy-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999; opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .rare-glow:hover { box-shadow: 0 0 20px #abd600, 6px 6px 0 #0D0B18; border-color: #abd600; }
+  .ultra-rare-glow:hover { box-shadow: 0 0 20px #ff4b89, 6px 6px 0 #0D0B18; border-color: #ff4b89; }
+  .holographic-sticker { border: 4px solid white; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transform: rotate(-5deg); }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block; white-space: nowrap;
+  }
+  .progress-stripe {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px);
+  }
+  .toggle-switch { width: 48px; height: 24px; background: #1c1a27; border: 2px solid #363342; position: relative; cursor: pointer; transition: all 0.2s; }
+  .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #8e9379; transition: all 0.2s; }
+  .toggle-active .toggle-switch { background: #abd600; border-color: #0D0B18; }
+  .toggle-active .toggle-switch::after { left: 26px; background: #0D0B18; }
+  .grain-overlay { opacity: 0.05; pointer-events: none; }
+  input:focus { outline: none; box-shadow: 0 0 0 4px rgba(195, 244, 0, 0.3); }
+  #toast-container .opacity-100 { pointer-events: auto; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #14121f; }
+  ::-webkit-scrollbar-thumb { background: #363342; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #abd600; }
+  .eye-container { perspective: 1000px; }
+  .neo-shadow-active { box-shadow: 0 0 0 #0D0B18; transform: translate(4px, 4px); }
+  html, body { max-width: 100vw; overflow-x: hidden; }
+</style>
+<style>
+  .grain-overlay-auth {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCfJqaoD6fVjOnQT8O-p6ObjlFOYXhtLLGziHKSRaCJ44SI3Ytqm-noFfvFhPStCz-VAoCeDBUNHKhyUy5aCDDPXexsb1X1SnuWzaq7mNfbgiMFQzr71UlR-BmkblZqA7yeuKgOwUwLgpRQl2Amii-8czBWd_G3R_ZCboitPNMPBX9Qc5Jm7CFmWtdsIQnfqV7mpMM1v9oTub3BCPfqaqwx2H8WMlruEkpM-vQPTvvohILtVuItfyLsiUzVMJuz69Om6NMccMIjpWa5);
+    filter: contrast(150%) brightness(100%);
+  }
+</style>
 </head>
-<body class="bg-background text-on-surface min-h-screen flex items-center justify-center overflow-x-hidden p-md font-body-md selection:bg-primary-container selection:text-on-primary-container">
-
-<div class="w-full max-w-md relative z-10 glass-panel p-lg rounded-2xl border-border-width border-surface-container-highest neo-shadow">
-  <!-- Logo -->
-  <div class="text-center mb-xl">
-    <a href="/" class="font-headline-lg text-primary-container italic uppercase tracking-tighter hover:text-primary transition-colors">DOPAMINE CLUB</a>
-    <p class="text-on-surface-variant mt-sm text-sm font-label-bold uppercase tracking-widest">System Access</p>
-  </div>
-
-  <!-- Mode toggle -->
-  <div class="flex bg-surface-container border-2 border-surface-container-highest rounded-xl p-xs mb-lg relative overflow-hidden">
-    <div id="mode-indicator" class="absolute top-xs bottom-xs w-[calc(50%-4px)] bg-primary-container rounded-lg border-2 border-black transition-transform duration-300"></div>
-    <button id="btn-login" onclick="setAuthMode('login')" class="relative z-10 flex-1 py-sm font-label-bold text-on-primary-container text-sm rounded-lg transition-colors">LOG IN</button>
-    <button id="btn-signup" onclick="setAuthMode('signup')" class="relative z-10 flex-1 py-sm font-label-bold text-on-surface-variant text-sm rounded-lg transition-colors">JOIN CLUB</button>
-  </div>
-
-  <div id="auth-mode-title" class="font-headline-md text-primary mb-md text-center uppercase tracking-tight">Welcome Back</div>
-
-  <!-- Form -->
-  <div class="space-y-md">
-    <!-- Name (signup only) -->
-    <div id="name-section" class="hidden">
-      <label class="font-label-bold text-on-surface text-xs uppercase tracking-wider block mb-xs">Handle</label>
-      <input id="name-input" type="text" placeholder="your_dopamine_name" autocomplete="username"
-        class="w-full bg-surface-container-highest border-2 border-surface-container-highest rounded-xl px-md py-sm font-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:bg-surface-container focus:ring-0 transition-colors"/>
-      <p id="name-input-error" class="hidden text-error text-xs mt-xs font-label-bold"></p>
-    </div>
-
-    <!-- Email -->
-    <div>
-      <label class="font-label-bold text-on-surface text-xs uppercase tracking-wider block mb-xs">Comm Link (Email)</label>
-      <input id="email-input" type="email" placeholder="you@dopamine.club" autocomplete="email"
-        class="w-full bg-surface-container-highest border-2 border-surface-container-highest rounded-xl px-md py-sm font-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:bg-surface-container focus:ring-0 transition-colors"/>
-      <p id="email-input-error" class="hidden text-error text-xs mt-xs font-label-bold"></p>
-    </div>
-
-    <!-- Password -->
-    <div>
-      <label class="font-label-bold text-on-surface text-xs uppercase tracking-wider block mb-xs">Passcode</label>
-      <div class="relative">
-        <input id="password-input" type="password" placeholder="Min 6 characters" autocomplete="current-password"
-          class="w-full bg-surface-container-highest border-2 border-surface-container-highest rounded-xl px-md py-sm pr-12 font-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:bg-surface-container focus:ring-0 transition-colors"/>
-        <button type="button" onclick="togglePasswordVisibility()" class="absolute right-sm top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors text-lg" id="pw-toggle-btn">visibility</button>
-      </div>
-      <p id="password-input-error" class="hidden text-error text-xs mt-xs font-label-bold"></p>
-    </div>
-
-    <!-- Submit -->
-    <button id="submit-btn" class="w-full bg-primary-fixed text-on-primary-fixed font-headline-md py-md rounded-xl border-border-width border-black shadow-[6px_6px_0px_#000] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none active:scale-[0.98] transition-all uppercase tracking-tight mt-sm">
-      INITIALIZE
-    </button>
-
-    <!-- Demo credentials hint -->
-    <div class="text-center text-xs text-on-surface-variant space-y-xs border-t-border-width border-surface-container-highest pt-md mt-md">
-      <p>Demo mode bypass:</p>
-      <div class="flex justify-center gap-sm mt-xs">
-        <button onclick="fillDemo('user')" class="bg-surface-container hover:bg-surface-container-highest text-primary font-label-bold px-sm py-xs rounded transition-colors border border-surface-container-highest">USER DEMO</button>
-        <button onclick="fillDemo('admin')" class="bg-surface-container hover:bg-surface-container-highest text-secondary-container font-label-bold px-sm py-xs rounded transition-colors border border-surface-container-highest">ADMIN OVERRIDE</button>
-      </div>
-    </div>
-  </div>
-
-  <p class="text-center mt-lg text-on-surface-variant text-sm font-label-bold">
-    <a href="/" class="hover:text-primary-container hover:underline underline-offset-4 transition-colors">← ABORT TO HOME</a>
-  </p>
+<body class="bg-background text-on-surface min-h-screen overflow-x-hidden font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div id="toast-container" class="fixed bottom-12 right-6 z-[9999] flex flex-col gap-3 pointer-events-none max-w-xs w-full"></div>
+<div class="grainy-overlay"></div>
+<!-- Background Layers -->
+<div class="fixed inset-0 z-0">
+  <div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest via-surface-dim to-surface-container-low"></div>
+  <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary-fixed/20 blur-[120px] rounded-full"></div>
+  <div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary-container/20 blur-[120px] rounded-full"></div>
+  <div class="absolute inset-0 grain-overlay-auth opacity-20 pointer-events-none"></div>
 </div>
-
+<!-- Auth Shell -->
+<main class="relative z-10 flex items-center justify-center min-h-screen p-md lg:p-xl">
+  <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 bg-surface-container-lowest rounded-[40px] border-4 border-surface-variant neo-shadow overflow-hidden">
+    <!-- Left Side: Mascot -->
+    <div class="hidden lg:flex flex-col items-center justify-center p-xl relative overflow-hidden bg-surface-container">
+      <div class="absolute inset-0 holographic-gradient opacity-10"></div>
+      <div class="relative w-80 h-80 flex items-center justify-center" id="mascot-container" style="animation: drift 6s ease-in-out infinite;">
+        <div class="absolute inset-0 bg-primary-fixed rounded-[45%_55%_70%_30%_/_30%_40%_60%_70%] border-4 border-on-surface neo-shadow animate-pulse"></div>
+        <div class="relative z-10 flex gap-md">
+          <div class="w-16 h-16 bg-on-surface rounded-full flex items-center justify-center overflow-hidden border-4 border-on-surface">
+            <div class="w-6 h-6 bg-primary rounded-full transition-transform duration-75" id="eye-left"></div>
+          </div>
+          <div class="w-16 h-16 bg-on-surface rounded-full flex items-center justify-center overflow-hidden border-4 border-on-surface">
+            <div class="w-6 h-6 bg-primary rounded-full transition-transform duration-75" id="eye-right"></div>
+          </div>
+        </div>
+        <div class="absolute bottom-20 w-12 h-4 border-b-4 border-on-surface rounded-full"></div>
+      </div>
+      <div class="mt-xl text-center relative z-10">
+        <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter uppercase italic">DOPAMINE CLUB</h1>
+        <p class="font-label-bold text-label-bold text-on-surface-variant mt-sm tracking-widest">GET YOUR FIX. JOIN THE VAULT.</p>
+      </div>
+      <div class="absolute top-10 left-10 rotate-[-12deg] bg-secondary-container text-on-secondary px-md py-xs font-label-bold text-label-bold rounded-full border-4 border-on-surface neo-shadow-sm">RARE DROPS</div>
+      <div class="absolute bottom-20 right-10 rotate-[8deg] bg-tertiary-fixed-dim text-on-tertiary-fixed px-md py-xs font-label-bold text-label-bold rounded-full border-4 border-on-surface neo-shadow-sm">VIBE CHECK: 100%</div>
+    </div>
+    <!-- Right Side: Auth Form -->
+    <div class="flex flex-col p-md md:p-xl glass-card border-l-0 lg:border-l-4 border-surface-variant">
+      <div class="relative flex bg-surface-container-high p-xs rounded-full border-4 border-surface-variant mb-xl neo-shadow-sm">
+        <div class="absolute top-xs bottom-xs left-xs w-[calc(50%-4px)] bg-primary-fixed rounded-full transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]" id="toggle-bg"></div>
+        <button class="relative z-10 flex-1 py-sm font-label-bold text-label-bold transition-colors duration-300 text-on-primary-fixed" id="btn-login" onclick="toggleAuth('login')">LOGIN</button>
+        <button class="relative z-10 flex-1 py-sm font-label-bold text-label-bold text-on-surface-variant transition-colors duration-300" id="btn-signup" onclick="toggleAuth('signup')">SIGN UP</button>
+      </div>
+      <div class="space-y-md">
+        <div id="auth-title">
+          <h2 class="font-headline-md text-headline-md text-primary mb-xs">WELCOME BACK</h2>
+          <p class="text-on-surface-variant">The arcade is waiting for you.</p>
+        </div>
+        <!-- Social Auth Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+          <button class="flex items-center justify-center p-sm bg-surface-bright rounded-xl border-4 border-on-surface neo-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all group">
+            <span class="material-symbols-outlined text-headline-md group-hover:scale-110 transition-transform">google</span>
+          </button>
+          <button class="flex items-center justify-center p-sm bg-surface-bright rounded-xl border-4 border-on-surface neo-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all group">
+            <span class="material-symbols-outlined text-headline-md group-hover:scale-110 transition-transform">file_download</span>
+          </button>
+          <button class="flex items-center justify-center p-sm bg-surface-bright rounded-xl border-4 border-on-surface neo-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all group">
+            <span class="material-symbols-outlined text-headline-md group-hover:scale-110 transition-transform">music_note</span>
+          </button>
+          <button class="flex items-center justify-center p-sm bg-surface-bright rounded-xl border-4 border-on-surface neo-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all group">
+            <span class="material-symbols-outlined text-headline-md group-hover:scale-110 transition-transform">forum</span>
+          </button>
+        </div>
+        <div class="flex items-center gap-sm">
+          <div class="flex-1 h-[2px] bg-surface-variant"></div>
+          <span class="font-label-bold text-label-bold text-on-surface-variant">OR EMAIL</span>
+          <div class="flex-1 h-[2px] bg-surface-variant"></div>
+        </div>
+        <form class="space-y-sm" onsubmit="return false;" id="auth-form">
+          <div class="hidden space-y-sm" id="signup-fields">
+            <div class="space-y-xs">
+              <label class="font-label-bold text-label-bold text-on-surface ml-xs uppercase">Full Name</label>
+              <input class="w-full px-md py-sm bg-surface-container border-4 border-on-surface rounded-xl font-label-bold text-primary focus:border-primary-fixed transition-colors" placeholder="CHAD DOPAMINE" type="text" id="signup-name"/>
+            </div>
+          </div>
+          <div class="space-y-xs">
+            <label class="font-label-bold text-label-bold text-on-surface ml-xs uppercase">Email Address</label>
+            <input class="w-full px-md py-sm bg-surface-container border-4 border-on-surface rounded-xl font-label-bold text-primary focus:border-primary-fixed transition-colors" placeholder="YOU@VAULT.COM" type="email" id="auth-email" autocomplete="email"/>
+          </div>
+          <div class="space-y-xs relative">
+            <label class="font-label-bold text-label-bold text-on-surface ml-xs uppercase">Password</label>
+            <input class="w-full px-md py-sm bg-surface-container border-4 border-on-surface rounded-xl font-label-bold text-primary focus:border-primary-fixed transition-colors" placeholder="••••••••" type="password" id="auth-password" autocomplete="current-password"/>
+            <button class="absolute right-sm top-[38px] text-on-surface-variant" type="button" onclick="togglePassword()">
+              <span class="material-symbols-outlined" id="pw-eye">visibility</span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between py-sm">
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <div class="relative">
+                <input class="peer sr-only" type="checkbox"/>
+                <div class="w-6 h-6 border-4 border-on-surface rounded-md peer-checked:bg-primary-fixed transition-colors"></div>
+                <span class="material-symbols-outlined absolute inset-0 text-on-primary-fixed opacity-0 peer-checked:opacity-100 flex items-center justify-center text-body-md">check</span>
+              </div>
+              <span class="font-label-bold text-label-bold text-on-surface-variant uppercase group-hover:text-primary transition-colors">Remember Me</span>
+            </label>
+            <a class="font-label-bold text-label-bold text-primary-fixed hover:text-white transition-colors" href="#">FORGOT?</a>
+          </div>
+          <button type="button" class="w-full py-md bg-primary-fixed text-on-primary-fixed font-headline-md text-headline-md uppercase italic border-4 border-on-surface rounded-2xl neo-shadow hover:neo-shadow-active transition-all active:scale-95" id="submit-btn" onclick="handleAuth()">LOG IN</button>
+        </form>
+        <p class="text-center font-body-md text-on-surface-variant text-sm mt-md">
+          By entering, you agree to the <a class="text-primary underline decoration-primary-fixed underline-offset-4" href="#">Vault Terms</a> & <a class="text-primary underline decoration-primary-fixed underline-offset-4" href="#">Privacy Loop</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
 <script src="/js/main.js"></script>
 <script src="/js/auth.js"></script>
-<script>
-function togglePasswordVisibility() {
-  const input = document.getElementById('password-input');
-  const btn = document.getElementById('pw-toggle-btn');
-  if (input.type === 'password') { input.type = 'text'; btn.textContent = 'visibility_off'; }
-  else { input.type = 'password'; btn.textContent = 'visibility'; }
-}
-
-function fillDemo(type) {
-  document.getElementById('email-input').value = type === 'admin' ? 'admin@dopamine.club' : 'demo@dopamine.club';
-  document.getElementById('password-input').value = type === 'admin' ? 'admin123' : 'demo123';
-  setAuthMode('login');
-}
-
-window.setAuthMode = function(mode) {
-  const submitBtn = document.getElementById('submit-btn');
-  const nameSection = document.getElementById('name-section');
-  const titleEl = document.getElementById('auth-mode-title');
-  const modeIndicator = document.getElementById('mode-indicator');
-  const btnLogin = document.getElementById('btn-login');
-  const btnSignup = document.getElementById('btn-signup');
-  
-  ['email-input', 'password-input', 'name-input'].forEach(id => {
-    const errEl = document.getElementById(id + '-error');
-    if (errEl) { errEl.textContent = ''; errEl.classList.add('hidden'); }
-    const inputEl = document.getElementById(id);
-    if (inputEl) inputEl.classList.remove('border-error');
-  });
-
-  if (mode === 'signup') {
-    submitBtn.textContent = 'CREATE RECORD';
-    submitBtn.dataset.mode = 'signup';
-    nameSection.classList.remove('hidden');
-    titleEl.textContent = 'Join the Club';
-    modeIndicator.style.transform = 'translateX(100%)';
-    btnLogin.classList.remove('text-on-primary-container');
-    btnLogin.classList.add('text-on-surface-variant');
-    btnSignup.classList.add('text-on-primary-container');
-    btnSignup.classList.remove('text-on-surface-variant');
-  } else {
-    submitBtn.textContent = 'INITIALIZE';
-    submitBtn.dataset.mode = 'login';
-    nameSection.classList.add('hidden');
-    titleEl.textContent = 'Welcome Back';
-    modeIndicator.style.transform = 'translateX(0)';
-    btnLogin.classList.add('text-on-primary-container');
-    btnLogin.classList.remove('text-on-surface-variant');
-    btnSignup.classList.remove('text-on-primary-container');
-    btnSignup.classList.add('text-on-surface-variant');
-  }
-};
-</script>
-</body></html>
+</body>
+</html>

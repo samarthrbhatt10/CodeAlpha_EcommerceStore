@@ -18,8 +18,14 @@ function setMainImage(src, thumbEl) {
             mainImg.style.opacity = '1';
         }, 150);
     }
-    document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('ring-2', 'ring-primary-container'));
-    if (thumbEl) thumbEl.classList.add('ring-2', 'ring-primary-container');
+    document.querySelectorAll('.pdp-thumb').forEach(t => {
+        t.classList.remove('border-primary-container', 'opacity-100');
+        t.classList.add('opacity-60');
+    });
+    if (thumbEl) {
+        thumbEl.classList.remove('opacity-60');
+        thumbEl.classList.add('border-primary-container', 'opacity-100');
+    }
 }
 
 // ─── SIZE SELECTION ──────────────────────────────────────────
@@ -42,7 +48,8 @@ function buildPDP(product) {
 
     // Title & meta
     const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-    set('pdp-title', product.name);
+    set('pdp-heading', product.name);
+    set('pdp-breadcrumb', product.name);
     set('pdp-desc', product.description);
     set('pdp-price', `$${product.price.toFixed(2)}`);
     set('pdp-rarity', product.rarity || 'STANDARD');
@@ -98,7 +105,7 @@ function buildPDP(product) {
     const thumbContainer = document.getElementById('pdp-thumbs');
     if (thumbContainer && product.images?.length > 1) {
         thumbContainer.innerHTML = product.images.map((img, i) => `
-            <div class="pdp-thumb aspect-square rounded-lg overflow-hidden border-2 cursor-pointer transition-all ${i === 0 ? 'border-primary-container ring-2 ring-primary-container' : 'border-surface-container-highest'} hover:border-primary-container"
+            <div class="pdp-thumb aspect-square neo-border rounded-lg overflow-hidden bg-surface-container cursor-pointer hover:scale-105 transition-transform ${i === 0 ? 'border-primary-container opacity-100' : 'opacity-60'}"
                  onclick="setMainImage('${img}', this)">
                 <img src="${img}" alt="View ${i + 1}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none'"/>
             </div>
@@ -124,6 +131,29 @@ function buildPDP(product) {
     const tagsEl = document.getElementById('pdp-tags');
     if (tagsEl && product.tags?.length > 0) {
         tagsEl.innerHTML = product.tags.map(t => `<span class="text-xs font-label-bold px-xs py-[2px] bg-surface-container-high border border-surface-container-highest rounded text-on-surface-variant uppercase">#${t}</span>`).join('');
+    }
+
+    // Tactical Specs
+    const specsContainer = document.getElementById('pdp-tactical-specs');
+    if (specsContainer) {
+        specsContainer.innerHTML = `
+            <div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+                <span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Material Composition</span>
+                <span class="text-primary font-label-bold">${product.category === 'Apparel' ? 'COTTON-BLEND' : 'DURANIUM-FIBER'}</span>
+            </div>
+            <div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+                <span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Condition</span>
+                <span class="text-primary font-label-bold">MINT_CONDITION</span>
+            </div>
+            <div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+                <span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Release Date</span>
+                <span class="text-primary font-label-bold">CURRENT_CYCLE</span>
+            </div>
+            <div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+                <span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Stock Status</span>
+                <span class="text-primary font-label-bold">${product.stock > 0 ? product.stock + ' UNITS' : 'DEPLETED'}</span>
+            </div>
+        `;
     }
 
     // Add to cart button
@@ -158,7 +188,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Loading state
-    document.getElementById('pdp-title')?.closest('div')?.classList.add('animate-pulse');
+    document.getElementById('pdp-heading')?.closest('div')?.classList.add('animate-pulse');
 
     try {
         const res = await fetch(`/api/products/${productId}`);

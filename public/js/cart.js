@@ -1,119 +1,96 @@
-// cart.js — Cart page (renders cart from localStorage, different from drawer)
-
+// cart.js — Fixed element IDs to match cart.html
 document.addEventListener('DOMContentLoaded', () => {
     renderCartPage();
 });
 
 function renderCartPage() {
-    const container = document.getElementById('cart-page-items');
-    const summaryEl = document.getElementById('cart-page-summary');
-    const emptyEl = document.getElementById('cart-empty-state');
-    const filledEl = document.getElementById('cart-filled-state');
+    const itemsList = document.getElementById('cart-items-list');
+    const emptyCart = document.getElementById('empty-cart');
+    const countEl = document.getElementById('cart-page-count');
+    const subtotalEl = document.getElementById('cart-page-subtotal');
+    const shippingEl = document.getElementById('cart-page-shipping');
+    const taxEl = document.getElementById('cart-page-tax');
+    const totalEl = document.getElementById('cart-page-total');
 
-    if (!container) return;
-
-    const cart = (() => { try { return JSON.parse(localStorage.getItem('dopamine_cart')) || []; } catch(e) { return []; }})();
+    if (!itemsList) return;
 
     if (cart.length === 0) {
-        if (emptyEl) emptyEl.classList.remove('hidden');
-        if (filledEl) filledEl.classList.add('hidden');
+        if (itemsList) itemsList.innerHTML = '';
+        if (emptyCart) emptyCart.classList.remove('hidden');
+        if (countEl) countEl.textContent = '0 ITEMS';
+        if (subtotalEl) subtotalEl.textContent = '$0.00';
+        if (taxEl) taxEl.textContent = '$0.00';
+        if (totalEl) totalEl.textContent = '$0.00';
+        if (shippingEl) shippingEl.textContent = 'FREE';
         return;
     }
 
-    if (emptyEl) emptyEl.classList.add('hidden');
-    if (filledEl) filledEl.classList.remove('hidden');
+    if (emptyCart) emptyCart.classList.add('hidden');
+
+    const itemCount = cart.reduce((acc, i) => acc + i.quantity, 0);
+    if (countEl) countEl.textContent = `${itemCount} ITEM${itemCount !== 1 ? 'S' : ''}`;
 
     const subtotal = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
-    const shipping = subtotal > 200 ? 0 : 12.99;
     const tax = subtotal * 0.08;
-    const total = subtotal + shipping + tax;
+    const shipping = subtotal > 150 ? 0 : subtotal > 0 ? 9.99 : 0;
+    const total = subtotal + tax + shipping;
 
-    container.innerHTML = cart.map(item => `
-        <div class="relative group" id="cart-item-${item._id}-${item.selectedSize.replace(/\\s/g, '_')}">
-            <div class="flex flex-col sm:flex-row gap-md glass-panel p-md rounded-xl border-border-width border-surface-container-highest neo-shadow transition-all hover:scale-[1.01]">
-                <div class="w-full sm:w-32 h-32 bg-surface-container rounded-lg border-2 border-surface-container-highest flex-shrink-0 overflow-hidden">
-                    <img src="${item.images[0]}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'"/>
+    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+    if (shippingEl) shippingEl.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+    if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+
+    itemsList.innerHTML = cart.map(item => `
+        <div class="glass-card flex gap-md group transition-all hover:-translate-y-1">
+            <div class="w-28 h-36 bg-surface-container overflow-hidden flex-shrink-0 cursor-pointer border-4 border-black"
+                 onclick="window.location.href='/pdp?id=${item._id}'">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                     src="${item.images[0]}"
+                     alt="${item.name}"
+                     onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200'"/>
+            </div>
+            <div class="flex-1 flex flex-col justify-between py-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-headline-md text-primary uppercase text-lg cursor-pointer hover:text-primary-fixed transition-colors"
+                            onclick="window.location.href='/pdp?id=${item._id}'">${item.name}</h3>
+                        <p class="font-label-bold text-xs text-on-surface-variant uppercase mt-xs">Size: ${item.selectedSize}</p>
+                        <p class="font-label-bold text-xs text-primary-fixed mt-xs">$${item.price.toFixed(2)} each</p>
+                    </div>
+                    <button onclick="removeFromCart('${item._id}', '${item.selectedSize}'); renderCartPage();"
+                            class="material-symbols-outlined text-on-surface-variant hover:text-error transition-colors p-xs">
+                        close
+                    </button>
                 </div>
-                <div class="flex-1 flex flex-col justify-between">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="font-headline-md text-primary text-xl uppercase">${item.name}</h4>
-                            <p class="font-label-bold text-on-surface-variant mt-xs">SIZE: ${item.selectedSize}</p>
-                        </div>
-                        <button onclick="cartPageRemove('${item._id}', '${item.selectedSize}')" class="material-symbols-outlined text-error hover:scale-125 transition-transform text-2xl">delete</button>
+                <div class="flex items-center justify-between mt-sm">
+                    <div class="flex items-center border-4 border-black bg-surface-container">
+                        <button onclick="updateCartQuantity('${item._id}', '${item.selectedSize}', -1); renderCartPage();"
+                                class="px-md py-xs hover:bg-surface-container-highest transition-colors font-bold text-xl active:scale-95">
+                            −
+                        </button>
+                        <span class="px-lg py-xs font-headline-md text-lg border-x-4 border-black min-w-[3.5rem] text-center">
+                            ${item.quantity.toString().padStart(2, '0')}
+                        </span>
+                        <button onclick="updateCartQuantity('${item._id}', '${item.selectedSize}', 1); renderCartPage();"
+                                class="px-md py-xs hover:bg-surface-container-highest transition-colors font-bold text-xl active:scale-95">
+                            +
+                        </button>
                     </div>
-                    <div class="flex justify-between items-end mt-md">
-                        <div class="flex items-center gap-xs bg-surface-container p-xs rounded border-border-width border-surface-container-highest">
-                            <button onclick="cartPageQty('${item._id}', '${item.selectedSize}', -1)" class="w-8 h-8 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">-</button>
-                            <span class="font-label-bold px-sm text-lg">${item.quantity}</span>
-                            <button onclick="cartPageQty('${item._id}', '${item.selectedSize}', 1)" class="w-8 h-8 flex items-center justify-center font-bold text-on-surface hover:text-primary-container active:scale-125 transition-transform">+</button>
-                        </div>
-                        <span class="font-headline-md text-primary-container text-2xl">$${(item.price * item.quantity).toFixed(2)}</span>
-                    </div>
+                    <span class="font-headline-md text-primary-fixed text-xl">$${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
             </div>
         </div>
     `).join('');
+}
 
-    if (summaryEl) {
-        summaryEl.innerHTML = `
-            <div class="space-y-md">
-                <div class="relative">
-                    <label class="block text-[10px] font-label-bold text-on-surface-variant mb-xs ml-xs">Got a discount code? ☕</label>
-                    <div class="flex gap-xs">
-                        <input type="text" placeholder="DROPCODE_404" class="flex-1 bg-surface-container border-border-width border-surface-container-highest rounded px-sm py-xs font-label-bold focus:ring-2 focus:ring-primary-container focus:outline-none text-primary placeholder:text-on-surface-variant/30" />
-                        <button class="bg-primary text-background px-md py-xs rounded font-label-bold border-border-width border-surface-container-highest neo-shadow active-neo-interaction">APPLY</button>
-                    </div>
-                </div>
-
-                <div class="space-y-sm">
-                    <div class="flex justify-between font-label-bold">
-                        <span class="text-on-surface-variant">SUBTOTAL (${cart.reduce((a, i) => a + i.quantity, 0)} items)</span>
-                        <span class="text-primary">$${subtotal.toFixed(2)}</span>
-                    </div>
-                    <div class="flex justify-between font-label-bold">
-                        <span class="text-on-surface-variant">SHIPPING</span>
-                        <span class="${shipping === 0 ? 'text-primary-fixed' : 'text-secondary-container'}">${shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2)}</span>
-                    </div>
-                    <div class="flex justify-between font-label-bold">
-                        <span class="text-on-surface-variant">TAX (8%)</span>
-                        <span class="text-primary">$${tax.toFixed(2)}</span>
-                    </div>
-                    ${subtotal < 200 ? `<p class="text-[10px] font-label-bold text-[#c3f400] text-right italic">Add $${(200 - subtotal).toFixed(2)} more for FREE shipping!</p>` : ''}
-                    
-                    <div class="flex justify-between font-headline-md text-headline-md pt-sm border-t-border-width border-surface-container-highest mt-md">
-                        <span class="text-primary">TOTAL</span>
-                        <span class="text-primary-container">$${total.toFixed(2)}</span>
-                    </div>
-                </div>
-                
-                <button onclick="checkout()" class="w-full py-md bg-primary-container text-on-primary-container font-headline-md text-headline-md rounded border-border-width border-surface-container-highest neo-shadow active-neo-interaction flex justify-center items-center gap-md group">
-                    CHECKOUT NOW
-                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                </button>
-                <button onclick="window.location.href='/catalog.html'" class="w-full text-on-surface-variant font-label-bold py-xs text-center hover:text-primary transition-colors text-sm">
-                    ← Continue Shopping
-                </button>
-            </div>
-        `;
+window.applyPromo = function() {
+    const input = document.getElementById('promo-input');
+    if (!input || !input.value.trim()) { showToast('Enter a promo code', 'warning'); return; }
+    const code = input.value.trim().toUpperCase();
+    const codes = { 'DOPAMINE10': 10, 'VAULT20': 20, 'CHAOS15': 15 };
+    if (codes[code]) {
+        showToast(`${code} applied! ${codes[code]}% off`, 'success');
+    } else {
+        showToast('Invalid promo code', 'error');
     }
-}
-
-function cartPageRemove(id, size) {
-    let cart = (() => { try { return JSON.parse(localStorage.getItem('dopamine_cart')) || []; } catch(e) { return []; }})();
-    cart = cart.filter(i => !(i._id === id && i.selectedSize === size));
-    localStorage.setItem('dopamine_cart', JSON.stringify(cart));
-    renderCartPage();
-    if (typeof showToast === 'function') showToast('Item removed', 'info');
-}
-
-function cartPageQty(id, size, delta) {
-    let cart = (() => { try { return JSON.parse(localStorage.getItem('dopamine_cart')) || []; } catch(e) { return []; }})();
-    const item = cart.find(i => i._id === id && i.selectedSize === size);
-    if (item) {
-        item.quantity += delta;
-        if (item.quantity <= 0) cart = cart.filter(i => !(i._id === id && i.selectedSize === size));
-    }
-    localStorage.setItem('dopamine_cart', JSON.stringify(cart));
-    renderCartPage();
-}
+};

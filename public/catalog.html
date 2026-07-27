@@ -1,86 +1,447 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DOPAMINE CLUB | CATALOG</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="/js/shared_layout.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="DOPAMINE CLUB Vault — Browse all limited drops. Filter by category, price, and rarity."/>
+<title>DOPAMINE CLUB | THE DROP VAULT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "secondary-fixed": "#ffd9e0",
+          "surface-variant": "#363342",
+          "primary": "#ffffff",
+          "on-error-container": "#ffdad6",
+          "surface-container-low": "#1c1a27",
+          "surface": "#14121f",
+          "primary-fixed-dim": "#abd600",
+          "tertiary": "#ffffff",
+          "on-background": "#e5e0f3",
+          "primary-fixed": "#c3f400",
+          "primary-container": "#c3f400",
+          "on-primary": "#283500",
+          "on-tertiary-container": "#006f77",
+          "surface-dim": "#14121f",
+          "tertiary-fixed-dim": "#00dbe9",
+          "surface-container-lowest": "#0e0c1a",
+          "background": "#14121f",
+          "secondary-fixed-dim": "#ffb1c3",
+          "inverse-primary": "#506600",
+          "on-tertiary-fixed": "#002022",
+          "on-tertiary": "#00363a",
+          "on-secondary-fixed-variant": "#8f0041",
+          "on-secondary-fixed": "#3f0019",
+          "on-secondary-container": "#590026",
+          "outline-variant": "#444933",
+          "inverse-surface": "#e5e0f3",
+          "on-surface-variant": "#c4c9ac",
+          "error": "#ffb4ab",
+          "on-surface": "#e5e0f3",
+          "secondary-container": "#ff4b89",
+          "on-primary-fixed": "#161e00",
+          "on-secondary": "#66002c",
+          "surface-container": "#201e2c",
+          "surface-container-highest": "#363342",
+          "inverse-on-surface": "#312f3d",
+          "secondary": "#ffb1c3",
+          "tertiary-container": "#7df4ff",
+          "error-container": "#93000a",
+          "surface-container-high": "#2b2836",
+          "tertiary-fixed": "#7df4ff",
+          "on-primary-fixed-variant": "#3c4d00",
+          "surface-bright": "#3a3746",
+          "on-primary-container": "#556d00",
+          "surface-tint": "#abd600",
+          "on-error": "#690005",
+          "on-tertiary-fixed-variant": "#004f54",
+          "outline": "#8e9379"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+        },
+        spacing: {
+          "offset-shadow": "8px 8px 0px #000000",
+          lg: "48px", md: "24px", base: "8px",
+          "border-width": "4px", xs: "4px", sm: "12px", xl: "80px"
+        },
+        fontFamily: {
+          "headline-lg": ["Syne"],
+          "headline-md": ["Syne"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "display-xl": ["Syne"],
+          "headline-lg-mobile": ["Syne"],
+          "label-bold": ["Space Grotesk"]
+        },
+        fontSize: {
+          "headline-lg": ["48px", {lineHeight:"1.2", fontWeight:"800"}],
+          "headline-md": ["24px", {lineHeight:"1.3", fontWeight:"700"}],
+          "body-lg": ["18px", {lineHeight:"1.6", fontWeight:"500"}],
+          "body-md": ["16px", {lineHeight:"1.6", fontWeight:"400"}],
+          "display-xl": ["80px", {lineHeight:"1.1", letterSpacing:"-0.04em", fontWeight:"800"}],
+          "headline-lg-mobile": ["32px", {lineHeight:"1.2", fontWeight:"800"}],
+          "label-bold": ["14px", {lineHeight:"1.0", fontWeight:"700"}]
+        }
+      }
+    }
+  };
+</script>
+<style>
+  @keyframes rainbow-border {
+    0% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
+    33% { border-color: #c3f400; box-shadow: 0 0 10px #c3f400; }
+    66% { border-color: #00dbe9; box-shadow: 0 0 10px #00dbe9; }
+    100% { border-color: #ff4b89; box-shadow: 0 0 10px #ff4b89; }
+  }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(-1deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+  }
+  @keyframes drift {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+  @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+  @keyframes glitch {
+    0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); } 100% { transform: translate(0); }
+  }
+  @keyframes holo-sweep {
+    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+  }
+  @keyframes holoFlow {
+    0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+  }
+  .animate-rainbow { animation: rainbow-border 3s linear infinite; }
+  .animate-marquee { animation: marquee 15s linear infinite; }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+  .animate-drift { animation: drift 6s ease-in-out infinite; }
+  .delay-75 { animation-delay: 0.75s; }
+  .delay-500 { animation-delay: 2s; }
+  .delay-1000 { animation-delay: 4s; }
+  .neo-shadow { box-shadow: 8px 8px 0px #000000; }
+  .neo-shadow-sm { box-shadow: 4px 4px 0px #0D0B18; }
+  .neo-shadow-hover:hover { box-shadow: 0px 0px 0px #000000; transform: translate(8px, 8px); }
+  .neo-shadow-active { box-shadow: 0 0 0 #0D0B18; transform: translate(4px, 4px); }
+  .glass {
+    background: rgba(20, 18, 31, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  .glass-card {
+    background: rgba(20, 18, 31, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 4px solid #0D0B18;
+    box-shadow: 6px 6px 0 #0D0B18;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .glass-panel {
+    background: rgba(32, 30, 44, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+  }
+  .holographic {
+    background: linear-gradient(135deg, #00dbe944 0%, #ff4b8944 50%, #c3f40044 100%);
+    background-size: 300% 300%;
+    animation: holo-sweep 8s ease infinite;
+  }
+  .holographic-sticker, .holographic-glow {
+    background: linear-gradient(45deg, rgba(0,219,233,0.8), rgba(255,75,137,0.8), rgba(195,244,0,0.8));
+    background-size: 300% 300%;
+    animation: holoFlow 5s ease infinite;
+  }
+  .holographic-gradient {
+    background: linear-gradient(45deg, rgba(0,219,233,0.4), rgba(255,75,137,0.4), rgba(195,244,0,0.4));
+  }
+  .outline-text { -webkit-text-stroke: 3px #c3f400; color: transparent; }
+  .dopamine-texture {
+    background-image: radial-gradient(#c3f400 0.5px, transparent 0.5px), radial-gradient(#ff4b89 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+  .tactical-grid {
+    background-image: radial-gradient(circle, #363342 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .grainy-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999; opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+  .rare-glow:hover { box-shadow: 0 0 20px #abd600, 6px 6px 0 #0D0B18; border-color: #abd600; }
+  .ultra-rare-glow:hover { box-shadow: 0 0 20px #ff4b89, 6px 6px 0 #0D0B18; border-color: #ff4b89; }
+  .holographic-sticker { border: 4px solid white; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transform: rotate(-5deg); }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block; white-space: nowrap;
+  }
+  .progress-stripe {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px);
+  }
+  .toggle-switch { width: 48px; height: 24px; background: #1c1a27; border: 2px solid #363342; position: relative; cursor: pointer; transition: all 0.2s; }
+  .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: #8e9379; transition: all 0.2s; }
+  .toggle-active .toggle-switch { background: #abd600; border-color: #0D0B18; }
+  .toggle-active .toggle-switch::after { left: 26px; background: #0D0B18; }
+  .grain-overlay { opacity: 0.05; pointer-events: none; }
+  input:focus { outline: none; box-shadow: 0 0 0 4px rgba(195, 244, 0, 0.3); }
+  #toast-container .opacity-100 { pointer-events: auto; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #14121f; }
+  ::-webkit-scrollbar-thumb { background: #363342; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #abd600; }
+  .eye-container { perspective: 1000px; }
+  .neo-shadow-active { box-shadow: 0 0 0 #0D0B18; transform: translate(4px, 4px); }
+  html, body { max-width: 100vw; overflow-x: hidden; }
+</style>
+<style>
+  .tactical-grid { background-image: radial-gradient(circle, #363342 1px, transparent 1px); background-size: 24px 24px; }
+</style>
 </head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden min-h-screen tactical-grid">
 
-<header class="sticky top-md z-40 flex justify-between items-center px-md py-sm rounded-full border-border-width border-surface-container-highest mt-md mx-auto w-[95%] max-w-7xl bg-surface-container-low/20 backdrop-blur-xl shadow-offset-shadow transition-all duration-300">
-<div class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed cursor-pointer" onclick="window.location.href='/'">
-    DOPAMINE CLUB
+<!-- Live Drop Ticker -->
+<div class="fixed top-0 w-full z-[70] bg-secondary-container text-on-secondary-container font-label-bold text-[11px] py-1.5 uppercase tracking-[0.2em] border-b-4 border-black overflow-hidden whitespace-nowrap">
+  <div class="inline-block animate-marquee">⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp;</div>
+  <div class="inline-block animate-marquee">⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp; ⚡ LIVE DROP: SYSTEM OVERLOAD // 042 ACTIVE &nbsp;&nbsp;•&nbsp;&nbsp;</div>
 </div>
-<nav class="hidden md:flex gap-md items-center">
-    <a class="font-label-bold text-label-bold text-primary-fixed-dim border-b-border-width border-primary-fixed-dim hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">DROPS</a>
-    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="/catalog.html">VAULT</a>
-</nav>
-<div class="flex items-center gap-sm">
-    <button class="p-2 text-primary hover:scale-110 transition-transform relative" data-cart-toggle>
+<!-- TopNavBar -->
+<header class="fixed top-10 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 rounded-none mx-auto w-[98%] max-w-[1600px] border-4 border-black bg-surface/80 backdrop-blur-xl transition-all" style="left:1%;right:1%;max-width:1600px;margin:0 auto;">
+  <div class="flex items-center gap-6">
+    <a href="/" class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary flex items-center gap-2 select-none no-underline">DOPAMINE CLUB</a>
+    <div class="hidden xl:flex items-center gap-3 px-4 py-1.5 bg-black/40 border-2 border-primary-fixed/30 rounded-sm">
+      <div class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse shadow-[0_0_10px_#c3f400]"></div>
+      <span class="font-label-bold text-[10px] text-primary-fixed uppercase tracking-widest">System: Operational</span>
+      <span class="text-[10px] text-white/40 font-label-bold">|</span>
+      <span class="font-label-bold text-[10px] text-white/60 uppercase tracking-widest">Ping: 14ms</span>
+    </div>
+  </div>
+  <nav class="hidden lg:flex items-center gap-lg">
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/catalog">VAULT</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/drop">LIVE DROP</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/trade">TRADE HUB</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/unboxing">UNBOXING</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/chat">SQUAD CHAT</a>
+    <a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-all uppercase" href="/recruitment">RECRUIT</a>
+  </nav>
+  <div class="flex items-center gap-6">
+    <div class="hidden sm:flex gap-6 items-center">
+      <button data-cart-toggle class="relative p-2 text-primary hover:text-primary-fixed transition-colors" onclick="window.location.href='/cart.html'">
         <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
-        <span id="nav-cart-count" class="absolute -top-1 -right-1 bg-primary-container text-on-primary-container text-[10px] font-bold px-1 rounded-full">0</span>
+        <span data-cart-count class="absolute -top-1 -right-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold px-1.5 rounded-sm border-2 border-black hidden items-center justify-center">0</span>
+      </button>
+    </div>
+    <button data-auth-login onclick="window.location.href='/auth.html'" class="font-label-bold text-label-bold bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-none border-4 border-black hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all neo-shadow active:scale-95 uppercase">LOGIN</button>
+    <button id="mobile-menu-btn" class="lg:hidden p-2 text-primary">
+      <span class="material-symbols-outlined">menu</span>
     </button>
-    <button onclick="window.location.href='/auth.html'" id="nav-auth-btn" class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-md py-xs rounded-full border-border-width border-surface-variant hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95">LOGIN</button>
-</div>
+  </div>
 </header>
-
-<main class="pt-20 pb-xl px-md max-w-7xl mx-auto relative">
-<!-- Stickers scattered around UI -->
-<div class="holographic-sticker absolute -top-10 -left-10 px-sm py-xs font-label-bold text-on-tertiary-fixed rounded-lg z-10 rotate-[-12deg]">NEW DROP</div>
-<div class="holographic-sticker absolute top-20 right-0 px-sm py-xs font-label-bold text-on-tertiary-fixed rounded-full z-10 rotate-[15deg]">LIMITED</div>
-
-<!-- Section Title and Search -->
-<div class="mb-xl text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-lg">
-    <div>
-        <h1 class="font-display-xl text-[64px] md:text-display-xl uppercase tracking-tighter leading-none mb-md">
-            Find Your <span class="text-primary-fixed italic">Vibe</span>
-        </h1>
-        <div class="flex flex-wrap gap-sm mt-md">
-            <button onclick="setCategory('ALL', this)" data-filter-btn class="bg-primary-container text-on-primary-container border-border-width border-black px-md py-sm font-label-bold text-label-bold rounded-full hover:scale-105 transition-all shadow-offset-shadow">ALL DROPS</button>
-            <button onclick="setCategory('Apparel', this)" data-filter-btn class="bg-surface-container-high text-on-surface-variant border-border-width border-surface-container-highest px-md py-sm font-label-bold text-label-bold rounded-full hover:border-primary-fixed hover:text-primary-fixed transition-all">APPAREL</button>
-            <button onclick="setCategory('Accessories', this)" data-filter-btn class="bg-surface-container-high text-on-surface-variant border-border-width border-surface-container-highest px-md py-sm font-label-bold text-label-bold rounded-full hover:border-primary-fixed hover:text-primary-fixed transition-all">ACCESSORIES</button>
-            <button onclick="setCategory('Collectibles', this)" data-filter-btn class="bg-surface-container-high text-on-surface-variant border-border-width border-surface-container-highest px-md py-sm font-label-bold text-label-bold rounded-full hover:border-primary-fixed hover:text-primary-fixed transition-all">COLLECTIBLES</button>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed inset-0 z-[80] bg-surface flex-col items-center justify-center gap-xl">
+  <a href="/catalog.html" class="font-display-xl text-[40px] text-primary-fixed uppercase">DROPS</a>
+  <a href="/catalog.html" class="font-display-xl text-[40px] text-on-surface-variant hover:text-primary-fixed uppercase">VAULT</a>
+  <a href="#" class="font-display-xl text-[40px] text-on-surface-variant hover:text-primary-fixed uppercase">GAMES</a>
+  <a href="#" class="font-display-xl text-[40px] text-on-surface-variant hover:text-primary-fixed uppercase">CLUBS</a>
+  <button data-auth-login onclick="window.location.href='/auth.html'" class="mt-8 font-label-bold text-label-bold bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-full border-4 border-black neo-shadow uppercase">LOGIN</button>
+  <button id="mobile-menu-close" class="absolute top-8 right-8 p-2 text-primary" onclick="document.getElementById('mobile-menu').classList.add('hidden')">
+    <span class="material-symbols-outlined text-3xl">close</span>
+  </button>
+</div>
+<!-- Toast Container -->
+<div id="toast-container" class="fixed bottom-12 right-6 z-[9999] flex flex-col gap-3 pointer-events-none max-w-xs w-full"></div>
+<div class="grainy-overlay"></div>
+<main class="pt-40 pb-xl px-md max-w-7xl mx-auto flex flex-col md:flex-row gap-lg">
+  <!-- Command Filter Sidebar -->
+  <aside class="w-full md:w-64 flex-shrink-0">
+    <div class="glass-card p-md sticky top-40">
+      <h2 class="font-label-bold text-label-bold uppercase tracking-widest text-primary-fixed-dim mb-md">COMMAND_FILTER</h2>
+      <div class="space-y-sm">
+        <div>
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase mb-xs tracking-widest">Category</p>
+          <div class="space-y-xs">
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="checkbox" class="sr-only peer" checked onchange="filterCatalog()">
+              <div class="w-5 h-5 border-2 border-surface-variant peer-checked:bg-primary-fixed peer-checked:border-primary-fixed rounded-sm transition-all"></div>
+              <span class="font-label-bold text-label-bold text-on-surface-variant peer-checked:text-primary group-hover:text-primary-fixed transition-colors">ALL DROPS</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group" onclick="setCategoryFilter('hoodies')">
+              <div class="w-5 h-5 border-2 border-surface-variant rounded-sm transition-all"></div>
+              <span class="font-label-bold text-label-bold text-on-surface-variant group-hover:text-primary-fixed transition-colors">HOODIES</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group" onclick="setCategoryFilter('tees')">
+              <div class="w-5 h-5 border-2 border-surface-variant rounded-sm transition-all"></div>
+              <span class="font-label-bold text-label-bold text-on-surface-variant group-hover:text-primary-fixed transition-colors">TEES</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group" onclick="setCategoryFilter('accessories')">
+              <div class="w-5 h-5 border-2 border-surface-variant rounded-sm transition-all"></div>
+              <span class="font-label-bold text-label-bold text-on-surface-variant group-hover:text-primary-fixed transition-colors">ACCESSORIES</span>
+            </label>
+          </div>
         </div>
+        <div class="pt-sm border-t-2 border-surface-variant">
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase mb-sm tracking-widest">Price Range</p>
+          <div class="space-y-xs">
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="price" class="sr-only peer" checked onchange="setPriceFilter('all')">
+              <div class="w-4 h-4 border-2 border-surface-variant rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-on-surface-variant group-hover:text-primary-fixed transition-colors">ALL PRICES</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="price" class="sr-only peer" onchange="setPriceFilter('0-50')">
+              <div class="w-4 h-4 border-2 border-surface-variant rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-on-surface-variant group-hover:text-primary-fixed transition-colors">UNDER $50</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="price" class="sr-only peer" onchange="setPriceFilter('50-150')">
+              <div class="w-4 h-4 border-2 border-surface-variant rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-on-surface-variant group-hover:text-primary-fixed transition-colors">$50 - $150</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="price" class="sr-only peer" onchange="setPriceFilter('150+')">
+              <div class="w-4 h-4 border-2 border-surface-variant rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-on-surface-variant group-hover:text-primary-fixed transition-colors">$150+</span>
+            </label>
+          </div>
+        </div>
+        <div class="pt-sm border-t-2 border-surface-variant">
+          <p class="font-label-bold text-xs text-on-surface-variant uppercase mb-sm tracking-widest">Rarity</p>
+          <div class="space-y-xs">
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="rarity" class="sr-only peer" checked>
+              <div class="w-4 h-4 border-2 border-surface-variant rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-on-surface-variant">ALL TIERS</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="rarity" class="sr-only peer">
+              <div class="w-4 h-4 border-2 border-secondary-container rounded-full peer-checked:bg-secondary-container transition-all"></div>
+              <span class="font-label-bold text-xs text-secondary-container">S-TIER ONLY</span>
+            </label>
+            <label class="flex items-center gap-sm cursor-pointer group">
+              <input type="radio" name="rarity" class="sr-only peer">
+              <div class="w-4 h-4 border-2 border-primary-fixed rounded-full peer-checked:bg-primary-fixed transition-all"></div>
+              <span class="font-label-bold text-xs text-primary-fixed">RARE+</span>
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <!-- Search Bar -->
-    <div class="w-full md:w-auto relative group">
-        <input type="text" id="search-input" placeholder="Search the drop..." class="w-full md:w-64 bg-surface-container border-2 border-surface-container-highest rounded-full py-sm pl-xl pr-md text-primary placeholder-on-surface-variant focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all">
-        <span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary-container transition-colors">search</span>
+  </aside>
+  <!-- Product Grid Area -->
+  <div class="flex-1">
+    <div class="flex items-center justify-between mb-lg">
+      <h1 class="font-headline-lg text-[48px] uppercase text-primary">THE DROP VAULT</h1>
+      <div class="flex items-center gap-sm">
+        <div class="relative">
+          <input id="search-input" type="text" placeholder="SEARCH THE VAULT..." 
+            class="bg-surface-container border-4 border-surface-variant font-label-bold text-primary pl-md pr-xl py-sm focus:border-primary-fixed transition-colors w-64"
+            oninput="filterCatalog()">
+          <span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        </div>
+        <select id="sort-select" class="bg-surface-container border-4 border-surface-variant font-label-bold text-primary px-md py-sm focus:border-primary-fixed" onchange="filterCatalog()">
+          <option value="default">SORT: DEFAULT</option>
+          <option value="price-asc">PRICE: LOW→HIGH</option>
+          <option value="price-desc">PRICE: HIGH→LOW</option>
+          <option value="name-asc">NAME: A→Z</option>
+        </select>
+      </div>
     </div>
-</div>
-
-<!-- Metadata bar -->
-<div class="flex justify-between items-center mb-md border-b-2 border-surface-container-highest pb-sm">
-    <span class="font-label-bold text-on-surface-variant">SHOWING: <span id="product-count" class="text-primary">0 items</span></span>
-</div>
-
-<!-- Empty state -->
-<div id="empty-state" class="hidden py-xl text-center">
-    <div class="inline-block p-lg bg-surface-container rounded-full mb-md animate-float">
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden py-xl text-center">
+      <div class="inline-block p-lg bg-surface-container rounded-full mb-md animate-float">
         <span class="material-symbols-outlined text-6xl text-on-surface-variant">search_off</span>
+      </div>
+      <h3 class="font-headline-md text-primary mb-xs">NOTHING FOUND</h3>
+      <p class="text-on-surface-variant font-body-md">The vibe you're looking for doesn't exist yet.</p>
     </div>
-    <h3 class="font-headline-md text-primary mb-xs">NOTHING FOUND</h3>
-    <p class="text-on-surface-variant font-body-md">The vibe you're looking for doesn't exist yet.</p>
-</div>
-
-<!-- Catalog Grid (Populated by catalog.js) -->
-<div id="product-grid" class="grid grid-cols-1 md:grid-cols-12 gap-md items-start">
-    <!-- Products injected here -->
-</div>
-
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md items-start">
+      <!-- Populated by catalog.js -->
+    </div>
+  </div>
 </main>
 
-<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md border-t-3 border-surface-variant bg-surface-dim mt-xl">
-    <div class="flex flex-col gap-sm items-center md:items-start">
-        <div class="font-headline-md text-headline-md text-secondary-fixed italic uppercase">DOPAMINE CLUB</div>
-        <p class="font-body-md text-body-md text-on-surface-variant max-w-xs text-center md:text-left">
-            ©2024 DOPAMINE CLUB / POP MART UNIVERSE
-        </p>
+<footer class="w-full py-20 px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-12 border-t-4 border-black bg-black text-white relative">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-fixed via-secondary-container to-tertiary-fixed"></div>
+  <div class="flex flex-col gap-4">
+    <div class="font-headline-md text-headline-md text-primary-fixed italic uppercase tracking-tighter">DOPAMINE CLUB</div>
+    <p class="font-body-md text-sm text-white/60 max-w-sm tracking-wide uppercase">©2024 DOPAMINE CLUB // OPERATED BY POP MART UNIVERSE SYSTEMS</p>
+  </div>
+  <div class="flex flex-wrap gap-12">
+    <div class="flex flex-col gap-4">
+      <span class="font-label-bold text-primary-fixed uppercase tracking-widest text-[10px]">Information</span>
+      <a class="font-label-bold text-sm text-white/80 hover:text-white transition-colors" href="#">PRIVACY_PROTOCOL</a>
+      <a class="font-label-bold text-sm text-white/80 hover:text-white transition-colors" href="#">USER_TERMS</a>
     </div>
+    <div class="flex flex-col gap-4">
+      <span class="font-label-bold text-primary-fixed uppercase tracking-widest text-[10px]">Operations</span>
+      <a class="font-label-bold text-sm text-white/80 hover:text-white transition-colors" href="#">DEFECT_RECALL</a>
+      <a class="font-label-bold text-sm text-white/80 hover:text-white transition-colors" href="#">COMMS_LINK</a>
+    </div>
+  </div>
+  <div class="flex gap-8">
+    <button class="w-16 h-16 border-4 border-white/20 flex items-center justify-center hover:border-primary-fixed hover:bg-primary-fixed hover:text-black transition-all">
+      <span class="material-symbols-outlined" data-icon="share">share</span>
+    </button>
+    <button class="w-16 h-16 border-4 border-white/20 flex items-center justify-center hover:border-secondary-container hover:bg-secondary-container hover:text-black transition-all">
+      <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+    </button>
+  </div>
 </footer>
-
 <script src="/js/main.js"></script>
 <script src="/js/catalog.js"></script>
-</body></html>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+  }
+
+  // Neo-shadow micro-interactions
+  document.querySelectorAll('.neo-shadow').forEach(card => {
+    card.addEventListener('mousedown', () => {
+      card.style.transform = 'translate(8px, 8px)';
+      card.style.boxShadow = '0px 0px 0px #000000';
+    });
+    card.addEventListener('mouseup', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+
+  // 3D Tilt for glass cards
+  document.querySelectorAll('.glass, .glass-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height/2) / 40;
+      const rotateY = (rect.width/2 - x) / 40;
+      card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>DOPAMINE CLUB | WAR ROOM ADMIN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.neo-shadow {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neo-shadow-lime {
+    box-shadow: 6px 6px 0 #c3f400
+    }
+.neo-shadow-pink {
+    box-shadow: 6px 6px 0 #ff4b89
+    }
+.neo-shadow-cyan {
+    box-shadow: 6px 6px 0 #00dbe9
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAvlcVsT55WAclu7tnMWhtNm2_bBQCpTWecMzUcho5tv_jthhFBLLgTM5MGP9akVQPnh111Tr46aJtBig4RvLHLEab6gVrDOzw3_Ka4DtcoJqdl-rQrEEh33N_gDh85gG8ep3Ft526kkMoy6-u5E_YXF6RqqaWJg06gqsvdTynunFrgPtmdVSOABkomrBPV_XxmtWbejWRhEzvckmuazJ0RVtE3kRno2msu1gGlIuiAdTu7FmOHLB8_oWOtHFAcBoswkqzUSjGnU0oH);
+    filter: contrast(150%) brightness(100%);
+    pointer-events: none
+    }
+@keyframes flow {
+    0% {
+        transform: translateX(-100%);
+        } 100% {
+        transform: translateX(100%);
+        }
+    }
+.animate-flow {
+    animation: flow 3s linear infinite
+    }
+.kanban-column::-webkit-scrollbar {
+    width: 4px
+    }
+.kanban-column::-webkit-scrollbar-thumb {
+    background: #363342;
+    border-radius: 10px
+    }</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffd9e0",
+                    "surface-variant": "#363342",
+                    "primary": "#ffffff",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#1c1a27",
+                    "surface": "#14121f",
+                    "primary-fixed-dim": "#abd600",
+                    "tertiary": "#ffffff",
+                    "on-background": "#e5e0f3",
+                    "primary-fixed": "#c3f400",
+                    "primary-container": "#c3f400",
+                    "on-primary": "#283500",
+                    "on-tertiary-container": "#006f77",
+                    "surface-dim": "#14121f",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container-lowest": "#0e0c1a",
+                    "background": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "inverse-primary": "#506600",
+                    "on-tertiary-fixed": "#002022",
+                    "on-tertiary": "#00363a",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-secondary-container": "#590026",
+                    "outline-variant": "#444933",
+                    "inverse-surface": "#e5e0f3",
+                    "on-surface-variant": "#c4c9ac",
+                    "error": "#ffb4ab",
+                    "on-surface": "#e5e0f3",
+                    "secondary-container": "#ff4b89",
+                    "on-primary-fixed": "#161e00",
+                    "on-secondary": "#66002c",
+                    "surface-container": "#201e2c",
+                    "surface-container-highest": "#363342",
+                    "inverse-on-surface": "#312f3d",
+                    "secondary": "#ffb1c3",
+                    "tertiary-container": "#7df4ff",
+                    "error-container": "#93000a",
+                    "surface-container-high": "#2b2836",
+                    "tertiary-fixed": "#7df4ff",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "surface-bright": "#3a3746",
+                    "on-primary-container": "#556d00",
+                    "surface-tint": "#abd600",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline": "#8e9379"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "lg": "48px",
+                    "md": "24px",
+                    "base": "8px",
+                    "border-width": "3px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Syne"],
+                    "headline-md": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-xl": ["Syne"],
+                    "headline-lg-mobile": ["Syne"],
+                    "label-bold": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed overflow-hidden font-body-md text-body-md">
+<div class="fixed inset-0 grain-overlay opacity-20 z-[60]"></div>
+<div class="flex h-screen w-full relative overflow-hidden">
+<!-- SideNavBar (Authority: JSON & Contextual Logic) -->
+<aside class="hidden lg:flex flex-col h-full py-md px-sm bg-surface-container-lowest w-64 border-r-border-width border-surface-variant z-50">
+<div class="mb-xl px-sm">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter italic uppercase">WAR_ROOM</h1>
+<p class="font-label-bold text-[10px] text-primary-fixed-dim mt-xs tracking-widest">VIBE CHECK: 100%</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined text-primary-fixed group-hover:scale-110 transition-transform" data-icon="grid_view">grid_view</span>
+<span class="font-label-bold text-label-bold">DASHBOARD</span>
+</a>
+<!-- Inventory (Inactive) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="{{DATA:SCREEN:SCREEN_77}}">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-bold text-label-bold">INVENTORY</span>
+</a>
+<!-- Sales (Inactive) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="{{DATA:SCREEN:SCREEN_80}}">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="trending_up">trending_up</span>
+<span class="font-label-bold text-label-bold">SALES</span>
+</a>
+<!-- War Room (ACTIVE: Closest Match) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg bg-primary-container text-on-primary-container border-border-width border-on-surface neo-shadow scale-95 duration-75" href="#">
+<span class="material-symbols-outlined" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-bold text-label-bold">WAR_ROOM</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform" data-icon="settings">settings</span>
+<span class="font-label-bold text-label-bold">SETTINGS</span>
+</a>
+</nav>
+<div class="mt-auto p-sm">
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-bold text-label-bold py-md rounded-lg border-border-width border-on-surface neo-shadow-pink hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95">
+                    BOOST DROPS
+                </button>
+<div class="mt-md flex items-center gap-sm bg-surface-container rounded-xl p-sm border-border-width border-surface-variant">
+<div class="w-10 h-10 rounded-full border-border-width border-primary-fixed overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized neo-brutalist avatar of a cyber-punk mascot wearing neon glowing goggles and a tech-wear mask, high-contrast digital art style with Electric Lime and Cyber Cyan highlights against a dark indigo background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcjc9aBKG8TMW212oKT-VgFRVx4AEW6orknhFDiLByVtzLyclo21W8R04APcSLixNhlzvMC2IptuNh_iHyVcUhwFdrfWyrxzKAcGdOTggMJdQh8ArR_goDnjEE9OyMuZLibq7OF-mUE3IHjQ-oSicGtMCz3UJLbh0F7fd9ULo_-1XfeGCjHn9R8KqL9mLfbAEfM1Z0r6duxez33OkpHrPRoMhLoBd24I_KAVHFCI6LTZ8GbQro8NmSovrE_B5wz5WLPHi_EkrZ37PU">
+</div>
+<div>
+<p class="font-label-bold text-[12px] leading-tight text-on-surface">ADMIN_MOD</p>
+<p class="text-[10px] text-on-surface-variant">LVL 99 ARCHITECT</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 h-screen overflow-y-auto bg-surface relative p-md lg:p-lg space-y-lg">
+<!-- Header Status -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tighter uppercase italic leading-none">WAR ROOM <span class="text-primary-fixed">CORE</span></h2>
+<p class="font-body-md text-on-surface-variant mt-xs">Real-time dropship monitoring &amp; tactical logistics.</p>
+</div>
+<div class="flex gap-sm">
+<div class="glass-card border-border-width border-surface-variant p-sm flex items-center gap-md rounded-xl neo-shadow">
+<span class="w-3 h-3 bg-primary-fixed rounded-full animate-pulse shadow-[0_0_15px_#c3f400]"></span>
+<p class="font-label-bold text-label-bold tracking-widest text-primary-fixed">SYSTEMS: ONLINE</p>
+</div>
+<div class="glass-card border-border-width border-surface-variant p-sm flex items-center gap-md rounded-xl neo-shadow">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="bolt">bolt</span>
+<p class="font-label-bold text-label-bold tracking-widest text-on-surface">PING: 14MS</p>
+</div>
+</div>
+</header>
+<!-- Grid Layout (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-md h-fit">
+<!-- Revenue & Conversion (Wide Widget) -->
+<div class="col-span-1 md:col-span-8 glass-card border-border-width border-on-surface p-md rounded-2xl neo-shadow relative overflow-hidden group">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-xs tracking-widest">LIVE_REVENUE (24H)</h3>
+<div class="flex items-baseline gap-sm">
+<span class="font-display-xl text-headline-lg text-primary">$142,508.00</span>
+<span class="bg-primary-fixed text-on-primary font-label-bold text-[12px] px-xs py-[2px] rounded border border-on-primary">+22.4%</span>
+</div>
+</div>
+<div class="text-right">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-xs tracking-widest">CONV_RATE</h3>
+<span class="font-headline-md text-headline-md text-tertiary-fixed-dim">12.8%</span>
+</div>
+</div>
+<!-- Animated Neon Chart Simulation -->
+<div class="h-48 w-full bg-surface-container-lowest rounded-xl border border-surface-variant relative overflow-hidden">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 200">
+<defs>
+<linearGradient id="neonGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#c3f400" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#c3f400" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path class="drop-shadow-[0_0_8px_#c3f400]" d="M0,150 Q100,50 200,120 T400,80 T600,140 T800,40" fill="none" stroke="#c3f400" stroke-width="4"></path>
+<path d="M0,150 Q100,50 200,120 T400,80 T600,140 T800,40 L800,200 L0,200 Z" fill="url(#neonGradient)"></path>
+<path class="opacity-50" d="M0,180 Q150,150 300,170 T450,120 T600,160 T800,130" fill="none" stroke="#ff4b89" stroke-dasharray="10 5" stroke-width="3"></path>
+</svg>
+<!-- Interactive Pointer Mockup -->
+<div class="absolute top-0 bottom-0 left-[60%] w-[2px] bg-primary-fixed opacity-30 shadow-[0_0_10px_#c3f400]"></div>
+<div class="absolute top-[40%] left-[60%] w-3 h-3 bg-primary-fixed rounded-full -translate-x-[5px] shadow-[0_0_15px_#c3f400]"></div>
+</div>
+<div class="mt-md flex gap-md">
+<span class="font-label-bold text-[10px] text-on-surface-variant flex items-center gap-xs"><span class="w-2 h-2 bg-primary-fixed rounded-full"></span> TOTAL SALES</span>
+<span class="font-label-bold text-[10px] text-on-surface-variant flex items-center gap-xs"><span class="w-2 h-2 bg-secondary-container rounded-full"></span> FORECAST</span>
+</div>
+</div>
+<!-- Vibe Monitor (Sidebar Widget) -->
+<div class="col-span-1 md:col-span-4 glass-card border-border-width border-on-surface p-md rounded-2xl neo-shadow flex flex-col">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-md tracking-widest flex items-center justify-between">
+                        VIBE_MONITOR
+                        <span class="bg-tertiary-fixed-dim text-on-tertiary px-xs py-[2px] text-[10px] rounded uppercase animate-pulse">LIVE</span>
+</h3>
+<div class="flex-1 space-y-md overflow-y-auto pr-xs">
+<!-- Review 1 -->
+<div class="p-sm bg-surface-container rounded-xl border border-surface-variant relative group hover:border-tertiary-fixed-dim transition-colors">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-bold text-[12px] text-primary">@CYBER_JUNKIE</p>
+<span class="bg-primary-container text-on-primary-container text-[8px] px-xs rounded font-bold">POS+</span>
+</div>
+<p class="text-[12px] text-on-surface-variant line-clamp-2">"The holographic drop just arrived and it's literally glowing in the dark. 10/10 vibes."</p>
+<div class="absolute -right-2 -top-2 rotate-12 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary-fixed text-xl" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-sm bg-surface-container rounded-xl border border-surface-variant relative">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-bold text-[12px] text-primary">@PIXEL_PAL</p>
+<span class="bg-secondary-container text-on-secondary-container text-[8px] px-xs rounded font-bold">NEU</span>
+</div>
+<p class="text-[12px] text-on-surface-variant line-clamp-2">"Shipping took an extra day but the sticker pack included was worth the wait."</p>
+</div>
+<!-- Review 3 -->
+<div class="p-sm bg-surface-container rounded-xl border border-surface-variant">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-bold text-[12px] text-primary">@NEON_VOID</p>
+<span class="bg-primary-container text-on-primary-container text-[8px] px-xs rounded font-bold">POS+</span>
+</div>
+<p class="text-[12px] text-on-surface-variant line-clamp-2">"Best blind box experience I've had. The dopamine hit is real."</p>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-surface-variant flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-primary-fixed-dim"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-secondary-container"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-tertiary-fixed-dim"></div>
+</div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">842 ONLINE NOW</p>
+</div>
+</div>
+<!-- Drop Performance Matrix (Heatmap) -->
+<div class="col-span-1 md:col-span-4 glass-card border-border-width border-on-surface p-md rounded-2xl neo-shadow h-80 flex flex-col">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-md tracking-widest uppercase">DROP_MATRIX</h3>
+<div class="flex-1 grid grid-cols-5 grid-rows-5 gap-xs">
+<!-- Simulated Heatmap Squares -->
+<div class="bg-primary-fixed rounded-sm opacity-20 border border-primary-fixed/20"></div>
+<div class="bg-primary-fixed rounded-sm opacity-40 border border-primary-fixed/20"></div>
+<div class="bg-primary-fixed rounded-sm opacity-60 border border-primary-fixed/20"></div>
+<div class="bg-primary-fixed rounded-sm opacity-80 border border-primary-fixed/20"></div>
+<div class="bg-primary-fixed rounded-sm opacity-100 border border-primary-fixed/20 shadow-[0_0_10px_rgba(195,244,0,0.5)]"></div>
+<div class="bg-tertiary-fixed-dim rounded-sm opacity-30 border border-tertiary-fixed-dim/20"></div>
+<div class="bg-tertiary-fixed-dim rounded-sm opacity-50 border border-tertiary-fixed-dim/20"></div>
+<div class="bg-tertiary-fixed-dim rounded-sm opacity-90 border border-tertiary-fixed-dim/20 shadow-[0_0_10px_rgba(0,219,233,0.5)]"></div>
+<div class="bg-tertiary-fixed-dim rounded-sm opacity-40 border border-tertiary-fixed-dim/20"></div>
+<div class="bg-tertiary-fixed-dim rounded-sm opacity-20 border border-tertiary-fixed-dim/20"></div>
+<div class="bg-secondary-container rounded-sm opacity-10 border border-secondary-container/20"></div>
+<div class="bg-secondary-container rounded-sm opacity-20 border border-secondary-container/20"></div>
+<div class="bg-secondary-container rounded-sm opacity-50 border border-secondary-container/20"></div>
+<div class="bg-secondary-container rounded-sm opacity-80 border border-secondary-container/20 shadow-[0_0_10px_rgba(255,75,137,0.5)]"></div>
+<div class="bg-secondary-container rounded-sm opacity-30 border border-secondary-container/20"></div>
+<!-- Row 4-5 generated dynamically via background repeat patterns or manual entries -->
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-primary-fixed rounded-sm opacity-90 border border-primary-fixed/20 shadow-[0_0_10px_rgba(195,244,0,0.5)]"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-primary-fixed rounded-sm opacity-40 border border-primary-fixed/20"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+<div class="bg-secondary-container rounded-sm opacity-70 border border-secondary-container/20 shadow-[0_0_10px_rgba(255,75,137,0.5)]"></div>
+<div class="bg-surface-container-highest rounded-sm border border-surface-variant"></div>
+</div>
+<div class="mt-md flex justify-between text-[10px] font-label-bold text-on-surface-variant">
+<span class="">LOWER INTEREST</span>
+<span class="">HYPED AREA</span>
+</div>
+</div>
+<!-- Order Fulfillment Kanban (Large Bottom Widget) -->
+<div class="col-span-1 md:col-span-8 glass-card border-border-width border-on-surface p-md rounded-2xl neo-shadow min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant tracking-widest uppercase">ORDER_QUEUE</h3>
+<div class="flex gap-xs">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="filter_list">filter_list</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="add_box">add_box</button>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-md overflow-hidden">
+<!-- Column: Pending -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-bold text-[10px] px-sm py-1 bg-surface-container-highest text-on-surface-variant rounded-full border border-surface-variant">PENDING (4)</span>
+<div class="h-[2px] flex-1 bg-surface-variant ml-sm"></div>
+</div>
+<div class="flex-1 space-y-sm overflow-y-auto kanban-column max-h-[300px] pr-xs">
+<!-- Task Card -->
+<div class="bg-surface-container p-sm rounded-lg border-2 border-surface-variant cursor-grab active:cursor-grabbing hover:border-primary-fixed transition-colors">
+<p class="font-label-bold text-[12px] text-primary mb-xs">#99201 - D-VINE MASK</p>
+<p class="text-[10px] text-on-surface-variant mb-md">Ordered by: NeonSpecter</p>
+<div class="flex justify-between items-center">
+<span class="text-[9px] font-bold text-primary-fixed bg-primary-fixed/10 px-xs rounded">EXPRESS</span>
+<span class="text-[10px] text-on-surface-variant">2m ago</span>
+</div>
+</div>
+<div class="bg-surface-container p-sm rounded-lg border-2 border-surface-variant cursor-grab active:cursor-grabbing hover:border-primary-fixed transition-colors">
+<p class="font-label-bold text-[12px] text-primary mb-xs">#99198 - CORE BLIND BOX</p>
+<p class="text-[10px] text-on-surface-variant mb-md">Ordered by: GlitchMaster</p>
+<div class="flex justify-between items-center">
+<span class="text-[9px] font-bold text-on-surface-variant bg-surface-variant px-xs rounded">STANDARD</span>
+<span class="text-[10px] text-on-surface-variant">14m ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Packing -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-bold text-[10px] px-sm py-1 bg-tertiary-container/20 text-tertiary-fixed-dim rounded-full border border-tertiary-fixed-dim/30">PACKING (2)</span>
+<div class="h-[2px] flex-1 bg-tertiary-fixed-dim/20 ml-sm"></div>
+</div>
+<div class="flex-1 space-y-sm overflow-y-auto kanban-column max-h-[300px] pr-xs">
+<div class="bg-surface-container p-sm rounded-lg border-2 border-tertiary-fixed-dim/50 cursor-grab active:cursor-grabbing relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-tertiary-fixed-dim/20">
+<div class="h-full bg-tertiary-fixed-dim animate-flow w-1/3"></div>
+</div>
+<p class="font-label-bold text-[12px] text-primary mb-xs mt-xs">#99150 - HOLOGRAPHIC VINYL</p>
+<p class="text-[10px] text-on-surface-variant mb-md">Station 4 - MOD_A</p>
+<div class="flex justify-between items-center">
+<span class="text-[9px] font-bold text-tertiary-fixed-dim bg-tertiary-fixed-dim/10 px-xs rounded">IN_PROGRESS</span>
+<span class="material-symbols-outlined text-sm text-tertiary-fixed-dim" data-icon="inventory" style="font-variation-settings: 'FILL' 1;">inventory</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Dispatched -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-bold text-[10px] px-sm py-1 bg-primary-container/20 text-primary-fixed rounded-full border border-primary-fixed/30">DISPATCHED (12)</span>
+<div class="h-[2px] flex-1 bg-primary-fixed/20 ml-sm"></div>
+</div>
+<div class="flex-1 space-y-sm overflow-y-auto kanban-column max-h-[300px] pr-xs">
+<div class="bg-surface-container p-sm rounded-lg border-2 border-primary-fixed/20 opacity-70 hover:opacity-100 transition-opacity">
+<p class="font-label-bold text-[12px] text-primary mb-xs">#99102 - CLUB TEE XL</p>
+<p class="text-[10px] text-on-surface-variant mb-md">Carrier: CYBER_EX</p>
+<div class="flex justify-between items-center">
+<span class="text-[9px] font-bold text-primary-fixed flex items-center gap-xs">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> SHIPPED
+                                        </span>
+<span class="text-[10px] text-on-surface-variant">1h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Sticker Toast Notification (Simulated) -->
+<div class="fixed bottom-10 right-10 z-[100] transform rotate-3 transition-all translate-y-40 duration-700" id="sticker-toast">
+<div class="bg-primary p-md rounded-lg border-[4px] border-white neo-shadow flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center border-2 border-on-surface">
+<span class="material-symbols-outlined text-on-surface text-2xl" data-icon="notifications_active">notifications_active</span>
+</div>
+<div>
+<p class="font-label-bold text-background uppercase leading-tight">New Order High!</p>
+<p class="font-body-md text-background text-[12px]">Drop #23 is going viral.</p>
+</div>
+<button class="text-background/50 hover:text-background" onclick="document.getElementById('sticker-toast').classList.add('translate-y-40')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<script>
+        // Simple Interaction logic
+        setTimeout(() => {
+            const toast = document.getElementById('sticker-toast');
+            toast.classList.remove('translate-y-40');
+        }, 2000);
+
+        // Hover sounds or effects could be added here
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translate(-2px, -2px)';
+                card.style.boxShadow = '10px 10px 0px #0D0B18';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translate(0, 0)';
+                card.style.boxShadow = '6px 6px 0px #0D0B18';
+            });
+        });
+    </script>
+
+
+</body></html>

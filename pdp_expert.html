@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | CYBER-NEKO V.2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.offset-shadow-sm {
+    box-shadow: 4px 4px 0 #0D0B18
+    }
+.offset-shadow-lg {
+    box-shadow: 8px 8px 0 #0D0B18
+    }
+.neo-border {
+    border: 3px solid #0D0B18
+    }
+.grainy-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCHkCPfgjhg4k3jNWgV7TXRi0A8cUnbGTsZCbL0MgnPSzaLxtDaM6CewborlUE9m9u821RU4PLJNf2KVx2rJMii0cS9zi5ZOq4h5zvl_GnITsp9EXRQe7a4uJlOaENZqBXLJ8tI7E_G-rYq3BjgH-PASwn2-hLm-NK9_LpVC2kltMGkIMdPoisJELP9JorqpvnJW-y5F1_tYbV86IB8eMcXLrbSJb3MdMT8ecwJM47kyGKTjsV9IScjcp_OQd626h1JNgxOzzLLkeHv);
+    filter: contrast(150%) brightness(1000%);
+    opacity: 0.04;
+    pointer-events: none
+    }
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+        } 50% {
+        transform: translateY(-10px) rotate(1deg);
+        } 100% {
+        transform: translateY(0px) rotate(0deg);
+        }
+    }
+.animate-float {
+    animation: float 6s ease-in-out infinite
+    }
+.holographic-shimmer {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4));
+    background-size: 200% 200%;
+    animation: shimmer 4s linear infinite
+    }
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+        } 50% {
+        background-position: 100% 50%;
+        } 100% {
+        background-position: 0% 50%;
+        }
+    }</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#8e9379",
+                    "on-secondary-container": "#590026",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "tertiary-fixed": "#7df4ff",
+                    "surface-container-lowest": "#0e0c1a",
+                    "primary-fixed": "#c3f400",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#c3f400",
+                    "on-tertiary-fixed": "#002022",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "tertiary-container": "#7df4ff",
+                    "surface-container-highest": "#363342",
+                    "surface-variant": "#363342",
+                    "error-container": "#93000a",
+                    "secondary": "#ffb1c3",
+                    "on-tertiary-container": "#006f77",
+                    "surface": "#14121f",
+                    "on-secondary-fixed": "#3f0019",
+                    "secondary-fixed": "#ffd9e0",
+                    "surface-container": "#201e2c",
+                    "inverse-surface": "#e5e0f3",
+                    "outline-variant": "#444933",
+                    "surface-tint": "#abd600",
+                    "surface-bright": "#3a3746",
+                    "on-primary-container": "#556d00",
+                    "background": "#14121f",
+                    "on-secondary": "#66002c",
+                    "inverse-primary": "#506600",
+                    "surface-container-low": "#1c1a27",
+                    "surface-dim": "#14121f",
+                    "secondary-container": "#ff4b89",
+                    "tertiary": "#ffffff",
+                    "on-surface": "#e5e0f3",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-tertiary": "#00363a",
+                    "on-error": "#690005",
+                    "on-surface-variant": "#c4c9ac",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "on-primary-fixed": "#161e00",
+                    "inverse-on-surface": "#312f3d",
+                    "on-primary": "#283500",
+                    "on-background": "#e5e0f3",
+                    "surface-container-high": "#2b2836",
+                    "primary-fixed-dim": "#abd600"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "border-width": "3px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "md": "24px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-xl": ["Syne"],
+                    "label-bold": ["Space Grotesk"],
+                    "headline-md": ["Syne"]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Grainy texture overlay -->
+<div class="fixed inset-0 grainy-overlay z-[100]"></div>
+<!-- Background Shader -->
+
+<!-- Top Navigation Bar -->
+<nav class="sticky top-md z-50 flex justify-between items-center px-md py-sm bg-surface-container-low/20 backdrop-blur-xl rounded-full border-border-width border-surface-container-highest mt-md mx-auto w-[95%] max-w-7xl shadow-offset-shadow">
+<div class="font-headline-md text-headline-md font-extrabold tracking-tighter text-secondary-container cursor-pointer">
+            DOPAMINE CLUB
+        </div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-primary-container border-b-border-width border-primary-container pb-xs font-label-bold text-label-bold" href="#">Shop</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Drops</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Quests</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Vault</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="person">person</button>
+<button class="flex items-center gap-xs bg-primary-container text-on-primary-container px-md py-xs rounded-full font-label-bold text-label-bold hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="shopping_cart">shopping_cart</span>
+                Cart
+            </button>
+</div>
+</nav>
+<!-- Side NavBar (Mobile Hidden) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 py-md px-sm bg-surface-container border-r-border-width border-surface-container-highest w-[80px] justify-between items-center z-40">
+<div class="flex flex-col gap-lg items-center mt-xl">
+<div class="p-sm text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-lg p-sm cursor-pointer scale-110">
+<span class="material-symbols-outlined" data-icon="swords">swords</span>
+</div>
+<div class="p-sm text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="backpack">backpack</span>
+</div>
+<div class="p-sm text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+</div>
+<div class="mb-md p-sm text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="max-w-7xl mx-auto px-md pt-lg pb-xl relative z-10 lg:pl-[120px]">
+<!-- Hero Section: Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Product Showcase Left -->
+<div class="lg:col-span-7 flex flex-col gap-md">
+<div class="relative group h-[700px] bg-surface-container-low rounded-xl neo-border overflow-hidden offset-shadow-lg transition-transform duration-500 hover:-translate-y-1">
+<img class="w-full h-full object-cover animate-float" data-alt="A hyper-detailed, cinematic close-up of a CYBER-NEKO V.2 designer toy. The collectible is a sleek, black robotic cat with translucent neon pink armor plating and glowing electric lime green visor details. It stands on a minimalist dark mirrored surface, reflecting neon city lights from a rainy cyberpunk background. The lighting is dramatic, high-contrast chiaroscuro, highlighting the intricate mechanical textures and tactical decals. The aesthetic is ultra-modern, high-fidelity digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPR-tzafsP6DRTkPb8q3jB4rJMTUcVS6-H8oMgj2JPF_kP8EIDhIuCobPv3LHLp10W2mHny4O8H_IYVeXueMA2KHbLMV-7MphNfq-n0dLCeij1-VL0VzK-Qx4Tbp1iaFIeaYjkrJE4gGxYAdA_thBUhVeWC2OhCJElnnHxMt_E8lUn6wrsKBAvfzNZoQJCu3RB6TtXReghKlcKd2y2bvGKbflnrn00EBcfVv7JyM-bl44uEl0fcWMFRN0kGwk3POfYYD__kXVPOY8B"/>
+<!-- Floating Tech Specs Overlay -->
+<div class="absolute top-md left-md flex flex-col gap-sm">
+<div class="neo-border bg-secondary-container text-on-secondary-container px-sm py-xs font-label-bold text-label-bold flex items-center gap-xs -rotate-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+                            RARITY: LEGENDARY
+                        </div>
+<div class="neo-border bg-surface text-tertiary-fixed-dim px-sm py-xs font-label-bold text-label-bold flex items-center gap-xs rotate-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="bolt">bolt</span>
+                            HYPE VELOCITY: 98%
+                        </div>
+</div>
+<!-- Last Units Badge -->
+<div class="absolute bottom-md right-md flex flex-col items-end gap-sm">
+<div class="neo-border bg-error-container text-error px-md py-sm font-label-bold text-headline-md flex flex-col items-center leading-none scale-110 shadow-offset-shadow animate-pulse">
+<span>LAST 5</span>
+<span class="text-[14px]">UNITS LEFT</span>
+</div>
+</div>
+</div>
+<!-- Thumbnail Reel -->
+<div class="grid grid-cols-4 gap-md">
+<div class="aspect-square neo-border rounded-lg overflow-hidden bg-surface-container cursor-pointer hover:scale-105 transition-transform">
+<img class="w-full h-full object-cover" data-alt="Alternative view of the Cyber-Neko collectible from the rear, showing intricate hydraulic cables and glowing engine ports in vibrant neon colors against a dark, grainy cyberpunk backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBftOEQKDuGh6mKBPzUhI8Cq_J7RG2JRxhahSpjG1fVQ5ltOCVPc8eoKVdCM8vSwIWcjcXLqqzTOkm0Acnoa7QM5VTpzxOQVJDvkz44-z7ebpDfgGAKG5DwvGXKEEB3T6WrNo9jkN2aeLMbLRVtP9zS1GkLsL_sKYpcmj7cIR7wUcIgKcvU6kMsMafg60HnX9X_cFVcoODlgl55oIKDJGbsBSNT_921zO0BSYFQMiCbtmZqhzjGekvGL_tENURg84TjXfCPOMNUKzSD"/>
+</div>
+<div class="aspect-square neo-border rounded-lg overflow-hidden bg-surface-container cursor-pointer hover:scale-105 transition-transform opacity-60">
+<img class="w-full h-full object-cover" data-alt="A detailed macro shot of the Cyber-Neko's paw, revealing metallic joints and glowing digital display symbols on the palm. Neo-brutalist studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgG-1JzE8UHJVSSCh_MolMKv7ebObWB9UbumKf-6FbEXPfjAtmvfEDHbXV4BT3I1hrt7HgN54UdWPN5UcxIY_YLqLwIC0Aji6Zv6wxC9w8yO5Z0AEfzweWMp0xby9h3Daap_8eWoRbWsczG7EqCWe6mvAGQSepD8oxeQz1sj_JpkHbcBeal5FVzZZQag-TBvHIPMCwZvNSbPjZLKMIDb2wM6WaYvKEiDShKfwvrFatOEayDNiV3xt09VZOmH57C2DKElxIb1gZyZv0"/>
+</div>
+<div class="aspect-square neo-border rounded-lg overflow-hidden bg-surface-container cursor-pointer hover:scale-105 transition-transform opacity-60">
+<img class="w-full h-full object-cover" data-alt="The Cyber-Neko's head in profile, emphasizing the electric lime visor and holographic UI elements floating around its ears. 3D render style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa7-7ECA9f6usEWKBYTa7ThXs0b0b6C7HAAitUWbL6lNzsW1417koQJMVg76kO4uh3yn3dOetf2sDdyz6FY_RKy5ywWWiORYe6oi2SNa5kg3elS6nj0EKMgI3kA0UtYrOpCvuhEfIsx_DSHlDSArYrWGeuNgSOkhI7X-aMnYXDOMA1C1l3hkInRKAd_mg3kgfwTyLWtTy2ZJgVBvAEmQYlzcURx-4IUGLG9PqumSxRJWFuEWeVNHjdAgnLDu2fi8yl5Y_3TC3Axeb-"/>
+</div>
+<div class="aspect-square neo-border rounded-lg overflow-hidden bg-surface-container cursor-pointer relative group opacity-60">
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center font-label-bold text-primary z-10">+4 MORE</div>
+<img class="w-full h-full object-cover blur-sm" data-alt="Full body shot of the Cyber-Neko figurine standing in a tactical combat pose inside a futuristic display case with rotating holographic lasers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH0P734BX0O-NjxJFy509MwmSFoGGZ6EK7uki1Me2ryDMNFqAV4FWVtks4VfAMrdgfpfmoB5eZsGhG89vPRJ_EF7x4tA2XPHtccwHBeDtjYAPoAQh7zpued0f4aYYrgCOzzfF2c6w6F-PBIxMqug7V9beR0Pj6bHmiwE4FxQ27xiD6TSSkO7B8_a3PWz02p2fYQ5PK2t2ukDLlma3x8-25ZSdvwfPJSm1mHFapOfRcTxcRNzzXEeIQB6aV3OxTozYou6w5B9v0kJb6"/>
+</div>
+</div>
+</div>
+<!-- Product Intel Right -->
+<div class="lg:col-span-5 flex flex-col gap-lg">
+<header class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm">
+<span class="text-primary-fixed-dim font-label-bold tracking-widest uppercase">Series: Neon Ronin</span>
+<div class="h-[2px] flex-grow bg-surface-container-highest"></div>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary uppercase leading-tight italic">CYBER-NEKO <span class="text-secondary-container">V.2</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                        The ultimate evolution of tactical feline companionship. Engineered for the deep-web aesthetic enthusiast and high-stakes collectors.
+                    </p>
+</header>
+<!-- Pricing & Action -->
+<div class="glass-card neo-border p-md rounded-xl flex flex-col gap-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 holographic-shimmer opacity-20 -mr-16 -mt-16 rounded-full blur-xl"></div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-bold text-[12px] uppercase">Market Price</span>
+<span class="font-headline-lg text-headline-lg text-primary-container">$489.00</span>
+</div>
+<div class="text-right">
+<span class="text-secondary-container font-label-bold text-[12px] uppercase">Member Discount</span>
+<div class="text-on-surface-variant line-through font-headline-md">$620.00</div>
+</div>
+</div>
+<button class="group relative w-full bg-primary-container text-on-primary-container font-headline-md text-headline-md py-md neo-border offset-shadow-sm transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:scale-95 uppercase overflow-hidden" id="cop-button">
+<span class="relative z-10 flex items-center justify-center gap-md">
+                            INSTANT COP
+                            <span class="material-symbols-outlined text-[32px]" data-icon="shopping_bag">shopping_bag</span>
+</span>
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 skew-x-12"></div>
+</button>
+<div class="flex items-center justify-center gap-lg py-sm">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-bold text-[12px]">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+                            AUTHENTICATED
+                        </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-bold text-[12px]">
+<span class="material-symbols-outlined text-[16px]" data-icon="local_shipping">local_shipping</span>
+                            EXPRESS SHIP
+                        </div>
+</div>
+</div>
+<!-- Tactical Specs -->
+<section class="flex flex-col gap-md">
+<h3 class="font-label-bold text-label-bold text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container" data-icon="terminal">terminal</span>
+                        TACTICAL_SPECIFICATIONS
+                    </h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Material Composition</span>
+<span class="text-primary font-label-bold">DURANIUM-FIBER</span>
+</div>
+<div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Articulation Points</span>
+<span class="text-primary font-label-bold">42-AXIS SYNC</span>
+</div>
+<div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="text-[10px] text-on-surface-variant font-label-bold uppercase">LED Core</span>
+<span class="text-primary font-label-bold">RGB_EL_LIME</span>
+</div>
+<div class="neo-border bg-surface-container p-sm flex flex-col gap-xs rounded-lg hover:bg-surface-container-high transition-colors">
+<span class="text-[10px] text-on-surface-variant font-label-bold uppercase">Edition Size</span>
+<span class="text-primary font-label-bold">1/500 GLOBAL</span>
+</div>
+</div>
+<div class="neo-border border-primary-container p-md bg-primary-container/5 rounded-xl">
+<p class="text-body-md text-on-surface text-sm leading-relaxed">
+<span class="text-primary-container font-label-bold">SYSTEM LOG:</span> V.2 Features an upgraded neural link core, allowing for reactive holographic emotes. Each unit comes with a unique encrypted hash token for the Dopamine Vault.
+                        </p>
+</div>
+</section>
+<!-- Sticker Notification (Floating Interaction) -->
+<div class="hidden lg:flex absolute -right-md top-1/2 transform rotate-12 items-center gap-md">
+<div class="bg-white p-xs neo-border shadow-offset-shadow transform -rotate-3 hover:rotate-0 transition-transform cursor-pointer">
+<div class="bg-secondary-container text-on-secondary-container px-md py-sm font-label-bold border-2 border-black">
+                            COLLECTOR'S CHOICE
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Drop Lore -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-lg pt-xl border-t-border-width border-surface-container-highest">
+<div class="flex flex-col gap-md">
+<h4 class="font-headline-md text-headline-md text-secondary-container">THE CREW</h4>
+<p class="text-on-surface-variant">Designed by the underground collective 'VOID_WALKERS', this piece represents a year of engineering refinement in the designer toy space.</p>
+</div>
+<div class="flex flex-col gap-md">
+<h4 class="font-headline-md text-headline-md text-tertiary-fixed-dim">THE TECH</h4>
+<p class="text-on-surface-variant">Utilizing 'GHOST-STRETCH' vinyl for a feel that mimics organic skin while maintaining a metallic structural rigidity.</p>
+</div>
+<div class="flex flex-col gap-md">
+<h4 class="font-headline-md text-headline-md text-primary-container">THE DROP</h4>
+<p class="text-on-surface-variant">Final stock release. Once these 5 units are claimed, the V.2 mold will be retired to the vault forever.</p>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-lg px-md flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-lowest border-t-border-width border-surface-container-highest relative z-10">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<div class="font-headline-md text-headline-md text-primary font-extrabold tracking-tighter">DOPAMINE CLUB</div>
+<p class="text-on-surface-variant font-body-md">© 2024 POP MART / DOPAMINE CLUB. EST 2004.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim underline underline-offset-4 translate-y-0 hover:translate-y-[-2px] transition-transform" href="#">Support</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim underline underline-offset-4 translate-y-0 hover:translate-y-[-2px] transition-transform" href="#">Privacy</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim underline underline-offset-4 translate-y-0 hover:translate-y-[-2px] transition-transform" href="#">TOS</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim underline underline-offset-4 translate-y-0 hover:translate-y-[-2px] transition-transform" href="#">Arcade</a>
+</div>
+<div class="flex gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container border-border-width border-surface-container-highest flex items-center justify-center cursor-pointer hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container border-border-width border-surface-container-highest flex items-center justify-center cursor-pointer hover:bg-secondary-container hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions
+        const copButton = document.getElementById('cop-button');
+        copButton.addEventListener('click', () => {
+            copButton.innerHTML = `
+                <span class="relative z-10 flex items-center justify-center gap-md">
+                    ADDING TO CART...
+                    <span class="material-symbols-outlined animate-spin" data-icon="refresh">refresh</span>
+                </span>
+            `;
+            setTimeout(() => {
+                copButton.innerHTML = `
+                <span class="relative z-10 flex items-center justify-center gap-md">
+                    ADDED TO VAULT
+                    <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                </span>
+                `;
+                copButton.classList.replace('bg-primary-container', 'bg-tertiary-fixed-dim');
+                copButton.classList.replace('text-on-primary-container', 'text-on-tertiary-fixed');
+            }, 1200);
+        });
+
+        // Hover effect for thumbnail reel
+        const thumbs = document.querySelectorAll('.grid-cols-4 > div');
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('mouseenter', () => {
+                thumb.classList.remove('opacity-60');
+                thumb.classList.add('opacity-100', 'scale-105');
+            });
+            thumb.addEventListener('mouseleave', () => {
+                if (!thumb.classList.contains('border-primary-container')) {
+                    thumb.classList.add('opacity-60');
+                    thumb.classList.remove('scale-105');
+                }
+            });
+        });
+    </script>
+</body></html>

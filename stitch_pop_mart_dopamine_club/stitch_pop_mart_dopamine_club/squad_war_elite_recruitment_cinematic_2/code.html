@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dopamine Club | SQUAD WAR: ELITE RECRUITMENT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffd9e0",
+                        "surface-container-highest": "#363342",
+                        "outline-variant": "#444933",
+                        "on-primary-fixed": "#161e00",
+                        "on-primary-container": "#556d00",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "inverse-primary": "#506600",
+                        "surface-container-lowest": "#0e0c1a",
+                        "on-secondary-container": "#590026",
+                        "background": "#14121f",
+                        "surface-container-high": "#2b2836",
+                        "on-tertiary-fixed": "#002022",
+                        "on-tertiary-container": "#006f77",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "inverse-surface": "#e5e0f3",
+                        "primary-fixed": "#c3f400",
+                        "secondary-container": "#ff4b89",
+                        "primary-fixed-dim": "#abd600",
+                        "secondary": "#ffb1c3",
+                        "on-error": "#690005",
+                        "surface-tint": "#abd600",
+                        "surface": "#14121f",
+                        "inverse-on-surface": "#312f3d",
+                        "tertiary": "#ffffff",
+                        "primary-container": "#c3f400",
+                        "surface-dim": "#14121f",
+                        "on-surface": "#e5e0f3",
+                        "surface-bright": "#3a3746",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "error-container": "#93000a",
+                        "primary": "#ffffff",
+                        "surface-container-low": "#1c1a27",
+                        "tertiary-container": "#7df4ff",
+                        "on-tertiary": "#00363a",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-background": "#e5e0f3",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-secondary": "#66002c",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary": "#283500",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "surface-variant": "#363342",
+                        "outline": "#8e9379",
+                        "surface-container": "#201e2c",
+                        "on-secondary-fixed": "#3f0019"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "border-width": "3px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "offset-shadow": "6px 6px 0px #0D0B18"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Space Grotesk"],
+                        "headline-lg": ["Syne"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Syne"],
+                        "headline-lg-mobile": ["Syne"],
+                        "display-xl": ["Syne"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+        } 100% {
+        transform: translateY(100%);
+        }
+    }
+@keyframes flicker {
+    0% {
+        opacity: 0.8;
+        } 5% {
+        opacity: 0.9;
+        } 10% {
+        opacity: 0.8;
+        } 15% {
+        opacity: 1;
+        } 20% {
+        opacity: 0.8;
+        } 100% {
+        opacity: 1;
+        }
+    }
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+        } 20% {
+        transform: translate(-2px, 2px);
+        } 40% {
+        transform: translate(-2px, -2px);
+        } 60% {
+        transform: translate(2px, 2px);
+        } 80% {
+        transform: translate(2px, -2px);
+        } 100% {
+        transform: translate(0);
+        }
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDwnBrfp7Afx-2oyS9z_1XW9kgBIXuta9V_oGo-5NHOnAIWmhPN5zUyrlZRVY23rn9fNieLXaPA7uNWzKtPgFu2nx2d4dz0BL_wFi_-FvJmm-j7SjZdWL8Ak2EhIRkbzG4NiJQAQOXTGTBSOTJl6MFR5cBCRssn1vYvDwDrngCuOs15SltkLTNmhr_scrTpLzp4tMwO3nXrCGWijkFstpgZxeB1Hf1CgoTtnpNgNaJKK3GtfLQsiKWbvlLTTDXS_tkNk4Rbep5yk7O5);
+    filter: contrast(150%) brightness(1000%);
+    opacity: 0.05;
+    pointer-events: none
+    }
+.neo-shadow {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neo-shadow-sm {
+    box-shadow: 4px 4px 0 #0D0B18
+    }
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 3px solid #8e9379
+    }
+.scan-effect::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(195, 244, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none
+    }
+.active-click:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #0D0B18
+    }
+.holographic {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.2), rgba(255, 75, 137, 0.2), rgba(195, 244, 0, 0.2));
+    background-size: 200% 200%;
+    animation: holographic-move 5s ease infinite
+    }
+@keyframes holographic-move {
+    0% {
+        background-position: 0% 50%;
+        } 50% {
+        background-position: 100% 50%;
+        } 100% {
+        background-position: 0% 50%;
+        }
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden scan-effect">
+<div class="fixed inset-0 grain-overlay z-50"></div>
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full bg-surface dark:bg-surface border-b-border-width border-outline dark:border-outline shadow-offset-shadow z-40">
+<nav class="flex justify-between items-center px-md py-sm w-full max-w-full">
+<div class="flex items-center gap-md">
+<span class="font-display-xl text-headline-md italic uppercase text-primary dark:text-primary tracking-tighter">Dopamine Club</span>
+<div class="hidden md:flex gap-md items-center">
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">DROPS</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-primary-container dark:text-primary-container border-b-border-width border-primary-container" href="#">VAULT</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">GAMES</a>
+<a class="font-headline-md text-headline-md tracking-tighter text-on-surface-variant hover:text-secondary-container transition-colors" href="#">CLUBS</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-border-width border-outline px-md py-xs text-label-bold font-label-bold focus:ring-primary-container focus:border-primary-container w-64" placeholder="ENCRYPTED SEARCH..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-primary-container hover:scale-110 transition-transform">shopping_cart</button>
+<button class="material-symbols-outlined text-primary-container hover:scale-110 transition-transform">account_circle</button>
+</div>
+</nav>
+</header>
+<main class="relative pt-lg pb-xl px-md max-w-7xl mx-auto grid grid-cols-12 gap-md">
+<!-- VOX_ALERT Notification (Physical Sticker Style) -->
+<div class="fixed top-24 right-8 z-50 transform rotate-3 bg-secondary-container text-on-secondary-container p-sm border-border-width border-surface-container-highest neo-shadow animate-bounce">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="font-label-bold text-label-bold uppercase">VOX_ALERT</p>
+<p class="text-[10px] uppercase">Unauthorized Access Detected</p>
+</div>
+</div>
+</div>
+<!-- Hero: 3D Holographic Section -->
+<section class="col-span-12 lg:col-span-8 relative min-h-[600px] glass-panel p-md neo-shadow overflow-hidden group">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(195,244,0,0.1),transparent_70%)]"></div>
+<div class="relative z-10 flex flex-col justify-between h-full">
+<div class="flex justify-between items-start">
+<div class="space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-primary-container uppercase tracking-tight">SQUAD_WAR</h2>
+<p class="font-label-bold text-label-bold text-outline uppercase tracking-widest">ELITE_RECRUITMENT_PROTOCOL_v.4.02</p>
+</div>
+<div class="text-right">
+<p class="font-label-bold text-label-bold text-primary-container">MATCH_CONFIDENCE</p>
+<p class="font-display-xl text-headline-lg-mobile lg:text-headline-lg text-primary-container leading-none">98%</p>
+</div>
+</div>
+<!-- Wireframe Representation -->
+<div class="flex justify-center items-center flex-grow py-md">
+<img class="w-full max-w-md mix-blend-screen opacity-90 drop-shadow-[0_0_15px_rgba(195,244,0,0.5)] animate-[flicker_3s_infinite_ease-in-out]" data-alt="A detailed holographic 3D wireframe of a futuristic special forces soldier, glowing in intense electric lime green against a dark industrial bunker background. The soldier is equipped with high-tech tactical gear, a sleek helmet, and a modular vest. Intricate digital schematics and scrolling data code are layered over the wireframe, creating a high-tech Neo-Brutalist HUD aesthetic. The scene is illuminated by the green bioluminescent glow of the hologram, reflecting off cold, metallic wall panels." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmldcdO-ImPGndO2J9q3WomivOTLhjM7gNGTf5CMspzusqs43qDZG8GxiY5V6NH64gxIq1eITn07NCbFub4Hjoya5rezSXiQu5d6Cku1UQubxxAsNZZxJtTQVzXpF5VokxE73yaYGRRbxj9HBFqcEcHBY5FmEMt6DZwrleI9bgD_rww6jW1sowDdMdcCpTl80oFlf6mHlQajqTrIsa67enp0D3is2ZLrB47eDc10Pu58fKDdfeHJ4qoy2rSc383tnXyGsb5OAZ3yHK"/>
+</div>
+<div class="grid grid-cols-2 gap-md border-t-border-width border-outline pt-md">
+<div class="space-y-xs overflow-hidden">
+<p class="font-label-bold text-[10px] text-outline uppercase">MISSION_LOGS_STREAM</p>
+<div class="h-16 overflow-hidden relative">
+<div class="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-surface-container-highest to-transparent z-10"></div>
+<div class="animate-[scanline_10s_linear_infinite] space-y-1">
+<p class="text-[10px] font-mono text-primary-container/60">&gt; INITIALIZING DROP_WATCH SEQUENCE...</p>
+<p class="text-[10px] font-mono text-primary-container/60">&gt; TARGET ACQUIRED: SECTOR_7_MARKET</p>
+<p class="text-[10px] font-mono text-primary-container/60">&gt; ENCRYPTING PACKETS 0x44F...</p>
+<p class="text-[10px] font-mono text-primary-container/60">&gt; SYNCING SQUAD_NET PROTOCOL...</p>
+<p class="text-[10px] font-mono text-primary-container/60">&gt; STANDBY FOR EXTRACTION...</p>
+</div>
+</div>
+</div>
+<div class="flex justify-end items-end gap-sm">
+<button class="bg-primary-container text-on-primary-container px-lg py-sm font-headline-md text-headline-md uppercase neo-shadow active-click transition-all">ENLIST NOW</button>
+<button class="bg-secondary-container text-on-secondary-container px-lg py-sm font-headline-md text-headline-md uppercase neo-shadow active-click transition-all">BOOST DROPS</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recruitment Stats & HUD -->
+<aside class="col-span-12 lg:col-span-4 space-y-md">
+<!-- Global Dominance Card -->
+<div class="bg-surface-container-high border-border-width border-outline p-md neo-shadow relative group">
+<div class="absolute top-0 right-0 p-xs bg-outline text-surface text-[10px] font-label-bold">GLOBAL_STAT</div>
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-sm">DOMINANCE_INDEX</h3>
+<div class="flex items-center gap-md">
+<div class="relative w-20 h-20 rounded-full border-4 border-primary-container/20 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-4 border-primary-container border-t-transparent animate-spin"></div>
+<span class="font-headline-md text-headline-md text-primary-container">78%</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">SECTOR CONTROL: <span class="text-primary-container">ACTIVE</span></p>
+<p class="font-body-md text-on-surface">RESOURCE FLOW: <span class="text-primary-container">CRITICAL</span></p>
+</div>
+</div>
+</div>
+<!-- Squad Size Metrics -->
+<div class="bg-surface-container-highest border-border-width border-primary-container p-md neo-shadow-sm holographic">
+<div class="flex justify-between items-center mb-sm">
+<h3 class="font-label-bold text-label-bold text-surface uppercase">SQUAD_READY</h3>
+<span class="font-headline-md text-headline-md text-surface">4 / 6</span>
+</div>
+<div class="grid grid-cols-6 gap-xs">
+<div class="h-2 bg-primary-container"></div>
+<div class="h-2 bg-primary-container"></div>
+<div class="h-2 bg-primary-container"></div>
+<div class="h-2 bg-primary-container"></div>
+<div class="h-2 bg-surface-container-highest border border-primary-container"></div>
+<div class="h-2 bg-surface-container-highest border border-primary-container"></div>
+</div>
+</div>
+<!-- Active Operatives Feed -->
+<div class="bg-surface-container-low border-border-width border-outline p-md neo-shadow">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">groups</span> ACTIVE_OPERATIVES
+                </h3>
+<div class="space-y-sm">
+<!-- Operative 1 -->
+<div class="flex items-center gap-sm p-sm border-l-4 border-primary-container bg-surface-container-high hover:bg-secondary-container transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-surface">person</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-bold text-label-bold uppercase group-hover:text-surface">CAPT. KAIRO</p>
+<p class="text-[10px] text-primary-container uppercase group-hover:text-surface-container-lowest">STATUS: ACTIVE</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+</div>
+<!-- Operative 2 -->
+<div class="flex items-center gap-sm p-sm border-l-4 border-secondary-container bg-surface-container-high hover:bg-secondary-container transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-surface">radar</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-bold text-label-bold uppercase group-hover:text-surface">RECON_7</p>
+<p class="text-[10px] text-secondary-container uppercase group-hover:text-surface-container-lowest">STATUS: HEALING</p>
+</div>
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Strategic Planning Hub: Bento Grid -->
+<section class="col-span-12 py-lg">
+<div class="flex items-center gap-md mb-lg">
+<h2 class="font-display-xl text-headline-lg-mobile lg:text-headline-lg uppercase italic tracking-tighter text-primary">STRATEGIC_HUB</h2>
+<div class="h-[3px] flex-grow bg-outline opacity-30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Objective 1 -->
+<div class="glass-panel p-md neo-shadow hover:translate-x-xs hover:translate-y-xs hover:shadow-none transition-all group cursor-pointer relative">
+<div class="absolute top-0 right-0 p-xs text-[10px] font-label-bold text-primary-container">PHASE_ONE</div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">visibility</span>
+<h4 class="font-headline-md text-headline-md uppercase mb-xs group-hover:text-primary-container">DROP_WATCH</h4>
+<p class="font-body-md text-on-surface-variant">Real-time surveillance of high-value asset drops across Sector 7. Minimum 3 agents required.</p>
+</div>
+<!-- Objective 2 -->
+<div class="glass-panel p-md neo-shadow hover:translate-x-xs hover:translate-y-xs hover:shadow-none transition-all group cursor-pointer relative">
+<div class="absolute top-0 right-0 p-xs text-[10px] font-label-bold text-primary-container">PHASE_TWO</div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">swap_horiz</span>
+<h4 class="font-headline-md text-headline-md uppercase mb-xs group-hover:text-primary-container">MARKET_FLIP</h4>
+<p class="font-body-md text-on-surface-variant">Coordinated leverage of digital scarcity to force a 15% valuation delta within 60 minutes.</p>
+</div>
+<!-- Objective 3 -->
+<div class="glass-panel p-md neo-shadow hover:translate-x-xs hover:translate-y-xs hover:shadow-none transition-all group cursor-pointer relative bg-secondary-container/10">
+<div class="absolute top-0 right-0 p-xs text-[10px] font-label-bold text-secondary-container">PRIORITY_ALPHA</div>
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-md" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h4 class="font-headline-md text-headline-md uppercase mb-xs text-secondary-container">SQUAD_DEFENSE</h4>
+<p class="font-body-md text-on-surface-variant">Hardening the Dopamine Vault against external interference from rival clans.</p>
+</div>
+<!-- Objective 4 -->
+<div class="glass-panel p-md neo-shadow hover:translate-x-xs hover:translate-y-xs hover:shadow-none transition-all group cursor-pointer relative">
+<div class="absolute top-0 right-0 p-xs text-[10px] font-label-bold text-primary-container">LONG_TERM</div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-md">rocket_launch</span>
+<h4 class="font-headline-md text-headline-md uppercase mb-xs group-hover:text-primary-container">GLOBAL_REACH</h4>
+<p class="font-body-md text-on-surface-variant">Expanding tactical presence to 5 new international hubs by Q4. Recruitment priority: HIGH.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t-border-width border-outline py-lg w-full">
+<div class="flex flex-col md:flex-row justify-between items-center px-md max-w-7xl mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-md text-headline-md text-primary mb-xs">DOPAMINE CLUB</span>
+<p class="font-body-md text-on-surface-variant text-center md:text-left">© 2024 DOPAMINE CLUB. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-md flex-wrap justify-center">
+<a class="font-body-md text-on-surface-variant hover:text-secondary-container transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary-container transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary-container transition-all" href="#">Support</a>
+<a class="font-body-md text-on-surface-variant hover:text-secondary-container transition-all" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for Neo-Brutalist "Click" feel
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('translate-x-[4px]', 'translate-y-[4px]', 'shadow-none');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('translate-x-[4px]', 'translate-y-[4px]', 'shadow-none');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('translate-x-[4px]', 'translate-y-[4px]', 'shadow-none');
+            });
+        });
+
+        // Simple typing/glitch effect for HUD logs
+        const logs = [
+            "> UPLOADING SQUAD_DATA...",
+            "> RECRUIT_ID: 98_PERCENT_MATCH",
+            "> BIOMETRICS: VERIFIED",
+            "> SYNCING HUD OVERLAY...",
+            "> CONNECTION: STABLE"
+        ];
+        const logContainer = document.querySelector('.animate-\\[scanline_10s_linear_infinite\\]');
+        if (logContainer) {
+            setInterval(() => {
+                const log = document.createElement('p');
+                log.className = "text-[10px] font-mono text-primary-container/60";
+                log.innerText = logs[Math.floor(Math.random() * logs.length)];
+                logContainer.prepend(log);
+                if (logContainer.children.length > 20) logContainer.removeChild(logContainer.lastChild);
+            }, 3000);
+        }
+    </script>
+</body></html>

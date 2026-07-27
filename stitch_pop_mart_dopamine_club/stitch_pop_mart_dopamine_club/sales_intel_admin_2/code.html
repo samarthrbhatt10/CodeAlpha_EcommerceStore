@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | WAR ROOM SALES INTEL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&family=Space+Grotesk:wght@100..900&family=Syne:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#312f3d",
+                    "on-secondary": "#66002c",
+                    "on-secondary-container": "#590026",
+                    "surface-container-high": "#2b2836",
+                    "on-surface": "#e5e0f3",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "on-error-container": "#ffdad6",
+                    "outline-variant": "#444933",
+                    "on-tertiary": "#00363a",
+                    "error": "#ffb4ab",
+                    "on-primary-container": "#556d00",
+                    "surface-variant": "#363342",
+                    "on-primary": "#283500",
+                    "surface-container-low": "#1c1a27",
+                    "surface-bright": "#3a3746",
+                    "on-background": "#e5e0f3",
+                    "surface-tint": "#abd600",
+                    "secondary-fixed": "#ffd9e0",
+                    "on-secondary-fixed": "#3f0019",
+                    "secondary-container": "#ff4b89",
+                    "tertiary-container": "#7df4ff",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#363342",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "primary-container": "#c3f400",
+                    "surface-container-lowest": "#0e0c1a",
+                    "on-tertiary-fixed": "#002022",
+                    "primary-fixed": "#c3f400",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "surface-container": "#201e2c",
+                    "surface": "#14121f",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#abd600",
+                    "inverse-surface": "#e5e0f3",
+                    "primary": "#ffffff",
+                    "on-surface-variant": "#c4c9ac",
+                    "tertiary-fixed": "#7df4ff",
+                    "background": "#14121f",
+                    "secondary": "#ffb1c3",
+                    "on-primary-fixed": "#161e00",
+                    "on-tertiary-container": "#006f77",
+                    "tertiary": "#ffffff",
+                    "outline": "#8e9379",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "inverse-primary": "#506600",
+                    "surface-dim": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "8px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "md": "24px",
+                    "xs": "4px",
+                    "border-width": "3px",
+                    "xl": "80px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Syne"],
+                    "headline-md": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "display-xl": ["Syne"],
+                    "label-bold": ["Space Grotesk"]
+            }
+          }
+        }
+      }
+    </script>
+<style>@keyframes grain {
+    0%, 100% {
+        transform: translate(0, 0)
+        } 10% {
+        transform: translate(-5%, -10%)
+        } 20% {
+        transform: translate(-15%, 5%)
+        } 30% {
+        transform: translate(7%, -25%)
+        } 40% {
+        transform: translate(-5%, 25%)
+        } 50% {
+        transform: translate(-15%, 10%)
+        } 60% {
+        transform: translate(15%, 0)
+        } 70% {
+        transform: translate(0, 15%)
+        } 80% {
+        transform: translate(3%, 35%)
+        } 90% {
+        transform: translate(-10%, 10%)
+        }
+    }
+.grain-overlay {
+    pointer-events: none;
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuB2w12fVzwatiyk3FjftwsDo9I-364AWFYEdDF5if7VBOMveTPMVj0CoJBTwOW5h19NMfSwp0PUwRqxTuZetkNAdGU1xpz2JsGNWykspLtD-SjxgHjK2AO-vEpzq619mYQzrEm_-axmQHPSP13hXSiOP_rIcaNLVORLrdndJPizRTRt4rmLjQvNGlXhiOY_c2Q1J294QdbVDWAkzc5qsbUPijl5qn4k2zes-T72gOC0kcST2nnwywTbIp1RHwKQkga5Rktf1v4S7vax);
+    opacity: 0.04;
+    animation: grain 8s steps(10) infinite;
+    z-index: 9999
+    }
+.neo-brutal-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 3px solid #0D0B18;
+    box-shadow: 6px 6px 0 #0D0B18;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    }
+.neo-brutal-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #0D0B18
+    }
+.neo-brutal-button {
+    border: 3px solid #0D0B18;
+    box-shadow: 4px 4px 0 #0D0B18;
+    transition: all 0.1s active
+    }
+.neo-brutal-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 #0D0B18
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.chart-gradient-cyan {
+    background: linear-gradient(180deg, rgba(0, 219, 233, 0.2) 0%, rgba(0, 219, 233, 0) 100%)
+    }
+.chart-gradient-lime {
+    background: linear-gradient(180deg, rgba(171, 214, 0, 0.2) 0%, rgba(171, 214, 0, 0) 100%)
+    }
+.holographic-badge {
+    background: linear-gradient(45deg, #00dbe9, #ffb1c3, #abd600);
+    background-size: 200% 200%;
+    animation: holo 3s ease infinite
+    }
+@keyframes holo {
+    0% {
+        background-position: 0% 50%
+        } 50% {
+        background-position: 100% 50%
+        } 100% {
+        background-position: 0% 50%
+        }
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<div class="grain-overlay"></div>
+<div class="flex min-h-screen">
+<!-- SideNavBar (from JSON: {{DATA:COMPONENTS:COMPONENTS_8}}) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 border-r-border-width border-surface-variant bg-surface-container-lowest sticky top-0 z-40">
+<div class="p-md border-b-border-width border-surface-variant">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">DOPAMINE CLUB</div>
+<div class="font-label-bold text-label-bold text-secondary-fixed-dim mt-xs uppercase">WAR_ROOM</div>
+</div>
+<nav class="flex-1 py-md px-sm space-y-sm">
+<!-- Navigation Tabs Mapping -->
+<a class="flex items-center gap-sm p-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-bold text-label-bold uppercase">DASHBOARD</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-bold text-label-bold uppercase">INVENTORY</span>
+</a>
+<!-- ACTIVE TAB: SALES -->
+<a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container border-border-width border-on-surface shadow-[6px_6px_0px_#0D0B18] scale-95 duration-75" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-bold text-label-bold uppercase">SALES</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-bold text-label-bold uppercase">WAR_ROOM</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high group" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-bold text-label-bold uppercase">SETTINGS</span>
+</a>
+</nav>
+<div class="p-md mt-auto">
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-bold text-label-bold py-sm border-border-width border-on-surface shadow-[4px_4px_0px_#0D0B18] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all uppercase">
+                    BOOST DROPS
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0 bg-surface overflow-y-auto">
+<!-- Header Section -->
+<header class="p-md md:p-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase italic tracking-tighter leading-none">
+                        SALES INTEL
+                    </h1>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-3 h-3 bg-primary-fixed rounded-full animate-pulse"></div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest">LIVE DATA FEED ACTIVATED</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-sm">
+<div class="flex bg-surface-container-high border-border-width border-on-surface">
+<button class="px-md py-sm font-label-bold text-label-bold text-on-primary-container bg-primary-container border-r-border-width border-on-surface">WEEKLY</button>
+<button class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors">MONTHLY</button>
+</div>
+<button class="neo-brutal-button bg-primary py-sm px-md flex items-center gap-xs font-label-bold text-label-bold text-on-primary uppercase">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        EXPORT CSV
+                    </button>
+</div>
+</header>
+<!-- KPI Grid -->
+<section class="px-md md:px-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- KPI Card 1 -->
+<div class="neo-brutal-card p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="payments">payments</span>
+</div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-xs">TOTAL REVENUE</p>
+<h3 class="font-headline-md text-headline-md text-primary">$492,820.00</h3>
+<div class="mt-sm flex items-center gap-xs text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="font-label-bold text-label-bold">+12.4% vs last period</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary-fixed-dim shadow-[0_0_10px_#abd600]"></div>
+</div>
+<!-- KPI Card 2 -->
+<div class="neo-brutal-card p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="bolt">bolt</span>
+</div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-xs">CONVERSION RATE</p>
+<h3 class="font-headline-md text-headline-md text-tertiary-fixed-dim">8.42%</h3>
+<div class="mt-sm flex items-center gap-xs text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]" data-icon="keyboard_arrow_up">keyboard_arrow_up</span>
+<span class="font-label-bold text-label-bold">+0.8% high vibe</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-tertiary-fixed-dim shadow-[0_0_10px_#00dbe9]"></div>
+</div>
+<!-- KPI Card 3 -->
+<div class="neo-brutal-card p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-xs">AVG ORDER VALUE</p>
+<h3 class="font-headline-md text-headline-md text-secondary-fixed-dim">$118.50</h3>
+<div class="mt-sm flex items-center gap-xs text-secondary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="font-label-bold text-label-bold">STABLE VIBE</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-secondary-fixed-dim shadow-[0_0_10px_#ffb1c3]"></div>
+</div>
+<!-- KPI Card 4 -->
+<div class="neo-brutal-card p-md relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="ads_click">ads_click</span>
+</div>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-xs">ACQUISITION COST</p>
+<h3 class="font-headline-md text-headline-md text-primary">$12.20</h3>
+<div class="mt-sm flex items-center gap-xs text-error">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_down">trending_down</span>
+<span class="font-label-bold text-label-bold">-4.1% efficiency dip</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-error shadow-[0_0_10px_#ffb4ab]"></div>
+</div>
+</section>
+<!-- Main Charts Section (Bento Grid Style) -->
+<section class="px-md md:px-lg py-lg grid grid-cols-12 gap-md">
+<!-- Massive Area Chart: Revenue vs Forecast -->
+<div class="col-span-12 lg:col-span-8 neo-brutal-card p-md md:p-lg min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary uppercase">REVENUE VS FORECAST</h2>
+<p class="font-body-md text-on-surface-variant">Projecting +15% surge in Q4 collectibles</p>
+</div>
+<div class="flex gap-md">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim shadow-[0_0_5px_#00dbe9]"></div>
+<span class="font-label-bold text-label-bold uppercase">REVENUE</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-primary-fixed-dim shadow-[0_0_5px_#abd600]"></div>
+<span class="font-label-bold text-label-bold uppercase">FORECAST</span>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full relative group">
+<!-- Mock Chart Grid & Lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-10">
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+</div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 300">
+<!-- Revenue Path -->
+<path class="drop-shadow-[0_0_8px_#00dbe9]" d="M0,250 L100,220 L200,240 L300,150 L400,180 L500,100 L600,120 L700,60 L800,80 L900,40 L1000,50" fill="none" stroke="#00dbe9" stroke-linecap="round" stroke-width="4"></path>
+<!-- Forecast Path -->
+<path class="drop-shadow-[0_0_8px_#abd600]" d="M0,260 L100,240 L200,230 L300,200 L400,190 L500,160 L600,150 L700,130 L800,110 L900,100 L1000,90" fill="none" stroke="#abd600" stroke-dasharray="8,8" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="absolute bottom-0 left-0 right-0 flex justify-between pt-sm border-t-2 border-surface-variant">
+<span class="font-label-bold text-label-bold text-on-surface-variant">MON</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">TUE</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">WED</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">THU</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">FRI</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">SAT</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">SUN</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart: Sales by Category -->
+<div class="col-span-12 lg:col-span-4 neo-brutal-card p-md md:p-lg flex flex-col items-center justify-center">
+<h2 class="font-headline-md text-headline-md text-primary uppercase mb-lg self-start">CATEGORY MIX</h2>
+<div class="relative w-48 h-48 md:w-56 md:h-56">
+<svg class="w-full h-full transform -rotate-90">
+<!-- Mystery Boxes: 45% -->
+<circle class="drop-shadow-[0_0_12px_#ffb1c3]" cx="50%" cy="50%" fill="transparent" r="40%" stroke="#ffb1c3" stroke-dasharray="282" stroke-dashoffset="126" stroke-width="32"></circle>
+<!-- Streetwear: 30% -->
+<circle class="drop-shadow-[0_0_12px_#00dbe9]" cx="50%" cy="50%" fill="transparent" r="40%" stroke="#00dbe9" stroke-dasharray="282" stroke-dashoffset="197" stroke-width="32" style="transform: rotate(162deg); transform-origin: center;"></circle>
+<!-- Collectibles: 25% -->
+<circle class="drop-shadow-[0_0_12px_#abd600]" cx="50%" cy="50%" fill="transparent" r="40%" stroke="#abd600" stroke-dasharray="282" stroke-dashoffset="211" stroke-width="32" style="transform: rotate(270deg); transform-origin: center;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary">100%</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">TOTAL MIX</span>
+</div>
+</div>
+<div class="w-full space-y-sm mt-lg">
+<div class="flex justify-between items-center p-sm bg-surface-container-low border-border-width border-surface-variant">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-secondary-fixed-dim"></div>
+<span class="font-label-bold text-label-bold uppercase">Mystery Boxes</span>
+</div>
+<span class="font-label-bold text-label-bold">45%</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-surface-container-low border-border-width border-surface-variant">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-tertiary-fixed-dim"></div>
+<span class="font-label-bold text-label-bold uppercase">Streetwear</span>
+</div>
+<span class="font-label-bold text-label-bold">30%</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-surface-container-low border-border-width border-surface-variant">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 bg-primary-fixed-dim"></div>
+<span class="font-label-bold text-label-bold uppercase">Collectibles</span>
+</div>
+<span class="font-label-bold text-label-bold">25%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Tactical Transactions Table -->
+<section class="px-md md:px-lg pb-xl">
+<div class="neo-brutal-card overflow-hidden">
+<div class="p-md md:p-lg border-b-border-width border-surface-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary uppercase tracking-tight">RECENT TACTICAL TRANSACTIONS</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs">
+<span class="font-label-bold text-label-bold uppercase">VIEW ALL LOGS</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant uppercase border-b-border-width border-surface-variant">ORDER ID</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant uppercase border-b-border-width border-surface-variant">VIBE (SENTIMENT)</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant uppercase border-b-border-width border-surface-variant">TOTAL</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant uppercase border-b-border-width border-surface-variant">STATUS</th>
+<th class="p-md font-label-bold text-label-bold text-on-surface-variant uppercase border-b-border-width border-surface-variant">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y-border-width divide-surface-variant">
+<!-- Order 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-md font-label-bold text-label-bold text-primary">#DC-9928-XA</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="holographic-badge p-xs rounded-full">
+<span class="material-symbols-outlined text-background text-[16px]" data-icon="sentiment_very_satisfied" data-weight="fill" style="font-variation-settings: 'FILL' 1;">sentiment_very_satisfied</span>
+</div>
+<span class="font-label-bold text-label-bold text-tertiary-fixed-dim uppercase">Hype Beast</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-label-bold text-primary">$442.00</td>
+<td class="p-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container font-label-bold text-label-bold uppercase border-2 border-on-surface shadow-[2px_2px_0px_#0D0B18]">SUCCESS</span>
+</td>
+<td class="p-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<!-- Order 2 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-md font-label-bold text-label-bold text-primary">#DC-1042-RT</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container-highest p-xs rounded-full">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="sentiment_neutral">sentiment_neutral</span>
+</div>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase">Casual Lurker</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-label-bold text-primary">$89.90</td>
+<td class="p-md">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant font-label-bold text-label-bold uppercase border-2 border-on-surface shadow-[2px_2px_0px_#0D0B18]">PENDING</span>
+</td>
+<td class="p-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<!-- Order 3 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-md font-label-bold text-label-bold text-primary">#DC-0045-KL</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="bg-error-container p-xs rounded-full">
+<span class="material-symbols-outlined text-error text-[16px]" data-icon="sentiment_very_dissatisfied">sentiment_very_dissatisfied</span>
+</div>
+<span class="font-label-bold text-label-bold text-error uppercase">FOMO CRASH</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-label-bold text-primary">$1,200.00</td>
+<td class="p-md">
+<span class="px-sm py-xs bg-error text-on-error font-label-bold text-label-bold uppercase border-2 border-on-surface shadow-[2px_2px_0px_#0D0B18]">FAILED</span>
+</td>
+<td class="p-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<!-- Order 4 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="p-md font-label-bold text-label-bold text-primary">#DC-7731-MN</td>
+<td class="p-md">
+<div class="flex items-center gap-sm">
+<div class="holographic-badge p-xs rounded-full">
+<span class="material-symbols-outlined text-background text-[16px]" data-icon="bolt" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim uppercase">Whale Alert</span>
+</div>
+</td>
+<td class="p-md font-label-bold text-label-bold text-primary">$3,420.55</td>
+<td class="p-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container font-label-bold text-label-bold uppercase border-2 border-on-surface shadow-[2px_2px_0px_#0D0B18]">SUCCESS</span>
+</td>
+<td class="p-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Sticker Pop-up Notification (Neo-Brutal Style) -->
+<div class="fixed bottom-lg right-lg z-50 transform rotate-3">
+<div class="bg-primary-fixed border-[4px] border-white outline outline-[3px] outline-[#0D0B18] shadow-offset-shadow p-md max-w-xs transition-transform hover:-rotate-1 cursor-pointer">
+<div class="flex items-start gap-md">
+<div class="bg-on-primary-fixed text-primary-fixed p-sm border-2 border-white rounded-full">
+<span class="material-symbols-outlined text-[24px]" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-primary-fixed leading-tight">DROPS PEAKING!</h4>
+<p class="font-label-bold text-label-bold text-on-primary-fixed-variant mt-xs uppercase">Mystery Box V4 sold out in 12s.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (from JSON: {{DATA:COMPONENTS:COMPONENTS_8}}) -->
+<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim border-t-border-width border-surface-variant relative z-10">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<div class="font-headline-md text-headline-md text-secondary-fixed uppercase">DOPAMINE CLUB</div>
+<p class="font-body-md text-body-md text-on-surface-variant">©2024 DOPAMINE CLUB / POP MART UNIVERSE</p>
+</div>
+<div class="flex flex-wrap justify-center gap-md">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors uppercase" href="#">PRIVACY</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors uppercase" href="#">TERMS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors uppercase" href="#">RECALLS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors uppercase" href="#">SUPPORT</a>
+</div>
+<div class="flex gap-sm">
+<button class="w-12 h-12 flex items-center justify-center border-border-width border-on-surface bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center border-border-width border-on-surface bg-surface-container-high hover:bg-secondary-container hover:text-on-secondary-container transition-all">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+</button>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hover glow on buttons
+        document.querySelectorAll('.neo-brutal-button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.boxShadow = '0 0 15px rgba(255,255,255,0.3)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.boxShadow = '4px 4px 0px #0D0B18';
+            });
+        });
+
+        // Simple mock data interaction for the "Sticker"
+        const sticker = document.querySelector('.fixed.bottom-lg');
+        sticker.addEventListener('click', () => {
+            sticker.style.opacity = '0';
+            sticker.style.pointerEvents = 'none';
+            setTimeout(() => sticker.remove(), 300);
+        });
+    </script>
+</body></html>

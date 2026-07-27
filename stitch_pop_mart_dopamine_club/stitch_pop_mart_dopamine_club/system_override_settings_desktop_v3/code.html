@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYSTEM OVERRIDE | DOPAMINE CLUB</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-secondary": "#66002c",
+                        "inverse-surface": "#e5e0f3",
+                        "background": "#14121f",
+                        "surface": "#14121f",
+                        "tertiary-fixed": "#7df4ff",
+                        "surface-tint": "#abd600",
+                        "surface-container": "#201e2c",
+                        "on-secondary-fixed": "#3f0019",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "tertiary-container": "#7df4ff",
+                        "surface-container-high": "#2b2836",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "primary-fixed-dim": "#abd600",
+                        "on-tertiary-fixed": "#002022",
+                        "on-background": "#e5e0f3",
+                        "on-surface": "#e5e0f3",
+                        "surface-variant": "#363342",
+                        "surface-container-low": "#1c1a27",
+                        "surface-container-highest": "#363342",
+                        "on-primary-container": "#556d00",
+                        "surface-dim": "#14121f",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "surface-bright": "#3a3746",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#312f3d",
+                        "outline": "#8e9379",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-tertiary": "#00363a",
+                        "on-primary": "#283500",
+                        "inverse-primary": "#506600",
+                        "on-secondary-container": "#590026",
+                        "tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "secondary": "#ffb1c3",
+                        "primary-container": "#c3f400",
+                        "primary": "#ffffff",
+                        "outline-variant": "#444933",
+                        "secondary-container": "#ff4b89",
+                        "on-primary-fixed": "#161e00",
+                        "surface-container-lowest": "#0e0c1a",
+                        "primary-fixed": "#c3f400",
+                        "secondary-fixed": "#ffd9e0",
+                        "on-tertiary-container": "#006f77",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "border-width": "3px",
+                        "offset-shadow": "6px 6px 0px #0D0B18",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Space Grotesk"],
+                        "display-xl": ["Syne"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Syne"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Syne"],
+                        "headline-lg": ["Syne"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #14121f;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+            color: #e5e0f3;
+        }
+        .neo-brutalist-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 3px solid #0D0B18;
+            box-shadow: 6px 6px 0px #0D0B18;
+            transition: all 0.1s ease;
+        }
+        .neo-brutalist-card:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #0D0B18;
+        }
+        .neo-brutalist-button-primary {
+            background: #c3f400; /* Electric Lime */
+            border: 3px solid #0D0B18;
+            box-shadow: 6px 6px 0px #0D0B18;
+            color: #161e00;
+        }
+        .neo-brutalist-button-primary:hover {
+            box-shadow: 0px 0px 20px rgba(195, 244, 0, 0.4);
+        }
+        .neo-brutalist-button-primary:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #0D0B18;
+        }
+        .neo-brutalist-button-secondary {
+            background: #ff4b89; /* Neon Pink */
+            border: 3px solid #0D0B18;
+            box-shadow: 6px 6px 0px #0D0B18;
+            color: #ffffff;
+        }
+        .neo-brutalist-button-secondary:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #0D0B18;
+        }
+        .glass-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 3px solid #0D0B18;
+            box-shadow: inset 3px 3px 0px rgba(0,0,0,0.2);
+        }
+        .glass-input:focus {
+            outline: none;
+            border-color: #c3f400;
+            box-shadow: 0px 0px 15px rgba(195, 244, 0, 0.3);
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: #0D0B18;
+            height: 12px;
+            border-radius: 0;
+            border: 2px solid #363342;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 12px;
+            background: #c3f400;
+            border: 2px solid #0D0B18;
+            cursor: pointer;
+        }
+        .custom-toggle {
+            width: 48px;
+            height: 24px;
+            background: #363342;
+            border: 2px solid #0D0B18;
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-toggle::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #e5e0f3;
+            top: 2px;
+            left: 2px;
+            transition: 0.2s;
+        }
+        input:checked + .custom-toggle {
+            background: #ff4b89;
+        }
+        input:checked + .custom-toggle::after {
+            left: 26px;
+            background: #ffffff;
+        }
+        .sticker-badge {
+            transform: rotate(-2deg);
+            border: 4px solid white;
+            box-shadow: 4px 4px 0px #0D0B18;
+        }
+        .holographic-glow {
+            background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4));
+            background-size: 200% 200%;
+            animation: holo-shift 5s ease infinite;
+        }
+        @keyframes holo-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full bg-surface dark:bg-surface border-b-border-width border-outline dark:border-outline shadow-offset-shadow z-50">
+<div class="flex justify-between items-center px-md py-sm w-full max-w-full">
+<div class="flex items-center gap-md">
+<h1 class="font-display-xl text-headline-md italic uppercase text-primary dark:text-primary tracking-tighter">Dopamine Club</h1>
+<nav class="hidden md:flex gap-md">
+<a class="text-on-surface dark:text-on-surface hover:text-secondary-container dark:hover:text-secondary-container transition-colors font-label-bold text-label-bold uppercase" href="#">DROPS</a>
+<a class="text-on-surface dark:text-on-surface hover:text-secondary-container dark:hover:text-secondary-container transition-colors font-label-bold text-label-bold uppercase" href="#">VAULT</a>
+<a class="text-on-surface dark:text-on-surface hover:text-secondary-container dark:hover:text-secondary-container transition-colors font-label-bold text-label-bold uppercase" href="#">GAMES</a>
+<a class="text-on-surface dark:text-on-surface hover:text-secondary-container dark:hover:text-secondary-container transition-colors font-label-bold text-label-bold uppercase" href="#">CLUBS</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="glass-input pl-10 pr-md py-xs font-label-bold text-label-bold w-64 bg-surface-container-low" placeholder="QUERY DATABASE..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-sm hover:text-secondary-container transition-colors">shopping_cart</button>
+<button class="material-symbols-outlined p-sm hover:text-secondary-container transition-colors">account_circle</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-64px)] w-64 border-r-border-width border-outline bg-surface-container dark:bg-surface-container sticky top-[64px]">
+<div class="flex flex-col h-full p-md gap-sm">
+<div class="flex flex-col gap-xs mb-md">
+<div class="w-16 h-16 neo-brutalist-card mb-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a digital avatar portrait in a futuristic cyberpunk aesthetic. The character has vibrant neon pink hair and wears high-tech tactical goggles that reflect digital code. The lighting is dark and moody with electric lime rim lighting, set against a gritty grainy indigo background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkoru1c5Hg19VTuo5aai50Qd79MB82mZmA8PHUl0Ldyx_bI2uyY_f1COuxha2kL5Dzpfnni9z4lqkPD__xNlsMk4fOJDMSWoeBI3IWqvWdqb7KWfRMs_0ql7_Dcn7fZGZazsbnUiz7RvvdZZlXB8WEcU5qlRb_He2SBL9AM1u2-QLVkDq4TcMcuZlZdmbCP6Xk6Jdfea2B9zYqy9BpU3R3U_WT07bCNrUtk0a9A5XuTWooDzOcT-GWqsBYKCA1qrs0TPvrpkJviU1U"/>
+</div>
+<span class="font-headline-md text-headline-md text-primary">Dopamine Elite</span>
+<span class="font-label-bold text-label-bold uppercase text-on-surface-variant">Verified Member</span>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:bg-secondary-container hover:text-on-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                    </a>
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:bg-secondary-container hover:text-on-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Inventory
+                    </a>
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:bg-secondary-container hover:text-on-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span> Orders
+                    </a>
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:bg-secondary-container hover:text-on-secondary-container transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+                    </a>
+<a class="flex items-center gap-sm bg-primary-container text-on-primary-container border-border-width border-outline shadow-offset-shadow p-sm font-label-bold text-label-bold uppercase active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                    </a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs pt-md border-t-border-width border-outline">
+<button class="neo-brutalist-button-primary w-full py-sm font-label-bold text-label-bold uppercase mb-md">UPGRADE TO PRO</button>
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                    </a>
+<a class="flex items-center gap-sm text-on-surface p-sm font-label-bold text-label-bold uppercase hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-md md:p-lg lg:p-xl max-w-6xl mx-auto relative overflow-hidden">
+<!-- Animated Background element -->
+
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md relative z-10">
+<div>
+<div class="inline-block px-sm py-xs bg-secondary-container text-white font-label-bold text-label-bold uppercase sticker-badge mb-sm">ADMIN OVERRIDE ACTIVE</div>
+<h2 class="font-display-xl text-display-xl text-primary uppercase mb-xs">System Override</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Fine-tune your dopamine receptors and neural interface parameters. Warning: adjustments may affect reality perception.</p>
+</div>
+<div class="flex gap-sm">
+<button class="neo-brutalist-button-secondary px-md py-sm font-label-bold text-label-bold uppercase">RESTORE DEFAULTS</button>
+<button class="neo-brutalist-button-primary px-md py-sm font-label-bold text-label-bold uppercase">SYNC TO CLOUD</button>
+</div>
+</div>
+<!-- Settings Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md relative z-10">
+<!-- Account Intel -->
+<section class="md:col-span-4 neo-brutalist-card p-md flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary-container">shield_person</span>
+<h3 class="font-headline-md text-headline-md uppercase">Account Intel</h3>
+</div>
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold uppercase text-on-surface-variant">OPERATIVE ALIAS</label>
+<input class="glass-input p-sm font-label-bold text-label-bold text-primary" type="text" value="NEO_STRIKER_99"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-bold text-label-bold uppercase text-on-surface-variant">COMM CHANNEL</label>
+<input class="glass-input p-sm font-label-bold text-label-bold text-primary" type="email" value="striker@dopamine.elite"/>
+</div>
+<div class="mt-md p-sm bg-surface-container-high border-2 border-dashed border-outline-variant">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-bold text-label-bold text-on-surface-variant">RANK</span>
+<span class="font-label-bold text-label-bold text-primary-container">LEVEL 42</span>
+</div>
+<div class="w-full bg-background h-2 border border-outline">
+<div class="bg-primary-container h-full w-[84%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Neural Configuration (Neural Link Sensitivity & Vibe Frequency) -->
+<section class="md:col-span-8 neo-brutalist-card p-md holographic-glow">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary-container">psychology</span>
+<h3 class="font-headline-md text-headline-md uppercase text-on-background">Neural Configuration</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-bold text-label-bold uppercase text-on-background">Neural Link Sensitivity</label>
+<span class="font-label-bold text-label-bold text-primary-container">88%</span>
+</div>
+<input max="100" min="0" type="range" value="88"/>
+<p class="text-[12px] text-on-surface-variant italic">Increases haptic feedback precision for bio-digital interactions.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-bold text-label-bold uppercase text-on-background">Vibe Frequency</label>
+<span class="font-label-bold text-label-bold text-primary-container">432 Hz</span>
+</div>
+<input max="1000" min="300" type="range" value="432"/>
+<p class="text-[12px] text-on-surface-variant italic">Calibrates the background atmospheric resonance of the interface.</p>
+</div>
+</div>
+<div class="flex flex-col justify-center items-center neo-brutalist-card bg-surface/50 border-none p-md">
+
+<span class="font-label-bold text-label-bold uppercase text-center tracking-widest text-primary-container">NEURAL WAVEFORM SYNC: OPTIMAL</span>
+</div>
+</div>
+</section>
+<!-- Security Protocols -->
+<section class="md:col-span-7 neo-brutalist-card p-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary-container">security</span>
+<h3 class="font-headline-md text-headline-md uppercase">Security Protocols</h3>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold uppercase text-primary">Biometric Firewall</span>
+<span class="text-xs text-on-surface-variant">Force identity verification on every login attempt.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only" type="checkbox"/>
+<div class="custom-toggle"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold uppercase text-primary">Encrypted Comm-Links</span>
+<span class="text-xs text-on-surface-variant">Hide your metadata from non-club surveillance.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only" type="checkbox"/>
+<div class="custom-toggle"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high transition-colors">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold uppercase text-primary">Stealth Protocol 7</span>
+<span class="text-xs text-on-surface-variant">Render your profile invisible to AI scrapers.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only" type="checkbox"/>
+<div class="custom-toggle"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Tactical HUD & UI -->
+<section class="md:col-span-5 neo-brutalist-card p-md bg-primary-container/5">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary-container">visibility</span>
+<h3 class="font-headline-md text-headline-md uppercase">Tactical HUD</h3>
+</div>
+<div class="flex flex-col gap-lg">
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-bold text-label-bold uppercase text-on-background">HUD Opacity</label>
+<span class="font-label-bold text-label-bold text-primary-container">65%</span>
+</div>
+<input max="100" min="10" type="range" value="65"/>
+</div>
+<div class="flex flex-wrap gap-sm">
+<div class="flex-1 min-w-[120px] p-sm bg-surface-container border-2 border-outline flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined text-secondary-container">grid_view</span>
+<span class="font-label-bold text-[10px] uppercase">Grid On</span>
+</div>
+<div class="flex-1 min-w-[120px] p-sm bg-primary-container text-on-primary-container border-2 border-outline flex flex-col items-center gap-xs shadow-offset-shadow">
+<span class="material-symbols-outlined">data_object</span>
+<span class="font-label-bold text-[10px] uppercase">Telemetry</span>
+</div>
+<div class="flex-1 min-w-[120px] p-sm bg-surface-container border-2 border-outline flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined">radar</span>
+<span class="font-label-bold text-[10px] uppercase">Motion Sensor</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Notification Nodes -->
+<section class="md:col-span-12 neo-brutalist-card p-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary-container">notifications_active</span>
+<h3 class="font-headline-md text-headline-md uppercase">Notification Nodes</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-md">
+<div class="p-sm neo-brutalist-card bg-surface-container-low flex flex-col gap-sm border-2">
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-primary-container">bolt</span>
+<input checked="" class="hidden peer" id="notif-1" type="checkbox"/>
+<label class="custom-toggle scale-75" for="notif-1"></label>
+</div>
+<span class="font-label-bold text-label-bold uppercase">Drops Alert</span>
+</div>
+<div class="p-sm neo-brutalist-card bg-surface-container-low flex flex-col gap-sm border-2">
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-secondary-container">stadium</span>
+<input checked="" class="hidden peer" id="notif-2" type="checkbox"/>
+<label class="custom-toggle scale-75" for="notif-2"></label>
+</div>
+<span class="font-label-bold text-label-bold uppercase">Game Invites</span>
+</div>
+<div class="p-sm neo-brutalist-card bg-surface-container-low flex flex-col gap-sm border-2">
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">groups</span>
+<input class="hidden peer" id="notif-3" type="checkbox"/>
+<label class="custom-toggle scale-75" for="notif-3"></label>
+</div>
+<span class="font-label-bold text-label-bold uppercase">Club Updates</span>
+</div>
+<div class="p-sm neo-brutalist-card bg-surface-container-low flex flex-col gap-sm border-2">
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-error">warning</span>
+<input checked="" class="hidden peer" id="notif-4" type="checkbox"/>
+<label class="custom-toggle scale-75" for="notif-4"></label>
+</div>
+<span class="font-label-bold text-label-bold uppercase">System Alerts</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticker accents for flair -->
+<div class="fixed bottom-12 right-12 sticker-badge bg-primary-container p-xs px-sm text-on-primary-container font-label-bold text-label-bold uppercase z-20 pointer-events-none hidden md:block">
+                HIGH PERFORMANCE MODE
+            </div>
+<div class="fixed top-40 -left-10 sticker-badge bg-secondary-container p-xs px-sm text-white font-label-bold text-label-bold uppercase z-20 pointer-events-none rotate-[20deg] hidden xl:block">
+                OVERRIDE: GRANTED
+            </div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-lg bg-surface-container-lowest dark:bg-surface-container-lowest border-t-border-width border-outline mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-md max-w-7xl mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start gap-xs">
+<h4 class="font-headline-md text-headline-md text-primary uppercase">DOPAMINE CLUB</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 DOPAMINE CLUB. ALL RIGHTS RESERVED.</p>
+</div>
+<nav class="flex gap-md">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary-container transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary-container transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary-container transition-opacity duration-200" href="#">Support</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary-container transition-opacity duration-200" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        document.querySelectorAll('.neo-brutalist-button-primary, .neo-brutalist-button-secondary, .neo-brutalist-card').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('active-state');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('active-state');
+            });
+        });
+
+        // Simple range value update listener
+        document.querySelectorAll('input[type="range"]').forEach(range => {
+            range.addEventListener('input', (e) => {
+                const label = e.target.previousElementSibling.querySelector('span');
+                if (label) {
+                    if (e.target.max == 1000) {
+                        label.innerText = e.target.value + ' Hz';
+                    } else {
+                        label.innerText = e.target.value + '%';
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

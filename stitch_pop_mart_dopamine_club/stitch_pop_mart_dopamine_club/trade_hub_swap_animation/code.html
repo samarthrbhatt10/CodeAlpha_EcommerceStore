@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+    </style>
+</head>
+<body>
+    <div class="fixed inset-0 w-full h-full bg-transparent">
+        <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+        <div id="threejs-container-TRADE" style="width:100%;height:100%"></div>
+        <script>
+        (function() {
+            const container = document.getElementById('threejs-container-TRADE');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Asset Swapping Visualization
+            const group = new THREE.Group();
+            scene.add(group);
+
+            // Placeholder Geometry for high-value items
+            const swordGeo = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+            const helmetGeo = new THREE.IcosahedronGeometry(1.2, 0);
+            
+            const material = new THREE.MeshPhongMaterial({ 
+                color: 0xccff00, 
+                wireframe: true,
+                emissive: 0xccff00,
+                emissiveIntensity: 0.5
+            });
+
+            const sword = new THREE.Mesh(swordGeo, material);
+            const helmet = new THREE.Mesh(helmetGeo, material);
+            
+            sword.position.x = -3;
+            helmet.position.x = 3;
+            
+            group.add(sword);
+            group.add(helmet);
+
+            // Circular Swap Path
+            const ringGeo = new THREE.TorusGeometry(3, 0.02, 16, 100);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0xff00ff, transparent: true, opacity: 0.3 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2;
+            scene.add(ring);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+            const pointLight = new THREE.PointLight(0xffffff, 1);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            camera.position.z = 8;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const time = Date.now() * 0.001;
+                
+                sword.rotation.y += 0.02;
+                helmet.rotation.x += 0.02;
+                
+                sword.position.y = Math.sin(time) * 0.5;
+                helmet.position.y = Math.cos(time) * 0.5;
+                
+                group.rotation.y += 0.01;
+                
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                renderer.setSize(w, h);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            });
+
+            animate();
+        })();
+        </script>
+    </div>
+</body>
+</html>

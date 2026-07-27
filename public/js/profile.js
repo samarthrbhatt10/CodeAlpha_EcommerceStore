@@ -1,89 +1,122 @@
-// profile.js — User profile with order history
-
+// profile.js — Connected to correct API endpoints
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
-    const user = (() => { try { return JSON.parse(localStorage.getItem('user')); } catch(e) { return null; } })();
+    const userStr = localStorage.getItem('user');
 
-    if (!token || !user) {
+    const loadingEl = document.getElementById('profile-loading');
+    const contentEl = document.getElementById('profile-content');
+    const authRequiredEl = document.getElementById('profile-auth-required');
+
+    if (!token || !userStr) {
+        if (loadingEl) loadingEl.classList.add('hidden');
+        if (contentEl) contentEl.classList.remove('hidden');
+        if (authRequiredEl) authRequiredEl.classList.remove('hidden');
+        return;
+    }
+
+    let user;
+    try { user = JSON.parse(userStr); } catch (e) {
         window.location.href = '/auth';
         return;
     }
 
-    // Fill user info
-    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-    setEl('profile-email', user.email);
-    setEl('profile-username', user.email.split('@')[0].toUpperCase());
-    setEl('profile-role', user.role === 'admin' ? '⭐ ADMIN' : '🎯 MEMBER');
+    document.title = `STATS: ${user.email} | DOPAMINE CLUB`;
+
+    // Populate user info
+    const nameEl = document.getElementById('profile-name');
+    const emailEl = document.getElementById('profile-email');
+    if (nameEl) nameEl.textContent = (user.name || user.email.split('@')[0]).toUpperCase();
+    if (emailEl) emailEl.textContent = user.email;
+
+    // Fetch fresh user data
+    try {
+        const res = await fetch('/api/auth/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+            const freshUser = await res.json();
+            localStorage.setItem('user', JSON.stringify({ ...user, ...freshUser }));
+            if (nameEl) nameEl.textContent = (freshUser.name || freshUser.email.split('@')[0]).toUpperCase();
+            if (emailEl) emailEl.textContent = freshUser.email;
+        }
+    } catch(e) {}
 
     // Fetch orders
-    const ordersContainer = document.getElementById('order-history');
-    if (ordersContainer) {
-        ordersContainer.innerHTML = `<div class="animate-pulse space-y-sm">
-            ${Array(3).fill('<div class="h-16 bg-surface-container-high rounded-lg"></div>').join('')}
-        </div>`;
+    let orders = [];
+    try {
+        const res = await fetch('/api/orders/myorders', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) orders = await res.json();
+    } catch(e) {}
 
-        try {
-            const res = await fetch('/api/orders/myorders', {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
+    // Calculate stats
+    const totalSpent = orders.reduce((acc, o) => {
+        return acc + o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+    }, 0);
+    
+    const rankTiers = [
+        { min: 0, name: 'ROOKIE' }, { min: 1, name: 'COLLECTOR' },
+        { min: 3, name: 'HYPE BEAST' }, { min: 7, name: 'VAULT ELITE' },
+        { min: 15, name: 'S-TIER' }
+    ];
+    const rank = rankTiers.filter(r => orders.length >= r.min).pop()?.name || 'ROOKIE';
 
-            if (!res.ok) throw new Error('Failed to fetch orders');
-            const orders = await res.json();
+    const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    setEl('stat-orders', orders.length);
+    setEl('stat-spent', '$' + totalSpent.toFixed(0));
+    setEl('stat-rank', rank);
+    setEl('stat-streak', Math.min(orders.length, 7));
 
-            setEl('order-count', orders.length);
-
-            if (orders.length === 0) {
-                ordersContainer.innerHTML = `
-                    <div class="text-center py-lg text-on-surface-variant">
-                        <span class="material-symbols-outlined text-4xl">receipt_long</span>
-                        <p class="mt-sm font-label-bold">No orders yet. Time to cop some drops!</p>
-                        <a href="/catalog" class="mt-md inline-block bg-primary-container text-on-primary-container font-label-bold px-lg py-sm rounded border-2 border-black shadow-[3px_3px_0px_#000]">SHOP NOW</a>
-                    </div>`;
-                return;
-            }
-
-            ordersContainer.innerHTML = orders.map(order => {
-                const date = new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                const statusColors = {
-                    pending: 'bg-yellow-900/50 text-yellow-300 border-yellow-700',
-                    processing: 'bg-blue-900/50 text-blue-300 border-blue-700',
-                    shipped: 'bg-purple-900/50 text-purple-300 border-purple-700',
-                    delivered: 'bg-green-900/50 text-green-300 border-green-700',
-                    cancelled: 'bg-red-900/50 text-red-300 border-red-700'
-                };
-                const statusClass = statusColors[order.status] || statusColors.pending;
-                const itemCount = order.items?.reduce((a, i) => a + i.quantity, 0) || order.items?.length || 0;
-                const orderTotal = order.items?.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0) || 0;
-
-                return `
-                <div class="p-md bg-surface-container-low border-2 border-surface-container-highest rounded-xl">
-                    <div class="flex justify-between items-start flex-wrap gap-sm">
-                        <div>
-                            <p class="font-label-bold text-primary text-sm">Order #${order._id.toString().slice(-8).toUpperCase()}</p>
-                            <p class="text-on-surface-variant text-xs mt-xs">${date} · ${itemCount} item${itemCount !== 1 ? 's' : ''}</p>
-                        </div>
-                        <div class="flex items-center gap-sm">
-                            <span class="text-xs font-label-bold px-sm py-xs rounded border ${statusClass} uppercase">${order.status}</span>
-                            <span class="font-label-bold text-primary-container">$${orderTotal.toFixed(2)}</span>
-                        </div>
-                    </div>
+    // Render order history
+    const historyEl = document.getElementById('order-history');
+    if (historyEl) {
+        if (orders.length === 0) {
+            historyEl.innerHTML = `
+                <div class="text-center py-xl text-on-surface-variant">
+                    <span class="material-symbols-outlined text-6xl">inbox</span>
+                    <p class="mt-md font-body-md">No orders yet. Time to hit the vault.</p>
+                    <button onclick="window.location.href='/catalog'" class="mt-lg bg-primary-fixed text-on-primary-fixed font-label-bold px-xl py-sm border-4 border-black neo-shadow uppercase">ENTER THE VAULT</button>
                 </div>`;
-            }).join('');
-
-        } catch (err) {
-            ordersContainer.innerHTML = `<p class="text-on-surface-variant text-sm">Could not load order history.</p>`;
+        } else {
+            historyEl.innerHTML = `
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b-4 border-black">
+                                <th class="text-left py-sm px-md font-label-bold text-on-surface-variant uppercase text-xs">ORDER ID</th>
+                                <th class="text-left py-sm px-md font-label-bold text-on-surface-variant uppercase text-xs">DATE</th>
+                                <th class="text-right py-sm px-md font-label-bold text-on-surface-variant uppercase text-xs">TOTAL</th>
+                                <th class="text-right py-sm px-md font-label-bold text-on-surface-variant uppercase text-xs">STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${orders.map(o => {
+                                const date = new Date(o.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                                const total = o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+                                const statusColors = {
+                                    pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+                                    processing: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+                                    shipped: 'bg-primary-fixed/20 text-primary-fixed border-primary-fixed/30',
+                                    delivered: 'bg-green-500/20 text-green-400 border-green-500/30',
+                                    cancelled: 'bg-error/20 text-error border-error/30'
+                                };
+                                return `<tr class="border-b border-surface-container hover:bg-surface-container transition-colors">
+                                    <td class="py-sm px-md font-label-bold text-secondary-container">#${o._id.slice(-6).toUpperCase()}</td>
+                                    <td class="py-sm px-md text-on-surface-variant">${date}</td>
+                                    <td class="py-sm px-md text-right font-label-bold text-primary-fixed">$${total.toFixed(2)}</td>
+                                    <td class="py-sm px-md text-right">
+                                        <span class="inline-block px-sm py-xs border rounded font-label-bold text-xs uppercase ${statusColors[o.status] || ''}">${o.status}</span>
+                                    </td>
+                                </tr>`;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                </div>`;
         }
     }
 
-    // Logout button
-    document.getElementById('logout-btn')?.addEventListener('click', () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('dopamine_cart');
-        window.location.href = '/';
-    });
-
-    // Cart stats from localStorage
-    const cart = (() => { try { return JSON.parse(localStorage.getItem('dopamine_cart')) || []; } catch(e) { return []; }})();
-    setEl('cart-count', cart.reduce((a, i) => a + i.quantity, 0));
+    // Show content
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (contentEl) contentEl.classList.remove('hidden');
 });

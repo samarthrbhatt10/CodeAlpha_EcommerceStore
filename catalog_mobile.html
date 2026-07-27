@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | THE VAULT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;family=Syne:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.holographic-rare {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4))
+    }
+.grainy-overlay {
+    position: relative
+    }
+.grainy-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuACgmJnJIQNoqy2XMPoq27XolLbDu_Sr0XQ_gMrp_riZ305sT1B1MMvrcePR_t4GnsQWtSFvPoheNwzMs_v0n6kIesM_iMMm2bM7jAWME13qG2DU3CW8D-tnxdDxbnrs4U-kbJvC59rRNUDEx4_upeWeGGiczriaHUg4NTAfzc1SdpWUY-ia_BzaupY1QmZ4iysHFBNj1PwNWv7earGXd9boLmlJt-OzDLAWZBP6O8vWVefDg7ZyFMTYlMwJq0Dk7x8BBcweYcRowTa);
+    filter: contrast(150%) brightness(1000%)
+    }
+@keyframes subtle-float {
+    0%, 100% {
+        transform: translateY(0px);
+        } 50% {
+        transform: translateY(-4px);
+        }
+    }
+.float-anim {
+    animation: subtle-float 3s ease-in-out infinite
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0e0c1a",
+                      "secondary-fixed-dim": "#ffb1c3",
+                      "on-error": "#690005",
+                      "on-background": "#e5e0f3",
+                      "on-primary-container": "#556d00",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#004f54",
+                      "inverse-on-surface": "#312f3d",
+                      "on-secondary-fixed-variant": "#8f0041",
+                      "inverse-primary": "#506600",
+                      "inverse-surface": "#e5e0f3",
+                      "surface-container-highest": "#363342",
+                      "secondary-container": "#ff4b89",
+                      "on-surface-variant": "#c4c9ac",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#00363a",
+                      "on-secondary-fixed": "#3f0019",
+                      "tertiary-fixed": "#7df4ff",
+                      "outline-variant": "#444933",
+                      "surface-container-high": "#2b2836",
+                      "on-surface": "#e5e0f3",
+                      "on-primary": "#283500",
+                      "on-tertiary-container": "#006f77",
+                      "on-secondary": "#66002c",
+                      "on-primary-fixed": "#161e00",
+                      "error": "#ffb4ab",
+                      "secondary": "#ffb1c3",
+                      "on-primary-fixed-variant": "#3c4d00",
+                      "primary-container": "#c3f400",
+                      "outline": "#8e9379",
+                      "primary-fixed-dim": "#abd600",
+                      "primary": "#ffffff",
+                      "surface-tint": "#abd600",
+                      "surface-dim": "#14121f",
+                      "tertiary-container": "#7df4ff",
+                      "surface-bright": "#3a3746",
+                      "tertiary-fixed-dim": "#00dbe9",
+                      "secondary-fixed": "#ffd9e0",
+                      "on-secondary-container": "#590026",
+                      "surface-container-low": "#1c1a27",
+                      "on-tertiary-fixed": "#002022",
+                      "tertiary": "#ffffff",
+                      "surface-variant": "#363342",
+                      "primary-fixed": "#c3f400",
+                      "surface-container": "#201e2c",
+                      "surface": "#14121f",
+                      "background": "#14121f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "offset-shadow": "6px 6px 0px #0D0B18",
+                      "border-width": "3px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "lg": "48px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-bold": ["Space Grotesk"],
+                      "headline-md": ["Syne"],
+                      "headline-lg-mobile": ["Syne"],
+                      "headline-lg": ["Syne"],
+                      "display-xl": ["Syne"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md grainy-overlay overflow-x-hidden">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-md py-sm bg-surface/20 backdrop-blur-[20px]">
+<div class="flex items-center gap-sm">
+<span class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed">DOPAMINE CLUB</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:text-secondary-fixed-dim transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+</button>
+<button class="hover:text-secondary-fixed-dim transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-xl pb-32 px-md">
+<!-- Hero Section -->
+<section class="mt-md mb-lg">
+<div class="relative">
+<h1 class="font-display-xl text-headline-lg-mobile uppercase mb-xs leading-none">THE VAULT</h1>
+<p class="font-label-bold text-label-bold text-primary-fixed-dim tracking-widest uppercase">Archive_Status: UNLOCKED</p>
+<div class="absolute -right-4 -top-8 w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center rotate-12 border-border-width border-surface-container-lowest shadow-offset-shadow">
+<span class="font-label-bold text-[10px] leading-tight text-center text-on-secondary-container">HOT<br/>DROPS</span>
+</div>
+</div>
+</section>
+<!-- Dynamic Filter Pills -->
+<section class="flex overflow-x-auto gap-sm pb-md no-scrollbar">
+<button class="flex-shrink-0 bg-primary-container text-on-primary-container font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-surface-container-lowest shadow-offset-shadow active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all">
+                ALL ACCESS
+            </button>
+<button class="flex-shrink-0 glass-card text-on-surface-variant font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-surface-variant hover:border-primary-fixed transition-colors">
+                VIBE CHECK
+            </button>
+<button class="flex-shrink-0 glass-card text-on-surface-variant font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-surface-variant hover:border-primary-fixed transition-colors">
+                GOTH-LITE
+            </button>
+<button class="flex-shrink-0 glass-card text-on-surface-variant font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-surface-variant hover:border-primary-fixed transition-colors">
+                CYBER PUNK
+            </button>
+</section>
+<!-- Interactive Discovery Grid -->
+<section class="grid grid-cols-1 gap-md">
+<!-- Card 1: Rare Drop -->
+<div class="glass-card border-border-width border-surface-variant p-sm shadow-offset-shadow relative group">
+<div class="absolute top-4 right-4 z-10">
+<div class="holographic-rare border-border-width border-on-surface px-sm py-xs rounded-full">
+<span class="font-label-bold text-[10px] text-white">RARE DROP</span>
+</div>
+</div>
+<div class="aspect-square bg-surface-container-high relative overflow-hidden mb-sm border-border-width border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A high-fashion avant-garde sneaker with translucent neon lime soles and a holographic mesh upper. The shoe is set against a dark, moody background with subtle film grain and neon indigo lighting. The aesthetic is neo-brutalist and futuristic, resembling a high-end designer collectible in a digital showroom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6iSas-qet2KqIOwhvya1P3abTc_1PYlbCaIrI47vRmlgAUxo99xOS3DXcqScum6mUQ-otr8fgwHLSJ1CFzOdH2mTtzH5jz9oY_DxTx6fcuEMC3ZoRBNUGrqJuG5mUMrEwnhN0WE-IzQyxW19MSCEksZxYYL8PPkD9p7dSjNnjaWHkS7FXL5ph_EsE1ligXxz33knGb2JzvHnk8saDZuKQ9KD7P8apNEKfeVvtuwYz7aMjJmf2jktyg-uCj8m2JSfhKOYGkKSRoPLx"/>
+</div>
+<div class="flex flex-col gap-xs mb-md">
+<h3 class="font-headline-md text-headline-md leading-none">XENON STOMPERS v2</h3>
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim">$240.00</span>
+<span class="text-on-surface-variant text-xs font-label-bold">STOCK: 12</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-bold text-label-bold py-md border-border-width border-surface-container-lowest shadow-offset-shadow hover:bg-primary-fixed transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center justify-center gap-sm hover:scale-105"><div class="absolute inset-0 pointer-events-none overflow-hidden opacity-0 group-active:opacity-100 transition-opacity"><div class="absolute top-0 left-1/4 w-1 h-1 bg-primary animate-pulse"></div><div class="absolute top-0 left-1/2 w-1 h-1 bg-secondary-fixed animate-pulse"></div><div class="absolute top-0 left-3/4 w-1 h-1 bg-tertiary-fixed animate-pulse"></div></div>
+                    INSTANT COP <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+<!-- Card 2: Mystery Box -->
+<div class="glass-card border-border-width border-surface-variant p-sm shadow-offset-shadow relative">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden mb-sm border-border-width border-surface-variant">
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-display-xl text-primary-fixed animate-pulse" data-icon="inventory_2" style="font-size: 64px;">inventory_2</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs mb-md">
+<h3 class="font-headline-md text-headline-md leading-none">MYSTERY GLITCH BOX</h3>
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim">$49.00</span>
+<span class="text-on-surface-variant text-xs font-label-bold">99% CHANCE OF RARE</span>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-bold text-label-bold py-md border-border-width border-surface-container-lowest shadow-offset-shadow hover:scale-[1.02] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center justify-center gap-sm hover:scale-105">
+                    ROLL THE DICE <span class="material-symbols-outlined" data-icon="casino">casino</span>
+</button>
+</div>
+<!-- Card 3: Accessory -->
+<div class="glass-card border-border-width border-surface-variant p-sm shadow-offset-shadow">
+<div class="aspect-[4/3] bg-surface-container-high relative overflow-hidden mb-sm border-border-width border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A pair of chunky, rectangular framed sunglasses with a glossy midnight purple finish and neon pink tinted lenses. The glasses are styled in a neo-brutalist Y2K aesthetic, floating against a backdrop of dark indigo and vibrant pink light leaks. The lighting is sharp and high-contrast, highlighting the bold geometric form of the accessory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGxPvuBXANQ6sJKHLQRCUduGWJU6nPGw40tSm1H1BxiW-T5Gy5Y4hOFz8idxxV6GGdziQvIPCvwRdLrwXcviCfXbEbYb3j0tSpv9fCnF6FwujrFgmDfS5FlL-RSK2HDLHuboAg_CbJo9yzf83KuLbzzx6p9SSdDC9whtZ4RREcyAKVe6Ss6Yp4vSwNIp6rN07sY6fgYncHG4WBhHftVrcEpiI4rXhqUN31ZTV5GNp5rawrMT2A8BREPtm6NIACFV6uvGPEFE-bzsWc"/>
+</div>
+<div class="flex flex-col gap-xs mb-md">
+<h3 class="font-headline-md text-headline-md leading-none">NEON OVERLOAD SHADES</h3>
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim">$85.00</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 rounded-full bg-primary-fixed"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-fixed"></div>
+</div>
+</div>
+</div>
+<button class="w-full bg-tertiary-container text-on-tertiary-container font-label-bold text-label-bold py-md border-border-width border-surface-container-lowest shadow-offset-shadow hover:bg-tertiary-fixed transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center justify-center gap-sm hover:scale-105">
+                    ADD TO BAG <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+</div>
+<!-- Promotion Sticker Card -->
+<div class="relative py-lg overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 -rotate-3 scale-110"></div>
+<div class="relative bg-surface-bright border-border-width border-primary p-md rotate-2 shadow-offset-shadow">
+<h2 class="font-display-xl text-headline-lg-mobile text-primary-fixed-dim italic leading-none mb-sm">CLUBS ONLY</h2>
+<p class="font-body-lg text-body-lg mb-md">Join the INNER CIRCLE to get 15% off all Vault items and early access to Sunday drops.</p>
+<button class="bg-primary text-background font-label-bold text-label-bold px-lg py-md border-border-width border-on-surface shadow-offset-shadow active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
+                        JOIN THE CLUB
+                    </button>
+</div>
+</div>
+<!-- Card 4: Goth-Lite Item -->
+<div class="glass-card border-border-width border-surface-variant p-sm shadow-offset-shadow">
+<div class="aspect-square bg-surface-container-high relative overflow-hidden mb-sm border-border-width border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A distressed oversized streetwear hoodie in charcoal gray with heavy silver metallic chains and hardware details. The hoodie features a bold, distorted graphic of a futuristic skull in neon cyan. The lighting is moody and atmospheric, casting long, dramatic shadows that emphasize the texture of the fabric and the shine of the metal accents. High-octane fashion photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYsfjnDZqTS_N893mfwckkMrQEDsSJUVPpUCVm8s84URyiRQbaBY63aTA_lFpv_7Dxs5TOeTFxWwZ4zp9ueG5bkGe8Vi8XyJlATKTUutGd2A4IrdC1vmh3GdpGdFb_tdOo-CucvoxOS1eut1J3KDQQ9ExN_Rv4HXMN_ksdC6qMhp_jFbH3ZYnzWiY2ndLJzbpyZf7U6yncfJ43lOfsd6p4HW8cGykdbHira759RA3UMa48_R1YjrZXDGX-hooZC6S3E_Thj91rXo8_"/>
+</div>
+<div class="flex flex-col gap-xs mb-md">
+<h3 class="font-headline-md text-headline-md leading-none">CHAIN-LINK HOODIE</h3>
+<div class="flex justify-between items-center">
+<span class="font-label-bold text-label-bold text-secondary-fixed-dim">$165.00</span>
+<span class="bg-surface-variant px-xs py-0.5 text-[10px] font-label-bold text-on-surface">NEW ARRIVAL</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-bold text-label-bold py-md border-border-width border-surface-container-lowest shadow-offset-shadow active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center justify-center gap-sm hover:scale-105"><div class="absolute inset-0 pointer-events-none overflow-hidden opacity-0 group-active:opacity-100 transition-opacity"><div class="absolute top-0 left-1/4 w-1 h-1 bg-primary animate-pulse"></div><div class="absolute top-0 left-1/2 w-1 h-1 bg-secondary-fixed animate-pulse"></div><div class="absolute top-0 left-3/4 w-1 h-1 bg-tertiary-fixed animate-pulse"></div></div>
+                    INSTANT COP <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component Responsive Pivot) -->
+<nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass-card border-border-width border-surface-variant rounded-full p-2 flex justify-around items-center z-50 shadow-lg">
+<button class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-bold text-[10px]">DROPS</span>
+</button>
+<!-- Active Tab: VAULT (Mapping to Catalog/Inventory) -->
+<button class="flex flex-col items-center gap-1 bg-primary-container text-on-primary-container p-2 px-4 rounded-full border-border-width border-on-surface shadow-offset-shadow">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-bold text-[10px]">VAULT</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="sports_esports">sports_esports</span>
+<span class="font-label-bold text-[10px]">GAMES</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-bold text-[10px]">CLUBS</span>
+</button>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', () => {
+                btn.classList.remove('scale-95');
+            });
+        });
+
+        // Simple parallax for the header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface-container-lowest/90');
+                header.classList.remove('bg-surface/20');
+            } else {
+                header.classList.remove('bg-surface-container-lowest/90');
+                header.classList.add('bg-surface/20');
+            }
+        });
+    </script>
+</body></html>

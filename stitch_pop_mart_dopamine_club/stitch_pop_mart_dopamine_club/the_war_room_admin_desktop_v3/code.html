@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | WAR_ROOM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "on-secondary-container": "#590026",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#363342",
+                    "surface-container-high": "#2b2836",
+                    "on-surface": "#e5e0f3",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "tertiary-fixed": "#7df4ff",
+                    "surface-bright": "#3a3746",
+                    "surface": "#14121f",
+                    "on-background": "#e5e0f3",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "outline-variant": "#444933",
+                    "surface-container-lowest": "#0e0c1a",
+                    "surface-container-low": "#1c1a27",
+                    "secondary-container": "#ff4b89",
+                    "tertiary-container": "#7df4ff",
+                    "background": "#14121f",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-container": "#201e2c",
+                    "secondary": "#ffb1c3",
+                    "primary-fixed-dim": "#abd600",
+                    "on-primary-fixed": "#161e00",
+                    "inverse-on-surface": "#312f3d",
+                    "on-tertiary-fixed": "#002022",
+                    "on-secondary": "#66002c",
+                    "surface-variant": "#363342",
+                    "surface-dim": "#14121f",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#c3f400",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-tertiary": "#00363a",
+                    "tertiary": "#ffffff",
+                    "primary-container": "#c3f400",
+                    "primary": "#ffffff",
+                    "on-tertiary-container": "#006f77",
+                    "surface-tint": "#abd600",
+                    "secondary-fixed": "#ffd9e0",
+                    "on-primary-container": "#556d00",
+                    "inverse-primary": "#506600",
+                    "outline": "#8e9379",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "on-surface-variant": "#c4c9ac",
+                    "inverse-surface": "#e5e0f3",
+                    "on-primary": "#283500",
+                    "on-primary-fixed-variant": "#3c4d00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "border-width": "3px",
+                    "md": "24px",
+                    "xl": "80px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Syne"],
+                    "label-bold": ["Space Grotesk"],
+                    "headline-lg": ["Syne"],
+                    "display-xl": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #14121f;
+            background-image: radial-gradient(#363342 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: #e5e0f3;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .neo-shadow {
+            box-shadow: 6px 6px 0px #0D0B18;
+        }
+        .holographic-badge {
+            background: linear-gradient(45deg, #00dbe9, #ffb1c3, #abd600);
+            background-size: 200% 200%;
+            animation: holo-flow 3s ease infinite;
+            opacity: 0.8;
+        }
+        @keyframes holo-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(171, 214, 0, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Shell Container -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (Predicted Component) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 bg-surface-container-lowest border-r-border-width border-surface-variant sticky top-0 py-md px-sm">
+<div class="mb-lg px-sm">
+<h1 class="font-headline-md text-headline-md text-primary">DOPAMINE</h1>
+<p class="font-label-bold text-label-bold text-primary-fixed-dim tracking-widest mt-xs">WAR_ROOM</p>
+</div>
+<nav class="flex-1 space-y-base">
+<!-- Dashboard -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed">grid_view</span>
+<span class="font-label-bold text-label-bold">DASHBOARD</span>
+</a>
+<!-- Inventory -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed">inventory_2</span>
+<span class="font-label-bold text-label-bold">INVENTORY</span>
+</a>
+<!-- Sales -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed">trending_up</span>
+<span class="font-label-bold text-label-bold">SALES</span>
+</a>
+<!-- War Room (ACTIVE) -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg bg-primary-container text-on-primary-container border-border-width border-on-surface shadow-[4px_4px_0px_#0D0B18] scale-95 duration-75" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-bold text-label-bold">WAR_ROOM</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary-fixed">settings</span>
+<span class="font-label-bold text-label-bold">SETTINGS</span>
+</a>
+</nav>
+<div class="mt-auto px-sm pt-md border-t-border-width border-surface-variant/30">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded-full border-2 border-primary-fixed overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A stylized Neo-Brutalist digital avatar of a futuristic robot cat with neon lime green circuit patterns on its black chrome fur. The character has oversized digital eyes and wears a holographic visor, set against a dark indigo background with subtle grainy texture and a high-octane cyberpunk aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4kxLvO09EeaU2LiMdMQRTgXjeq3toVHFEAf9LL-4oNI2KrjdPe5SLhvmAYZSOlRl4Rhx7BQTnTgeYVRHCo5Ys8AEq8v30OnZrZvKlhveukVi9xM3jOtZOANH8x5LcPcgn31jlq6gU19T2jQl6fVWSFpBCWKR2xxp-Y2inkhjcdATgkFw0yuonl7lYi10KsNswhThtJavsWDDBFy-aP-r18f9sOLibCOvVyv2Na8-YJa6gppyK2aAT9lYBWZOy4IsHTxWzZuHlWtgi"/>
+</div>
+<div>
+<p class="font-label-bold text-[12px] text-on-surface">ADMIN MASCOT</p>
+<p class="font-label-bold text-[10px] text-primary-fixed">VIBE CHECK: 100%</p>
+</div>
+</div>
+<button class="w-full py-sm bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold rounded-lg neo-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95">
+                    BOOST DROPS
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-md md:p-lg relative overflow-hidden">
+<!-- Background Visual: Shader -->
+
+<!-- Top Header (Mobile View) -->
+<header class="lg:hidden flex justify-between items-center mb-md bg-surface-container-lowest/80 backdrop-blur-xl p-sm rounded-full border-border-width border-surface-variant">
+<div class="font-headline-md text-headline-md italic uppercase text-primary px-sm">WAR_ROOM</div>
+<button class="p-sm bg-secondary-container rounded-full border-border-width border-on-surface">
+<span class="material-symbols-outlined text-on-secondary-container">menu</span>
+</button>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md relative z-10">
+<!-- ROW 1: MISSION MAP -->
+<section class="md:col-span-8 group relative overflow-hidden glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow h-[450px]">
+<div class="scanline"></div>
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed">public</span>
+<h2 class="font-headline-md text-headline-md uppercase tracking-tight">GLOBAL_MISSION_MAP</h2>
+</div>
+<div class="holographic-badge px-sm py-xs rounded-full text-[10px] font-label-bold text-on-surface border border-white/20">
+                            LIVE_INTEL_STREAMING
+                        </div>
+</div>
+<div class="relative h-full w-full rounded-lg overflow-hidden border-2 border-surface-variant/50">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A highly detailed 3D topographic map of Tokyo in a Neo-Brutalist digital style. The map uses a palette of deep indigo and electric lime, with glowing data nodes and pulsating red heatmaps indicating high-activity zones. The lighting is dark and moody, punctuated by cybernetic UI elements and scrolling data streams." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsuUg33FK0Iop-pkZvgVtr1cgUNJV3vzb5kApGv0VFESmsK-aUVAmqMV1DCaCklIDv0kD4JO6_neGgnnXzcNBOJNbpg0SWMtdKlY_sLqfO2TydPKOBHcjMhG9Mw_yYz9p3Z1pF2evEoxq74CXfTL42IwoFpAvSMQ2zQCJ3bVBC_tX3T5TGaDVc41MIAsn1vdH634uatNZU3bQycstmLxsHT25Vb6SmsmXZ96ZAuDXI24_I695Ic0Yzt7Dv98hehSdHNDLQ2NaPorY7')"></div>
+<!-- HUD Elements Overlay -->
+<div class="absolute inset-0 p-md flex flex-col justify-end pointer-events-none">
+<div class="glass-card p-sm rounded-lg border border-white/10 w-fit backdrop-blur-md">
+<p class="font-label-bold text-[12px] text-primary-fixed">SECTOR_7_ACTIVE</p>
+<p class="text-[10px] text-on-surface-variant">COORDINATES: 35.6895° N, 139.6917° E</p>
+</div>
+</div>
+<!-- Marker Animation (CSS) -->
+<div class="absolute top-1/2 left-1/3 w-4 h-4 bg-primary-fixed rounded-full animate-ping"></div>
+<div class="absolute top-1/2 left-1/3 w-4 h-4 bg-primary-fixed rounded-full shadow-[0_0_15px_#abd600]"></div>
+</div>
+</section>
+<!-- ROW 1 SIDE: SQUAD STATUS -->
+<section class="md:col-span-4 glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">groups</span>
+<h2 class="font-headline-md text-headline-md uppercase tracking-tight">SQUAD_MONITOR</h2>
+</div>
+<div class="space-y-sm flex-1 overflow-y-auto pr-xs">
+<!-- Squad Item 1 -->
+<div class="p-sm bg-surface-container-high border-2 border-surface-variant rounded-lg flex items-center justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-tertiary-container rounded-full overflow-hidden border border-on-surface">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a cyberpunk squad leader with neon pink cybernetic hair and glowing cyan optics. Professional studio lighting with deep shadows and vibrant digital artifacts, adhering to the Y2K pop aesthetic with grain and texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSdQWyZo7CtXjFh17tAxpKcbsrZ5i6sJRqq6u2J775GyoGii40lxmAUMZt9ooGPzONCcK73cT20Fm-AKpnhrsNtRzcGz1u5maueLxxDROWYUOok5DPeBGc7S4QdD-8jolm2_0q8BYWZ56Gb2RXMVHzp-IDT1o8hZOr1BwNas7THTICDaV8H0TniJrYpcnvgMkpO76KBv2X8XcACQBqpbTlhXp-mItUBftFbiGZYDDwWy7NPcpBB7yRY-ap4pjj-9g4xPiz4PgfJlxf"/>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">VIBE_KILLER_66</p>
+<p class="text-[10px] text-primary-fixed">STATUS: ONLINE</p>
+</div>
+</div>
+<div class="text-right">
+<div class="w-2 h-2 rounded-full bg-primary-fixed mx-auto animate-pulse"></div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">LOC: TOKYO</p>
+</div>
+</div>
+<!-- Squad Item 2 -->
+<div class="p-sm bg-surface-container-high border-2 border-surface-variant rounded-lg flex items-center justify-between opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-secondary-container rounded-full overflow-hidden border border-on-surface">
+<img class="w-full h-full object-cover" data-alt="Portrait of a digital operator wearing an oversized chrome helmet with glowing red visor. The aesthetic is neo-brutalist with thick outlines and high contrast colors, set against a grainy purple gradient background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy2BKPRppCG4kJ585Mw4txjYOpyWiEAB1-RpF3dnsvu8W8OmxsSza7-k56pj-CZgCdcjzT4b0UNX5HhuUPfJw6bd2AkiDNCIpRdU7MAShclM3RT4nbKcupiRJuXPG5WBrrhXNYBCUPpG26LIfpZGzdK0S4qluDL9GKq2uNAExx-vdieli6kGgXd492uo2CKfOxegzeTu9NdYu3WHfGoDIkVh7KAzY58lm2KHbA-G4oO5M39QHIvsobFYPlcHFFkQEtCbyVfgr1c0Xb"/>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">GHOST_PROTO</p>
+<p class="text-[10px] text-error">STATUS: IN_BATTLE</p>
+</div>
+</div>
+<div class="text-right">
+<div class="w-2 h-2 rounded-full bg-error mx-auto"></div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">LOC: BERLIN</p>
+</div>
+</div>
+<!-- Squad Item 3 -->
+<div class="p-sm bg-surface-container-high border-2 border-surface-variant rounded-lg flex items-center justify-between hover:border-primary-fixed transition-colors">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container rounded-full overflow-hidden border border-on-surface">
+<img class="w-full h-full object-cover" data-alt="A futuristic hacker avatar with digital glitches and neon yellow highlights. The character wears tech-wear style clothing with intricate patterns, captured in a raw digital art style with bold line work and vibrant pop colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZTUeXxEcO4RvnGA7pNAvCZaGAaMCVpigyRB-g33eis2MKs7juGerzeHI3tHw7PHFw4nehMVLRMILzaAEzqmSiuTZCt-FVcpsRyM4khUKdaqKjNxlgXJXepeO-q5Z8tqc_Fy4vf1NjX9D9bpdvHIU-Jva4vB8ihySvbT1QlXblD0D1Hsu9nmD_bZDVUotH7vfyNGXOzcGDQcQkPhJJ2MJ1cWAPkwLHpGd9i-bc_1VR42qFrynFHGS69QmIhHBVrU3vh_InI4IJXkJu"/>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">PIXEL_REBEL</p>
+<p class="text-[10px] text-primary-fixed">STATUS: IDLE</p>
+</div>
+</div>
+<div class="text-right">
+<div class="w-2 h-2 rounded-full bg-on-surface-variant mx-auto"></div>
+<p class="text-[10px] font-label-bold text-on-surface-variant">LOC: SEOUL</p>
+</div>
+</div>
+</div>
+<button class="w-full py-sm mt-md bg-secondary-container text-on-secondary-container font-label-bold text-label-bold rounded-lg neo-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+                        DEPLOY_SQUAD_OMEGA
+                    </button>
+</section>
+<!-- ROW 2: NETWORK LOAD INDICATORS -->
+<section class="md:col-span-4 glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">bolt</span>
+<h2 class="font-headline-md text-headline-md uppercase tracking-tight">NETWORK_LOAD</h2>
+</div>
+<div class="space-y-md">
+<div>
+<div class="flex justify-between mb-xs">
+<span class="font-label-bold text-[12px] text-on-surface-variant">PACKET_DENSITY</span>
+<span class="font-label-bold text-[12px] text-primary-fixed">88%</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full border-2 border-surface-variant p-[2px]">
+<div class="h-full bg-primary-fixed rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-xs">
+<span class="font-label-bold text-[12px] text-on-surface-variant">LATENCY_PULSE</span>
+<span class="font-label-bold text-[12px] text-secondary">24MS</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full border-2 border-surface-variant p-[2px]">
+<div class="h-full bg-secondary-container rounded-full" style="width: 35%"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm pt-md">
+<div class="text-center p-sm bg-surface-container-low border border-surface-variant rounded-lg">
+<p class="font-headline-md text-primary">4.2TB</p>
+<p class="font-label-bold text-[10px] text-on-surface-variant">DL_RATE</p>
+</div>
+<div class="text-center p-sm bg-surface-container-low border border-surface-variant rounded-lg">
+<p class="font-headline-md text-tertiary-fixed-dim">1.8TB</p>
+<p class="font-label-bold text-[10px] text-on-surface-variant">UL_RATE</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ROW 2: STRATEGIC PLANNING TOOLS (BENTO) -->
+<section class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Bento 1: Live Feed -->
+<div class="glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow relative group">
+<div class="flex justify-between items-center mb-sm">
+<p class="font-label-bold text-label-bold text-on-surface">LIVE_FEED_01</p>
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-error animate-pulse"></div>
+<span class="text-[10px] font-bold text-error">REC</span>
+</div>
+</div>
+<div class="aspect-video bg-black rounded-lg overflow-hidden border-2 border-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="A dark, high-contrast security camera style footage of a futuristic urban alleyway filled with neon signs and steam. The image is filtered with heavy grain, scanlines, and a slight fisheye distortion to mimic a surveillance camera. In the foreground, blurred shapes of high-tech gear are visible in the shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzAZ9a8Yf7iRQ8WUiOj93NKx315fIdvcowKRqqVuezYiXQHxxbUpeVEdE_rughwMs3f34yEnVeHph8Lo1JQcH9o17SRn0lPJ4rPnerGDSwJSHsbm3aQu7q8Ym74ZSybzcHcESM8iVQzHlUtHwPATZp9QNX6KmR_FJJxwqFUoPndO0YZgdxWMO1NyZ8siSCpTOh5cDFP9Gji9nIfOBjcRsP_nfD8XeNeJ3IdBdI6j1BAbMVaWaf0sS0SiYLkUixDnXws-OI4XLfAiTb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-2 left-2 text-[10px] font-mono text-primary-fixed">CAM_07_SOUTH_DISTRICT</div>
+</div>
+<button class="mt-sm w-full py-xs border-2 border-surface-variant hover:border-primary-fixed rounded-lg font-label-bold text-[12px] transition-colors">SWITCH_ANGLE</button>
+</div>
+<!-- Bento 2: Strategic Ops -->
+<div class="glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow bg-surface-container-lowest/40">
+<p class="font-label-bold text-label-bold text-on-surface mb-md">STRATEGIC_PLANNING</p>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm p-sm bg-surface-container rounded-lg border border-surface-variant hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined text-primary-fixed">target</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">PHASE_ONE: DROP_WATCH</span>
+</li>
+<li class="flex items-center gap-sm p-sm bg-surface-container rounded-lg border border-surface-variant hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">PHASE_TWO: MARKET_FLIP</span>
+</li>
+<li class="flex items-center gap-sm p-sm bg-surface-container rounded-lg border border-surface-variant hover:scale-[1.02] transition-transform opacity-40">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">PHASE_THREE: [LOCKED]</span>
+</li>
+</ul>
+<div class="mt-md p-sm rounded-lg border-2 border-dashed border-primary-fixed/50 flex justify-center items-center gap-sm cursor-pointer hover:bg-primary-fixed/10 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed">add_circle</span>
+<span class="font-label-bold text-[12px] text-primary-fixed">ADD_SUB_OBJECTIVE</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Predicted Component) -->
+<footer class="mt-xl py-xl border-t-border-width border-surface-variant flex flex-col md:flex-row justify-between items-center gap-md relative z-10">
+<div class="flex flex-col gap-xs">
+<div class="font-headline-md text-headline-md text-secondary-fixed">DOPAMINE CLUB</div>
+<p class="font-label-bold text-[12px] text-on-surface-variant opacity-60">©2024 DOPAMINE CLUB / POP MART UNIVERSE</p>
+</div>
+<nav class="flex gap-md">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="#">PRIVACY</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="#">TERMS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="#">RECALLS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-tertiary-fixed-dim transition-colors" href="#">SUPPORT</a>
+</nav>
+</footer>
+</main>
+</div>
+<!-- Sticker / Notification (Mocking a Physical Interaction) -->
+<div class="fixed bottom-12 right-12 z-50 transform rotate-[-3deg] hover:rotate-[0deg] transition-all cursor-move" id="sticker-alert">
+<div class="bg-primary-fixed p-md rounded-lg border-[4px] border-white shadow-[0_10px_20px_rgba(0,0,0,0.5)] flex items-center gap-md max-w-sm">
+<div class="material-symbols-outlined text-[48px] text-on-primary-fixed" style="font-variation-settings: 'FILL' 1;">warning</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-primary-fixed leading-none mb-xs">VOX_ALERT</h3>
+<p class="font-label-bold text-[12px] text-on-primary-fixed opacity-80 uppercase">UNAUTHORIZED_ACCESS_DETECTED_SECTOR_4</p>
+</div>
+<button class="absolute -top-4 -right-4 w-8 h-8 bg-on-primary-fixed text-primary-fixed rounded-full flex items-center justify-center font-bold border-2 border-white" onclick="document.getElementById('sticker-alert').remove()">X</button>
+</div>
+</div>
+<script>
+        // Lightweight Atmospheric Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simulating Live Data Updates
+        setInterval(() => {
+            const latency = document.querySelector('.text-secondary');
+            if (latency) {
+                const newVal = Math.floor(Math.random() * 20) + 15;
+                latency.innerText = `${newVal}MS`;
+            }
+        }, 3000);
+    </script>
+</body></html>

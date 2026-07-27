@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | Global Trade Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 3px solid #0D0B18;
+            box-shadow: 6px 6px 0px #0D0B18;
+            transition: all 0.2s ease;
+        }
+        .glass-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px #0D0B18;
+        }
+        .neo-button-primary {
+            background-color: #c3f400;
+            color: #161e00;
+            border: 3px solid #0D0B18;
+            box-shadow: 4px 4px 0px #0D0B18;
+            transition: all 0.1s ease;
+        }
+        .neo-button-primary:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #0D0B18;
+        }
+        .holographic-badge {
+            background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .ticker-scroll {
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .glow-lime { filter: drop-shadow(0 0 10px rgba(195, 244, 0, 0.4)); }
+        .glow-pink { filter: drop-shadow(0 0 10px rgba(255, 75, 137, 0.4)); }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #14121f; }
+        ::-webkit-scrollbar-thumb { background: #363342; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c3f400; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "outline-variant": "#444933",
+                        "inverse-primary": "#506600",
+                        "on-surface": "#e5e0f3",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#006f77",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "primary-container": "#c3f400",
+                        "surface": "#14121f",
+                        "on-tertiary": "#00363a",
+                        "surface-container-high": "#2b2836",
+                        "secondary-fixed": "#ffd9e0",
+                        "on-background": "#e5e0f3",
+                        "tertiary-container": "#7df4ff",
+                        "inverse-on-surface": "#312f3d",
+                        "on-primary": "#283500",
+                        "surface-dim": "#14121f",
+                        "tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "primary-fixed": "#c3f400",
+                        "surface-container-lowest": "#0e0c1a",
+                        "surface-variant": "#363342",
+                        "primary": "#ffffff",
+                        "background": "#14121f",
+                        "surface-tint": "#abd600",
+                        "surface-bright": "#3a3746",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-secondary-container": "#590026",
+                        "on-primary-container": "#556d00",
+                        "inverse-surface": "#e5e0f3",
+                        "on-secondary-fixed": "#3f0019",
+                        "secondary": "#ffb1c3",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "surface-container": "#201e2c",
+                        "surface-container-low": "#1c1a27",
+                        "primary-fixed-dim": "#abd600",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ff4b89",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#363342",
+                        "outline": "#8e9379",
+                        "on-tertiary-fixed": "#002022",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-secondary": "#66002c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "lg": "48px",
+                        "border-width": "3px",
+                        "xs": "4px",
+                        "offset-shadow": "6px 6px 0px #0D0B18",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Syne"],
+                        "label-bold": ["Space Grotesk"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Syne"],
+                        "display-xl": ["Syne"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<div class="grain-overlay"></div>
+<!-- Layout Shell -->
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation (Shared Component Integration) -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-surface-container-low border-r-border-width border-outline p-md space-y-md shrink-0 z-40">
+<div class="flex items-center space-x-sm mb-md">
+<div class="w-12 h-12 bg-primary-container border-border-width border-outline flex items-center justify-center rotate-3">
+<span class="material-symbols-outlined text-on-primary-container font-bold" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary-container tracking-tighter">DOPAMINE CLUB</h1>
+<p class="font-label-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Rank: Elite Raider</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center space-x-sm p-sm rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold">Home</span>
+</a>
+<a class="flex items-center space-x-sm p-sm rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-bold">Missions</span>
+</a>
+<a class="flex items-center space-x-sm p-sm rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-bold">Inventory</span>
+</a>
+<a class="flex items-center space-x-sm p-sm rounded-lg bg-primary-container text-on-primary-container border-border-width border-outline-variant shadow-[4px_4px_0px_#0D0B18] -translate-x-1" href="#">
+<span class="material-symbols-outlined">csv</span>
+<span class="font-label-bold">Trade Hub</span>
+</a>
+<a class="flex items-center space-x-sm p-sm rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">lock_open</span>
+<span class="font-label-bold">Vault</span>
+</a>
+<a class="flex items-center space-x-sm p-sm rounded-lg text-on-surface hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md space-y-xs">
+<button class="w-full neo-button-primary p-sm font-label-bold text-center mb-md">
+                    Open Lootbox
+                </button>
+<div class="flex items-center justify-between text-on-surface-variant px-sm">
+<span class="material-symbols-outlined hover:text-primary-fixed cursor-pointer">help</span>
+<span class="material-symbols-outlined hover:text-primary-fixed cursor-pointer">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 relative h-screen bg-background">
+<!-- Global Live Ticker -->
+<div class="w-full bg-surface-container-highest border-b-border-width border-outline h-12 flex items-center overflow-hidden z-30">
+<div class="bg-secondary-container text-on-secondary-container font-label-bold px-md h-full flex items-center border-r-border-width border-outline shrink-0 relative z-10 italic">
+                    LIVE SWAPS
+                </div>
+<div class="ticker-scroll flex items-center whitespace-nowrap gap-xl text-on-surface font-label-bold">
+<span class="flex items-center gap-xs"><span class="text-primary-container">User_092</span> swapped <span class="text-tertiary-fixed-dim">2.4 ETH</span> for <span class="text-secondary-fixed-dim">8400 DOP</span> <span class="text-[10px] opacity-50">2s ago</span></span>
+<span class="flex items-center gap-xs"><span class="text-primary-container">VoidWalker</span> swapped <span class="text-tertiary-fixed-dim">0.5 BTC</span> for <span class="text-secondary-fixed-dim">124k DOP</span> <span class="text-[10px] opacity-50">5s ago</span></span>
+<span class="flex items-center gap-xs"><span class="text-primary-container">NeonKnight</span> swapped <span class="text-tertiary-fixed-dim">1500 USDT</span> for <span class="text-secondary-fixed-dim">300 DOP</span> <span class="text-[10px] opacity-50">12s ago</span></span>
+<span class="flex items-center gap-xs"><span class="text-primary-container">CryptoPunk</span> swapped <span class="text-tertiary-fixed-dim">1.1 ETH</span> for <span class="text-secondary-fixed-dim">4200 DOP</span> <span class="text-[10px] opacity-50">15s ago</span></span>
+<!-- Repeat for smooth loop -->
+<span class="flex items-center gap-xs"><span class="text-primary-container">User_092</span> swapped <span class="text-tertiary-fixed-dim">2.4 ETH</span> for <span class="text-secondary-fixed-dim">8400 DOP</span> <span class="text-[10px] opacity-50">2s ago</span></span>
+<span class="flex items-center gap-xs"><span class="text-primary-container">VoidWalker</span> swapped <span class="text-tertiary-fixed-dim">0.5 BTC</span> for <span class="text-secondary-fixed-dim">124k DOP</span> <span class="text-[10px] opacity-50">5s ago</span></span>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="flex-1 overflow-y-auto p-md md:p-lg grid grid-cols-12 gap-md relative">
+<!-- Background Atmospheric Visual -->
+
+<!-- Header / Market Stats -->
+<div class="col-span-12 flex flex-col md:flex-row justify-between items-end gap-md mb-md z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase italic leading-none tracking-tighter">Command Center</h2>
+<p class="font-body-lg text-on-surface-variant">Global Liquidity &amp; Asset Management Platform</p>
+</div>
+<div class="flex gap-md">
+<div class="glass-card p-sm px-md flex items-center gap-md">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">DOP / USD</span>
+<span class="font-headline-md text-primary-container">$4.22 <span class="text-[12px] text-primary-fixed-dim">+12.4%</span></span>
+</div>
+<div class="w-16 h-8 bg-primary-container/20 border border-primary-container/40 rounded flex items-end overflow-hidden">
+<div class="w-full h-full opacity-50" style="background: linear-gradient(0deg, #c3f400 0%, transparent 100%); clip-path: polygon(0 80%, 20% 60%, 40% 70%, 60% 40%, 80% 50%, 100% 20%, 100% 100%, 0 100%);"></div>
+</div>
+</div>
+<div class="glass-card p-sm px-md flex items-center gap-md">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-bold text-on-surface-variant uppercase">BTC / USD</span>
+<span class="font-headline-md text-tertiary-fixed-dim">$64,281 <span class="text-[12px] text-error">-1.2%</span></span>
+</div>
+<div class="w-16 h-8 bg-error/20 border border-error/40 rounded flex items-end overflow-hidden">
+<div class="w-full h-full opacity-50" style="background: linear-gradient(0deg, #ffb4ab 0%, transparent 100%); clip-path: polygon(0 20%, 20% 40%, 40% 30%, 60% 50%, 80% 40%, 100% 60%, 100% 100%, 0 100%);"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Chart (Bento Large) -->
+<div class="col-span-12 lg:col-span-8 glass-card p-md relative flex flex-col h-[500px] z-10 group overflow-hidden">
+<div class="flex justify-between items-center mb-md">
+<div class="flex gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-bold px-sm py-xs border-2 border-outline">1H</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-bold px-sm py-xs border-2 border-transparent">4H</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-bold px-sm py-xs border-2 border-transparent">1D</button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-bold px-sm py-xs border-2 border-transparent">1W</button>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-bold text-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> DOP
+                            <span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim ml-md"></span> ETH
+                        </div>
+</div>
+<div class="flex-1 relative border-l-2 border-b-2 border-outline/30 mt-md">
+<!-- Simulated Grid Lines -->
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-6 pointer-events-none">
+<div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-t border-outline/10"></div>
+<div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-t border-outline/10"></div>
+<div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-t border-outline/10"></div>
+<div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-r border-t border-outline/10"></div><div class="border-t border-outline/10"></div>
+</div>
+<!-- Data Visual SVG (Placeholder style) -->
+<svg class="absolute inset-0 w-full h-full drop-shadow-[0_0_15px_rgba(195,244,0,0.3)]" preserveaspectratio="none" viewbox="0 0 1000 400">
+<path d="M0,350 L100,320 L200,340 L300,280 L400,310 L500,220 L600,180 L700,210 L800,120 L900,150 L1000,80" fill="none" stroke="#c3f400" stroke-width="4"></path>
+<path d="M0,380 L100,360 L200,355 L300,340 L400,320 L500,330 L600,310 L700,290 L800,300 L900,270 L1000,250" fill="none" stroke="#00dbe9" stroke-dasharray="8 4" stroke-width="4"></path>
+</svg>
+<!-- Dynamic Tooltip -->
+<div class="absolute left-[80%] top-[120px] -translate-x-1/2 glass-card p-sm px-md border-primary-container z-20 flex flex-col">
+<span class="font-label-bold text-[10px] text-primary-container">CURRENT PEAK</span>
+<span class="font-headline-md text-on-surface">$4.22</span>
+<span class="text-[10px] text-on-surface-variant">14:02 UTC</span>
+</div>
+</div>
+</div>
+<!-- Leaderboard (Bento Side) -->
+<div class="col-span-12 lg:col-span-4 glass-card p-md flex flex-col z-10">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight">Top Raiders</h3>
+<span class="material-symbols-outlined text-secondary-container">military_tech</span>
+</div>
+<div class="space-y-sm flex-1">
+<!-- Top 1 -->
+<div class="p-sm bg-surface-container border-border-width border-outline flex items-center justify-between hover:bg-secondary-container/20 group cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container border-2 border-outline-variant flex items-center justify-center font-headline-md text-on-primary-container">1</div>
+<div class="flex flex-col">
+<span class="font-label-bold group-hover:text-secondary-container">Shadow_Protocol</span>
+<span class="text-[10px] text-on-surface-variant uppercase">4,281 Swaps</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-bold text-primary-container">+1.2M DOP</span>
+<div class="w-12 h-1 bg-outline/20 rounded-full overflow-hidden mt-1">
+<div class="w-4/5 h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<!-- Top 2 -->
+<div class="p-sm bg-surface-container border-border-width border-outline flex items-center justify-between hover:bg-secondary-container/20 group cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-surface-variant border-2 border-outline-variant flex items-center justify-center font-headline-md">2</div>
+<div class="flex flex-col">
+<span class="font-label-bold group-hover:text-secondary-container">EonFlux</span>
+<span class="text-[10px] text-on-surface-variant uppercase">3,110 Swaps</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-bold text-primary-container">+940K DOP</span>
+<div class="w-12 h-1 bg-outline/20 rounded-full overflow-hidden mt-1">
+<div class="w-3/5 h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<!-- Top 3 -->
+<div class="p-sm bg-surface-container border-border-width border-outline flex items-center justify-between hover:bg-secondary-container/20 group cursor-pointer transition-all">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-surface-variant border-2 border-outline-variant flex items-center justify-center font-headline-md">3</div>
+<div class="flex flex-col">
+<span class="font-label-bold group-hover:text-secondary-container">Glitch_God</span>
+<span class="text-[10px] text-on-surface-variant uppercase">2,844 Swaps</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-bold text-primary-container">+820K DOP</span>
+<div class="w-12 h-1 bg-outline/20 rounded-full overflow-hidden mt-1">
+<div class="w-1/2 h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<!-- More list... -->
+</div>
+<button class="mt-md w-full border-border-width border-outline p-sm font-label-bold hover:bg-surface-variant transition-colors uppercase tracking-widest text-xs">View Full Database</button>
+</div>
+<!-- Live Logs / Technical Pane (Bento Bottom) -->
+<div class="col-span-12 lg:col-span-7 glass-card p-md z-10 flex flex-col h-64">
+<div class="flex items-center justify-between border-b-2 border-outline/20 pb-sm mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container">terminal</span>
+<h3 class="font-label-bold uppercase text-xs tracking-widest">Transaction Log.sh</h3>
+</div>
+<div class="flex gap-xs">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+<span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto font-mono text-[11px] text-on-surface-variant space-y-1">
+<p><span class="text-primary-container">[SYS]</span> Initializing trade sequence ID: #99281-A</p>
+<p><span class="text-tertiary-fixed-dim">[NET]</span> Connection established with 0x9a...f2e</p>
+<p><span class="text-secondary-container">[TRD]</span> High value swap detected: 14.2 ETH -&gt; DOP</p>
+<p><span class="text-on-surface opacity-30">[LOG]</span> Validation complete. Slippage 0.5%.</p>
+<p><span class="text-primary-container">[SYS]</span> Liquidity pool update synchronized.</p>
+<p><span class="text-error">[ERR]</span> Potential whale wallet movement detected at index 44.</p>
+<p><span class="text-primary-container">[SYS]</span> Command buffer clearing...</p>
+<p><span class="text-on-surface opacity-30">[LOG]</span> Auto-rebalance protocol active.</p>
+<p><span class="text-primary-container">[SYS]</span> Fetching latest block data: #19827341</p>
+</div>
+</div>
+<!-- Asset Breakdown / Mini-Map (Bento Bottom Small) -->
+<div class="col-span-12 lg:col-span-5 glass-card p-md z-10 flex flex-col h-64 overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary tracking-tight mb-md">Volume Map</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="p-sm bg-surface-container border-2 border-outline-variant rounded-lg">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">Liquidity Lock</span>
+<div class="text-headline-md text-secondary-container">$24.8M</div>
+<div class="text-[10px] text-primary-container">+4.2% / 24h</div>
+</div>
+<div class="p-sm bg-surface-container border-2 border-outline-variant rounded-lg">
+<span class="text-[10px] font-label-bold uppercase text-on-surface-variant">Active Nodes</span>
+<div class="text-headline-md text-tertiary-fixed-dim">12,482</div>
+<div class="text-[10px] text-on-surface-variant">Global Reach</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 opacity-20 pointer-events-none grayscale invert contrast-200">
+<img class="w-full h-full object-contain" data-alt="A highly detailed topographical wireframe map of a futuristic city grid, rendered in bright cyan and neon pink lines against a dark indigo background. The map features various glowing node points and data pathways connecting high-tech districts. Visual style is technical, neo-brutalist, and high-octane." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnwC1Sq89t8PBaJCuvbd1Q-Mpw0ERVEJcvDZIBjds23ng1LhAUbjvkviCqD_-FqwoXt5s7JjxSjQhTp8WrDrGQ4ieT2BOD0sYS2os05Wxj0QhnQxv5I6264j_UpEj0-E081SxH77yjntSF6twREIm_rLwYIvRQp9Mxf4o7nVfsu9BHnCIuIUn6yeA-ON5HOX-BMfa9y61nyn5q0g69l5qj4UiB3RO-VHA7YlzDzMEQBHqgqPtCgv6Pp-2OqqKvPLaVF5mjynvvd8KJ"/>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component Integration) -->
+<footer class="w-full bg-surface-container-highest border-t-border-width border-outline flex flex-col md:flex-row justify-between items-center px-lg py-md z-40">
+<div class="font-headline-md text-headline-md text-secondary italic tracking-tighter">DOPAMINE CLUB</div>
+<div class="flex gap-md font-body-md text-body-md text-on-surface-variant">
+<a class="hover:text-primary-fixed transition-colors" href="#">Terms</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Contract</a>
+<a class="hover:text-primary-fixed transition-colors" href="#">Discord</a>
+</div>
+<div class="text-primary-fixed font-body-md">© 2024 DOPAMINE CLUB. STAY HYPED.</div>
+</footer>
+</main>
+</div>
+<!-- UI Interaction Script -->
+<script>
+        document.querySelectorAll('.glass-card, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'translate(4px, 4px)';
+                el.style.boxShadow = '0px 0px 0px #0D0B18';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+                el.style.boxShadow = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+                el.style.boxShadow = '';
+            });
+        });
+
+        // Simple terminal log auto-scroll
+        const log = document.querySelector('.overflow-y-auto.font-mono');
+        if(log) {
+            setInterval(() => {
+                const p = document.createElement('p');
+                const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
+                p.innerHTML = `<span class="text-primary-container">[${time}]</span> Processing incoming swap packet... verified.`;
+                log.appendChild(p);
+                if (log.childNodes.length > 50) log.removeChild(log.firstChild);
+                log.scrollTop = log.scrollHeight;
+            }, 4000);
+        }
+    </script>
+</body></html>

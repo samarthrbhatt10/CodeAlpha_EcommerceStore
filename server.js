@@ -6,9 +6,39 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const http = require('http');
+const { Server } = require('socket.io');
+
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, { cors: { origin: '*' } });
+
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
+
+// Socket.io logic
+io.on('connection', (socket) => {
+  console.log('A user connected to Squad Chat');
+  
+  socket.on('chat_message', async (data) => {
+    try {
+      const Message = require('./models/Message');
+      const User = require('./models/User');
+      
+      const msg = new Message({ sender: data.senderId, text: data.text });
+      await msg.save();
+      
+      const populatedMsg = await Message.findById(msg._id).populate('sender', 'name role');
+      io.emit('chat_message', populatedMsg);
+    } catch (err) {
+      console.error('Chat error:', err);
+    }
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+});
 
 // Middleware
 app.use(cors());
@@ -27,7 +57,7 @@ const sendHtml = (file) => (req, res) => {
   });
 };
 
-// Fallback to serve index for known html routes for convenience
+// Page routes
 app.get('/', sendHtml('home.html'));
 app.get('/auth', sendHtml('auth.html'));
 app.get('/catalog', sendHtml('catalog.html'));
@@ -36,17 +66,41 @@ app.get('/admin', sendHtml('admin.html'));
 app.get('/pdp', sendHtml('pdp.html'));
 app.get('/profile', sendHtml('profile.html'));
 app.get('/settings', sendHtml('settings.html'));
+app.get('/unboxing', sendHtml('unboxing.html'));
+app.get('/drop', sendHtml('drop.html'));
+app.get('/trade', sendHtml('trade.html'));
+app.get('/chat', sendHtml('chat.html'));
+app.get('/recruitment', sendHtml('recruitment.html'));
+app.get('/success', sendHtml('success.html'));
+app.get('/failure', sendHtml('failure.html'));
+app.get('/admin_dashboard', sendHtml('admin_dashboard.html'));
+app.get('/admin_orders', sendHtml('admin_orders.html'));
+app.get('/admin_inventory', sendHtml('admin_inventory.html'));
+app.get('/admin_analytics', sendHtml('admin_analytics.html'));
 
-// Routes placeholders
+// Favicon — serve SVG with correct content-type
+app.get('/favicon.ico', (req, res) => {
+  res.set('Content-Type', 'image/svg+xml');
+  res.sendFile('favicon.svg', { root: path.join(__dirname, 'public') });
+});
+app.get('/favicon.svg', (req, res) => {
+  res.set('Content-Type', 'image/svg+xml');
+  res.sendFile('favicon.svg', { root: path.join(__dirname, 'public') });
+});
+
+// API routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes'));
+app.use('/api/vault', require('./routes/vaultRoutes'));
+app.use('/api/trades', require('./routes/tradeRoutes'));
+app.use('/api/drops', require('./routes/dropRoutes'));
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log(`Connected to MongoDB at ${MONGO_URI}`);
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
   })

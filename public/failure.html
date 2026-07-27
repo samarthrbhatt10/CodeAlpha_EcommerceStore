@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MISSION TERMINATED | DOPAMINE CLUB</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#00dbe9",
+            "outline-variant": "#444933",
+            "inverse-primary": "#506600",
+            "on-surface": "#e5e0f3",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#006f77",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#004f54",
+            "primary-container": "#c3f400",
+            "surface": "#14121f",
+            "on-tertiary": "#00363a",
+            "surface-container-high": "#2b2836",
+            "secondary-fixed": "#ffd9e0",
+            "on-background": "#e5e0f3",
+            "tertiary-container": "#7df4ff",
+            "inverse-on-surface": "#312f3d",
+            "on-primary": "#283500",
+            "surface-dim": "#14121f",
+            "tertiary": "#ffffff",
+            "secondary-fixed-dim": "#ffb1c3",
+            "primary-fixed": "#c3f400",
+            "surface-container-lowest": "#0e0c1a",
+            "surface-variant": "#363342",
+            "primary": "#ffffff",
+            "background": "#14121f",
+            "surface-tint": "#abd600",
+            "surface-bright": "#3a3746",
+            "on-primary-fixed": "#161e00",
+            "tertiary-fixed": "#7df4ff",
+            "on-primary-fixed-variant": "#3c4d00",
+            "on-secondary-container": "#590026",
+            "on-primary-container": "#556d00",
+            "inverse-surface": "#e5e0f3",
+            "on-secondary-fixed": "#3f0019",
+            "secondary": "#ffb1c3",
+            "on-secondary-fixed-variant": "#8f0041",
+            "surface-container": "#201e2c",
+            "surface-container-low": "#1c1a27",
+            "primary-fixed-dim": "#abd600",
+            "error": "#ffb4ab",
+            "secondary-container": "#ff4b89",
+            "on-error": "#690005",
+            "surface-container-highest": "#363342",
+            "outline": "#8e9379",
+            "on-tertiary-fixed": "#002022",
+            "on-surface-variant": "#c4c9ac",
+            "on-secondary": "#66002c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "sm": "12px",
+            "lg": "48px",
+            "border-width": "3px",
+            "xs": "4px",
+            "offset-shadow": "6px 6px 0px #0D0B18",
+            "xl": "80px",
+            "md": "24px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Syne"],
+            "label-bold": ["Space Grotesk"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Syne"],
+            "display-xl": ["Syne"]
+          },
+          "fontSize": {
+            "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+            "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+            "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #14121f;
+      background-image: radial-gradient(circle at 50% 50%, rgba(255, 75, 137, 0.05) 0%, transparent 80%),
+                        url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+      overflow-x: hidden;
+    }
+
+    .neo-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 3px solid #0D0B18;
+      box-shadow: 6px 6px 0px #0D0B18;
+    }
+
+    .glitch-text {
+      text-shadow: 2px 0 #ff4b89, -2px 0 #00dbe9;
+      animation: glitch 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 #ff4b89, -2px 0 #00dbe9; }
+      50% { text-shadow: -2px 0 #ff4b89, 2px 0 #00dbe9; }
+      100% { text-shadow: 2px 0 #ff4b89, -2px 0 #00dbe9; }
+    }
+
+    .btn-brutal-primary {
+      background-color: #ff4b89;
+      border: 3px solid #0D0B18;
+      box-shadow: 4px 4px 0px #0D0B18;
+      transition: all 0.1s ease;
+    }
+
+    .btn-brutal-primary:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px #0D0B18;
+    }
+
+    .btn-brutal-secondary {
+      background-color: #c3f400;
+      border: 3px solid #0D0B18;
+      box-shadow: 4px 4px 0px #0D0B18;
+      transition: all 0.1s ease;
+    }
+
+    .btn-brutal-secondary:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px #0D0B18;
+    }
+
+    .scanline {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 75, 137, 0.1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      animation: scanline 8s linear infinite;
+    }
+
+    @keyframes scanline {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    .die-cut-sticker {
+      border: 4px solid white;
+      outline: 3px solid #0D0B18;
+    }
+  </style>
+</head>
+<body class="text-on-surface selection:bg-secondary-container">
+<!-- Scanline Effect -->
+<div class="scanline pointer-events-none"></div>
+<!-- Side Navigation Shell -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r-border-width border-outline flex flex-col p-md space-y-md z-40 hidden md:flex">
+<div class="flex items-center space-x-sm mb-md">
+<div class="w-12 h-12 rounded-full border-border-width border-outline bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A gritty, high-contrast digital illustration of a futuristic squad leader with neon-pink glowing cybernetic eyes and a tactical helmet. The character is set against a dark indigo background with subtle grain textures and sharp, neo-brutalist angular elements. High-energy digital art style with vibrant cyan and magenta highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHVrjyhSTqIuj0YhkmlTQ_IxWCZGrQXO-htv8ENEhVFi-eaS8hWi9aYFTgc1h8hCT6_K5-12Am0OhxxcCEcuZf985i-dhJ4Aj9g5iv9j8pRsMIGXrr5N4B4asJ-BZhnuufNTPg9mfxvZzYKLl4qlRULhueW_rl1YBdA_G0s3iyacttvLAgVmf2-ULaguiCpiULnEDLmsi7xy79oI0Jhm6esaXxNLzIC-KDitkD2SAPYYj7zkG5SS4VV3RSmGuGwQLW9pGmVtEutHc6"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary-container leading-none">DOPAMINE CLUB</h1>
+<p class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-widest mt-1">Rank: Elite Raider</p>
+</div>
+</div>
+<div class="flex flex-col space-y-xs flex-grow">
+<!-- Active Tab: Missions (Since it's a mission failure screen) -->
+<a class="flex items-center p-sm space-x-sm bg-primary-container text-on-primary-container border-border-width border-outline-variant shadow-offset-shadow translate-x-[-2px] transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Missions</span>
+</a>
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span>Home</span>
+</a>
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="/admin_inventory">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">lock_open</span>
+<span>Vault</span>
+</a>
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="/settings">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="pt-md border-t-border-width border-outline space-y-xs">
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center p-sm space-x-sm text-on-surface hover:bg-surface-variant transition-all font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-md">
+<!-- Background Shader -->
+<div class="absolute inset-0 z-0">
+
+</div>
+<!-- TERMINATED HEADER -->
+<div class="relative z-10 text-center mb-xl w-full max-w-5xl">
+<div class="inline-block die-cut-sticker bg-secondary-container text-on-secondary-container px-md py-xs font-label-bold text-label-bold rotate-[-2deg] mb-md uppercase">
+        SYSTEM CRITICAL FAILURE
+      </div>
+<h2 class="font-display-xl text-display-xl glitch-text italic tracking-tighter text-secondary-container leading-[0.9] uppercase">
+        Mission<br/>Terminated
+      </h2>
+<div class="mt-md flex justify-center gap-base">
+<span class="h-1 w-20 bg-secondary-container"></span>
+<span class="h-1 w-8 bg-tertiary-fixed-dim"></span>
+<span class="h-1 w-4 bg-primary-container"></span>
+</div>
+</div>
+<!-- BENTO GRID ANALYSIS -->
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-md w-full max-w-6xl">
+<!-- Primary Failure Reason -->
+<div class="md:col-span-8 neo-card p-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center space-x-sm text-secondary-container mb-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-headline-md text-headline-md uppercase">Fatal Error detected</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            SQUAD UNIT ALPHA HAS BEEN NEUTRALIZED. THE DATA EXTRACTION WAS INTERRUPTED BY A CATASTROPHIC ENERGY SURGE. 
+          </p>
+</div>
+<div class="mt-lg grid grid-cols-2 gap-md">
+<div class="border-l-4 border-secondary-container pl-md">
+<p class="font-label-bold text-label-bold text-secondary uppercase opacity-70">Primary Cause</p>
+<p class="font-headline-md text-headline-md text-secondary-fixed">SHIELD DEPLETION</p>
+</div>
+<div class="border-l-4 border-tertiary-fixed-dim pl-md">
+<p class="font-label-bold text-label-bold text-tertiary-fixed-dim uppercase opacity-70">Time Elapsed</p>
+<p class="font-headline-md text-headline-md text-tertiary-fixed">14:22 / 12:00</p>
+</div>
+</div>
+</div>
+<!-- Tactical Stats -->
+<div class="md:col-span-4 neo-card bg-surface-container-highest p-md flex flex-col justify-center space-y-md">
+<div class="flex justify-between items-center border-b border-outline pb-sm">
+<span class="font-label-bold text-label-bold uppercase">Loot Lost</span>
+<span class="font-headline-md text-headline-md text-error">9.2k</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline pb-sm">
+<span class="font-label-bold text-label-bold uppercase">XP Penalty</span>
+<span class="font-headline-md text-headline-md text-error">-450</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline pb-sm">
+<span class="font-label-bold text-label-bold uppercase">Squad Integrity</span>
+<span class="font-headline-md text-headline-md text-secondary-container">0%</span>
+</div>
+<div class="bg-surface-container p-sm rounded-sm italic text-sm text-on-surface-variant">
+          "The neon gods demand more than just luck, Raider. Try harder."
+        </div>
+</div>
+<!-- Action Footer -->
+<div class="md:col-span-12 flex flex-col md:flex-row items-center justify-between mt-lg space-y-md md:space-y-0">
+<div class="flex items-center space-x-md">
+<div class="w-16 h-16 die-cut-sticker rotate-3 flex items-center justify-center bg-background">
+<span class="material-symbols-outlined text-4xl text-primary-container">skull</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md leading-none">RECOVERY INITIATED</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Extraction pod standby at 15% power...</p>
+</div>
+</div>
+<div class="flex space-x-md">
+<button class="btn-brutal-secondary px-xl py-md font-headline-md text-headline-md text-on-secondary-container uppercase tracking-tight flex items-center space-x-sm">
+<span class="material-symbols-outlined">refresh</span>
+<span>Re-Strategize</span>
+</button>
+<button class="btn-brutal-primary px-xl py-md font-headline-md text-headline-md text-on-primary-container uppercase tracking-tight flex items-center space-x-sm">
+<span class="material-symbols-outlined">home</span>
+<span>Return to Base</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative Sticker-like elements -->
+<div class="absolute top-20 right-20 z-20 pointer-events-none hidden xl:block">
+<div class="die-cut-sticker bg-primary-container text-on-primary-container p-md rotate-[12deg] shadow-offset-shadow">
+<span class="material-symbols-outlined text-6xl">heart_broken</span>
+<p class="font-label-bold text-label-bold mt-sm">WASTED</p>
+</div>
+</div>
+<div class="absolute bottom-20 left-10 z-20 pointer-events-none hidden xl:block">
+<div class="die-cut-sticker bg-tertiary-fixed-dim text-on-tertiary-fixed p-md rotate-[-8deg] shadow-offset-shadow">
+<p class="font-label-bold text-label-bold uppercase">Attempt #102</p>
+<div class="flex mt-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Bottom (Mobile Only) -->
+<footer class="fixed bottom-0 left-0 right-0 md:hidden bg-surface-container-highest z-50 flex justify-around p-sm border-t-border-width border-outline">
+<button class="flex flex-col items-center text-on-surface-variant transition-colors hover:text-primary-fixed">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-[10px] font-label-bold uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="text-[10px] font-label-bold uppercase">Missions</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant transition-colors hover:text-primary-fixed">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-label-bold uppercase">Loot</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant transition-colors hover:text-primary-fixed">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-bold uppercase">Setup</span>
+</button>
+</footer>
+<script>
+    // Subtle interactivity for the failure screen
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      // Gently tilt cards based on mouse position
+      const cards = document.querySelectorAll('.neo-card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const rotateX = (e.clientY - centerY) / 50;
+        const rotateY = (e.clientX - centerX) / 50;
+        
+        card.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+    });
+
+    // Reset transform on mouse leave
+    document.addEventListener('mouseleave', () => {
+      const cards = document.querySelectorAll('.neo-card');
+      cards.forEach(card => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+      });
+    });
+  </script>
+</body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Space+Grotesk:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 3px solid #0D0B18;
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neon-glow-lime {
+    box-shadow: 0 0 20px rgba(195, 244, 0, 0.3)
+    }
+.neon-glow-pink {
+    box-shadow: 0 0 20px rgba(255, 75, 137, 0.3)
+    }
+.holographic-badge {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4))
+    }
+.grainy-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDZPhZiSl-eI2xw324w8Qi_pb1wntx7zhlvqoI5VXwIIkM0bk-cf6YmKUMjlV0dZ4Wh8ctSU9efpqqtMkMXFpf4AXJsHUEX2M5sCCY7tigzr9QoDtSnHKwhvnk-GIUXZTzJ6w2NNxECqqCzyiRldw7t3RpSnN9O6F8LRR1WOSrJ6xnJiXKHTwY5UwMy3mNABf1Fv9stfh9Rk4r8k9Ubulfhs8KkMaFm9Z4-oyIfK3c7mDlr6GqdQGw_20W2KIgORw84G_kdbSNWwtSO);
+    filter: contrast(150%) brightness(100%)
+    }
+.mission-success-text {
+    text-shadow: 4px 4px 0 #590026
+    }
+@keyframes pulse-border {
+    0% {
+        border-color: #c3f400;
+        } 50% {
+        border-color: #00dbe9;
+        } 100% {
+        border-color: #c3f400;
+        }
+    }
+.animate-border {
+    animation: pulse-border 2s infinite
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "outline-variant": "#444933",
+                        "inverse-primary": "#506600",
+                        "on-surface": "#e5e0f3",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#006f77",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "primary-container": "#c3f400",
+                        "surface": "#14121f",
+                        "on-tertiary": "#00363a",
+                        "surface-container-high": "#2b2836",
+                        "secondary-fixed": "#ffd9e0",
+                        "on-background": "#e5e0f3",
+                        "tertiary-container": "#7df4ff",
+                        "inverse-on-surface": "#312f3d",
+                        "on-primary": "#283500",
+                        "surface-dim": "#14121f",
+                        "tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "primary-fixed": "#c3f400",
+                        "surface-container-lowest": "#0e0c1a",
+                        "surface-variant": "#363342",
+                        "primary": "#ffffff",
+                        "background": "#14121f",
+                        "surface-tint": "#abd600",
+                        "surface-bright": "#3a3746",
+                        "on-primary-fixed": "#161e00",
+                        "tertiary-fixed": "#7df4ff",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "on-secondary-container": "#590026",
+                        "on-primary-container": "#556d00",
+                        "inverse-surface": "#e5e0f3",
+                        "on-secondary-fixed": "#3f0019",
+                        "secondary": "#ffb1c3",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "surface-container": "#201e2c",
+                        "surface-container-low": "#1c1a27",
+                        "primary-fixed-dim": "#abd600",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ff4b89",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#363342",
+                        "outline": "#8e9379",
+                        "on-tertiary-fixed": "#002022",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-secondary": "#66002c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "lg": "48px",
+                        "border-width": "3px",
+                        "xs": "4px",
+                        "offset-shadow": "6px 6px 0px #0D0B18",
+                        "xl": "80px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Syne"],
+                        "label-bold": ["Space Grotesk"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Syne"],
+                        "display-xl": ["Syne"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Layout Shell -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (Predicted Component) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r-border-width border-outline p-md space-y-md z-50">
+<div class="flex items-center space-x-sm mb-lg">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center border-2 border-background rotate-3">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary-container leading-none italic uppercase tracking-tighter">DOPAMINE</h1>
+<p class="font-label-bold text-[10px] text-tertiary-fixed-dim uppercase tracking-widest">Rank: Elite Raider</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center space-x-sm p-sm bg-primary-container text-on-primary-container border-border-width border-outline-variant shadow-offset-shadow translate-x-[-2px] font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span>Home</span>
+</a>
+<a class="flex items-center space-x-sm p-sm text-on-surface hover:bg-surface-variant font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Missions</span>
+</a>
+<a class="flex items-center space-x-sm p-sm text-on-surface hover:bg-surface-variant font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center space-x-sm p-sm text-on-surface hover:bg-surface-variant font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined">lock_open</span>
+<span>Vault</span>
+</a>
+<a class="flex items-center space-x-sm p-sm text-on-surface hover:bg-surface-variant font-label-bold text-label-bold transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="pt-md border-t-border-width border-outline flex flex-col space-y-sm">
+<a class="flex items-center space-x-sm p-sm text-on-surface-variant hover:text-primary-fixed transition-colors font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center space-x-sm p-sm text-on-surface-variant hover:text-error transition-colors font-label-bold text-label-bold" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-sm md:p-lg relative grainy-bg min-h-screen">
+<!-- Background Decoration -->
+<div class="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-20">
+
+</div>
+<!-- Success Header -->
+<header class="mb-lg relative z-10">
+<div class="inline-block bg-secondary-container text-on-secondary-container px-sm py-1 font-label-bold text-[12px] uppercase mb-base -rotate-1 border-2 border-background">
+                    MISSION ACCOMPLISHED
+                </div>
+<h2 class="font-display-xl text-display-xl mission-success-text text-primary uppercase leading-none tracking-tighter">
+                    OPERATION:<br/>
+<span class="text-primary-container italic">NEON GHOST</span>
+</h2>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-md relative z-10">
+<!-- Loot Render Card (Large, Asymmetric) -->
+<div class="col-span-12 lg:col-span-8 glass-card p-0 overflow-hidden relative min-h-[500px] flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="absolute bottom-md left-md z-10 glass-card p-sm bg-background/40 backdrop-blur-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 holographic-badge rounded-sm border-2 border-background flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-tertiary-fixed-dim leading-none">VOIDWALKER BLADE</h3>
+<p class="font-label-bold text-label-bold text-secondary uppercase opacity-80">Legendary Artifact Relic</p>
+</div>
+</div>
+</div>
+<!-- Loot Stats Overlay -->
+<div class="absolute top-md right-md z-10 flex flex-col gap-xs">
+<div class="bg-background border-2 border-outline-variant px-sm py-1 font-label-bold text-xs uppercase flex justify-between w-40">
+<span class="text-on-surface-variant">Rarity</span>
+<span class="text-primary-fixed">EXOTIC</span>
+</div>
+<div class="bg-background border-2 border-outline-variant px-sm py-1 font-label-bold text-xs uppercase flex justify-between w-40">
+<span class="text-on-surface-variant">Durability</span>
+<span class="text-tertiary-fixed-dim">UNBREAKABLE</span>
+</div>
+<div class="bg-background border-2 border-outline-variant px-sm py-1 font-label-bold text-xs uppercase flex justify-between w-40">
+<span class="text-on-surface-variant">Market Value</span>
+<span class="text-secondary-fixed-dim">98,000 CR</span>
+</div>
+</div>
+</div>
+<!-- Squad Performance (Vertical Bento) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-md">
+<!-- MVP Card -->
+<div class="glass-card p-md flex flex-col items-center justify-center text-center relative border-primary-container bg-primary-container/10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-on-primary-container px-md py-1 font-label-bold text-sm border-2 border-background">MVP</div>
+<div class="w-24 h-24 rounded-full border-4 border-primary-container p-1 mb-base">
+<img class="w-full h-full object-cover rounded-full" data-alt="A futuristic portrait of a cyberpunk elite raider wearing a glowing neon visor and tactical gear, vibrant electric lime and deep midnight color palette, high-contrast digital art style with grainy texture and neo-brutalist aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2NV9v73o4cZ_H64X-HNhYYvdMbjp_29vgDPC-4vTuG-k-d8o7uijpZEeMpHvQXUbhfx313fw61v-doatT2LDIzBF_1hdONIORaRr98A4cZ3eoH4e9id9CWUpXp1idiTSSJuqAdupES7gNvRUSUREtwRSOKraZqyGL2XO513a2dz6NNmU3Sy9Qrsq6KMGx-avwLN5osmuXMpPC8eaVilaeVV8Y-lJYbZrE_vJdYkI13ySD_iiJQN5Q94CyXgLDD6-93m5mTo6_Hz1q"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary-fixed">Viper_X</h4>
+<p class="font-label-bold text-on-surface-variant uppercase text-xs mb-sm tracking-widest">Squad Leader</p>
+<div class="grid grid-cols-3 w-full border-t border-outline-variant pt-sm">
+<div>
+<div class="text-secondary text-lg font-headline-md">14.2k</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-label-bold">Damage</div>
+</div>
+<div>
+<div class="text-tertiary-fixed-dim text-lg font-headline-md">98%</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-label-bold">Accuracy</div>
+</div>
+<div>
+<div class="text-primary-container text-lg font-headline-md">0</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-label-bold">Deaths</div>
+</div>
+</div>
+</div>
+<!-- Squad Metrics -->
+<div class="glass-card p-md flex-1">
+<h4 class="font-label-bold text-label-bold text-on-surface uppercase mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">analytics</span>
+                            SQUAD METRICS
+                        </h4>
+<div class="space-y-sm">
+<div class="flex justify-between items-center bg-surface-container-high/50 p-sm rounded-sm">
+<span class="font-label-bold text-on-surface-variant text-sm">Efficiency Rating</span>
+<span class="text-tertiary-fixed-dim font-headline-md">A+</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-high/50 p-sm rounded-sm">
+<span class="font-label-bold text-on-surface-variant text-sm">Time to Clear</span>
+<span class="text-secondary font-headline-md">12:43</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-high/50 p-sm rounded-sm">
+<span class="font-label-bold text-on-surface-variant text-sm">Stealth Bonus</span>
+<span class="text-primary-container font-headline-md">+25%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tactical Log (Wide Horizontal) -->
+<div class="col-span-12 lg:col-span-12 glass-card p-md">
+<div class="flex items-center justify-between mb-md">
+<h4 class="font-label-bold text-label-bold text-on-surface uppercase flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">receipt_long</span>
+                            TACTICAL LOG: SEQUENCE_772
+                        </h4>
+<div class="h-2 w-32 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-4/5"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
+<div class="border-l-2 border-primary-container pl-sm py-xs">
+<p class="text-[10px] text-primary-container font-label-bold">00:12:05</p>
+<p class="text-sm font-body-md text-on-surface">Thermal breach of sector 4 confirmed. Elite guards neutralized in 4s.</p>
+</div>
+<div class="border-l-2 border-secondary-container pl-sm py-xs">
+<p class="text-[10px] text-secondary font-label-bold">00:15:30</p>
+<p class="text-sm font-body-md text-on-surface">Data-spike deployed. Encrypted Ghost nodes bypassed successfully.</p>
+</div>
+<div class="border-l-2 border-tertiary-fixed-dim pl-sm py-xs">
+<p class="text-[10px] text-tertiary-fixed-dim font-label-bold">00:22:11</p>
+<p class="text-sm font-body-md text-on-surface">VOIDWALKER BLADE extracted from central pedestal. Hives alerted.</p>
+</div>
+<div class="border-l-2 border-outline-variant pl-sm py-xs">
+<p class="text-[10px] text-on-surface-variant font-label-bold">00:25:40</p>
+<p class="text-sm font-body-md text-on-surface">Repatriation sequence initiated at LZ Bravo. Area sanitized.</p>
+</div>
+</div>
+</div>
+<!-- Footer Action Section -->
+<div class="col-span-12 flex flex-col md:flex-row items-center justify-between gap-md py-lg">
+<div class="max-w-md text-center md:text-left">
+<p class="font-headline-md text-primary mb-xs">MISSION SCORE: 485,900</p>
+<p class="text-on-surface-variant text-sm font-body-md">Your rewards have been calculated based on performance multipliers and squad synergy bonuses. Loot is ready for repatriation to your secure Vault.</p>
+</div>
+<button class="group relative px-xl py-md bg-primary-container text-on-primary-container font-headline-md text-headline-md border-border-width border-background shadow-offset-shadow active:translate-x-xs active:translate-y-xs active:shadow-none transition-all hover:scale-105 neon-glow-lime">
+<span class="flex items-center gap-sm">
+                            REPATRIATE LOOT
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" style="font-variation-settings: 'FILL' 1;">forward</span>
+</span>
+</button>
+</div>
+</div>
+<!-- Footer (Predicted Component) -->
+<footer class="w-full mt-xl border-t-border-width border-outline flex flex-col md:flex-row justify-between items-center px-lg py-md bg-surface-container-highest">
+<div class="flex items-center gap-md mb-sm md:mb-0">
+<span class="font-headline-md text-headline-md text-secondary leading-none uppercase italic">DOPAMINE CLUB</span>
+<span class="text-on-surface-variant text-xs font-body-md opacity-60">© 2024 DOPAMINE CLUB. STAY HYPED.</span>
+</div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Contract</a>
+<a class="text-tertiary-fixed-dim underline font-body-md text-body-md" href="#">Discord</a>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => {
+                    btn.classList.add('translate-x-xs', 'translate-y-xs', 'shadow-none');
+                });
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('translate-x-xs', 'translate-y-xs', 'shadow-none');
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('translate-x-xs', 'translate-y-xs', 'shadow-none');
+                });
+            });
+
+            // Random subtle flicker effect for neon elements
+            const neonElements = document.querySelectorAll('.text-primary-container, .text-tertiary-fixed-dim');
+            setInterval(() => {
+                const target = neonElements[Math.floor(Math.random() * neonElements.length)];
+                target.style.opacity = '0.7';
+                setTimeout(() => {
+                    target.style.opacity = '1';
+                }, 100);
+            }, 3000);
+        });
+    </script>
+</body></html>

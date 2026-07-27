@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DOPAMINE CLUB | DISPATCHER CONTROL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&family=Space+Grotesk:wght@100..900&family=Syne:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#3a3746",
+                    "on-primary-fixed": "#161e00",
+                    "on-tertiary-fixed": "#002022",
+                    "tertiary-fixed": "#7df4ff",
+                    "surface-tint": "#abd600",
+                    "inverse-surface": "#e5e0f3",
+                    "primary-container": "#c3f400",
+                    "on-tertiary": "#00363a",
+                    "on-surface-variant": "#c4c9ac",
+                    "surface-variant": "#363342",
+                    "secondary-container": "#ff4b89",
+                    "outline": "#8e9379",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#363342",
+                    "surface-container-low": "#1c1a27",
+                    "on-surface": "#e5e0f3",
+                    "on-secondary": "#66002c",
+                    "on-error": "#690005",
+                    "tertiary": "#ffffff",
+                    "on-secondary-fixed": "#3f0019",
+                    "on-secondary-container": "#590026",
+                    "outline-variant": "#444933",
+                    "tertiary-container": "#7df4ff",
+                    "secondary-fixed": "#ffd9e0",
+                    "on-primary-container": "#556d00",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#c3f400",
+                    "surface": "#14121f",
+                    "secondary-fixed-dim": "#ffb1c3",
+                    "secondary": "#ffb1c3",
+                    "on-primary": "#283500",
+                    "surface-container-high": "#2b2836",
+                    "on-primary-fixed-variant": "#3c4d00",
+                    "inverse-primary": "#506600",
+                    "background": "#14121f",
+                    "on-secondary-fixed-variant": "#8f0041",
+                    "surface-container-lowest": "#0e0c1a",
+                    "primary": "#ffffff",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#14121f",
+                    "on-tertiary-container": "#006f77",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "on-background": "#e5e0f3",
+                    "inverse-on-surface": "#312f3d",
+                    "primary-fixed-dim": "#abd600",
+                    "surface-container": "#201e2c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "md": "24px",
+                    "offset-shadow": "6px 6px 0px #0D0B18",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "border-width": "3px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Syne"],
+                    "headline-lg": ["Syne"],
+                    "display-xl": ["Syne"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Syne"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-bold": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAwFXI0uyVgSUNL7QLZG8J1ro3MnfPGOzJ9_AysjRtHOG_o3GhHibKQhz1j66-AucGQBdbcwYdxkPZHUl3qelLh1_eaeXlwncBD1YSFRC793vtRAWBGZgydPn9McObWf_ALXOt9-uatHrr65MQiOCb1i-Auh1xfqQHe9VxTybPeI8Hv6cRnbHAaMqd1Wk9CZo02FdRVjOGyY4Xavqkf9lBWs6P0bKpbaYs9QTOF1icfvHZEaUN1j3hnnuRf0acF54jBwbeLpCcBp-Ed);
+    filter: contrast(150%) brightness(50%);
+    mix-blend-mode: overlay
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.holographic-badge {
+    background: linear-gradient(45deg, rgba(0, 219, 233, 0.4), rgba(255, 75, 137, 0.4), rgba(195, 244, 0, 0.4))
+    }
+.neo-shadow {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neo-shadow-hover:hover {
+    transform: translate(4px, 4px);
+    box-shadow: none
+    }
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.5;
+        } 50% {
+        opacity: 1;
+        }
+    }
+.glow-lime {
+    box-shadow: 0 0 20px rgba(195, 244, 0, 0.3)
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Grain Overlay -->
+<div class="fixed inset-0 pointer-events-none grain-overlay z-[100] opacity-20"></div>
+<div class="flex h-screen w-full">
+<!-- SideNavBar Anchor -->
+<aside class="hidden lg:flex flex-col h-full py-md px-sm bg-surface-container-lowest w-64 border-r-border-width border-surface-variant z-40 shrink-0">
+<!-- Brand Identity -->
+<div class="mb-lg px-xs">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter italic uppercase">WAR_ROOM</h1>
+<p class="font-label-bold text-[10px] text-on-surface-variant tracking-[0.2em] mt-1">VIBE CHECK: 100%</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-grow space-y-sm">
+<a class="flex items-center gap-sm p-sm rounded-xl font-label-bold text-label-bold bg-primary-container text-on-primary-container border-border-width border-on-surface shadow-[6px_6px_0px_#0D0B18] scale-95 duration-75" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+                    DASHBOARD
+                </a>
+<a class="flex items-center gap-sm p-sm rounded-xl font-label-bold text-label-bold text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    INVENTORY
+                </a>
+<a class="flex items-center gap-sm p-sm rounded-xl font-label-bold text-label-bold text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+                    SALES
+                </a>
+<a class="flex items-center gap-sm p-sm rounded-xl font-label-bold text-label-bold text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">security</span>
+                    WAR_ROOM
+                </a>
+<a class="flex items-center gap-sm p-sm rounded-xl font-label-bold text-label-bold text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-colors" href="/settings">
+<span class="material-symbols-outlined">settings</span>
+                    SETTINGS
+                </a>
+</nav>
+<!-- Bottom CTA -->
+<div class="mt-auto space-y-md">
+<div class="p-md rounded-xl glass-card border-border-width border-surface-variant flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-secondary overflow-hidden border-2 border-on-surface">
+<img class="w-full h-full object-cover" data-alt="A stylized 3D avatar of a futuristic robot dispatcher mascot wearing neon pink headphones and sleek black goggles. The character is rendered in a high-gloss vinyl toy style, glowing slightly against a deep indigo background. The lighting is dramatic and colorful, reflecting neon pink and electric lime hues across its polished surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzWF4WZlcehqZyDgMqyex5UIfI484g_Ld7saK1jOUOSN_74TpSkhequ1VXzNmAISBIiTk-hgKAuZE99tK2UKXQ7y2Ceq6Ow2JFJ6GvpC_DnHFIxM0wn_G3l3BFBsnbtislQoJXQF12I4SvSca6RfhCxBumpH1Hq7IjyzeasaEc33v_foXPvqVgXFexmNjfIsW3BxBmq5mniSVQvKWYtMUmtL6YRokUBlp5DrbWuRRtvTndWSyFctjo77AMYPc-_bncIoKhlS8LGHJ6"/>
+</div>
+<div>
+<p class="font-label-bold text-xs text-on-surface">ADMIN MASCOT</p>
+<p class="text-[10px] text-on-surface-variant">LVL 99 DISPATCHER</p>
+</div>
+</div>
+<button class="w-full py-md font-label-bold text-label-bold bg-primary-container text-on-primary-container border-border-width border-on-surface neo-shadow neo-shadow-hover transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none uppercase">
+                    BOOST DROPS
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col min-w-0 overflow-hidden relative">
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 left-64 right-0 z-50 flex justify-between items-center px-md py-sm bg-surface/20 backdrop-blur-[20px] rounded-full mt-md mx-auto w-[92%] border-border-width border-surface-variant neo-shadow">
+<div class="flex items-center gap-lg">
+<span class="font-headline-lg text-[24px] italic uppercase tracking-tighter text-primary dark:text-primary-fixed">DOPAMINE CLUB</span>
+<nav class="hidden md:flex gap-md">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="#">DROPS</a>
+<a class="font-label-bold text-label-bold text-primary-fixed-dim border-b-border-width border-primary-fixed-dim" href="#">VAULT</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="#">GAMES</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim hover:scale-105 transition-transform" href="#">CLUBS</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden xl:block">
+<input class="bg-surface-container-low border-border-width border-surface-variant rounded-full py-2 px-md font-label-bold text-xs focus:ring-primary-container focus:border-primary-container w-64 text-on-surface" placeholder="TACTICAL SEARCH..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant">search</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full border-border-width border-surface-variant text-on-surface-variant hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">bolt</span>
+</button>
+<button class="p-2 rounded-full border-border-width border-surface-variant text-on-surface-variant hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="ml-sm py-2 px-md font-label-bold text-label-bold bg-primary text-on-primary-fixed border-border-width border-on-surface rounded-full neo-shadow neo-shadow-hover transition-all">
+                            LOGIN
+                        </button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="mt-32 p-md overflow-y-auto flex-grow grid grid-cols-12 gap-md">
+<!-- Center Section: Tactical Order Feed -->
+<section class="col-span-12 xl:col-span-7 space-y-md">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-2 uppercase italic">
+<span class="w-3 h-3 bg-primary-container rounded-full animate-pulse glow-lime"></span>
+                            Live Order Feed
+                        </h2>
+<div class="flex gap-2">
+<span class="px-3 py-1 holographic-badge border-border-width border-on-surface rounded-full font-label-bold text-[10px] text-white">32 ACTIVE</span>
+<span class="px-3 py-1 bg-secondary-container border-border-width border-on-surface rounded-full font-label-bold text-[10px] text-on-secondary-container">5 CRITICAL</span>
+</div>
+</div>
+<!-- Order Cards Grid -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Critical Card -->
+<div class="glass-card border-border-width border-secondary-container p-md rounded-xl neo-shadow relative group">
+<div class="absolute -top-3 -right-3 rotate-12 bg-secondary-container border-border-width border-on-surface px-2 py-1 font-label-bold text-[10px] text-on-secondary-container z-10">CRITICAL</div>
+<div class="flex flex-col md:flex-row gap-md">
+<div class="w-24 h-24 bg-surface-container-high border-border-width border-on-surface rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close up photography of a limited edition designer art toy head. The character features a translucent skull-like aesthetic with internal holographic components that glow with pink and cyan light. The surface is polished and high-quality, with intricate mechanical details around the eyes. Professional product studio lighting creates deep shadows and sharp highlights on the edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuu5XWiZ72K4mtb4ICtyqirVz6P5u3xlccLUKUc87Ix4ThgU_Xn1WwlChIN3utZjgji7zCwmjgSYKgWF7v-1bZsUwHDq6RNXznJjoQ8RA_v8iM9b2-ZpmG-O2rYs64hQnPt9txpKl1Ctna9alh0y-m_N00bIXV_FqKfVxpGZ4SouLmn2uH_FZkk2r5S6Eo7sUqS5e5dJDV0MGFkS5i5F-97SWZj1KnXfhB_lfohnuHBbzqU561GIu7nqRTXWHQozTPO9zDlO6RJ6qK"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-lg text-primary tracking-tight">#DPM-8829 | CYBER MASK GEN-1</h3>
+<p class="text-xs text-on-surface-variant font-label-bold">MINT CONDITION | SECURED VAULT-4</p>
+</div>
+<div class="text-right">
+<p class="text-secondary-container font-label-bold text-xl tabular-nums timer" data-time="242">04:02</p>
+<p class="text-[9px] uppercase tracking-widest text-on-surface-variant">SLA Deadline</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-sm items-center mt-md pt-md border-t-2 border-surface-variant">
+<div class="flex items-center gap-2 bg-surface-container-low border-border-width border-surface-variant px-2 py-1 rounded-full">
+<div class="w-6 h-6 rounded-full bg-primary-fixed overflow-hidden border border-on-surface">
+<img class="w-full h-full object-cover" data-alt="A portrait photo of a professional courier pilot wearing a futuristic dark techwear helmet with a semi-opaque yellow visor. They are dressed in a heavy tactical jacket with neon yellow accents. The background is a blurred cityscape at night with intense violet and pink neon signs reflecting on the character's gear. Sharp, high-contrast digital photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBglal_qsnHMf7N1RDm0ZQ4jur2cUATC7KBZgWCm7AlTeGqrEzqSbBQ-WMX0LjczEHSY1LWaG1fzYOWzKB0RlHDhi7B50hovmAUICnWM0Er7ezOeslSJs_9OnX8j6N6XuTYV_JczujoKVlRsGYpj-wuWAv2H_7SyrjUSzpcXS9CiNXu1HYBWtVOrejl2MbyOe8lCH2k5qsQIZis_FU_hx5rT9rm8FESKSN1RLtbINa_ooEgJgaPEm5nPnFUaPXIIEViYd6J723FgcLv"/>
+</div>
+<span class="font-label-bold text-[10px] text-on-surface">RIDER_ALPHA</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-bold text-[10px]">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                            TOKYO_SEC_7
+                                        </div>
+<button class="ml-auto bg-primary-container text-on-primary-container border-border-width border-on-surface px-4 py-2 font-label-bold text-[10px] hover:scale-105 transition-all">INTERCEPT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Standard Card -->
+<div class="glass-card border-border-width border-surface-variant p-md rounded-xl neo-shadow relative group">
+<div class="flex flex-col md:flex-row gap-md">
+<div class="w-24 h-24 bg-surface-container-high border-border-width border-on-surface rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Macro photography of a sleek, black metallic accessory box with neon green light bars on the side. The box is textured with a fine industrial grain and features a laser-engraved futuristic logo of a charging bolt. The environment is dark with a subtle floor glow from the neon bars. Professional tech photography style with high contrast and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXvYz-toohfTrDgE9hCfaKf1mi9IdJyoFmB7mYfFBdHrMi8HgEaVWwSVBF1Rwo2mlfgfgtEiMLo3jolrYhHi9Dbl8_1fHwHD1bsNznWGx8Z6vd5l7sBaiNvb0_yfyW9oa9yd1W98fa9CnAXSsShOusGbAg5EJF6AfCorTqwtT-p3MHIOzKmyjNUm81rT0p-FMl0wvD8e_5ln1rK3XQ8l2vdPiNIE4c8p3QUcBzJjI4GCWTbgGI_xyL8YdTNjSNHfegzdC5WBr3FBk1"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h3 class="font-headline-md text-lg text-primary tracking-tight">#DPM-9011 | CORE BATTERY PACK</h3>
+<p class="text-xs text-on-surface-variant font-label-bold">BATT_STATE: 98% | CARGO_BAY_A</p>
+</div>
+<div class="text-right">
+<p class="text-primary-fixed-dim font-label-bold text-xl tabular-nums timer" data-time="1102">18:22</p>
+<p class="text-[9px] uppercase tracking-widest text-on-surface-variant">Estimated Arrival</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-sm items-center mt-md pt-md border-t-2 border-surface-variant">
+<div class="flex items-center gap-2 bg-surface-container-low border-border-width border-surface-variant px-2 py-1 rounded-full">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed-dim overflow-hidden border border-on-surface">
+<img class="w-full h-full object-cover" data-alt="A portrait of a futuristic delivery specialist wearing a matte white aerodynamic helmet and a pink tactical vest. The style is bright and clean with a soft digital pop-art feel. Behind the character, a glowing lime-green grid pattern recedes into the distance. The overall aesthetic is energetic, clean, and highly saturated with Gen-Z color sensibilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAK5HI7k6YnIji91pZhUOaLbqImVf61Bl1atBhiRfmC3eQ1avn-GtgvLWwagdzDAh_-7oh23Nj0wro8sQ_cixLA7eZz1Ed-QSMb6YHaup20qltYANXZHiwxbpYg5IbctIyd6ehs9qPBw63fGijwWe5jYb1mOarDVWXCiwV-iSim2JXBT2XHxhfXHid_8w6nBlV5Sjsv-xZwv2KE_ffyegMebMu21gdATzAE5BOCVwI2BGRPGqL_70lE2fxfNISnnFC3c6G_Sy0ZoUG"/>
+</div>
+<span class="font-label-bold text-[10px] text-on-surface">NEO_RIDER_7</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-bold text-[10px]">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                            KYOTO_HUB_0
+                                        </div>
+<button class="ml-auto bg-surface-container-high text-on-surface border-border-width border-on-surface px-4 py-2 font-label-bold text-[10px] hover:bg-primary-container hover:text-on-primary-container transition-all">VIEW TRACK</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Mini Cards Grid (High Density) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="glass-card border-border-width border-surface-variant p-sm rounded-xl neo-shadow flex gap-sm items-center">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg overflow-hidden border-2 border-on-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="Detail shot of a holographic collectible card with a 3D monster figure popping out of a liquid-metal background. The colors shift between violet, pink, and electric green as the light hits the surface. High-gloss finish with tiny star-shaped light flares. Conceptual digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARyvBast75rJP3e21l_X0rJmbLm3pYsYbWJ0s1bfejIE7ZLGpWh15uuteHolcIB34JuzeZ_N2wTORA0Zio-9rWGMEtz2ITRO-c-jfGOVOjG9yB_fSUFtS6_MpiZUnguNFHm0x1ZcRnhDRdz9uYLhlCi1m1mr-moijR_pltyAwfEIYKxnBGstFqKJr1Ju8MXlDiZQeTcTzuT9nlgfXfbfiaBHBjw83R-TTcRJeFfhnw1bJLnK3Euz48lYoApv90bkXHgP9KtKLI55_U"/>
+</div>
+<div class="flex-grow min-w-0">
+<p class="font-label-bold text-[10px] text-on-surface truncate">#DPM-122 | HYPER TICKET</p>
+<p class="text-[9px] text-primary-fixed-dim">IN TRANSIT</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container">priority_high</span>
+</div>
+<div class="glass-card border-border-width border-surface-variant p-sm rounded-xl neo-shadow flex gap-sm items-center">
+<div class="w-12 h-12 bg-surface-container-high rounded-lg overflow-hidden border-2 border-on-surface shrink-0">
+<img class="w-full h-full object-cover" data-alt="A futuristic translucent cube glowing with blue and white internal neural networks. The cube is sitting on a mirrored black surface that reflects the glowing lines. Sharp focus on the digital light patterns. Industrial sci-fi aesthetic with heavy contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdr2GFV5RUiTFG0qobvLzSdFm_29JDvx1YvKS-xtk4mShbV-H9KHA9ODTlHUGDqBcefAp7fXT_xwaYqbtypNcIQsKtWY24tTN6EaXPSArmGPsR6z1VAANbdIA5oidPNcSIOWjTbdkqxWE56P_LvJEnF2yclAasb9FiZb4sui3VfuRUG4LZd4ERDXipgZFs_MopLdxtMFFwMX0CNkw4Q3qwbRCmomHifbUtctshEq2kAAe1wyYs9wp9CrKGfAlIx1GnMMLrC2X998SZ"/>
+</div>
+<div class="flex-grow min-w-0">
+<p class="font-label-bold text-[10px] text-on-surface truncate">#DPM-441 | NEURAL CORE</p>
+<p class="text-[9px] text-primary-fixed-dim">ARRIVING NOW</p>
+</div>
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Section: Dispatcher Intel -->
+<section class="col-span-12 xl:col-span-5 space-y-md">
+<!-- Global Map Module -->
+<div class="glass-card border-border-width border-surface-variant rounded-xl overflow-hidden neo-shadow flex flex-col h-[500px]">
+<div class="p-md bg-surface-container-low border-b-border-width border-surface-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-2 uppercase italic text-lg">
+<span class="material-symbols-outlined text-primary-fixed-dim">map</span>
+                                Satellite Feed
+                            </h2>
+<div class="flex gap-2">
+<button class="p-1 border border-surface-variant hover:bg-surface-container-high"><span class="material-symbols-outlined text-xs">add</span></button>
+<button class="p-1 border border-surface-variant hover:bg-surface-container-high"><span class="material-symbols-outlined text-xs">remove</span></button>
+</div>
+</div>
+<div class="flex-grow relative bg-[#0D0B18]">
+<!-- Mock Map Visualization -->
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(#1c1a27_1px,transparent_1px)] [background-size:20px_20px]"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative w-full h-full" data-location="Tokyo" style="">
+<img class="w-full h-full object-cover opacity-60" data-alt="A highly stylized tactical map of a futuristic urban megalopolis at night. The map shows glowing neon-blue road networks against a deep indigo and black grid. Small animated pulses in electric lime represent delivery drones or riders, and areas of heavy delivery traffic are shown with semi-transparent pink heat-map blobs. The visual style is reminiscent of a high-tech radar interface from a cyberpunk military control room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNcO8zy6WYxFkTsdUcvIqzhwPZsG11jnBlgkrqnExkbKBV79gORzpSdSsEm9PLhYDHzfWFGWJlXoQDalVZqsxCfGHLjGKGW4eNzITOPfLXQUqQzNixckpOhuwHLCray7cKXluEXbHKDGlp_NHBBUiVbIECicdMMxVFu_cqHGcfG_xt0vIyy17jBOC6xKouTl_Qjlp_vvj2GXM4YwrcRrD3DM6i_8D5oygH4x0IfJgX8rI5iRqfygwMo0sxpdsi7Bnxz8a4DreI2wL"/>
+<!-- Map HUD Elements -->
+<div class="absolute top-10 left-10 p-2 bg-surface/80 border border-primary-fixed-dim rounded text-[8px] font-label-bold text-primary-fixed-dim">
+                                        LAT: 35.6895 | LONG: 139.6917
+                                    </div>
+<!-- Interactive Markers -->
+<div class="absolute top-1/2 left-1/3 w-4 h-4 bg-primary-container rounded-full animate-ping"></div>
+<div class="absolute top-1/2 left-1/3 w-2 h-2 bg-primary-container rounded-full border border-on-surface"></div>
+<div class="absolute bottom-1/4 right-1/4 w-4 h-4 bg-secondary-container rounded-full animate-ping"></div>
+<div class="absolute bottom-1/4 right-1/4 w-2 h-2 bg-secondary-container rounded-full border border-on-surface"></div>
+</div>
+</div>
+<!-- Heatmap Legend Overlay -->
+<div class="absolute bottom-4 left-4 p-md glass-card border border-surface-variant rounded-xl max-w-[200px]">
+<p class="font-label-bold text-[10px] text-on-surface mb-2">ZONE DENSITY</p>
+<div class="h-2 w-full bg-gradient-to-r from-primary-fixed-dim via-secondary-container to-error rounded-full"></div>
+<div class="flex justify-between mt-1 text-[8px] text-on-surface-variant font-label-bold">
+<span>CHILL</span>
+<span>CHAOTIC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dispatcher Stats Bento -->
+<div class="grid grid-cols-2 gap-md">
+<div class="glass-card border-border-width border-surface-variant p-md rounded-xl neo-shadow">
+<p class="font-label-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Efficiency</p>
+<h4 class="font-display-xl text-[32px] text-primary-container tabular-nums">98.4%</h4>
+<div class="w-full h-1 bg-surface-container-high rounded-full mt-2">
+<div class="w-[98.4%] h-full bg-primary-container glow-lime"></div>
+</div>
+</div>
+<div class="glass-card border-border-width border-surface-variant p-md rounded-xl neo-shadow">
+<p class="font-label-bold text-[10px] text-on-surface-variant uppercase tracking-widest">Active Riders</p>
+<h4 class="font-display-xl text-[32px] text-secondary tabular-nums">142</h4>
+<p class="text-[9px] text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">trending_up</span>
+                                +12 since last hour
+                            </p>
+</div>
+</div>
+<!-- System Status Card -->
+<div class="p-md bg-surface-container-highest border-border-width border-primary-fixed rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full border-border-width border-on-surface flex items-center justify-center bg-primary-container">
+<span class="material-symbols-outlined text-on-primary-container animate-spin" style="animation-duration: 3s">settings</span>
+</div>
+<div class="flex-grow">
+<h5 class="font-label-bold text-xs text-primary tracking-widest uppercase">System Core Status</h5>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-primary-container"></div>
+<div class="w-1 h-3 bg-surface-container-low border border-surface-variant"></div>
+</div>
+<span class="text-[9px] font-label-bold text-primary-container uppercase">OPTIMIZED</span>
+</div>
+</div>
+<button class="bg-surface p-2 border-border-width border-on-surface hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">restart_alt</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Footer Anchor -->
+<footer class="w-full py-md px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-dim border-t-border-width border-surface-variant z-40">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md text-secondary-fixed text-lg">DOPAMINE CLUB</span>
+<span class="text-[10px] text-on-surface-variant font-label-bold">©2024 DOPAMINE CLUB / POP MART UNIVERSE</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-bold text-xs text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">PRIVACY</a>
+<a class="font-label-bold text-xs text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">TERMS</a>
+<a class="font-label-bold text-xs text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">RECALLS</a>
+<a class="font-label-bold text-xs text-on-surface-variant hover:text-tertiary-fixed-dim" href="#">SUPPORT</a>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 bg-primary-container rounded-full"></span>
+<span class="font-label-bold text-[10px]">ALL SYSTEMS GO</span>
+</div>
+</footer>
+</main>
+</div>
+<script>
+        // Micro-interaction: Timer countdown simulation
+        document.querySelectorAll('.timer').forEach(timer => {
+            let seconds = parseInt(timer.getAttribute('data-time'));
+            setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                    const mins = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    timer.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        });
+
+        // Hover effect for map markers
+        const markers = document.querySelectorAll('.animate-ping');
+        markers.forEach(marker => {
+            marker.parentElement.addEventListener('mouseenter', () => {
+                marker.style.animationDuration = '0.5s';
+            });
+            marker.parentElement.addEventListener('mouseleave', () => {
+                marker.style.animationDuration = '1.5s';
+            });
+        });
+    </script>
+
+    <script>
+        // Enforce Admin Auth
+        async function checkAdminAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/auth.html';
+                return;
+            }
+            try {
+                const res = await fetch('/api/auth/me', {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+                const data = await res.json();
+                if (!res.ok || data.role !== 'admin') {
+                    window.location.href = '/auth.html';
+                }
+            } catch(e) {
+                window.location.href = '/auth.html';
+            }
+        }
+        checkAdminAuth();
+    </script>
+</body></html>

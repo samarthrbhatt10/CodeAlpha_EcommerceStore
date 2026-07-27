@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dopamine Club | Mythic Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500&amp;family=Space+Grotesk:wght@700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.neo-shadow {
+    box-shadow: 6px 6px 0 #0D0B18
+    }
+.neo-shadow-active {
+    box-shadow: 0 0 0 #0D0B18;
+    transform: translate(4px, 4px)
+    }
+.tech-grid {
+    background-size: 32px 32px
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBzWnuIr2VaySRQHHxHCUcySzUpmsXfPDkiYIhEE_TjSV8-WRKdjCefCGubIiOBdbhHeo9fATcIODXWnrre2IQrf14b1vIXLOqK_R8d4eKKlAENwmeA5ESDoJnsN0nOcJmu3fEwXUua_ou43LB852bB7ODLQUBDhoA6zfHzud-gmjLngE5tX5Tp9uNelM2j9hRszrQwmqjEr5HVGhYSvAZqI_VFbrXXwcSSf1WzLQ1wrLropPltaM7g-LTDU-B_V7xaYw899jPt__FN)
+    }
+.holographic-glow {
+    filter: blur(40px)
+    }
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+        } to {
+        transform: rotate(360deg);
+        }
+    }
+.animate-rotate {
+    animation: rotate-slow 20s linear infinite
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#14121f",
+                        "on-secondary-fixed": "#3f0019",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "on-primary-fixed": "#161e00",
+                        "secondary-fixed": "#ffd9e0",
+                        "on-secondary-container": "#590026",
+                        "tertiary-fixed": "#7df4ff",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#002022",
+                        "on-primary": "#283500",
+                        "on-background": "#e5e0f3",
+                        "on-secondary": "#66002c",
+                        "on-primary-fixed-variant": "#3c4d00",
+                        "outline": "#8e9379",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#abd600",
+                        "inverse-on-surface": "#312f3d",
+                        "surface-container-lowest": "#0e0c1a",
+                        "surface-bright": "#3a3746",
+                        "secondary-container": "#ff4b89",
+                        "error": "#ffb4ab",
+                        "primary": "#ffffff",
+                        "on-surface-variant": "#c4c9ac",
+                        "on-primary-container": "#556d00",
+                        "surface-container-highest": "#363342",
+                        "surface-variant": "#363342",
+                        "inverse-primary": "#506600",
+                        "surface-tint": "#abd600",
+                        "secondary-fixed-dim": "#ffb1c3",
+                        "surface-container-high": "#2b2836",
+                        "on-error": "#690005",
+                        "on-tertiary": "#00363a",
+                        "primary-container": "#c3f400",
+                        "primary-fixed": "#c3f400",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "tertiary-container": "#7df4ff",
+                        "background": "#14121f",
+                        "surface-dim": "#14121f",
+                        "surface-container-low": "#1c1a27",
+                        "surface-container": "#201e2c",
+                        "secondary": "#ffb1c3",
+                        "on-tertiary-container": "#006f77",
+                        "on-surface": "#e5e0f3",
+                        "on-secondary-fixed-variant": "#8f0041",
+                        "outline-variant": "#444933",
+                        "inverse-surface": "#e5e0f3",
+                        "error-container": "#93000a"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "border-width": "3px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Syne"],
+                        "headline-md": ["Syne"],
+                        "label-bold": ["Space Grotesk"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface tech-grid min-h-screen overflow-hidden">
+<div class="grain-overlay"></div>
+<!-- Side Navigation Shell (Hidden on Transactional but relevant for Vault Dashboard) -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r-border-width border-outline bg-surface-container z-40 hidden md:flex flex-col p-md">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">Dopamine Elite</h1>
+<p class="font-label-bold text-[10px] text-on-surface-variant">Verified Member</p>
+</div>
+<nav class="flex-grow space-y-base">
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-bold text-label-bold uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm bg-primary-container text-on-primary-container border-border-width border-outline shadow-[4px_4px_0px_#0D0B18] p-sm active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-bold text-label-bold uppercase">Inventory</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-bold text-label-bold uppercase">Orders</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold uppercase">Analytics</span>
+</a>
+<a class="flex items-center gap-sm text-on-surface p-sm hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold uppercase">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t-border-width border-outline space-y-xs">
+<button class="w-full py-base bg-secondary-container text-on-secondary-container border-border-width border-outline neo-shadow font-label-bold uppercase text-xs active:translate-x-xs active:translate-y-xs active:shadow-none transition-all">
+                UPGRADE TO PRO
+            </button>
+<div class="flex items-center gap-sm text-on-surface p-sm opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-bold text-label-bold uppercase">Support</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 relative h-screen w-full flex flex-col items-center justify-center p-md">
+<!-- Top App Bar Content (Integrated) -->
+<header class="absolute top-0 left-0 right-0 z-30 flex justify-between items-center px-md py-sm border-b-border-width border-outline bg-surface/80 backdrop-blur-md">
+<div class="font-display-xl text-headline-md italic uppercase text-primary tracking-tighter">VAULT</div>
+<div class="flex items-center gap-md">
+<div class="hidden lg:flex items-center gap-sm px-base py-xs bg-surface-container-highest border-border-width border-outline">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="font-label-bold text-label-bold">992,400 DP</span>
+</div>
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary-container transition-colors">shopping_cart</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary-container transition-colors">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Background Atmos -->
+<div class="absolute inset-0 z-0 flex items-center justify-center opacity-30">
+<div class="holographic-glow w-[600px] h-[600px] rounded-full animate-pulse"></div>
+</div>
+<!-- Central Unboxing Area -->
+<div class="relative z-10 w-full max-w-6xl grid grid-cols-12 gap-md items-center">
+<!-- Left Tactical Panel -->
+<div class="col-span-12 lg:col-span-3 space-y-md">
+<div class="glass-card border-border-width border-outline p-md neo-shadow rotate-[-1deg]">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-bold text-[10px] text-on-surface-variant uppercase">Status</span>
+<div class="w-2 h-2 rounded-full bg-primary-container animate-ping"></div>
+</div>
+<div class="space-y-sm">
+<div>
+<p class="font-label-bold text-xs text-on-surface-variant">ITEM_RARITY</p>
+<p class="font-headline-md text-secondary-container italic">MYTHIC</p>
+</div>
+<div class="pt-sm border-t border-outline-variant">
+<p class="font-label-bold text-xs text-on-surface-variant">POWER_LEVEL</p>
+<p class="font-headline-md text-primary">9000<span class="text-xs ml-xs">KW</span></p>
+</div>
+</div>
+</div>
+<div class="glass-card border-border-width border-outline p-md neo-shadow rotate-[1deg]">
+<div class="font-label-bold text-xs text-primary mb-base">DROP_RATE_ANALYTICS</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-label-bold text-[10px]">
+<span>COMMON</span>
+<span>64.0%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-outline" style="width: 64%"></div>
+</div>
+<div class="flex justify-between font-label-bold text-[10px] mt-xs">
+<span>LEGENDARY</span>
+<span>2.4%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-secondary-container" style="width: 2.4%"></div>
+</div>
+<div class="flex justify-between font-label-bold text-[10px] mt-xs">
+<span>MYTHIC</span>
+<span>0.01%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest relative">
+<div class="h-full bg-primary-container animate-pulse" style="width: 1%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Central Three.js Scene -->
+<div class="col-span-12 lg:col-span-6 flex flex-col items-center">
+<div class="relative w-full aspect-square md:w-[500px] md:h-[500px] flex items-center justify-center group">
+<!-- Placeholder for Three.js Mythic Crate -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/10 to-transparent rounded-full filter blur-3xl scale-110 opacity-50"></div>
+
+<!-- Decorative Sticker UI -->
+<div class="absolute -top-4 -right-4 p-xs bg-white text-surface font-label-bold text-[10px] border-border-width border-surface neo-shadow rotate-12 uppercase">
+                        High Risk / High Reward
+                    </div>
+</div>
+<!-- Action Controls -->
+<div class="mt-lg flex flex-col md:flex-row gap-md w-full justify-center px-md">
+<button class="group relative px-xl py-md bg-primary-container text-on-primary-container border-border-width border-outline neo-shadow transition-all hover:bg-primary-container active:translate-x-xs active:translate-y-xs active:shadow-none" id="openCrate">
+<span class="font-headline-md italic uppercase tracking-tighter">OPEN CRATE</span>
+<div class="absolute inset-0 border-2 border-white opacity-0 group-hover:opacity-30 transition-opacity"></div>
+</button>
+<button class="px-xl py-md glass-card text-primary border-border-width border-outline neo-shadow transition-all hover:bg-surface-container-highest active:translate-x-xs active:translate-y-xs active:shadow-none">
+<span class="font-headline-md italic uppercase tracking-tighter">SYNC TO VAULT</span>
+</button>
+</div>
+</div>
+<!-- Right Tactical Panel -->
+<div class="col-span-12 lg:col-span-3 space-y-md">
+<div class="glass-card border-border-width border-outline p-md neo-shadow">
+<div class="font-label-bold text-xs text-on-surface-variant uppercase mb-sm">Live Feed</div>
+<div class="space-y-sm overflow-hidden h-48 relative">
+<div class="flex gap-sm items-center opacity-80">
+<div class="w-6 h-6 rounded-full bg-secondary-container"></div>
+<div class="text-[10px] font-label-bold">USR_KINETIC obtained [NEON_CORE]</div>
+</div>
+<div class="flex gap-sm items-center opacity-60">
+<div class="w-6 h-6 rounded-full bg-outline"></div>
+<div class="text-[10px] font-label-bold">DRIP_LORD obtained [BASIC_GEAR]</div>
+</div>
+<div class="flex gap-sm items-center opacity-40">
+<div class="w-6 h-6 rounded-full bg-primary-container"></div>
+<div class="text-[10px] font-label-bold">VOX_99 obtained [TITAN_SHIELD]</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-surface-container to-transparent"></div>
+</div>
+</div>
+<div class="glass-card border-border-width border-outline p-md neo-shadow rotate-[-2deg] bg-secondary-container/10">
+<div class="flex items-center gap-sm mb-base">
+<span class="material-symbols-outlined text-secondary-container">warning</span>
+<span class="font-label-bold text-xs text-secondary-container">CRITICAL WARNING</span>
+</div>
+<p class="font-body-md text-[11px] leading-relaxed opacity-80">
+                        Unboxing mythic crates may result in significant dopamine spikes and digital asset volatility. Proceed with terminal caution.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Footer Shell (Simplified for focused screen) -->
+<footer class="absolute bottom-md left-0 right-0 flex justify-center opacity-40 hover:opacity-100 transition-opacity">
+<div class="flex gap-lg items-center px-md py-xs bg-surface-container-lowest border-border-width border-outline font-label-bold text-[10px] tracking-widest uppercase">
+<span>© 2024 DOPAMINE CLUB</span>
+<div class="flex gap-md">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Protocol</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for buttons
+        const openBtn = document.getElementById('openCrate');
+        openBtn.addEventListener('mousedown', () => {
+            openBtn.classList.remove('neo-shadow');
+            openBtn.classList.add('neo-shadow-active');
+        });
+        openBtn.addEventListener('mouseup', () => {
+            openBtn.classList.add('neo-shadow');
+            openBtn.classList.remove('neo-shadow-active');
+        });
+        openBtn.addEventListener('mouseleave', () => {
+            openBtn.classList.add('neo-shadow');
+            openBtn.classList.remove('neo-shadow-active');
+        });
+
+        // Simulating unboxing visual trigger
+        openBtn.addEventListener('click', () => {
+            openBtn.innerHTML = '<span class="font-headline-md italic uppercase tracking-tighter">DECRYPTING...</span>';
+            setTimeout(() => {
+                openBtn.innerHTML = '<span class="font-headline-md italic uppercase tracking-tighter">OPEN CRATE</span>';
+            }, 2000);
+        });
+    </script>
+</body></html>

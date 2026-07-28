@@ -450,6 +450,24 @@
 </div>
 </div>
 </section>
+
+<!-- Live Orders & Shipment Tracking Section -->
+<section class="max-w-7xl mx-auto px-md mt-xl">
+<div class="glass-card border-4 border-on-surface p-lg rounded-2xl neo-shadow space-y-md">
+<div class="flex justify-between items-center border-b-2 border-surface-variant pb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary-fixed uppercase italic">LIVE SHIPMENT DISPATCH TRACKER</h3>
+<p class="font-label-bold text-xs text-on-surface-variant">REAL-TIME TELEMETRY FROM DOPAMINE LOGISTICS HUB</p>
+</div>
+<button onclick="loadUserOrders()" class="px-md py-xs bg-primary-container text-on-primary-container font-label-bold text-xs rounded-full border-2 border-on-surface hover:bg-primary-fixed transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">sync</span> REFRESH LOGS
+</button>
+</div>
+<div id="user-orders-list" class="space-y-md">
+<div class="text-center py-md text-on-surface-variant font-label-bold">LOADING SHIPMENT TRACKING DATA...</div>
+</div>
+</div>
+</section>
 </main>
 </div>
 <!-- Footer -->
@@ -464,14 +482,6 @@
 <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim hover:translate-y-[-2px] transition-transform underline underline-offset-4" href="#">Privacy</a>
 <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim hover:translate-y-[-2px] transition-transform underline underline-offset-4" href="#">TOS</a>
 <a class="text-on-surface-variant font-label-bold text-label-bold hover:text-tertiary-fixed-dim hover:translate-y-[-2px] transition-transform underline underline-offset-4" href="#">Arcade</a>
-</div>
-<div class="flex gap-md">
-<div class="w-10 h-10 rounded-lg bg-surface-container-high border-2 border-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all cursor-pointer">
-<span class="material-symbols-outlined">share</span>
-</div>
-<div class="w-10 h-10 rounded-lg bg-surface-container-high border-2 border-surface-container-highest flex items-center justify-center hover:bg-secondary-container hover:text-on-secondary-container transition-all cursor-pointer">
-<span class="material-symbols-outlined">forum</span>
-</div>
 </div>
 </div>
 </footer>
@@ -502,6 +512,7 @@
                     stats[0].innerText = (data.dpBalance || 0).toLocaleString(); // DP Balance
                     stats[1].innerText = (data.totalOrders || 0).toString(); // Orders
                 }
+                loadUserOrders();
             } else {
                 localStorage.removeItem('token');
                 window.location.href = '/auth.html';
@@ -510,47 +521,66 @@
             console.error('Error loading profile:', e);
         }
     }
-    loadProfile();
 
-    // Micro-interaction for arcade coin count animation
-    const updateStats = () => {
-        const stats = document.querySelectorAll('.font-headline-md.text-primary');
-        stats.forEach(stat => {
-            let val = stat.innerText;
-            if (!isNaN(val.replace(/,/g, '')) && val !== '') {
-                let target = parseInt(val.replace(/,/g, ''));
-                let current = target - Math.min(50, target);
-                const anim = () => {
-                    if (current < target) {
-                        current += Math.max(1, Math.floor((target - current)/10));
-                        stat.innerText = current.toLocaleString();
-                        requestAnimationFrame(anim);
-                    } else {
-                        stat.innerText = target.toLocaleString();
-                    }
-                };
-                anim();
+    async function loadUserOrders() {
+        const token = localStorage.getItem('token');
+        const list = document.getElementById('user-orders-list');
+        try {
+            const res = await fetch('/api/orders/myorders', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const orders = await res.json();
+                renderUserOrders(orders);
+            } else {
+                list.innerHTML = `<div class="text-center text-on-surface-variant py-md font-label-bold">COULD NOT LOAD ORDERS</div>`;
             }
-        });
-    };
-    setTimeout(updateStats, 1000);
+        } catch(e) {
+            console.error("Error loading user orders:", e);
+        }
+    }
 
-    // 3D Card Hover Effect
-    const cards = document.querySelectorAll('.neo-shadow');
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const xc = rect.width / 2;
-            const yc = rect.height / 2;
-            const dx = x - xc;
-            const dy = y - yc;
-            card.style.transform = `perspective(1000px) rotateX(${-dy / 40}deg) rotateY(${dx / 40}deg) translateY(-2px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+    function renderUserOrders(orders) {
+        const list = document.getElementById('user-orders-list');
+        if (!orders || orders.length === 0) {
+            list.innerHTML = `<div class="text-center text-on-surface-variant py-md font-label-bold">NO ORDERS PLACED YET. GO TO <a href="/catalog" class="text-primary-fixed underline">THE CATALOG</a> TO PLACE YOUR FIRST DROP ORDER!</div>`;
+            return;
+        }
+
+        list.innerHTML = orders.map(o => {
+            const status = (o.status || 'pending').toUpperCase();
+            const statusColor = status === 'DELIVERED' ? 'primary-fixed' : (status === 'SHIPPED' ? 'tertiary-fixed-dim' : 'secondary-container');
+            const tracking = o.trackingNumber || 'TRK-DOP-SYNCING';
+            const date = new Date(o.createdAt || Date.now()).toLocaleDateString();
+
+            const itemsHtml = (o.items || []).map(i => {
+                const p = i.productId || {};
+                return `<span class="px-sm py-1 bg-surface-container rounded border border-surface-variant text-xs">${p.name || 'Collectible'} x${i.quantity || 1}</span>`;
+            }).join(' ');
+
+            return `
+            <div class="p-md bg-surface-container-low border-2 border-on-surface rounded-xl space-y-sm">
+                <div class="flex flex-col md:flex-row justify-between md:items-center gap-xs border-b border-surface-variant/50 pb-xs">
+                    <div>
+                        <span class="font-headline-md text-primary">ORDER #${o.orderNumber || o._id.slice(-6)}</span>
+                        <span class="text-xs text-on-surface-variant ml-sm">Placed on ${date}</span>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <span class="px-sm py-1 bg-${statusColor}/20 text-${statusColor} border border-${statusColor} font-label-bold text-xs rounded-full uppercase">${status}</span>
+                        <span class="font-label-bold text-primary-fixed">$${(o.totalAmount || 0).toFixed(2)}</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-sm">
+                    <div class="flex flex-wrap gap-xs">${itemsHtml}</div>
+                    <div class="text-xs font-label-bold text-tertiary-fixed-dim">
+                        CARRIER: ${o.carrier || 'DOPAMINE_EXPRESS'} | TRACKING: <span class="text-primary">${tracking}</span>
+                    </div>
+                </div>
+                ${o.dispatchNotes ? `<p class="text-xs text-secondary-fixed-dim italic bg-surface-container p-xs rounded">Note: ${o.dispatchNotes}</p>` : ''}
+            </div>`;
+        }).join('');
+    }
+
+    loadProfile();
 </script>
 </body></html>

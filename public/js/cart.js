@@ -94,3 +94,49 @@ window.applyPromo = function() {
         showToast('Invalid promo code', 'error');
     }
 };
+
+window.processCheckout = async function() {
+    if (!cart || cart.length === 0) {
+        showToast('Your loot bag is empty!', 'warning');
+        return;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        showToast('Please login to complete your drop order.', 'warning');
+        setTimeout(() => window.location.href = '/auth.html', 1200);
+        return;
+    }
+
+    const orderPayload = {
+        items: cart.map(item => ({
+            productId: item._id,
+            quantity: item.quantity
+        }))
+    };
+
+    try {
+        const res = await fetch('/api/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(orderPayload)
+        });
+
+        if (res.ok) {
+            const createdOrder = await res.json();
+            cart = [];
+            saveCart();
+            showToast('ORDER DISPATCHED TO VAULT!', 'success');
+            setTimeout(() => window.location.href = '/success.html', 1000);
+        } else {
+            const err = await res.json();
+            showToast('Checkout Error: ' + (err.message || 'Failed'), 'error');
+        }
+    } catch (e) {
+        console.error("Checkout failed:", e);
+        showToast('Network error processing checkout', 'error');
+    }
+};

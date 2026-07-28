@@ -59,6 +59,43 @@ const SHARED_HTML = `
 </aside>
 `;
 
+function setupGlobalHeaderLinks() {
+    // 1. Fix top navbar links across all pages
+    const navLinks = document.querySelectorAll('header nav a, header a.font-label-bold');
+    navLinks.forEach(link => {
+        const text = link.innerText.trim().toUpperCase();
+        if (text === 'DROPS') link.href = '/drop';
+        else if (text === 'VAULT' || text === 'CATALOG') link.href = '/catalog';
+        else if (text === 'GAMES' || text === 'UNBOXING') link.href = '/unboxing';
+        else if (text === 'CLUBS' || text === 'TRADE') link.href = '/trade';
+        else if (text === 'CHAT') link.href = '/chat';
+        else if (text === 'RECRUITMENT') link.href = '/recruitment';
+    });
+
+    // 2. Fix Brand Logo Link
+    const brandLogos = document.querySelectorAll('header span.font-headline-lg, aside span.font-headline-md');
+    brandLogos.forEach(brand => {
+        brand.style.cursor = 'pointer';
+        brand.onclick = () => window.location.href = '/';
+    });
+
+    // 3. User Login/Profile status in header
+    const token = localStorage.getItem('token');
+    const loginBtns = document.querySelectorAll('header button');
+    loginBtns.forEach(btn => {
+        const txt = btn.innerText.trim().toUpperCase();
+        if (txt === 'LOGIN' || txt === 'PROFILE' || txt === 'LOGOUT') {
+            if (token) {
+                btn.innerText = 'PROFILE';
+                btn.onclick = () => window.location.href = '/profile';
+            } else {
+                btn.innerText = 'LOGIN';
+                btn.onclick = () => window.location.href = '/auth.html';
+            }
+        }
+    });
+}
+
 function injectSharedLayout() {
     // Inject Cart Drawer and Toast Container
     if (!document.getElementById('cart-drawer')) {
@@ -74,6 +111,8 @@ function injectSharedLayout() {
     
     // Ensure body has the right classes
     document.body.classList.add('bg-background', 'text-on-surface', 'font-body-md', 'min-h-screen', 'overflow-x-hidden', 'selection:bg-primary-container', 'selection:text-on-primary-container');
+
+    setupGlobalHeaderLinks();
 }
 
 // Auto-inject on DOM ready

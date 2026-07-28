@@ -140,6 +140,7 @@ async function checkout() {
             saveCart();
             closeCart();
             showToast('Order placed! Welcome to the Club 🔥', 'success');
+            setTimeout(() => window.location.href = '/success', 1000);
         } else {
             throw new Error(data.message || 'Order failed');
         }

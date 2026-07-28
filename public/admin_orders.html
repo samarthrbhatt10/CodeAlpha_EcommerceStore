@@ -194,18 +194,18 @@
 <div class="space-y-xs">
 <div class="flex items-center gap-sm">
 <span class="px-sm py-xs bg-primary-container text-on-primary-container border-border-width border-on-surface font-label-bold text-label-bold rounded-full">ACTIVE COMMAND</span>
-<span class="font-label-bold text-label-bold text-tertiary-fixed-dim">PRIORITY: OMEGA</span>
+<span class="font-label-bold text-label-bold text-tertiary-fixed-dim" id="disp-order-tracking">TRACKING: SYNCHRONIZING...</span>
 </div>
-<h1 class="font-headline-lg text-headline-lg uppercase text-primary italic">ORDER #DOP-8821-X</h1>
-<p class="font-body-lg text-on-surface-variant max-w-xl">Central Tactical Interface for high-value figurine dispatch. Last signal received: 3 minutes ago.</p>
+<h1 class="font-headline-lg text-headline-lg uppercase text-primary italic" id="disp-order-title">ORDER #SELECT-ORDER</h1>
+<p class="font-body-lg text-on-surface-variant max-w-xl" id="disp-order-subtitle">Central Tactical Interface for high-value figurine dispatch.</p>
 </div>
-<div class="flex gap-sm">
-<button class="p-sm glass-card border-border-width border-surface-variant rounded-xl flex items-center gap-xs font-label-bold text-label-bold text-on-surface hover:border-primary-fixed transition-colors">
-<span class="material-symbols-outlined">print</span> TICKET
-                        </button>
-<button class="p-sm glass-card border-border-width border-surface-variant rounded-xl flex items-center gap-xs font-label-bold text-label-bold text-on-surface hover:border-error transition-colors">
-<span class="material-symbols-outlined">cancel</span> ABORT
-                        </button>
+<div class="flex items-center gap-sm">
+<select id="select-active-order" onchange="selectOrder(this.value)" class="bg-surface-container-high border-border-width border-on-surface p-sm font-label-bold text-on-surface rounded-xl focus:border-primary-fixed focus:outline-none">
+  <option value="">LOADING CUSTOMER ORDERS...</option>
+</select>
+<button onclick="loadDispatcherOrders()" class="p-sm glass-card border-border-width border-surface-variant rounded-xl flex items-center gap-xs font-label-bold text-label-bold text-on-surface hover:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined">refresh</span> REFRESH
+</button>
 </div>
 </section>
 <!-- Status Command Grid -->
@@ -214,33 +214,33 @@
 <div class="lg:col-span-8 space-y-md">
 <div class="glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow">
 <div class="flex items-center justify-between mb-md">
-<h3 class="font-headline-md text-headline-md text-primary uppercase">STATUS MANIFEST</h3>
-<span class="font-label-bold text-label-bold text-primary-fixed-dim animate-pulse">EST. ARRIVAL: 14:30 UTC</span>
+<h3 class="font-headline-md text-headline-md text-primary uppercase">SHIPMENT STATUS MANIFEST</h3>
+<span class="font-label-bold text-label-bold text-primary-fixed-dim" id="disp-current-status">CURRENT STATUS: PENDING</span>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-sm">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm" id="status-buttons-container">
 <!-- Processing -->
-<button class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
+<button onclick="updateOrderStatus('processing')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
 <div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
 <span class="material-symbols-outlined">settings_suggest</span>
 </div>
 <span class="font-label-bold text-label-bold">PROCESSING</span>
 </button>
-<!-- Packed -->
-<button class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-on-surface bg-primary-container text-on-primary-container shadow-offset-shadow translate-x-1 translate-y-1">
-<div class="w-12 h-12 rounded-full flex items-center justify-center bg-on-primary-container text-primary-container">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory</span>
+<!-- Packed / Shipped -->
+<button onclick="updateOrderStatus('shipped')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">inventory</span>
 </div>
-<span class="font-label-bold text-label-bold">PACKED</span>
+<span class="font-label-bold text-label-bold">SHIPPED</span>
 </button>
 <!-- Dispatched -->
-<button class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
+<button onclick="updateOrderStatus('shipped')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
 <div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
 <span class="material-symbols-outlined">local_shipping</span>
 </div>
 <span class="font-label-bold text-label-bold">DISPATCHED</span>
 </button>
 <!-- Delivered -->
-<button class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
+<button onclick="updateOrderStatus('delivered')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
 <div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
 <span class="material-symbols-outlined">verified</span>
 </div>
@@ -251,151 +251,76 @@
 <!-- Real-time Situation Log -->
 <div class="glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow relative overflow-hidden h-96 flex flex-col">
 <div class="flex items-center justify-between mb-md z-10">
-<h3 class="font-headline-md text-headline-md text-primary uppercase">SITUATION LOG</h3>
+<h3 class="font-headline-md text-headline-md text-primary uppercase">DISPATCH SITUATION LOG</h3>
 <div class="flex items-center gap-sm">
 <div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-ping"></div>
-<span class="font-label-bold text-label-bold text-on-surface-variant">LIVE OVERRIDE ACTIVE</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">LIVE LOGS ACTIVE</span>
 </div>
 </div>
-<div class="flex-1 overflow-y-auto space-y-sm pr-sm z-10">
-<!-- Log Item -->
-<div class="p-sm bg-surface-container-low border-l-4 border-secondary-container rounded-r-lg">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-bold text-label-bold text-secondary-fixed-dim">SYSTEM_ALERT [12:44]</span>
-<span class="font-label-bold text-[10px] text-on-surface-variant uppercase">Rider Alpha-4</span>
-</div>
-<p class="font-body-md text-on-surface">Rider re-routed due to high traffic at Sector 7. ETA updated +12mins.</p>
-</div>
-<!-- Log Item -->
-<div class="p-sm bg-surface-container-low border-l-4 border-primary-fixed-dim rounded-r-lg">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-bold text-label-bold text-primary-fixed-dim">MANUAL_OVERRIDE [12:30]</span>
-<span class="font-label-bold text-[10px] text-on-surface-variant uppercase">Admin Sarah K.</span>
-</div>
-<p class="font-body-md text-on-surface">Upgraded to 'Holographic Prime' packaging at client request.</p>
-</div>
-<!-- Log Item -->
-<div class="p-sm bg-surface-container-low border-l-4 border-tertiary-fixed-dim rounded-r-lg">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-bold text-label-bold text-tertiary-fixed-dim">WAREHOUSE_UPDATE [12:15]</span>
-<span class="font-label-bold text-[10px] text-on-surface-variant uppercase">Hub 01</span>
-</div>
-<p class="font-body-md text-on-surface">Item #3291 (MEGA CHULLY) secured in blast-proof container.</p>
-</div>
-<!-- Log Item -->
-<div class="p-sm bg-surface-container-low border-l-4 border-on-surface-variant rounded-r-lg opacity-50">
-<div class="flex justify-between items-start mb-xs">
-<span class="font-label-bold text-label-bold text-on-surface-variant">PAYMENT_LOCK [12:00]</span>
-<span class="font-label-bold text-[10px] text-on-surface-variant uppercase">Auto-Sys</span>
-</div>
-<p class="font-body-md text-on-surface">Cryptographic handshake complete. Funds secured in vault.</p>
-</div>
+<div class="flex-1 overflow-y-auto space-y-sm pr-sm z-10" id="situation-log-list">
+  <div class="p-sm bg-surface-container-low border-l-4 border-primary-fixed-dim rounded-r-lg">
+    <span class="font-label-bold text-primary-fixed-dim">SYSTEM_READY</span>
+    <p class="font-body-md text-on-surface">Select an active order to view dispatch status history.</p>
+  </div>
 </div>
 <div class="mt-md z-10">
-<div class="relative">
-<input class="w-full bg-surface-container-lowest border-border-width border-surface-variant rounded-xl p-md font-label-bold text-label-bold focus:border-primary-container focus:ring-0 text-on-surface transition-all" placeholder="ENTER OVERRIDE COMMAND..." type="text"/>
-<button class="absolute right-sm top-1/2 -translate-y-1/2 p-sm text-primary-container hover:scale-110 transition-transform">
+<form onsubmit="handleOverrideCommand(event)" class="relative">
+<input id="input-override-cmd" class="w-full bg-surface-container-lowest border-border-width border-surface-variant rounded-xl p-md font-label-bold text-label-bold focus:border-primary-container focus:ring-0 text-on-surface transition-all" placeholder="ENTER DISPATCH NOTE / RIDER COMMAND..." type="text"/>
+<button type="submit" class="absolute right-sm top-1/2 -translate-y-1/2 p-sm text-primary-container hover:scale-110 transition-transform">
 <span class="material-symbols-outlined">send</span>
 </button>
-</div>
+</form>
 </div>
 </div>
 </div>
 <!-- Side Panels (Right Column) -->
 <div class="lg:col-span-4 space-y-md">
-<!-- Customer Preferences -->
+<!-- Customer Details -->
 <div class="glass-card border-border-width border-surface-variant rounded-xl p-md neo-shadow">
-<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-md tracking-widest border-b border-surface-variant pb-xs">VIBE PREFERENCES</h3>
+<h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-md tracking-widest border-b border-surface-variant pb-xs">CUSTOMER & CARRIER INTEL</h3>
 <div class="space-y-md">
 <div class="flex items-center gap-md">
-<div class="w-16 h-16 rounded-full border-border-width border-on-surface bg-cover bg-center shrink-0" data-alt="A futuristic portrait of a trendy Gen Z girl wearing oversized cyberpunk glasses and neon streetwear, high-key studio lighting with vibrant pink and cyan highlights, digital art style inspired by neo-brutalist pop culture aesthetics." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_geTbLq8NQUO6tyRa-sH8Tb4ohYKSaU_F8sSJ_JT0V3mptWHHYAQ0v1c85XxeRwmBuuj1Js5EyA8QYA8JxWwgagWsxuYM9h33u3IC6-b1UfPWJ4XTiBE3acn-YRdu6OSEkaNKfUUNnwWqol-rB9UXo9PB5-jQmHl0pfuRJrMhPpTYkcVu4ffzeeieejHdsbUPPct0G01A5ywA2yoK4J7mJkzWinjOYpUlSB_-Dci30x_Xe3xO5fHyACcF88KNdqQgO8wkb14-V2QJ')"></div>
+<div class="w-12 h-12 rounded-full border-border-width border-on-surface bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-headline-md shrink-0" id="customer-avatar-initials">
+  CU
+</div>
 <div>
-<p class="font-headline-md text-[18px] text-primary">KIRA VIBES</p>
-<p class="font-label-bold text-[12px] text-primary-fixed-dim">TOP TIER MEMBER</p>
+<p class="font-headline-md text-[18px] text-primary" id="disp-cust-name">CUSTOMER NAME</p>
+<p class="font-label-bold text-[12px] text-primary-fixed-dim" id="disp-cust-email">USER@DOPAMINE.CLUB</p>
 </div>
 </div>
 <ul class="space-y-sm">
 <li class="flex justify-between border-b border-surface-variant/30 pb-xs">
-<span class="font-label-bold text-on-surface-variant">DROPOFF:</span>
-<span class="font-label-bold text-on-surface">SECURE POD 7B</span>
+<span class="font-label-bold text-on-surface-variant">TOTAL AMOUNT:</span>
+<span class="font-label-bold text-primary-fixed" id="disp-total-amount">$0.00</span>
 </li>
 <li class="flex justify-between border-b border-surface-variant/30 pb-xs">
-<span class="font-label-bold text-on-surface-variant">PACKAGING:</span>
-<span class="font-label-bold text-on-surface">MATTE NEON</span>
+<span class="font-label-bold text-on-surface-variant">CARRIER:</span>
+<span class="font-label-bold text-on-surface" id="disp-carrier-name">DOPAMINE_EXPRESS</span>
 </li>
 <li class="flex justify-between border-b border-surface-variant/30 pb-xs">
-<span class="font-label-bold text-on-surface-variant">NOTIFY via:</span>
-<span class="font-label-bold text-on-surface">HOLOGRAM-SMS</span>
+<span class="font-label-bold text-on-surface-variant">TRACKING #:</span>
+<span class="font-label-bold text-on-surface" id="disp-tracking-num">TRK-DOP-000000</span>
 </li>
 </ul>
-<button class="w-full py-sm bg-surface-container-high text-on-surface-variant font-label-bold text-[12px] border-border-width border-surface-variant rounded-lg hover:border-primary-fixed transition-colors">
-                                    CONTACT RIDER
-                                </button>
 </div>
 </div>
 <!-- Warehouse Checklist -->
 <div class="glass-card border-border-width border-on-surface rounded-xl p-md neo-shadow holographic">
-<h3 class="font-label-bold text-label-bold text-on-primary-fixed uppercase mb-md tracking-widest border-b border-on-primary-fixed/30 pb-xs">FULFILLMENT CHECK</h3>
+<h3 class="font-label-bold text-label-bold text-on-primary-fixed uppercase mb-md tracking-widest border-b border-on-primary-fixed/30 pb-xs">FULFILLMENT CHECKLIST</h3>
 <ul class="space-y-sm">
 <li class="flex items-center gap-sm">
 <input checked="" class="w-6 h-6 rounded bg-on-primary-fixed border-none text-primary-container focus:ring-0" type="checkbox"/>
-<span class="font-label-bold text-on-primary-fixed line-through opacity-70">SENSORY SEAL VERIFIED</span>
+<span class="font-label-bold text-on-primary-fixed line-through opacity-70">PAYMENT & VAULT SECURED</span>
 </li>
 <li class="flex items-center gap-sm">
 <input checked="" class="w-6 h-6 rounded bg-on-primary-fixed border-none text-primary-container focus:ring-0" type="checkbox"/>
-<span class="font-label-bold text-on-primary-fixed line-through opacity-70">GPS TAG SYNCED</span>
+<span class="font-label-bold text-on-primary-fixed line-through opacity-70">GPS TRACKER TAGGED</span>
 </li>
 <li class="flex items-center gap-sm">
-<input class="w-6 h-6 rounded bg-surface border-border-width border-on-primary-fixed text-primary-container focus:ring-0" type="checkbox"/>
-<span class="font-label-bold text-on-primary-fixed">SCENT-LAYER APPLIED</span>
-</li>
-<li class="flex items-center gap-sm">
-<input class="w-6 h-6 rounded bg-surface border-border-width border-on-primary-fixed text-primary-container focus:ring-0" type="checkbox"/>
-<span class="font-label-bold text-on-primary-fixed">QC HOLOGRAM STAMP</span>
+<input checked="" class="w-6 h-6 rounded bg-on-primary-fixed border-none text-primary-container focus:ring-0" type="checkbox"/>
+<span class="font-label-bold text-on-primary-fixed">QUALITY HOLOGRAM STAMPED</span>
 </li>
 </ul>
-</div>
-<!-- Live Map Visual -->
-<div class="glass-card border-border-width border-surface-variant rounded-xl p-xs neo-shadow overflow-hidden group">
-<div class="relative h-48 rounded-lg overflow-hidden grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
-<div class="w-full h-full bg-surface-container-highest" data-location="Tokyo" style=""></div>
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="w-8 h-8 rounded-full bg-primary-fixed-dim/40 animate-ping absolute"></div>
-<div class="w-4 h-4 rounded-full bg-primary-fixed-dim border-2 border-on-surface shadow-[0_0_15px_rgba(171,214,0,1)] z-10"></div>
-</div>
-<div class="absolute bottom-sm left-sm bg-surface/80 backdrop-blur-md px-sm py-xs rounded border border-surface-variant">
-<span class="font-label-bold text-[10px] text-primary">DIST: 2.4 KM</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Featured Item Card -->
-<section class="mt-lg">
-<div class="glass-card border-border-width border-surface-variant rounded-xl overflow-hidden flex flex-col md:flex-row neo-shadow">
-<div class="md:w-1/3 h-64 md:h-auto overflow-hidden relative">
-<img class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" data-alt="A limited edition premium collectible vinyl toy figurine, ultra-detailed textures, vibrant slime green and electric pink colors, glossy finish, cinematic lighting against a dark studio background with light smoke effects, neo-brutalist pop art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJh_yQh6XtitiIYFdjxVDM0G0ScXHxNF1Ty6zh6LhGCvXY9DzdXVHDrjlS2DAs0TaeBOJs9CSqqgTxZirlG1CKO_xF14sOx1GS9H3OfIhhswogQM5x8ta65MQV3i1BBSwRBmDZDxhK_bqxjNpCHDwDpaz7W-aarUrc20S9sfdmRDBaphw_8zUtnPioZTkrVCe5IMJvcTndpivLCw_SMfQ2DWVdcimTBrKj_jRQjcVE1Zmi6hyijLTLxOKhJPdeoH3cG-el01ilRUvr"/>
-<div class="absolute top-md left-md">
-<span class="px-md py-sm bg-secondary-container text-on-secondary-container font-headline-md text-[18px] border-border-width border-on-surface italic rotate-[-5deg] inline-block">HYPER RARE</span>
-</div>
-</div>
-<div class="md:w-2/3 p-md lg:p-lg flex flex-col justify-center space-y-md">
-<div>
-<h2 class="font-headline-md text-headline-md text-primary uppercase mb-xs">MEGA CHULLY: VOLT EDITION</h2>
-<p class="font-label-bold text-on-surface-variant tracking-widest">SERIES 09 // UNIT 001 OF 500</p>
-</div>
-<div class="flex flex-wrap gap-sm">
-<span class="px-sm py-xs bg-surface-container-high rounded-full border border-surface-variant text-[12px] font-label-bold">MATERIAL: SOFT VINYL</span>
-<span class="px-sm py-xs bg-surface-container-high rounded-full border border-surface-variant text-[12px] font-label-bold">HEIGHT: 24CM</span>
-<span class="px-sm py-xs bg-surface-container-high rounded-full border border-surface-variant text-[12px] font-label-bold">FINISH: MATTE-GLOW</span>
-</div>
-<div class="flex items-center gap-md">
-<div class="flex -space-x-sm">
-<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-secondary"></div>
-<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-primary-fixed"></div>
-<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-tertiary-fixed"></div>
-</div>
-<span class="font-label-bold text-on-surface-variant">+4 AUTHENTICITY TOKENS</span>
 </div>
 </div>
 </div>
@@ -417,50 +342,175 @@
 </main>
 </div>
 <script>
-        // Micro-interactions for status buttons
-        const statusButtons = document.querySelectorAll('button.group.flex.flex-col');
-        statusButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                statusButtons.forEach(b => {
-                    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-offset-shadow', 'translate-x-1', 'translate-y-1', 'border-on-surface');
-                    b.classList.add('border-surface-variant');
-                    const iconContainer = b.querySelector('div');
-                    iconContainer.classList.remove('bg-on-primary-container', 'text-primary-container');
-                    iconContainer.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
-                    const icon = b.querySelector('.material-symbols-outlined');
-                    icon.style.fontVariationSettings = "'FILL' 0";
-                });
-                btn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-offset-shadow', 'translate-x-1', 'translate-y-1', 'border-on-surface');
-                btn.classList.remove('border-surface-variant');
-                const activeIconContainer = btn.querySelector('div');
-                activeIconContainer.classList.add('bg-on-primary-container', 'text-primary-container');
-                activeIconContainer.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
-                const activeIcon = btn.querySelector('.material-symbols-outlined');
-                activeIcon.style.fontVariationSettings = "'FILL' 1";
-            });
-        });
-    </script>
+    let allOrders = [];
+    let currentSelectedOrder = null;
 
-    <script>
-        // Enforce Admin Auth
-        async function checkAdminAuth() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = '/auth.html';
-                return;
+    async function loadDispatcherOrders() {
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch('/api/orders/all', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            if (res.ok) {
+                allOrders = await res.json();
+                populateOrderDropdown(allOrders);
             }
-            try {
-                const res = await fetch('/api/auth/me', {
-                    headers: { 'Authorization': 'Bearer ' + token }
-                });
-                const data = await res.json();
-                if (!res.ok || data.role !== 'admin') {
-                    window.location.href = '/auth.html';
-                }
-            } catch(e) {
-                window.location.href = '/auth.html';
-            }
+        } catch (e) {
+            console.error("Error fetching dispatcher orders:", e);
         }
-        checkAdminAuth();
-    </script>
+    }
+
+    function populateOrderDropdown(orders) {
+        const select = document.getElementById('select-active-order');
+        if (!orders || orders.length === 0) {
+            select.innerHTML = `<option value="">NO CUSTOMER ORDERS PLACED YET</option>`;
+            return;
+        }
+
+        select.innerHTML = orders.map((o, idx) => {
+            const num = o.orderNumber || `DOP-ORD-#${idx + 1}`;
+            const user = o.userId ? (o.userId.name || o.userId.email) : 'Customer';
+            const status = (o.status || 'pending').toUpperCase();
+            return `<option value="${o._id}">${num} - ${user} [${status}]</option>`;
+        }).join('');
+
+        if (orders.length > 0) {
+            selectOrder(orders[0]._id);
+        }
+    }
+
+    function selectOrder(orderId) {
+        currentSelectedOrder = allOrders.find(o => o._id === orderId);
+        if (!currentSelectedOrder) return;
+
+        const o = currentSelectedOrder;
+        document.getElementById('disp-order-title').innerText = `ORDER #${o.orderNumber || o._id.slice(-6)}`;
+        document.getElementById('disp-order-tracking').innerText = `TRACKING: ${o.trackingNumber || 'TRK-DOP-SYNC'}`;
+        document.getElementById('disp-current-status').innerText = `CURRENT STATUS: ${(o.status || 'PENDING').toUpperCase()}`;
+        
+        const custName = o.userId ? (o.userId.name || 'Collector') : 'Customer';
+        const custEmail = o.userId ? (o.userId.email || '') : '';
+        document.getElementById('disp-cust-name').innerText = custName;
+        document.getElementById('disp-cust-email').innerText = custEmail;
+        document.getElementById('customer-avatar-initials').innerText = custName.slice(0, 2).toUpperCase();
+
+        document.getElementById('disp-total-amount').innerText = `$${(o.totalAmount || 0).toFixed(2)}`;
+        document.getElementById('disp-carrier-name').innerText = o.carrier || 'DOPAMINE_EXPRESS';
+        document.getElementById('disp-tracking-num').innerText = o.trackingNumber || 'PENDING';
+
+        renderSituationLogs(o);
+    }
+
+    function renderSituationLogs(order) {
+        const list = document.getElementById('situation-log-list');
+        const logs = order.statusLogs || [];
+
+        if (logs.length === 0) {
+            list.innerHTML = `
+            <div class="p-sm bg-surface-container-low border-l-4 border-primary-fixed-dim rounded-r-lg">
+                <span class="font-label-bold text-primary-fixed-dim">STATUS [PENDING]</span>
+                <p class="font-body-md text-on-surface">Order placed into dispatcher queue. Ready for approval.</p>
+            </div>`;
+            return;
+        }
+
+        list.innerHTML = logs.map(l => {
+            const time = new Date(l.timestamp || Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            return `
+            <div class="p-sm bg-surface-container-low border-l-4 border-secondary-container rounded-r-lg">
+                <div class="flex justify-between items-start mb-xs">
+                    <span class="font-label-bold text-secondary-fixed-dim">DISPATCH_LOG [${time}]</span>
+                    <span class="font-label-bold text-[10px] text-on-surface-variant uppercase">${l.updatedBy || 'Dispatcher'}</span>
+                </div>
+                <p class="font-body-md text-on-surface">${l.note || `Status: ${l.status}`}</p>
+            </div>`;
+        }).join('');
+    }
+
+    async function updateOrderStatus(newStatus) {
+        if (!currentSelectedOrder) {
+            alert("Please select an active order first.");
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch(`/api/orders/${currentSelectedOrder._id}/status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({
+                    status: newStatus,
+                    dispatchNotes: `Shipment updated to ${newStatus.toUpperCase()} by Dispatcher Command.`
+                })
+            });
+
+            if (res.ok) {
+                const updated = await res.json();
+                const idx = allOrders.findIndex(o => o._id === updated._id);
+                if (idx !== -1) allOrders[idx] = updated;
+                selectOrder(updated._id);
+                alert(`Order shipment updated to: ${newStatus.toUpperCase()}`);
+            } else {
+                alert("Failed to update shipment status.");
+            }
+        } catch (e) {
+            console.error("Error updating order status:", e);
+        }
+    }
+
+    async function handleOverrideCommand(event) {
+        event.preventDefault();
+        const noteInput = document.getElementById('input-override-cmd');
+        const note = noteInput.value.trim();
+        if (!note || !currentSelectedOrder) return;
+
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch(`/api/orders/${currentSelectedOrder._id}/status`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ dispatchNotes: note })
+            });
+
+            if (res.ok) {
+                const updated = await res.json();
+                const idx = allOrders.findIndex(o => o._id === updated._id);
+                if (idx !== -1) allOrders[idx] = updated;
+                selectOrder(updated._id);
+                noteInput.value = '';
+            }
+        } catch (e) {
+            console.error("Error submitting command note:", e);
+        }
+    }
+
+    // Enforce Admin Auth & Load Orders
+    async function checkAdminAuth() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/auth.html';
+            return;
+        }
+        try {
+            const res = await fetch('/api/auth/me', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            const data = await res.json();
+            if (!res.ok || data.role !== 'admin') {
+                window.location.href = '/auth.html';
+            } else {
+                loadDispatcherOrders();
+            }
+        } catch(e) {
+            window.location.href = '/auth.html';
+        }
+    }
+    checkAdminAuth();
+</script>
 </body></html>

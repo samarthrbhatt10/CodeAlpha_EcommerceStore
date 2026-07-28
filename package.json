@@ -1,7 +1,7 @@
 {
   "name": "codealpha_ecommercestore",
   "version": "1.0.0",
-  "description": "Full-stack e-commerce store (Next.js + Express + MongoDB) with provider-agnostic auth (local + OIDC-ready), RBAC middleware, audit logging, and a CI-gated quality pipeline (lint + security scan + tests). Built for CodeAlpha Full Stack Internship — Task 1.",
+  "description": "Next-Generation, Gamified E-Commerce Infrastructure. Features tactical UI, WebSocket P2P trading, robust RBAC admin tools, and enterprise-grade security (Helmet, Rate Limiting, NoSQL Injection prevention) within a fully automated CI/CD pipeline.",
   "main": "index.js",
   "directories": {
     "doc": "docs"

@@ -13,6 +13,39 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
+// Security Middlewares
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+app.use(helmet());
+
+// Custom NoSQL Injection Prevention for Express 5 (req.query is read-only)
+const sanitizeNoSQL = (obj) => {
+  if (obj instanceof Object) {
+    for (let key in obj) {
+      if (/^\$/.test(key)) {
+        delete obj[key];
+      } else {
+        sanitizeNoSQL(obj[key]);
+      }
+    }
+  }
+};
+app.use((req, res, next) => {
+  if (req.body) sanitizeNoSQL(req.body);
+  if (req.params) sanitizeNoSQL(req.params);
+  // req.query is read-only in Express 5, but its contents can be mutated.
+  if (req.query) sanitizeNoSQL(req.query);
+  next();
+});
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.'
+});
+app.use('/api/', apiLimiter);
+
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce';
 
@@ -164,11 +197,15 @@ async function seedDefaultProducts() {
 mongoose.connect(MONGO_URI)
   .then(async () => {
     console.log(`Connected to MongoDB at ${MONGO_URI}`);
-    await seedDefaultProducts();
-    server.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
-    });
+    if (process.env.NODE_ENV !== 'test') {
+      await seedDefaultProducts();
+      server.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+      });
+    }
   })
   .catch(err => {
     console.error('MongoDB connection error:', err);
   });
+
+module.exports = { app, server };

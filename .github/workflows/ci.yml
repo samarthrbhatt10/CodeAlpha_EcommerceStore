@@ -21,15 +21,13 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: |
-          npm install
-          cd server && npm install
+        run: npm install
 
       - name: Run Lint Check
         run: npm run lint
 
       - name: Run Security Audit
-        run: npm run audit || true
+        run: npm audit --audit-level=high || true
 
       - name: Run Test Suite
         run: npm test

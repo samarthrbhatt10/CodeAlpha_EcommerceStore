@@ -135,7 +135,7 @@
 </div>
 <!-- Navigation Links -->
 <nav class="flex-1 space-y-sm">
-<a class="flex items-center gap-sm px-sm py-base rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-all border border-transparent" href="/admin_dashboard">
+<a class="flex items-center gap-sm px-sm py-base rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:border-primary-fixed hover:text-primary-fixed transition-all border border-transparent" href="/admin">
 <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
 <span class="font-label-bold text-label-bold">DASHBOARD</span>
 </a>
@@ -507,7 +507,7 @@
         }
     }
 
-    async function quickUpdateStock(productId, currentStock) {
+    window.quickUpdateStock = async function(productId, currentStock) {
         const token = localStorage.getItem('token');
         const addAmount = prompt("Enter additional stock quantity to add:", "25");
         if (!addAmount || isNaN(addAmount)) return;
@@ -525,15 +525,17 @@
 
             if (res.ok) {
                 await loadAdminInventory();
+                alert("Stock updated successfully!");
             } else {
-                alert("Failed to update stock.");
+                alert("Failed to update stock. Check permissions.");
             }
         } catch (e) {
             console.error("Error updating stock:", e);
+            alert("Error updating stock.");
         }
-    }
+    };
 
-    async function deleteProduct(productId) {
+    window.deleteProduct = async function(productId) {
         if (!confirm("Are you sure you want to delete this product drop?")) return;
         const token = localStorage.getItem('token');
 
@@ -545,13 +547,15 @@
 
             if (res.ok) {
                 await loadAdminInventory();
+                alert("Product deleted successfully!");
             } else {
-                alert("Failed to delete product.");
+                alert("Failed to delete product. Check permissions.");
             }
         } catch (e) {
             console.error("Error deleting product:", e);
+            alert("Error deleting product.");
         }
-    }
+    };
 
     // Enforce Admin Auth & Load Inventory
     async function checkAdminAuth() {

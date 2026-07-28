@@ -146,16 +146,16 @@
 <p class="font-label-bold text-label-bold text-on-surface-variant mt-xs">VIBE CHECK: 100%</p>
 </div>
 <nav class="flex-1 space-y-sm">
-<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="/admin">
 <span class="material-symbols-outlined">grid_view</span> DASHBOARD
                 </a>
-<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg bg-primary-container text-on-primary-container border-border-width border-on-surface shadow-[6px_6px_0px_#0D0B18]" href="#">
-<span class="material-symbols-outlined">security</span> WAR_ROOM
+<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg bg-primary-container text-on-primary-container border-border-width border-on-surface shadow-[6px_6px_0px_#0D0B18]" href="/admin_orders">
+<span class="material-symbols-outlined">security</span> WAR_ROOM (ORDERS)
                 </a>
-<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="/admin_inventory">
 <span class="material-symbols-outlined">inventory_2</span> INVENTORY
                 </a>
-<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="/admin_analytics">
 <span class="material-symbols-outlined">trending_up</span> SALES
                 </a>
 <a class="flex items-center gap-sm px-md py-sm font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="/settings">
@@ -175,16 +175,16 @@
 <div class="flex items-center gap-md">
 <span class="font-headline-lg text-headline-lg-mobile italic uppercase tracking-tighter text-primary dark:text-primary-fixed">DOPAMINE CLUB</span>
 <nav class="hidden md:flex gap-md ml-lg">
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="#">DROPS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="#">VAULT</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="#">GAMES</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="#">CLUBS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="/catalog">DROPS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="/catalog">VAULT</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="/trade">GAMES</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-secondary-fixed-dim transition-colors" href="/chat">CLUBS</a>
 </nav>
 </div>
 <div class="flex items-center gap-sm">
 <button class="material-symbols-outlined p-sm rounded-full bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors">bolt</button>
 <button class="material-symbols-outlined p-sm rounded-full bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors">shopping_bag</button>
-<button class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-on-surface neo-shadow-hover transition-all">LOGIN</button>
+<button onclick="window.location.href='/auth'" class="bg-primary-fixed text-on-primary-fixed font-label-bold text-label-bold px-md py-sm rounded-full border-border-width border-on-surface neo-shadow-hover transition-all">LOGIN</button>
 </div>
 </header>
 <!-- Command Center Content -->
@@ -233,7 +233,7 @@
 <span class="font-label-bold text-label-bold">SHIPPED</span>
 </button>
 <!-- Dispatched -->
-<button onclick="updateOrderStatus('shipped')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
+<button onclick="updateOrderStatus('dispatched')" class="group flex flex-col items-center gap-sm p-md rounded-xl border-border-width border-surface-variant transition-all hover:bg-surface-container-high">
 <div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant group-hover:bg-primary-container group-hover:text-on-primary-container transition-all">
 <span class="material-symbols-outlined">local_shipping</span>
 </div>
@@ -394,7 +394,13 @@
         document.getElementById('disp-cust-email').innerText = custEmail;
         document.getElementById('customer-avatar-initials').innerText = custName.slice(0, 2).toUpperCase();
 
-        document.getElementById('disp-total-amount').innerText = `$${(o.totalAmount || 0).toFixed(2)}`;
+        const computedTotal = o.items ? o.items.reduce((sum, item) => {
+            const price = item.priceAtPurchase || (item.productId ? item.productId.price : 0) || 0;
+            const qty = item.quantity || 1;
+            return sum + (price * qty);
+        }, 0) : 0;
+        const finalTotal = o.totalAmount || computedTotal || 0;
+        document.getElementById('disp-total-amount').innerText = `$${finalTotal.toFixed(2)}`;
         document.getElementById('disp-carrier-name').innerText = o.carrier || 'DOPAMINE_EXPRESS';
         document.getElementById('disp-tracking-num').innerText = o.trackingNumber || 'PENDING';
 

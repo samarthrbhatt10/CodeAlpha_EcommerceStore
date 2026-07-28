@@ -105,24 +105,22 @@
       <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">dashboard</span>
       OVERVIEW
     </button>
-    <button onclick="showTab('inventory')" data-tab="inventory"
+    <a href="/admin_inventory"
             class="tab-btn w-full flex items-center gap-sm px-sm py-sm rounded font-label-bold text-sm transition-all text-on-surface-variant hover:bg-surface-container hover:text-primary-fixed">
       <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">inventory_2</span>
       DROP INVENTORY
-    </button>
+    </a>
     <button onclick="showTab('orders')" data-tab="orders"
             class="tab-btn w-full flex items-center gap-sm px-sm py-sm rounded font-label-bold text-sm transition-all text-on-surface-variant hover:bg-surface-container hover:text-primary-fixed">
       <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">receipt_long</span>
       SALES INTEL
     </button>
-    <button onclick="showTab('add-product')" data-tab="add-product"
-            class="tab-btn w-full flex items-center gap-sm px-sm py-sm rounded font-label-bold text-sm transition-all text-on-surface-variant hover:bg-surface-container hover:text-primary-fixed">
-      <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">add_box</span>
-      ADD DROP
-    </button>
 
     <div class="pt-lg border-t-2 border-surface-variant mt-lg">
       <p class="font-label-bold text-[10px] text-on-surface-variant uppercase tracking-widest mb-sm px-sm">NAVIGATION</p>
+      <a href="/admin_orders" class="w-full flex items-center gap-sm px-sm py-sm rounded font-label-bold text-sm bg-secondary-container text-on-secondary-container border-2 border-black hover:bg-secondary-fixed transition-all mb-sm">
+        <span class="material-symbols-outlined text-base">security</span>WAR_ROOM (ORDERS)
+      </a>
       <a href="/" class="w-full flex items-center gap-sm px-sm py-sm rounded font-label-bold text-sm text-on-surface-variant hover:text-primary-fixed transition-all">
         <span class="material-symbols-outlined text-base">home</span>PORTAL
       </a>
@@ -197,21 +195,16 @@
     <div class="glass-card border-4 border-black neo-shadow p-lg">
       <h2 class="font-headline-md text-primary uppercase mb-lg border-b-4 border-black pb-md">QUICK ACTIONS</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
-        <button onclick="showTab('add-product')"
-                class="flex flex-col items-center gap-sm p-lg border-4 border-primary-fixed bg-primary-fixed/10 hover:bg-primary-fixed hover:text-on-primary-fixed transition-all group">
-          <span class="material-symbols-outlined text-3xl text-primary-fixed group-hover:text-on-primary-fixed" style="font-variation-settings:'FILL' 1;">add_box</span>
-          <span class="font-label-bold text-xs uppercase">ADD DROP</span>
-        </button>
-        <button onclick="showTab('inventory')"
-                class="flex flex-col items-center gap-sm p-lg border-4 border-surface-variant hover:border-primary-fixed transition-all group">
+        <a href="/admin_inventory"
+                class="flex flex-col items-center gap-sm p-lg border-4 border-surface-variant hover:border-primary-fixed transition-all group no-underline">
           <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary-fixed" style="font-variation-settings:'FILL' 1;">inventory_2</span>
-          <span class="font-label-bold text-xs uppercase">MANAGE DROPS</span>
-        </button>
-        <button onclick="showTab('orders')"
-                class="flex flex-col items-center gap-sm p-lg border-4 border-surface-variant hover:border-secondary-container transition-all group">
-          <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary-container" style="font-variation-settings:'FILL' 1;">receipt_long</span>
-          <span class="font-label-bold text-xs uppercase">VIEW ORDERS</span>
-        </button>
+          <span class="font-label-bold text-xs uppercase text-on-surface-variant group-hover:text-primary-fixed">MANAGE DROPS</span>
+        </a>
+        <a href="/admin_orders"
+                class="flex flex-col items-center gap-sm p-lg border-4 border-surface-variant hover:border-secondary-container transition-all group no-underline">
+          <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary-container" style="font-variation-settings:'FILL' 1;">security</span>
+          <span class="font-label-bold text-xs uppercase text-on-surface-variant group-hover:text-secondary-container">WAR ROOM (ORDERS)</span>
+        </a>
         <a href="/catalog"
            class="flex flex-col items-center gap-sm p-lg border-4 border-surface-variant hover:border-tertiary-fixed-dim transition-all group no-underline">
           <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-tertiary-fixed-dim" style="font-variation-settings:'FILL' 1;">storefront</span>
@@ -282,6 +275,7 @@
             <option value="pending">PENDING</option>
             <option value="processing">PROCESSING</option>
             <option value="shipped">SHIPPED</option>
+            <option value="dispatched">DISPATCHED</option>
             <option value="delivered">DELIVERED</option>
             <option value="cancelled">CANCELLED</option>
           </select>
@@ -510,11 +504,12 @@
       pending: 'border-yellow-400 text-yellow-400',
       processing: 'border-blue-400 text-blue-400',
       shipped: 'border-primary-fixed text-primary-fixed',
+      dispatched: 'border-primary-fixed text-primary-fixed',
       delivered: 'border-green-400 text-green-400',
       cancelled: 'border-error text-error'
     };
     tbody.innerHTML = orders.map(o => {
-      const total = o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+      const total = o.totalAmount || o.items.reduce((a, i) => a + ((i.priceAtPurchase || (i.productId ? i.productId.price : 0) || 0) * (i.quantity || 1)), 0);
       const date = new Date(o.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       return `<tr class="border-b-2 border-surface-container hover:bg-surface-container transition-colors">
         <td class="py-sm px-lg font-label-bold text-secondary-container text-sm">#${o._id.slice(-6).toUpperCase()}</td>
@@ -560,7 +555,7 @@
             recentEl.innerHTML = '<p class="text-center text-on-surface-variant font-label-bold py-lg">No orders yet</p>';
           } else {
             recentEl.innerHTML = recent.map(o => {
-              const total = o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+              const total = o.totalAmount || o.items.reduce((a, i) => a + ((i.priceAtPurchase || (i.productId ? i.productId.price : 0) || 0) * (i.quantity || 1)), 0);
               return `<div class="flex items-center justify-between py-sm border-b-2 border-surface-container last:border-0">
                 <span class="font-label-bold text-secondary-container">#${o._id.slice(-6).toUpperCase()}</span>
                 <span class="font-label-bold text-xs text-on-surface-variant">${o.items.length} items</span>

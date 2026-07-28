@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema({
     priceAtPurchase: { type: Number, required: true } // snapshot of price
   }],
   totalAmount: { type: Number, default: 0 },
-  status: { type: String, enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'], default: 'pending' },
+  status: { type: String, enum: ['pending', 'processing', 'shipped', 'dispatched', 'delivered', 'cancelled'], default: 'pending' },
   trackingNumber: { type: String, default: '' },
   carrier: { type: String, default: 'DOPAMINE_EXPRESS_LOGISTICS' },
   dispatchNotes: { type: String, default: '' },

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Calculate stats
     const totalSpent = orders.reduce((acc, o) => {
-        return acc + o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+        return acc + (o.totalAmount || o.items.reduce((a, i) => a + ((i.priceAtPurchase || (i.productId ? i.productId.price : 0) || 0) * (i.quantity || 1)), 0));
     }, 0);
     
     const rankTiers = [
@@ -93,11 +93,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <tbody>
                             ${orders.map(o => {
                                 const date = new Date(o.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                                const total = o.items.reduce((a, i) => a + (i.priceAtPurchase * i.quantity), 0);
+                                const total = o.totalAmount || o.items.reduce((a, i) => a + ((i.priceAtPurchase || (i.productId ? i.productId.price : 0) || 0) * (i.quantity || 1)), 0);
                                 const statusColors = {
                                     pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
                                     processing: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
                                     shipped: 'bg-primary-fixed/20 text-primary-fixed border-primary-fixed/30',
+                                    dispatched: 'bg-primary-fixed/20 text-primary-fixed border-primary-fixed/30',
                                     delivered: 'bg-green-500/20 text-green-400 border-green-500/30',
                                     cancelled: 'bg-error/20 text-error border-error/30'
                                 };
